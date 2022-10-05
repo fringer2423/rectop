@@ -39,12 +39,12 @@ function HomeScreen() {
                             </div>
                         </Col>
                         <div className="col-lg-6 col-md-6 col-12">
-                            <img id="mainCard1Img" src="/images/main/mainCard1Img.png" className="w-100"/>
+                            <img alt='' id="mainCard1Img" src="/images/main/mainCard1Img.png" className="w-100"/>
                         </div>
                     </Row>
                 </Card>
 
-                <img id="afterCard1Img" className="d-lg-block d-none"
+                <img alt='' id="afterCard1Img" className="d-lg-block d-none"
                      src="/images/main/afterMainCard1Img.png"/>
 
                 <section id="mainCard2" className="card border-0 mx-auto w-100 mt-4 m-lg-0">
@@ -83,7 +83,7 @@ function HomeScreen() {
                             </div>
                         </div>
                         <div className="col-lg-6 col-md-6 mt-3">
-                            <img src="/images/main/mainCard2Img.png" className="img-fluid"/>
+                            <img alt='' src="/images/main/mainCard2Img.png" className="img-fluid"/>
                         </div>
                     </div>
                 </section>
@@ -94,13 +94,13 @@ function HomeScreen() {
                             Почему <span className="text-primary font-weight-bolder">RecTop</span>
                         </h3>
                         <div className="row align-items-end mt-3">
-                            <img src="/images/main/mainCard31Img.png"
+                            <img alt='' src="/images/main/mainCard31Img.png"
                                  className="col-lg-3 col-md-3 col-10 mx-lg-0 mx-auto my-lg-0 my-4 h-50"/>
-                            <img src="/images/main/mainCard32Img.png"
+                            <img alt='' src="/images/main/mainCard32Img.png"
                                  className="col-lg-3 col-md-3 col-10 mx-lg-0 mx-auto h-75"/>
-                            <img src="/images/main/mainCard33Img.png"
+                            <img alt='' src="/images/main/mainCard33Img.png"
                                  className="col-lg-3 col-md-3 col-10 mx-lg-0 mx-auto my-lg-0 my-4"/>
-                            <img src="/images/main/mainCard34Img.png"
+                            <img alt='' src="/images/main/mainCard34Img.png"
                                  className="col-lg-3 col-md-3 col-10 mx-lg-0 mx-auto h-75"/>
                         </div>
                     </div>
@@ -141,7 +141,7 @@ function HomeScreen() {
                                             <Row>
                                                 <div
                                                     className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img className="w-75"
+                                                    <img alt='' className="w-75"
                                                          src="/images/main/mainCard41Img.png"/>
                                                     <div className="card-body">
                                                         <h4 className="card-title text-center m-2">
@@ -156,7 +156,7 @@ function HomeScreen() {
                                                 </div>
                                                 <div
                                                     className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img className="w-75"
+                                                    <img alt='' className="w-75"
                                                          src="/images/main/mainCard42Img.png"/>
                                                     <div className="card-body">
                                                         <h4 className="card-title text-center m-2">
@@ -175,7 +175,7 @@ function HomeScreen() {
                                             <div className="row">
                                                 <div
                                                     className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img className="w-75" src="/images/main/mainCard43Img.png"/>
+                                                    <img alt='' className="w-75" src="/images/main/mainCard43Img.png"/>
                                                     <div className="card-body">
                                                         <h4 className="card-title text-center m-2">
                                                             2ГИС
@@ -189,7 +189,7 @@ function HomeScreen() {
                                                 </div>
                                                 <div
                                                     className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img className="w-75" src="/images/main/mainCard44Img.png"/>
+                                                    <img alt='' className="w-75" src="/images/main/mainCard44Img.png"/>
                                                     <div className="card-body">
                                                         <h4 className="card-title text-center m-2">
                                                             Wildberries
@@ -207,7 +207,7 @@ function HomeScreen() {
                                             <div className="row">
                                                 <div
                                                     className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img className="w-75" src="/images/main/mainCard45Img.png"/>
+                                                    <img alt='' className="w-75" src="/images/main/mainCard45Img.png"/>
                                                     <div className="card-body">
                                                         <h4 className="card-title text-center m-2">
                                                             Zoon
@@ -221,7 +221,7 @@ function HomeScreen() {
                                                 </div>
                                                 <div
                                                     className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img className="w-75" src="/images/main/mainCard46Img.png"/>
+                                                    <img alt='' className="w-75" src="/images/main/mainCard46Img.png"/>
                                                     <div className="card-body">
                                                         <h4 className="card-title text-center m-2">
                                                             OZON
@@ -239,7 +239,7 @@ function HomeScreen() {
                                             <div className="row">
                                                 <div
                                                     className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img className="w-75" src="/images/main/mainCard47Img.png"/>
+                                                    <img alt='' className="w-75" src="/images/main/mainCard47Img.png"/>
                                                     <div className="card-body">
                                                         <h4 className="card-title text-center m-2">
                                                             Yell
@@ -253,7 +253,7 @@ function HomeScreen() {
                                                 </div>
                                                 <div
                                                     className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img className="w-75"
+                                                    <img alt='' className="w-75"
                                                          src="/images/main/mainCard48Img.png"/>
                                                     <div className="card-body">
                                                         <h4 className="card-title text-center m-2">
@@ -275,7 +275,7 @@ function HomeScreen() {
                     </div>
                 </section>
 
-                <img id="afterCard4Img" className="img-fluid mx-auto" src="/images/main/afterMainCard4Img.png"/>
+                <img alt='' id="afterCard4Img" className="img-fluid mx-auto" src="/images/main/afterMainCard4Img.png"/>
 
                 <section id="mainCard5" className="mx-auto w-100">
                     <div className="card row border-0 col-lg-6 col-md-6 mt-0">
@@ -296,7 +296,7 @@ function HomeScreen() {
                     </div>
 
                     <div className="row ml-5 m-0">
-                        <img className="col-lg-6 col-md-6 mb-lg-0 mb-5 mt-3" src="/images/main/mainCard51Img.png"/>
+                        <img alt='' className="col-lg-6 col-md-6 mb-lg-0 mb-5 mt-3" src="/images/main/mainCard51Img.png"/>
                         <div className="card row border-0 col-lg-6 col-md-6 mt-3 mt-lg-5">
                             <div className="card-body">
                                 <h3 className="card-title">
@@ -362,7 +362,7 @@ function HomeScreen() {
                                     Попробовать бесплатно
                                 </button>
                             </div>
-                            <img className="col-lg-6 col-md-6 mt-3" src="/images/main/mainCard52Img.png"/>
+                            <img alt='' className="col-lg-6 col-md-6 mt-3" src="/images/main/mainCard52Img.png"/>
                         </div>
                     </div>
                 </section>
@@ -396,13 +396,13 @@ function HomeScreen() {
                                         </small>
                                     </p>
                                 </div>
-                                <img className="cardImg61 m-lg-5 col-lg-6 col-md-12 m-md-3 col-6 h-25"
+                                <img alt='' className="cardImg61 m-lg-5 col-lg-6 col-md-12 m-md-3 col-6 h-25"
                                      src="/images/main/mainCard61Img.png"/>
                             </div>
                         </div>
                         <div className="card col-lg-3 col-md-3 m-md-0 m-lg-0  col-12 border-0 align-self-end">
                             <div className="row">
-                                <img className="cardImg62 m-lg-5 col-lg-6 col-md-12 m-md-3  col-6 h-25"
+                                <img alt='' className="cardImg62 m-lg-5 col-lg-6 col-md-12 m-md-3  col-6 h-25"
                                      src="/images/main/mainCard62Img.png"/>
                                 <div className="card-body col-lg-12 col-md-3 col-1">
                                     <span className="h1 card-title text-primary">
@@ -434,13 +434,13 @@ function HomeScreen() {
                                         </small>
                                     </p>
                                 </div>
-                                <img className="cardImg61 m-lg-5 col-lg-6 col-md-12 m-md-3 col-6 h-25"
+                                <img alt='' className="cardImg61 m-lg-5 col-lg-6 col-md-12 m-md-3 col-6 h-25"
                                      src="/images/main/mainCard61Img.png"/>
                             </div>
                         </div>
                         <div className="card col-lg-3 col-md-3 m-md-0 m-lg-0 col-12 border-0 align-self-end">
                             <div className="row">
-                                <img className="cardImg62 m-lg-5 col-lg-6 col-6 invisible"
+                                <img alt='' className="cardImg62 m-lg-5 col-lg-6 col-6 invisible"
                                      src="/images/main/mainCard62Img.png"/>
                                 <div className="card-body col-lg-12 col-md-12 col-1">
                                     <span className="h1 card-title text-primary">
@@ -460,7 +460,7 @@ function HomeScreen() {
                     </div>
                 </section>
 
-                <img id="afterCard6Img" src="/images/main/afterMainCard6Img.png"/>
+                <img alt='' id="afterCard6Img" src="/images/main/afterMainCard6Img.png"/>
 
                 <section id="mainCard7" className="border-0 row justify-content-center mt-lg-0 mt-5">
                     <h3 className="text-center m-lg-4">
@@ -849,7 +849,7 @@ function HomeScreen() {
                     </div>
                 </section>
 
-                <img id="afterCard8Img" className="img-fluid mt-5 mx-auto"
+                <img alt='' id="afterCard8Img" className="img-fluid mt-5 mx-auto"
                      src="/images/main/afterMainCard8Img.png"/>
 
                 <section id="mainCard9" className="card border-0">

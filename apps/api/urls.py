@@ -1,9 +1,11 @@
 from django.urls import re_path, path
+
 from rest_framework import permissions
+
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-from .views import *
 
+from .views import *
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -22,5 +24,6 @@ urlpatterns = [
     path('login/', MyTokenObtainPairView.as_view(),
          name='token_obtain_pair'),
 
-    path('register/', registerUser, name='register'),
+    path('register/', register_user, name='register'),
+    path('profile/', getUserProfile, name="users-profile"),
 ]
