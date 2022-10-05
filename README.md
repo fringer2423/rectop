@@ -1,9 +1,11 @@
 # RecTop
 
-### Система управления отзывами
+![Logo](/frontend/public/images/Logo.png)
 
-Посмотри правила разработки [здесь](docs/git-workflow.md)
+## Система управления отзывами
 
-Техническое задание [здесь](docs/technical_requirements.md)
+### Документация:
 
-Структура проекта [здесь](docs/struct_project.md)
+- Посмотри правила разработки [здесь](docs/git-workflow.md)
+- Техническое задание [здесь](docs/technical_requirements.md)
+- Структура проекта [здесь](docs/struct_project.md)
