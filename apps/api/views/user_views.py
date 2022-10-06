@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework import status
 
-from .serializers import MyTokenObtainPairSerializer, UserSerializerWithToken, UserSerializer
+from ..serializers import MyTokenObtainPairSerializer, UserSerializerWithToken, UserSerializer
 
 from apps.core.models import User
 
