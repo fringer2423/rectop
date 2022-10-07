@@ -13,11 +13,19 @@ from apps.core.models import User
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
+    """
+    Контроллер для авторизации
+    """
     serializer_class = MyTokenObtainPairSerializer
 
 
 @api_view(['POST'])
 def register_user(request):
+    """
+    Контроллер для регистрации новых пользователей
+    :param request:
+    :return: response: Данные пользователя с Token
+    """
     data = request.data
     try:
         user = User.objects.create(
@@ -37,6 +45,11 @@ def register_user(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getUserProfile(request):
+    """
+    Контроллер для отдачи информации о текущем пользователе
+    :param request:
+    :return: response: информация о пользователе
+    """
     user = request.user
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)

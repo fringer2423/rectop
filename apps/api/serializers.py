@@ -7,6 +7,9 @@ from apps.core.models import User
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    """
+    Сериалайзер для авторизации
+    """
     def validate(self, attrs):
         data = super().validate(attrs)
 
@@ -18,6 +21,9 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """
+    Сериалайзер модели User
+    """
     name = serializers.SerializerMethodField(read_only=True)
     _id = serializers.SerializerMethodField(read_only=True)
     isAdmin = serializers.SerializerMethodField(read_only=True)
@@ -41,6 +47,9 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserSerializerWithToken(UserSerializer):
+    """
+    Сериалайзер модели User с Token
+    """
     token = serializers.SerializerMethodField(read_only=True)
 
     class Meta:

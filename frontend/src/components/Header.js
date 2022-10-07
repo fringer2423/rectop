@@ -1,6 +1,6 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {Navbar, Nav, Container, NavDropdown} from 'react-bootstrap'
+import {Navbar, Nav, Container, NavDropdown, Image} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 import NavbarCollapse from "react-bootstrap/NavbarCollapse";
 
@@ -14,7 +14,7 @@ function Header() {
                 className="border-bottom">
                 <Container fluid>
                     <Navbar.Brand className="m-2 m-lg-3 pb-1" href="/">
-                        <img id="LogoImage" src="/images/Logo.png"/>
+                        <Image id="LogoImage" src="/images/Logo.png"/>
                     </Navbar.Brand>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" className=""/>
