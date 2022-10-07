@@ -59,6 +59,7 @@ class Schedule(models.Model):
     """
     Модель для хранения графика работы филиалов
     """
+
     class Meta:
         verbose_name = 'График работы'
         verbose_name_plural = 'Графики работы'
@@ -85,11 +86,15 @@ class Schedule(models.Model):
     sunday_end = models.TimeField(verbose_name='Окончание работы в Воскресенье')
     sunday_day_off = models.BooleanField(default=False, verbose_name='Воскресенье выходной')
 
+    def __str__(self):
+        return f'График работы {self.branch.name}'
+
 
 class Branch(models.Model):
     """
     Модель филиала
     """
+
     class Meta:
         verbose_name = 'Филиал'
         verbose_name_plural = 'Филиалы'
@@ -102,7 +107,8 @@ class Branch(models.Model):
     email = models.EmailField(verbose_name='Email')
     description = models.TextField(verbose_name='Описание')
     short_description = models.TextField(verbose_name='Короткое описание')
-    last_date_load_reviews = models.DateTimeField(default=datetime.now() - timedelta(hours=13))
+    last_date_load_reviews = models.DateTimeField(default=datetime.now() - timedelta(hours=13),
+                                                  verbose_name='Последняя дата загрузки отзывов')
 
     def __str__(self):
         return self.name
@@ -112,8 +118,10 @@ class Telebot(models.Model):
     """
     Модель для хранения настроек telegram уведомлений
     """
+
     class Meta:
-        verbose_name = 'Настройки отправки Telegram уведомлений'
+        verbose_name = 'Настройка отправки Telegram уведомлений'
+        verbose_name_plural = 'Настройки отправки Telegram уведомлений'
 
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE, verbose_name='Филиал', related_name='telebot_settings')
     tg_id = models.CharField(max_length=100, verbose_name='ID в Telegram')
@@ -126,6 +134,7 @@ class QRCode(models.Model):
     """
     Модель для хранения QRCodes
     """
+
     class Meta:
         verbose_name = 'QRCode'
         verbose_name_plural = 'QRCodes'
@@ -138,11 +147,15 @@ class QRCode(models.Model):
         self.slug_name = translit.slugify(branch_name)
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return f'QRCode для {self.branch.name}'
+
 
 class Connect(models.Model):
     """
     Модель для настроек соединения с платформами
     """
+
     class Meta:
         verbose_name = 'Настройка соединения'
         verbose_name_plural = 'Настройки соединения'
@@ -167,6 +180,7 @@ class Review(models.Model):
     """
     Модель отзывов
     """
+
     class Meta:
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
@@ -201,8 +215,10 @@ class ReviewSettings(models.Model):
     """
     Модель для хранения и управления настройками автоответов на отзывы
     """
+
     class Meta:
         verbose_name = 'Настройка автоответов на отзывы'
+        verbose_name_plural = 'Настройки автоответов на отзывы'
 
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE, related_name='review_settings', verbose_name='Филиал')
     mask = models.TextField(verbose_name='Маска для отзыва')
@@ -215,6 +231,7 @@ class Answer(models.Model):
     """
     Модель для хранения ответов на отзывы
     """
+
     class Meta:
         verbose_name = 'Ответ на отзыв'
         verbose_name_plural = 'Ответы на отзывы'
