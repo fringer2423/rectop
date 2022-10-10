@@ -53,3 +53,21 @@ def getUserProfile(request):
     user = request.user
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def updateUserProfile(request):
+    """
+    Функция обновления пользовательских настроек
+    :param request:
+    :return: response
+    """
+    user = request.user
+    data = request.data
+
+    serializer = UserSerializer(user, many=False, partial=True, data=data)
+    if serializer.is_valid():
+        serializer.save()
+
+    return Response(serializer.data, status=status.HTTP_200_OK)

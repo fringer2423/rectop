@@ -7,10 +7,14 @@
 ### Добавлено [@fringer2423](https://github.com/fringer2423).
 
 - Endpoints для модели Company
+- Serializer для модели Company
+- Endpoint для изменения информации пользователя
 
 ### Изменено [@fringer2423](https://github.com/fringer2423).
 
 - В некоторые модели добавлены поля created_at
+- TimeZone
+- app_name в urls по логическим частям
 
 ## [0.0.3] - 2022-10-07
 
