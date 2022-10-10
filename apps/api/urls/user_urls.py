@@ -2,7 +2,7 @@ from django.urls import path
 
 from ..views import user_views as views
 
-app_name = 'api_v0.0.1'
+app_name = 'user endpoints'
 urlpatterns = [
     path('login/', views.MyTokenObtainPairView.as_view(),
          name='token_obtain_pair'),
