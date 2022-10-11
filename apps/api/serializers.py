@@ -3,7 +3,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from rest_framework import serializers
 
-from apps.core.models import User, Company
+from apps.core.models import User, Company, Branch, Schedule, WorkDay
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -57,6 +57,42 @@ class CompanySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Company
+        fields = '__all__'
+
+    def get_created_at(self, obj):
+        return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
+
+
+class WorkDaySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WorkDay
+        fields = '__all__'
+
+
+class ScheduleSerializer(serializers.ModelSerializer):
+    monday = WorkDaySerializer()
+    tuesday = WorkDaySerializer()
+    wednesday = WorkDaySerializer()
+    thursday = WorkDaySerializer()
+    friday = WorkDaySerializer()
+    saturday = WorkDaySerializer()
+    sunday = WorkDaySerializer()
+    created_at = serializers.SerializerMethodField(read_only=True)
+
+    class Meta:
+        model = Schedule
+        fields = '__all__'
+
+    def get_created_at(self, obj):
+        return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
+
+
+class BranchSerializer(serializers.ModelSerializer):
+    schedule = ScheduleSerializer()
+    created_at = serializers.SerializerMethodField(read_only=True)
+
+    class Meta:
+        model = Branch
         fields = '__all__'
 
     def get_created_at(self, obj):

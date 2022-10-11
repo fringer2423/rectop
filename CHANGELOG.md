@@ -9,6 +9,9 @@
 - Описания для аргументов всех endpoints
 - Endpoint для удаления company
 - Добавлена модель WorkDay
+- Добавлен Serializer WorkDay
+- Добавлен Serializer Schedule
+- Добавлен Serializer Branch
 
 ### Изменено [@fringer2423](https://github.com/fringer2423).
 
