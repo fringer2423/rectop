@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [0.0.5] - 2022-10-11
+
+### Добавлено [@fringer2423](https://github.com/fringer2423).
+
+- Описания для аргументов всех endpoints
+
+### Изменено [@fringer2423](https://github.com/fringer2423).
+
+- Переопределение метода post в контроллере авторизации
+
 ## [0.0.4] - 2022-10-10
 
 ### Добавлено [@fringer2423](https://github.com/fringer2423).

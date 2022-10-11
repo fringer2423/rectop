@@ -1,6 +1,6 @@
-from rest_framework.decorators import api_view, permission_classes, parser_classes
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 
 from drf_yasg import openapi
@@ -8,14 +8,15 @@ from drf_yasg.utils import swagger_auto_schema
 
 from django.core.exceptions import ObjectDoesNotExist
 
-from apps.core.models import Company
-
 from ..serializers import CompanySerializer
+
+from ..services.company_services import get_company_by_id, create_company
 
 
 @swagger_auto_schema(
     method="post",
-    manual_parameters=[openapi.Parameter('name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True)],
+    manual_parameters=[openapi.Parameter('name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
+                                         description='Название компании')],
     responses={201: openapi.Response(description='Компания создана', schema=CompanySerializer),
                400: openapi.Response(description='Ошибка при создании'),
                401: openapi.Response(description='Пустой или неправильный токен')},
@@ -34,11 +35,7 @@ def createCompany(request):
     user = request.user
 
     try:
-
-        company = Company.objects.create(
-            owner=user,
-            name=request.data['name']
-        )
+        company = create_company(user, request.data['name'])
 
         serializer = CompanySerializer(company, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -66,21 +63,24 @@ def getCompany(request, pk):
     user = request.user
 
     try:
-        company = Company.objects.get(pk=pk)
-
-        if company.owner != user:
+        company = get_company_by_id(user, pk)
+        if company:
+            serializer = CompanySerializer(company, many=False)
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
+        else:
             return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
-
-        serializer = CompanySerializer(company, many=False)
-        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
+    except Exception:
+        return Response(data={'message': 'Ошибка при запросе'}, status=status.HTTP_400_BAD_REQUEST)
+
 
 @swagger_auto_schema(
-    method="post",
-    manual_parameters=[openapi.Parameter('name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True)],
+    method="put",
+    manual_parameters=[openapi.Parameter('name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
+                                         description='Название компании')],
     responses={200: openapi.Response(description='Запрос выполнен успешно', schema=CompanySerializer),
                400: openapi.Response(description='Ошибка при запросе'),
                401: openapi.Response(description='Пустой или неправильный токен'),
@@ -91,25 +91,26 @@ def getCompany(request, pk):
                           'владельца компании.',
     operation_summary='Изменить информацию о компании'
 )
-@api_view(['POST'])
+@api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def updateCompany(request, pk):
+    """Контроллер для обновления информации компании"""
     user = request.user
 
     try:
-        company = Company.objects.get(pk=pk)
+        company = get_company_by_id(user, pk)
 
-        if company.owner != user:
+        if company:
+            company.name = request.data['name']
+            company.save()
+
+            serializer = CompanySerializer(company, many=False)
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
+        else:
             return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
-
-        company.name = request.data['name']
-        company.save()
-
-        serializer = CompanySerializer(company, many=False)
-        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception:
-        return Response(data={'message': 'Неверный запрос'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'message': 'Ошибка при запросе '}, status=status.HTTP_400_BAD_REQUEST)

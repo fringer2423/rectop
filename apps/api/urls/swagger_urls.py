@@ -9,7 +9,7 @@ schema_view = get_schema_view(
     openapi.Info(
         title='Rectop API docs',
         description='Документация к API RECTOP',
-        default_version='v0.0.4',
+        default_version='v0.1',
     ),
     public=True,
     permission_classes=[permissions.AllowAny],

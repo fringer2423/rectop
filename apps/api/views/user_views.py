@@ -1,6 +1,5 @@
-from django.contrib.auth.hashers import make_password
-
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -12,7 +11,7 @@ from drf_yasg.utils import swagger_auto_schema
 
 from ..serializers import MyTokenObtainPairSerializer, UserSerializerWithToken, UserSerializer
 
-from apps.core.models import User
+from ..services.user_services import create_user
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -23,8 +22,10 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
     @swagger_auto_schema(
         manual_parameters=[
-            openapi.Parameter('email', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True),
-            openapi.Parameter('password', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True)
+            openapi.Parameter('email', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
+                              description='Email'),
+            openapi.Parameter('password', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
+                              description='Пароль')
         ],
         responses={200: openapi.Response(description='Пользователь авторизован', schema=MyTokenObtainPairSerializer),
                    400: openapi.Response(description='Ошибка авторизации')},
@@ -32,16 +33,26 @@ class MyTokenObtainPairView(TokenObtainPairView):
         operation_summary='Авторизовать пользователя'
     )
     def post(self, request, *args, **kwargs):
-        super().post(self, request, *args, **kwargs)
+        serializer = self.get_serializer(data=request.data)
+
+        try:
+            serializer.is_valid(raise_exception=True)
+        except TokenError as e:
+            raise InvalidToken(e.args[0])
+
+        return Response(serializer.validated_data, status=status.HTTP_200_OK)
 
 
 @swagger_auto_schema(
     method="post",
     manual_parameters=[
-        openapi.Parameter('first_name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True),
-        openapi.Parameter('username', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True),
-        openapi.Parameter('email', openapi.FORMAT_EMAIL, type=openapi.TYPE_STRING, required=True),
-        openapi.Parameter('password', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True)
+        openapi.Parameter('first_name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
+                          description='Имя'),
+        openapi.Parameter('last_name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
+                          description='Фамилия'),
+        openapi.Parameter('email', openapi.FORMAT_EMAIL, type=openapi.TYPE_STRING, required=True, description='EMail'),
+        openapi.Parameter('password', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
+                          description='Пароль')
     ],
     responses={201: openapi.Response(description='Пользователь зарегистрирован', schema=UserSerializerWithToken),
                400: openapi.Response(description='Ошибка при регистрации')},
@@ -57,17 +68,12 @@ def register_user(request):
     """
     data = request.data
     try:
-        user = User.objects.create(
-            first_name=data['first_name'],
-            username=data['email'],
-            email=data['email'],
-            password=make_password(data['password'])
-        )
+        user = create_user(data)
 
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
-    except:
-        message = {'detail': 'Пользователем с таким email уже существует'}
+    except Exception as e:
+        message = {'detail': f'Пользователем с таким email уже существует {e}'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -93,21 +99,28 @@ def getUserProfile(request):
 
 
 @swagger_auto_schema(
-    method="post",
-    manual_parameters=[openapi.Parameter('first_name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=False),
-                       openapi.Parameter('last_name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=False),
-                       openapi.Parameter('email', openapi.FORMAT_EMAIL, type=openapi.TYPE_STRING, required=False),
-                       openapi.Parameter('password', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=False),
-                       openapi.Parameter('description', openapi.FORMAT_EMAIL, type=openapi.TYPE_STRING, required=False),
+    method="put",
+    manual_parameters=[openapi.Parameter('first_name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=False,
+                                         description='Имя'),
+                       openapi.Parameter('last_name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=False,
+                                         description='Фамилия'),
+                       openapi.Parameter('email', openapi.FORMAT_EMAIL, type=openapi.FORMAT_EMAIL, required=False,
+                                         description='EMail'),
+                       openapi.Parameter('password', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=False,
+                                         description='Пароль'),
+                       openapi.Parameter('description', openapi.FORMAT_EMAIL, type=openapi.TYPE_STRING, required=False,
+                                         description='Описание'),
                        openapi.Parameter('phone_number', openapi.FORMAT_EMAIL, type=openapi.TYPE_STRING,
-                                         required=False),
-                       openapi.Parameter('job_title', openapi.FORMAT_EMAIL, type=openapi.TYPE_STRING, required=False)],
+                                         required=False, description='Номер телефона'),
+                       openapi.Parameter('job_title', openapi.FORMAT_EMAIL, type=openapi.TYPE_STRING, required=False,
+                                         description='Должность')],
     responses={200: openapi.Response(description='Запрос прошел успешно', schema=UserSerializer),
+               400: openapi.Response(description='Ошибка при обработке запроса'),
                401: openapi.Response(description='Пустой или неправильный токен')},
     operation_description='Данный endpoint изменяет базовые данные о пользователе.',
     operation_summary='Изменить информацию о пользователе'
 )
-@api_view(['POST'])
+@api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def updateUserProfile(request):
     """
@@ -117,9 +130,11 @@ def updateUserProfile(request):
     """
     user = request.user
     data = request.data
+    try:
+        serializer = UserSerializer(user, many=False, partial=True, data=data)
+        if serializer.is_valid():
+            serializer.save()
 
-    serializer = UserSerializer(user, many=False, partial=True, data=data)
-    if serializer.is_valid():
-        serializer.save()
-
-    return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(data={'message': 'Ошибка при обработке запроса'}, status=status.HTTP_400_BAD_REQUEST)
