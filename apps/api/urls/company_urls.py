@@ -4,8 +4,8 @@ from ..views import company_views as views
 
 app_name = 'Company endpoints'
 urlpatterns = [
-    path('create/', views.createCompany),
-    path('read/<int:pk>', views.getCompany),
-    path('update/<int:pk>', views.updateCompany),
-    path('delete/<int:pk>', views.deleteCompany),
+    path('create/', views.create_company),
+    path('read/<int:pk>', views.read_company),
+    path('update/<int:pk>', views.update_company),
+    path('delete/<int:pk>', views.delete_company),
 ]

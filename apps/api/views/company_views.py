@@ -10,7 +10,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from ..serializers import CompanySerializer
 
-from ..services.company_services import get_company_by_id, create_company
+from ..services.company_services import get_company_by_id, create_company_by_company_name
 
 
 @swagger_auto_schema(
@@ -26,7 +26,7 @@ from ..services.company_services import get_company_by_id, create_company
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def createCompany(request):
+def create_company(request):
     """
     Контроллер для создания компании
     :param request:
@@ -35,7 +35,7 @@ def createCompany(request):
     user = request.user
 
     try:
-        company = create_company(user, request.data['name'])
+        company = create_company_by_company_name(user, request.data['name'])
 
         serializer = CompanySerializer(company, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -58,7 +58,7 @@ def createCompany(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def getCompany(request, pk):
+def read_company(request, pk):
     """Контроллер для отдачи информации о компании"""
     user = request.user
 
@@ -93,7 +93,7 @@ def getCompany(request, pk):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def updateCompany(request, pk):
+def update_company(request, pk):
     """Контроллер для обновления информации компании"""
     user = request.user
 
@@ -130,7 +130,7 @@ def updateCompany(request, pk):
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def deleteCompany(request, pk):
+def delete_company(request, pk):
     """Контроллер для удаления информации компании"""
     user = request.user
 

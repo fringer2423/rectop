@@ -10,7 +10,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from ..serializers import TelebotSerializer
 
-from ..services.telebot_service import create_telebot, get_telebot
+from ..services.telebot_service import create_telebot_by_branch_id, get_telebot_by_id
 
 
 @swagger_auto_schema(
@@ -27,7 +27,7 @@ from ..services.telebot_service import create_telebot, get_telebot
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def createTelebot(request, pk):
+def create_telebot(request, pk):
     """
     Контроллер для создания telebot
     :param pk: id филиала
@@ -38,7 +38,7 @@ def createTelebot(request, pk):
     print(pk)
 
     try:
-        telebot = create_telebot(user=user, tg_id=request.data['tg_id'], branch_id=pk)
+        telebot = create_telebot_by_branch_id(user=user, tg_id=request.data['tg_id'], branch_id=pk)
         if telebot:
             serializer = TelebotSerializer(telebot, many=False)
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -65,12 +65,12 @@ def createTelebot(request, pk):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def getTelebot(request, pk):
+def read_telebot(request, pk):
     """Контроллер для отдачи информации о telebot"""
     user = request.user
 
     try:
-        telebot = get_telebot(user, pk)
+        telebot = get_telebot_by_id(user, pk)
         if telebot:
             serializer = TelebotSerializer(telebot, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
@@ -99,12 +99,12 @@ def getTelebot(request, pk):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def updateTelebot(request, pk):
+def update_telebot(request, pk):
     """Контроллер для обновления информации telebot"""
     user = request.user
 
     try:
-        telebot = get_telebot(user, pk)
+        telebot = get_telebot_by_id(user, pk)
 
         if telebot:
             telebot.tg_id = request.data['tg_id']
@@ -135,12 +135,12 @@ def updateTelebot(request, pk):
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def deleteTelebot(request, pk):
+def delete_telebot(request, pk):
     """Контроллер для удаления информации telebot"""
     user = request.user
 
     try:
-        telebot = get_telebot(user, pk)
+        telebot = get_telebot_by_id(user, pk)
 
         if telebot:
             telebot.delete()

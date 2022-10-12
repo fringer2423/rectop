@@ -11,7 +11,7 @@ from drf_yasg.utils import swagger_auto_schema
 
 from ..serializers import MyTokenObtainPairSerializer, UserSerializerWithToken, UserSerializer
 
-from ..services.user_services import create_user
+from ..services.user_services import create_user_by_data
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -68,7 +68,7 @@ def register_user(request):
     """
     data = request.data
     try:
-        user = create_user(data)
+        user = create_user_by_data(data)
 
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
@@ -87,7 +87,7 @@ def register_user(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def getUserProfile(request):
+def read_user_profile(request):
     """
     Контроллер для отдачи информации о текущем пользователе
     :param request:
@@ -122,7 +122,7 @@ def getUserProfile(request):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def updateUserProfile(request):
+def update_user_profile(request):
     """
     Контроллер обновления пользовательских настроек
     :param request:

@@ -10,7 +10,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from ..serializers import BranchSerializer
 
-from ..services.company_services import get_company_by_id, create_company
+from ..services.company_services import get_company_by_id
 
 
 @swagger_auto_schema(
@@ -25,7 +25,7 @@ from ..services.company_services import get_company_by_id, create_company
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def getBranchList(request, pk):
+def read_branch_list(request, pk):
     """Контроллер для отдачи информации о филиалах"""
     user = request.user
 
