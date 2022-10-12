@@ -9,6 +9,8 @@
 - Добавлены endpoints для telebot [@fringer2423](https://github.com/fringer2423)
 - Добавлен Serializer для Telebot
 - Добавлен endpoint для чтения информации об одном филиале
+- Добавлен Serializer для Connect
+- Добавлены endpoints для Connect
 
 ### Изменено
 

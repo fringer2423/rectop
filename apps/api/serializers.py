@@ -3,7 +3,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from rest_framework import serializers
 
-from apps.core.models import User, Company, Branch, Schedule, WorkDay, Telebot
+from apps.core.models import User, Company, Branch, Schedule, WorkDay, Telebot, Connect
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -102,4 +102,10 @@ class BranchSerializer(serializers.ModelSerializer):
 class TelebotSerializer(serializers.ModelSerializer):
     class Meta:
         model = Telebot
+        fields = '__all__'
+
+
+class ConnectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Connect
         fields = '__all__'
