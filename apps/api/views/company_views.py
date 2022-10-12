@@ -15,11 +15,27 @@ from ..services.company_services import get_company_by_id, create_company_by_com
 
 @swagger_auto_schema(
     method="post",
-    manual_parameters=[openapi.Parameter('name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
-                                         description='Название компании')],
-    responses={201: openapi.Response(description='Компания создана', schema=CompanySerializer),
-               400: openapi.Response(description='Ошибка при создании'),
-               401: openapi.Response(description='Пустой или неправильный токен')},
+    manual_parameters=[
+        openapi.Parameter(
+            name='name',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=True,
+            description='Название компании'
+        )
+    ],
+    responses={
+        201: openapi.Response(
+            description='Компания создана',
+            schema=CompanySerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при создании'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        )
+    },
     operation_description='Данный endpoint создает компанию, после возвращает информацию о ней. Поле owner показывает'
                           ' данные владельца компании.',
     operation_summary='Создать компанию'
@@ -47,11 +63,24 @@ def create_company(request):
 
 @swagger_auto_schema(
     method="get",
-    responses={200: openapi.Response(description='Запрос выполнен успешно', schema=CompanySerializer),
-               400: openapi.Response(description='Ошибка при запросе'),
-               401: openapi.Response(description='Пустой или неправильный токен'),
-               403: openapi.Response(description='Ошибка доступа'),
-               404: openapi.Response(description='Компания не найдена')},
+    responses={
+        200: openapi.Response(
+            description='Запрос выполнен успешно',
+            schema=CompanySerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при запросе'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Компания не найдена'
+        )
+    },
     operation_description='Данный endpoint возвращает базовые данные о компании по {id}. Поле owner показывает данные'
                           ' владельца компании.',
     operation_summary='Получить информацию о компании'
@@ -79,13 +108,32 @@ def read_company(request, pk):
 
 @swagger_auto_schema(
     method="put",
-    manual_parameters=[openapi.Parameter('name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
-                                         description='Название компании')],
-    responses={200: openapi.Response(description='Запрос выполнен успешно', schema=CompanySerializer),
-               400: openapi.Response(description='Ошибка при запросе'),
-               401: openapi.Response(description='Пустой или неправильный токен'),
-               403: openapi.Response(description='Ошибка доступа'),
-               404: openapi.Response(description='Компания не найдена')},
+    manual_parameters=[
+        openapi.Parameter(
+            name='name',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=True,
+            description='Название компании')
+    ],
+    responses={
+        200: openapi.Response(
+            description='Запрос выполнен успешно',
+            schema=CompanySerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при запросе'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Компания не найдена'
+        )
+    },
     operation_description='Данный endpoint изменяет информацию о компании по {id}. Если владельцем компании является не'
                           ' авторизованный пользователь, будет отказано в изменении. Поле owner показывает данные '
                           'владельца компании.',
@@ -118,11 +166,23 @@ def update_company(request, pk):
 
 @swagger_auto_schema(
     method="delete",
-    responses={200: openapi.Response(description='Запрос выполнен успешно'),
-               400: openapi.Response(description='Ошибка при запросе'),
-               401: openapi.Response(description='Пустой или неправильный токен'),
-               403: openapi.Response(description='Ошибка доступа'),
-               404: openapi.Response(description='Компания не найдена')},
+    responses={
+        200: openapi.Response(
+            description='Запрос выполнен успешно'
+        ),
+        400: openapi.Response(
+            description='Ошибка при запросе'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Компания не найдена'
+        )
+    },
     operation_description='Данный endpoint удаляет информацию о компании по {id}. Если владельцем компании является не'
                           ' авторизованный пользователь, будет отказано в изменении. Поле owner показывает данные '
                           'владельца компании.',

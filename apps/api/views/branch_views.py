@@ -16,11 +16,24 @@ from ..services.branch_service import get_branch_by_branch_id
 
 @swagger_auto_schema(
     method="get",
-    responses={200: openapi.Response(description='Запрос выполнен успешно', schema=BranchSerializer),
-               400: openapi.Response(description='Ошибка при запросе'),
-               401: openapi.Response(description='Пустой или неправильный токен'),
-               403: openapi.Response(description='Ошибка доступа'),
-               404: openapi.Response(description='Компания не найдена')},
+    responses={
+        200: openapi.Response(
+            description='Запрос выполнен успешно',
+            schema=BranchSerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при запросе'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Компания не найдена'
+        )
+    },
     operation_description='Данный endpoint возвращает базовые данные о всех филиалах по {id} компании.',
     operation_summary='Получить информацию о филиалах'
 )
@@ -47,11 +60,24 @@ def read_branch_list(request, pk):
 
 @swagger_auto_schema(
     method="get",
-    responses={200: openapi.Response(description='Запрос выполнен успешно', schema=BranchSerializer),
-               400: openapi.Response(description='Ошибка при запросе'),
-               401: openapi.Response(description='Пустой или неправильный токен'),
-               403: openapi.Response(description='Ошибка доступа'),
-               404: openapi.Response(description='Компания не найдена')},
+    responses={
+        200: openapi.Response(
+            description='Запрос выполнен успешно',
+            schema=BranchSerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при запросе'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Компания не найдена'
+        )
+    },
     operation_description='Данный endpoint возвращает базовые данные о всех филиалах по {id} компании.',
     operation_summary='Получить информацию о филиале'
 )

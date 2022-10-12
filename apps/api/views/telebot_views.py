@@ -15,13 +15,33 @@ from ..services.telebot_service import create_telebot_by_branch_id, get_telebot_
 
 @swagger_auto_schema(
     method="post",
-    manual_parameters=[openapi.Parameter('tg_id', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
-                                         description='Идентификатор Telegram')],
-    responses={201: openapi.Response(description='Telebot создан', schema=TelebotSerializer),
-               400: openapi.Response(description='Ошибка при создании'),
-               401: openapi.Response(description='Пустой или неправильный токен'),
-               403: openapi.Response(description='Ошибка доступа'),
-               404: openapi.Response(description='Филиал не найден')},
+    manual_parameters=[
+        openapi.Parameter(
+            name='tg_id',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=True,
+            description='Идентификатор Telegram'
+        )
+    ],
+    responses={
+        201: openapi.Response(
+            description='Telebot создан',
+            schema=TelebotSerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при создании'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Филиал не найден'
+        )
+    },
     operation_description='Данный endpoint создает telebot для филиала по его {id}, после возвращает информацию о ней.',
     operation_summary='Создать telebot'
 )
@@ -55,11 +75,24 @@ def create_telebot(request, pk):
 
 @swagger_auto_schema(
     method="get",
-    responses={200: openapi.Response(description='Запрос выполнен успешно', schema=TelebotSerializer),
-               400: openapi.Response(description='Ошибка при запросе'),
-               401: openapi.Response(description='Пустой или неправильный токен'),
-               403: openapi.Response(description='Ошибка доступа'),
-               404: openapi.Response(description='Компания не найдена')},
+    responses={
+        200: openapi.Response(
+            description='Запрос выполнен успешно',
+            schema=TelebotSerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при запросе'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Компания не найдена'
+        )
+    },
     operation_description='Данный endpoint возвращает базовые данные о telebot по {id}.',
     operation_summary='Получить информацию о telebot'
 )
@@ -86,13 +119,33 @@ def read_telebot(request, pk):
 
 @swagger_auto_schema(
     method="put",
-    manual_parameters=[openapi.Parameter('tg_id', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
-                                         description='Идентификатор telegram')],
-    responses={200: openapi.Response(description='Запрос выполнен успешно', schema=TelebotSerializer),
-               400: openapi.Response(description='Ошибка при запросе'),
-               401: openapi.Response(description='Пустой или неправильный токен'),
-               403: openapi.Response(description='Ошибка доступа'),
-               404: openapi.Response(description='Компания не найдена')},
+    manual_parameters=[
+        openapi.Parameter(
+            name='tg_id',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=True,
+            description='Идентификатор telegram'
+        )
+    ],
+    responses={
+        200: openapi.Response(
+            description='Запрос выполнен успешно',
+            schema=TelebotSerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при запросе'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Компания не найдена'
+        )
+    },
     operation_description='Данный endpoint изменяет информацию о telebot по {id}. Если владельцем филиала является не'
                           ' авторизованный пользователь, будет отказано в изменении.',
     operation_summary='Изменить информацию о telebot'
@@ -124,11 +177,23 @@ def update_telebot(request, pk):
 
 @swagger_auto_schema(
     method="delete",
-    responses={200: openapi.Response(description='Запрос выполнен успешно'),
-               400: openapi.Response(description='Ошибка при запросе'),
-               401: openapi.Response(description='Пустой или неправильный токен'),
-               403: openapi.Response(description='Ошибка доступа'),
-               404: openapi.Response(description='Компания не найдена')},
+    responses={
+        200: openapi.Response(
+            description='Запрос выполнен успешно'
+        ),
+        400: openapi.Response(
+            description='Ошибка при запросе'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Компания не найдена'
+        )
+    },
     operation_description='Данный endpoint удаляет информацию о telebot по {id}. Если владельцем компании является не'
                           ' авторизованный пользователь, будет отказано в изменении.',
     operation_summary='Удалить информацию о telebot'

@@ -17,6 +17,8 @@
 - Обновлена документация по новым endpoints [@fringer2423](https://github.com/fringer2423)
 - Обновлена документация по слою бизнес логики
 - Refactor endpoints
+- Доработана документация по API
+- Refactor code
 
 ### Удалено
 

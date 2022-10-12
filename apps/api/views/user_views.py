@@ -22,13 +22,30 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
     @swagger_auto_schema(
         manual_parameters=[
-            openapi.Parameter('email', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
-                              description='Email'),
-            openapi.Parameter('password', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
-                              description='Пароль')
+            openapi.Parameter(
+                name='email',
+                in_=openapi.FORMAT_EMAIL,
+                type=openapi.FORMAT_EMAIL,
+                required=True,
+                description='Email'
+            ),
+            openapi.Parameter(
+                name='password',
+                in_=openapi.TYPE_STRING,
+                type=openapi.TYPE_STRING,
+                required=True,
+                description='Пароль'
+            )
         ],
-        responses={200: openapi.Response(description='Пользователь авторизован', schema=MyTokenObtainPairSerializer),
-                   400: openapi.Response(description='Ошибка авторизации')},
+        responses={
+            200: openapi.Response(
+                description='Пользователь авторизован',
+                schema=MyTokenObtainPairSerializer
+            ),
+            400: openapi.Response(
+                description='Ошибка авторизации'
+            )
+        },
         operation_description='Данный endpoint позволяет авторизовать пользователя.',
         operation_summary='Авторизовать пользователя'
     )
@@ -46,16 +63,44 @@ class MyTokenObtainPairView(TokenObtainPairView):
 @swagger_auto_schema(
     method="post",
     manual_parameters=[
-        openapi.Parameter('first_name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
-                          description='Имя'),
-        openapi.Parameter('last_name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
-                          description='Фамилия'),
-        openapi.Parameter('email', openapi.FORMAT_EMAIL, type=openapi.TYPE_STRING, required=True, description='EMail'),
-        openapi.Parameter('password', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=True,
-                          description='Пароль')
+        openapi.Parameter(
+            name='first_name',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=True,
+            description='Имя'
+        ),
+        openapi.Parameter(
+            name='last_name',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=True,
+            description='Фамилия'
+        ),
+        openapi.Parameter(
+            name='email',
+            in_=openapi.FORMAT_EMAIL,
+            type=openapi.FORMAT_EMAIL,
+            required=True,
+            description='EMail'
+        ),
+        openapi.Parameter(
+            name='password',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=True,
+            description='Пароль'
+        )
     ],
-    responses={201: openapi.Response(description='Пользователь зарегистрирован', schema=UserSerializerWithToken),
-               400: openapi.Response(description='Ошибка при регистрации')},
+    responses={
+        201: openapi.Response(
+            description='Пользователь зарегистрирован',
+            schema=UserSerializerWithToken
+        ),
+        400: openapi.Response(
+            description='Ошибка при регистрации'
+        )
+    },
     operation_description='Данный endpoint позволяет зарегистрировать пользователя.',
     operation_summary='Зарегистрировать пользователя'
 )
@@ -79,9 +124,18 @@ def register_user(request):
 
 @swagger_auto_schema(
     method="get",
-    responses={200: openapi.Response(description='Запрос прошел успешно', schema=UserSerializer),
-               400: openapi.Response(description='Ошибка при запросе'),
-               401: openapi.Response(description='Пустой или неправильный токен')},
+    responses={
+        200: openapi.Response(
+            description='Запрос прошел успешно',
+            schema=UserSerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при запросе'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        )
+    },
     operation_description='Данный endpoint возвращает базовые данные о пользователе.',
     operation_summary='Получить информацию о пользователе'
 )
@@ -100,23 +154,69 @@ def read_user_profile(request):
 
 @swagger_auto_schema(
     method="put",
-    manual_parameters=[openapi.Parameter('first_name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=False,
-                                         description='Имя'),
-                       openapi.Parameter('last_name', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=False,
-                                         description='Фамилия'),
-                       openapi.Parameter('email', openapi.FORMAT_EMAIL, type=openapi.FORMAT_EMAIL, required=False,
-                                         description='EMail'),
-                       openapi.Parameter('password', openapi.TYPE_STRING, type=openapi.TYPE_STRING, required=False,
-                                         description='Пароль'),
-                       openapi.Parameter('description', openapi.FORMAT_EMAIL, type=openapi.TYPE_STRING, required=False,
-                                         description='Описание'),
-                       openapi.Parameter('phone_number', openapi.FORMAT_EMAIL, type=openapi.TYPE_STRING,
-                                         required=False, description='Номер телефона'),
-                       openapi.Parameter('job_title', openapi.FORMAT_EMAIL, type=openapi.TYPE_STRING, required=False,
-                                         description='Должность')],
-    responses={200: openapi.Response(description='Запрос прошел успешно', schema=UserSerializer),
-               400: openapi.Response(description='Ошибка при обработке запроса'),
-               401: openapi.Response(description='Пустой или неправильный токен')},
+    manual_parameters=[
+        openapi.Parameter(
+            name='first_name',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=False,
+            description='Имя'
+        ),
+        openapi.Parameter(
+            name='last_name',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=False,
+            description='Фамилия'
+        ),
+        openapi.Parameter(
+            name='email',
+            in_=openapi.FORMAT_EMAIL,
+            type=openapi.FORMAT_EMAIL,
+            required=False,
+            description='EMail'
+        ),
+        openapi.Parameter(
+            name='password',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=False,
+            description='Пароль'
+        ),
+        openapi.Parameter(
+            name='description',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=False,
+            description='Описание'
+        ),
+        openapi.Parameter(
+            name='phone_number',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=False,
+            description='Номер телефона'
+        ),
+        openapi.Parameter(
+            name='job_title',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=False,
+            description='Должность'
+        )
+    ],
+    responses={
+        200: openapi.Response(
+            description='Запрос прошел успешно',
+            schema=UserSerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при обработке запроса'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        )
+    },
     operation_description='Данный endpoint изменяет базовые данные о пользователе.',
     operation_summary='Изменить информацию о пользователе'
 )

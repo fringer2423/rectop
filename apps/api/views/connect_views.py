@@ -18,26 +18,37 @@ from ..services.company_services import get_company_by_id
     method="post",
     manual_parameters=[
         openapi.Parameter(
-            'type',
-            openapi.TYPE_STRING,
+            name='type',
+            in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
             description='Тип платформы подключения'
         ),
         openapi.Parameter(
-            'key',
-            openapi.TYPE_STRING,
+            name='key',
+            in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
             description='Ключ для подключения'
         )
     ],
     responses={
-        201: openapi.Response(description='Connect создан', schema=ConnectSerializer),
-        400: openapi.Response(description='Ошибка при создании'),
-        401: openapi.Response(description='Пустой или неправильный токен'),
-        403: openapi.Response(description='Ошибка доступа'),
-        404: openapi.Response(description='Компания не найдена')
+        201: openapi.Response(
+            description='Connect создан',
+            schema=ConnectSerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при создании'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Компания не найдена'
+        )
     },
     operation_description='Данный endpoint создает connect по {id} компании, после возвращает информацию о connect.',
     operation_summary='Создать connect'
@@ -77,11 +88,24 @@ def create_connect(request, pk):
 
 @swagger_auto_schema(
     method="get",
-    responses={200: openapi.Response(description='Запрос выполнен успешно', schema=ConnectSerializer),
-               400: openapi.Response(description='Ошибка при запросе'),
-               401: openapi.Response(description='Пустой или неправильный токен'),
-               403: openapi.Response(description='Ошибка доступа'),
-               404: openapi.Response(description='Компания не найдена')},
+    responses={
+        200: openapi.Response(
+            description='Запрос выполнен успешно',
+            schema=ConnectSerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при запросе'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Компания не найдена'
+        )
+    },
     operation_description='Данный endpoint возвращает базовые данные о connect по {id}.',
     operation_summary='Получить информацию о connect'
 )
@@ -108,11 +132,24 @@ def read_connect(request, pk):
 
 @swagger_auto_schema(
     method="get",
-    responses={200: openapi.Response(description='Запрос выполнен успешно', schema=ConnectSerializer),
-               400: openapi.Response(description='Ошибка при запросе'),
-               401: openapi.Response(description='Пустой или неправильный токен'),
-               403: openapi.Response(description='Ошибка доступа'),
-               404: openapi.Response(description='Компания не найдена')},
+    responses={
+        200: openapi.Response(
+            description='Запрос выполнен успешно',
+            schema=ConnectSerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при запросе'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Компания не найдена'
+        )
+    },
     operation_description='Данный endpoint возвращает базовые данные о всех connect по {id} компании.',
     operation_summary='Получить информацию о connects по id компании'
 )
@@ -141,25 +178,38 @@ def read_connect_list(request, pk):
     method="put",
     manual_parameters=[
         openapi.Parameter(
-            'type',
-            openapi.TYPE_STRING,
+            name='type',
+            in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
             description='Тип платформы подключения'
         ),
         openapi.Parameter(
-            'key',
-            openapi.TYPE_STRING,
+            name='key',
+            in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
             description='Ключ для подключения'
         )
     ],
-    responses={200: openapi.Response(description='Запрос выполнен успешно', schema=ConnectSerializer),
-               400: openapi.Response(description='Ошибка при запросе'),
-               401: openapi.Response(description='Пустой или неправильный токен'),
-               403: openapi.Response(description='Ошибка доступа'),
-               404: openapi.Response(description='Компания не найдена')},
+    responses={
+        200: openapi.Response(
+            description='Запрос выполнен успешно',
+            schema=ConnectSerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при запросе'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Компания не найдена'
+        )
+    },
     operation_description='Данный endpoint изменяет информацию о connect по {id}. Если владельцем компании является не'
                           ' авторизованный пользователь, будет отказано в изменении.',
     operation_summary='Изменить информацию о connect'
@@ -192,11 +242,23 @@ def update_connect(request, pk):
 
 @swagger_auto_schema(
     method="delete",
-    responses={200: openapi.Response(description='Запрос выполнен успешно'),
-               400: openapi.Response(description='Ошибка при запросе'),
-               401: openapi.Response(description='Пустой или неправильный токен'),
-               403: openapi.Response(description='Ошибка доступа'),
-               404: openapi.Response(description='Компания не найдена')},
+    responses={
+        200: openapi.Response(
+            description='Запрос выполнен успешно'
+        ),
+        400: openapi.Response(
+            description='Ошибка при запросе'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Компания не найдена'
+        )
+    },
     operation_description='Данный endpoint удаляет информацию о connect по {id}. Если владельцем компании является не'
                           ' авторизованный пользователь, будет отказано в удалении.',
     operation_summary='Удалить информацию о connect'
