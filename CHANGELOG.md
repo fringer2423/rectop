@@ -6,7 +6,9 @@
 
 ### Добавлено
 
--
+- Добавлены endpoints для telebot [@fringer2423](https://github.com/fringer2423)
+- Обновлена документация по новым endpoints
+- Добавлен Serializer для Telebot
 
 ### Изменено
 
