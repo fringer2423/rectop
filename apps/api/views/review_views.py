@@ -96,7 +96,7 @@ def create_review(request):
         return Response(data={'message': 'Такой филиал не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при создании ' + e.__str__()
+        message = 'Ошибка при обработке запроса ' + e.__str__()
         return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -141,7 +141,7 @@ def read_review(request, pk):
         return Response(data={'message': 'Такой review не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при создании ' + e.__str__()
+        message = 'Ошибка при обработке запроса ' + e.__str__()
         return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -186,7 +186,7 @@ def read_review_list(request, pk):
         return Response(data={'message': 'Такой филиал не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при создании ' + e.__str__()
+        message = 'Ошибка при обработке запроса ' + e.__str__()
         return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -265,7 +265,7 @@ def update_review(request, pk):
         return Response(data={'message': 'Такой review не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при создании ' + e.__str__()
+        message = 'Ошибка при обработке запроса ' + e.__str__()
         return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -310,5 +310,5 @@ def delete_review(request, pk):
         return Response(data={'message': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при создании ' + e.__str__()
+        message = 'Ошибка при обработке запроса ' + e.__str__()
         return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)

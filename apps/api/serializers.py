@@ -3,7 +3,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from rest_framework import serializers
 
-from apps.core.models import User, Company, Branch, Schedule, WorkDay, Telebot, Connect, Review
+from apps.core.models import User, Company, Branch, Schedule, WorkDay, Telebot, Connect, Review, ReviewSettings
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -129,3 +129,9 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     def get_created_at(self, obj):
         return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
+
+
+class ReviewSettingsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ReviewSettings
+        fields = '__all__'

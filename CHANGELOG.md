@@ -8,6 +8,8 @@
 
 - Endpoints для Review [@fringer2423](https://github.com/fringer2423)
 - Serializer для Review
+- Serializer для Review settings
+- Endpoints для Review settings
 
 ### Изменено
 
@@ -20,6 +22,7 @@
 - Refactor all endpoints
 - Refactor Create URLS (endpoints)
 - Serializers fix
+- Exception info fix
 
 ## [0.0.6] - 2022-10-12
 

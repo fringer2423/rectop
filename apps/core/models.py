@@ -441,11 +441,11 @@ class ReviewSettings(models.Model):
         verbose_name = 'Настройка автоответов на отзывы'
         verbose_name_plural = 'Настройки автоответов на отзывы'
 
-    branch = models.ForeignKey(
-        Branch,
+    company = models.ForeignKey(
+        Company,
         on_delete=models.CASCADE,
         related_name='review_settings',
-        verbose_name='Филиал'
+        verbose_name='Компания'
     )
     mask = models.TextField(
         verbose_name='Маска для отзыва'
@@ -458,7 +458,7 @@ class ReviewSettings(models.Model):
     )
 
     def __str__(self):
-        return f'Настройка отзывов для {self.branch.name}'
+        return f'Настройка отзывов для {self.company.name}'
 
 
 class Answer(models.Model):

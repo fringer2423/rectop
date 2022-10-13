@@ -8,33 +8,33 @@ from drf_yasg.utils import swagger_auto_schema
 
 from django.core.exceptions import ObjectDoesNotExist
 
-from ..serializers import TelebotSerializer
+from ..serializers import ReviewSettingsSerializer
 
-from ..services.telebot_service import create_telebot_by_branch_id, get_telebot_by_id
+from ..services.review_settings_service import get_review_settings_by_id, create_review_settings_by_company_id
 
 
 @swagger_auto_schema(
     method="post",
     manual_parameters=[
         openapi.Parameter(
-            name='tg_id',
+            name='company_id',
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='Идентификатор Telegram'
+            description='id компании'
         ),
         openapi.Parameter(
-            name='branch_id',
+            name='mask',
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='Id филиала'
+            description='Настройка автоответа на отзывы'
         )
     ],
     responses={
         201: openapi.Response(
-            description='Telebot создан',
-            schema=TelebotSerializer
+            description='Review settings создан',
+            schema=ReviewSettingsSerializer
         ),
         400: openapi.Response(
             description='Ошибка при создании'
@@ -46,36 +46,38 @@ from ..services.telebot_service import create_telebot_by_branch_id, get_telebot_
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Филиал не найден'
+            description='Компания не найдена'
         )
     },
-    operation_description='Данный endpoint создает telebot для филиала по его {id}, после возвращает информацию о ней.',
-    operation_summary='Создать telebot'
+    operation_description='Данный endpoint создает review settings по {id} компании, после возвращает информацию о'
+                          ' review settings.',
+    operation_summary='Создать review settings'
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_telebot(request):
+def create_review_settings(request):
     """
-    Контроллер для создания telebot
+    Контроллер для создания review settings
     :param request:
     :return: response
     """
     user = request.user
+    company_id = request.data['company_id']
 
     try:
-        telebot = create_telebot_by_branch_id(
+        review_settings = create_review_settings_by_company_id(
             user=user,
-            tg_id=request.data['tg_id'],
-            branch_id=request.data['branch_id']
+            mask=request.data['mask'],
+            company_id=company_id
         )
-        if telebot:
-            serializer = TelebotSerializer(telebot, many=False)
+        if review_settings:
+            serializer = ReviewSettingsSerializer(review_settings, many=False)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такого филиала не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'message': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
@@ -87,7 +89,7 @@ def create_telebot(request):
     responses={
         200: openapi.Response(
             description='Запрос выполнен успешно',
-            schema=TelebotSerializer
+            schema=ReviewSettingsSerializer
         ),
         400: openapi.Response(
             description='Ошибка при запросе'
@@ -102,25 +104,25 @@ def create_telebot(request):
             description='Компания не найдена'
         )
     },
-    operation_description='Данный endpoint возвращает базовые данные о telebot по {id}.',
-    operation_summary='Получить информацию о telebot'
+    operation_description='Данный endpoint возвращает базовые данные о review settings по {id}.',
+    operation_summary='Получить информацию о review settings'
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_telebot(request, pk):
-    """Контроллер для отдачи информации о telebot"""
+def read_review_settings(request, pk):
+    """Контроллер для отдачи информации о review settings"""
     user = request.user
 
     try:
-        telebot = get_telebot_by_id(user, pk)
-        if telebot:
-            serializer = TelebotSerializer(telebot, many=False)
+        review_settings = get_review_settings_by_id(user=user, review_settings_id=pk)
+        if review_settings:
+            serializer = ReviewSettingsSerializer(review_settings, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'message': 'Такой review settings не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
@@ -131,17 +133,17 @@ def read_telebot(request, pk):
     method="put",
     manual_parameters=[
         openapi.Parameter(
-            name='tg_id',
+            name='mask',
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='Идентификатор telegram'
+            description='Настройка автоответов на отзывы'
         )
     ],
     responses={
         200: openapi.Response(
             description='Запрос выполнен успешно',
-            schema=TelebotSerializer
+            schema=ReviewSettingsSerializer
         ),
         400: openapi.Response(
             description='Ошибка при запросе'
@@ -156,29 +158,30 @@ def read_telebot(request, pk):
             description='Компания не найдена'
         )
     },
-    operation_description='Данный endpoint изменяет информацию о telebot по {id}. Если владельцем филиала является не'
-                          ' авторизованный пользователь, будет отказано в изменении.',
-    operation_summary='Изменить информацию о telebot'
+    operation_description='Данный endpoint изменяет информацию о review settings по {id}. Если владельцем компании '
+                          'является не авторизованный пользователь, будет отказано в изменении. Можно изменять не все '
+                          'поля.',
+    operation_summary='Изменить информацию о review settings'
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_telebot(request, pk):
-    """Контроллер для обновления информации telebot"""
+def update_review_settings(request, pk):
+    """Контроллер для обновления информации review settings"""
     user = request.user
     data = request.data
 
     try:
-        telebot = get_telebot_by_id(user, pk)
-        if telebot:
-            serializer = TelebotSerializer(telebot, many=False, partial=True, data=data)
+        review_settings = get_review_settings_by_id(user, pk)
+        if review_settings:
+            serializer = ReviewSettingsSerializer(review_settings, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist:
-        return Response(data={'message': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as er:
+        return Response(data={'message': 'Такой review settings не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
@@ -204,26 +207,26 @@ def update_telebot(request, pk):
             description='Компания не найдена'
         )
     },
-    operation_description='Данный endpoint удаляет информацию о telebot по {id}. Если владельцем компании является не'
-                          ' авторизованный пользователь, будет отказано в изменении.',
-    operation_summary='Удалить информацию о telebot'
+    operation_description='Данный endpoint удаляет информацию о connect по {id}. Если владельцем компании является не'
+                          ' авторизованный пользователь, будет отказано в удалении.',
+    operation_summary='Удалить информацию о connect'
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_telebot(request, pk):
-    """Контроллер для удаления информации telebot"""
+def delete_review_settings(request, pk):
+    """Контроллер для удаления информации review settings"""
     user = request.user
 
     try:
-        telebot = get_telebot_by_id(user, pk)
-        if telebot:
-            telebot.delete()
+        review_settings = get_review_settings_by_id(user, pk)
+        if review_settings:
+            review_settings.delete()
             return Response(data={'message': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'message': 'Такой review_settings не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
