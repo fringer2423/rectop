@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## [0.0.7] - 2022-10-13
+
+### Добавлено
+
+- Endpoints для Review [@fringer2423](https://github.com/fringer2423)
+- Serializer для Review
+
 ## [0.0.6] - 2022-10-12
 
 ### Добавлено

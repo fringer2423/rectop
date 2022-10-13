@@ -15,3 +15,8 @@ def get_branch_by_branch_id(user, branch_id):
         return branch
     else:
         return False
+
+
+def verification_owner_branch(user, branch_id):
+    branch = Branch.objects.get(pk=branch_id)
+    return verification_owner_company(user=user, company_id=branch.company_id)

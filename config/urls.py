@@ -10,4 +10,5 @@ urlpatterns = [
     path('api/branch/', include('apps.api.urls.branch_urls', namespace='branch_endpoints')),
     path('api/telebot/', include('apps.api.urls.telebot_urls', namespace='telebot_endpoints')),
     path('api/connect/', include('apps.api.urls.connect_urls', namespace='connect_endpoints')),
+    path('api/review/', include('apps.api.urls.review_urls', namespace='review_endpoints')),
 ]
