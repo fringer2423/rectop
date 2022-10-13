@@ -72,14 +72,14 @@ def create_telebot(request):
             serializer = TelebotSerializer(telebot, many=False)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такого филиала не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такого филиала не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -117,14 +117,14 @@ def read_telebot(request, pk):
             serializer = TelebotSerializer(telebot, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -175,14 +175,14 @@ def update_telebot(request, pk):
                 serializer.save()
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist:
-        return Response(data={'message': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -218,13 +218,13 @@ def delete_telebot(request, pk):
         telebot = get_telebot_by_id(user, pk)
         if telebot:
             telebot.delete()
-            return Response(data={'message': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
+            return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)

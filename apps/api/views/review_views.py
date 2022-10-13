@@ -90,14 +90,14 @@ def create_review(request):
             serializer = ReviewSerializer(review, many=False)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой филиал не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой филиал не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -135,14 +135,14 @@ def read_review(request, pk):
             serializer = ReviewSerializer(review, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой review не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой review не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -180,14 +180,14 @@ def read_review_list(request, pk):
             serializer = ReviewSerializer(branch.review_set, many=True)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой филиал не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой филиал не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -259,14 +259,14 @@ def update_review(request, pk):
                 serializer.save()
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой review не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой review не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -302,13 +302,13 @@ def delete_review(request, pk):
         review = get_review_by_id(user=user, review_id=pk)
         if review:
             review.delete()
-            return Response(data={'message': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
+            return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)

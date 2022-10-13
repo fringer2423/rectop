@@ -49,14 +49,14 @@ def read_branch_list(request, pk):
             serializer = BranchSerializer(company.branchs, many=True)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -94,11 +94,11 @@ def read_branch(request, pk):
             serializer = BranchSerializer(branch, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш Филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш Филиал'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой филиал не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой филиал не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)

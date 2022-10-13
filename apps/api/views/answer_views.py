@@ -80,14 +80,14 @@ def create_answer(request):
             serializer = AnswerSerializer(answer, many=False)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш отзыв'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш отзыв'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой отзыв не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой отзыв не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -125,14 +125,14 @@ def read_answer(request, pk):
             serializer = AnswerSerializer(answer, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш ответ'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш ответ'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой ответ не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой ответ не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -190,14 +190,14 @@ def update_answer(request, pk):
                 serializer.save()
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш ответ'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш ответ'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой answer не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой answer не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -233,13 +233,13 @@ def delete_answer(request, pk):
         answer = get_answer_by_id(user=user, answer_id=pk)
         if answer:
             answer.delete()
-            return Response(data={'message': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
+            return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваш answer'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш answer'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой answer не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой answer не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = 'Ошибка при обработке запроса ' + e.__str__()
-        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
