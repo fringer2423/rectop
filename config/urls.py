@@ -12,4 +12,5 @@ urlpatterns = [
     path('api/connect/', include('apps.api.urls.connect_urls', namespace='connect_endpoints')),
     path('api/review/', include('apps.api.urls.review_urls', namespace='review_endpoints')),
     path('api/review_settings/', include('apps.api.urls.review_settings_urls', namespace='review_settings_endpoints')),
+    path('api/answer/', include('apps.api.urls.answer_urls', namespace='answer_endpoints')),
 ]

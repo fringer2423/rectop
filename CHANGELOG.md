@@ -10,6 +10,8 @@
 - Serializer для Review
 - Serializer для Review settings
 - Endpoints для Review settings
+- Serializer для Answer
+- Endpoints для Answer
 
 ### Изменено
 

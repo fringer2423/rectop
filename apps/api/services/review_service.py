@@ -17,3 +17,8 @@ def create_review_by_branch_id(user, branch_id, full_name, link, rating):
         return review
     else:
         return False
+
+
+def verification_owner_review(user, review_id):
+    review = Review.objects.get(pk=review_id)
+    return verification_owner_branch(user, review.branch_id)
