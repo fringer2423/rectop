@@ -25,6 +25,7 @@
 - Refactor Create URLS (endpoints)
 - Serializers fix
 - Exception info fix
+- Serializer answer fix
 
 ## [0.0.6] - 2022-10-12
 
