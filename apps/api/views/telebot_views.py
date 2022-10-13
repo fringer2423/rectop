@@ -8,53 +8,65 @@ from drf_yasg.utils import swagger_auto_schema
 
 from django.core.exceptions import ObjectDoesNotExist
 
-from ..serializers import CompanySerializer
+from ..serializers import TelebotSerializer
 
-from ..services.company_services import get_company_by_id, create_company_by_company_name
+from ..services.telebot_service import create_telebot_by_branch_id, get_telebot_by_id
 
 
 @swagger_auto_schema(
     method="post",
     manual_parameters=[
         openapi.Parameter(
-            name='name',
+            name='tg_id',
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='Название компании'
+            description='Идентификатор Telegram'
         )
     ],
     responses={
         201: openapi.Response(
-            description='Компания создана',
-            schema=CompanySerializer
+            description='Telebot создан',
+            schema=TelebotSerializer
         ),
         400: openapi.Response(
             description='Ошибка при создании'
         ),
         401: openapi.Response(
             description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Филиал не найден'
         )
     },
-    operation_description='Данный endpoint создает компанию, после возвращает информацию о ней. Поле owner показывает'
-                          ' данные владельца компании.',
-    operation_summary='Создать компанию'
+    operation_description='Данный endpoint создает telebot для филиала по его {id}, после возвращает информацию о ней.',
+    operation_summary='Создать telebot'
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_company(request):
+def create_telebot(request, pk):
     """
-    Контроллер для создания компании
+    Контроллер для создания telebot
+    :param pk: id филиала
     :param request:
     :return: response
     """
     user = request.user
+    print(pk)
 
     try:
-        company = create_company_by_company_name(user, request.data['name'])
+        telebot = create_telebot_by_branch_id(user=user, tg_id=request.data['tg_id'], branch_id=pk)
+        if telebot:
+            serializer = TelebotSerializer(telebot, many=False)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
 
-        serializer = CompanySerializer(company, many=False)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    except ObjectDoesNotExist as er:
+        return Response(data={'message': 'Такого филиала не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as er:
         message = f'Ошибка при создании {er}'
@@ -66,7 +78,7 @@ def create_company(request):
     responses={
         200: openapi.Response(
             description='Запрос выполнен успешно',
-            schema=CompanySerializer
+            schema=TelebotSerializer
         ),
         400: openapi.Response(
             description='Ошибка при запросе'
@@ -81,26 +93,25 @@ def create_company(request):
             description='Компания не найдена'
         )
     },
-    operation_description='Данный endpoint возвращает базовые данные о компании по {id}. Поле owner показывает данные'
-                          ' владельца компании.',
-    operation_summary='Получить информацию о компании'
+    operation_description='Данный endpoint возвращает базовые данные о telebot по {id}.',
+    operation_summary='Получить информацию о telebot'
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_company(request, pk):
-    """Контроллер для отдачи информации о компании"""
+def read_telebot(request, pk):
+    """Контроллер для отдачи информации о telebot"""
     user = request.user
 
     try:
-        company = get_company_by_id(user, pk)
-        if company:
-            serializer = CompanySerializer(company, many=False)
+        telebot = get_telebot_by_id(user, pk)
+        if telebot:
+            serializer = TelebotSerializer(telebot, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'message': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception:
         return Response(data={'message': 'Ошибка при запросе'}, status=status.HTTP_400_BAD_REQUEST)
@@ -110,16 +121,17 @@ def read_company(request, pk):
     method="put",
     manual_parameters=[
         openapi.Parameter(
-            name='name',
+            name='tg_id',
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='Название компании')
+            description='Идентификатор telegram'
+        )
     ],
     responses={
         200: openapi.Response(
             description='Запрос выполнен успешно',
-            schema=CompanySerializer
+            schema=TelebotSerializer
         ),
         400: openapi.Response(
             description='Ошибка при запросе'
@@ -134,31 +146,30 @@ def read_company(request, pk):
             description='Компания не найдена'
         )
     },
-    operation_description='Данный endpoint изменяет информацию о компании по {id}. Если владельцем компании является не'
-                          ' авторизованный пользователь, будет отказано в изменении. Поле owner показывает данные '
-                          'владельца компании.',
-    operation_summary='Изменить информацию о компании'
+    operation_description='Данный endpoint изменяет информацию о telebot по {id}. Если владельцем филиала является не'
+                          ' авторизованный пользователь, будет отказано в изменении.',
+    operation_summary='Изменить информацию о telebot'
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_company(request, pk):
-    """Контроллер для обновления информации компании"""
+def update_telebot(request, pk):
+    """Контроллер для обновления информации telebot"""
     user = request.user
 
     try:
-        company = get_company_by_id(user, pk)
+        telebot = get_telebot_by_id(user, pk)
 
-        if company:
-            company.name = request.data['name']
-            company.save()
+        if telebot:
+            telebot.tg_id = request.data['tg_id']
+            telebot.save()
 
-            serializer = CompanySerializer(company, many=False)
+            serializer = TelebotSerializer(telebot, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'message': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception:
         return Response(data={'message': 'Ошибка при запросе '}, status=status.HTTP_400_BAD_REQUEST)
@@ -183,29 +194,28 @@ def update_company(request, pk):
             description='Компания не найдена'
         )
     },
-    operation_description='Данный endpoint удаляет информацию о компании по {id}. Если владельцем компании является не'
-                          ' авторизованный пользователь, будет отказано в изменении. Поле owner показывает данные '
-                          'владельца компании.',
-    operation_summary='Удалить информацию о компании'
+    operation_description='Данный endpoint удаляет информацию о telebot по {id}. Если владельцем компании является не'
+                          ' авторизованный пользователь, будет отказано в изменении.',
+    operation_summary='Удалить информацию о telebot'
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_company(request, pk):
-    """Контроллер для удаления информации компании"""
+def delete_telebot(request, pk):
+    """Контроллер для удаления информации telebot"""
     user = request.user
 
     try:
-        company = get_company_by_id(user, pk)
+        telebot = get_telebot_by_id(user, pk)
 
-        if company:
-            company.delete()
+        if telebot:
+            telebot.delete()
 
             return Response(data={'message': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
         else:
-            return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'message': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'message': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception:
         return Response(data={'message': 'Ошибка при запросе '}, status=status.HTTP_400_BAD_REQUEST)
