@@ -90,6 +90,7 @@ class ScheduleSerializer(serializers.ModelSerializer):
 class BranchSerializer(serializers.ModelSerializer):
     schedule = ScheduleSerializer()
     created_at = serializers.SerializerMethodField(read_only=True)
+    last_date_load_reviews = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Branch
@@ -97,6 +98,9 @@ class BranchSerializer(serializers.ModelSerializer):
 
     def get_created_at(self, obj):
         return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
+
+    def get_last_date_load_reviews(self, obj):
+        return obj.last_date_load_reviews.__format__('%Y-%m-%d %H:%M:%S')
 
 
 class TelebotSerializer(serializers.ModelSerializer):
@@ -106,12 +110,22 @@ class TelebotSerializer(serializers.ModelSerializer):
 
 
 class ConnectSerializer(serializers.ModelSerializer):
+    created_at = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = Connect
         fields = '__all__'
 
+    def get_created_at(self, obj):
+        return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
+
 
 class ReviewSerializer(serializers.ModelSerializer):
+    created_at = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = Review
         fields = '__all__'
+
+    def get_created_at(self, obj):
+        return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')

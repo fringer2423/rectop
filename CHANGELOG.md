@@ -19,6 +19,7 @@
 - Endpoints у user
 - Refactor all endpoints
 - Refactor Create URLS (endpoints)
+- Serializers fix
 
 ## [0.0.6] - 2022-10-12
 
