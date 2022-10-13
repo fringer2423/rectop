@@ -1,94 +1,149 @@
-/*@font-face {*/
-/*	font-family: 'Gilroy-Light';*/
-/*	font-style: normal;*/
-/*	font-weight: normal;*/
-/*	src: local('Gilroy-Light'),*/
-/*		url('/fonts/Gilroy-Light.woff2') format('woff2'),*/
-/*		url('/fonts/Gilroy-Light.woff') format('woff'),*/
-/*		url('/fonts/Gilroy-Light.ttf') format('ttf'),*/
-/*		url('/fonts/Gilroy-Light.eot') format('eot');*/
-/*}*/
-
-/*@font-face {*/
-/*	font-family: 'Raleway-Medium';*/
-/*	font-style: normal;*/
-/*	font-weight: normal;*/
-/*	src: local('Raleway-Medium'),*/
-/*		url('/fonts/Raleway-Medium.woff2') format('woff2'),*/
-/*		url('/fonts/Raleway-Medium.woff') format('woff'),*/
-/*		url('/fonts/Raleway-Medium.ttf') format('ttf'),*/
-/*		url('/fonts/Raleway-Medium.eot') format('eot');*/
-/*}*/
-
-/*p {*/
-/*    font-family: 'Gilroy-Light';*/
-/*}*/
-
-/*body {*/
-/*    overflow-x: hidden;*/
-/*}*/
-
-.range-btn {
-    height: 18px;
-    padding: 1px 15px 1px 1px;
+.body {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 15%;
 }
 
-[type='range'] {
-    margin-top: 5px;
+.fullb{
+  border-radius: 40px;
+  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+  color: white;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
+  font-size: 15px;
+  border-style: none;
+  margin: 2%;
 }
 
-.unner-tarif-block {
-    color: white
+.whiteb{
+  border-radius: 40px;
+  color: #4584FF;
+  background: white;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
+  font-size: 15px;
+  border-color: #4584FF;
+  border-width: thin;
+  margin: 2%;
 }
 
-#mainCard9 {
-    overflow: none;
-}
-#mainCard9 .question {
-    font-size: 0.86em;
+.whiteb:hover{
+  background: #4584FF;
+  color: white;
 }
 
-#afterCard1Img, #afterCard6Img {
-    margin-left: -473px;
-    margin-top: -550px;
-    width: 40%;
+@media (min-width: 800px){
+  .fblock{
+    margin-right: 40%;
+  }
+  .aboutcomptext{
+    margin-right: 50%;
+  }
+  .whyblocks{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10%;
+    justify-content: center;
+  }
+  .purpleblock{
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    border-radius: 30px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 58px 465px 58px 75px;
+    gap: 10px;
+    margin-top: 10%;
+  }
 }
 
-#mainCard5 .card {
-    margin-top: 100px;
+@media(max-width: 600px){
+  .fblock{
+    margin-top: 80px;
+    text-align: center;
+  }
+  .whyblocks{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    justify-content: center;
+  }
+  .purpleblock{
+    position: absolute;
+    width: 330px;
+    height: 563px;
+    left: 30px;
+    top: 3502px;
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    color:white;
+    text-align: center;
+  }
 }
 
-#mainCard1 {
-    max-width: 840px;
+span{
+  color: #4333A6;
 }
 
-#mainCard1 a {
-    width: 157px;
+h1{
+  font-size: 40px;
 }
 
-#mainCard2 {
-    margin-top: -310px;
+.fblock p{
+  font-size: 24px
 }
 
-#mainCard2 hr, #mainCard5 hr {
-    height: 2px;
+.fsmtext{
+  font-size: 16px;
+}
+.blueball{
+  margin-left: -15%;
 }
 
-#mainCard4 {
-    margin-top: 100px;
+.whyrectop h1{
+  text-align: center;
+  margin-top: 5%;
 }
 
-
-
-.unner-tarif-block {
-    border-radius: 17px;
-    font-size: 0.9em;
+.whyblock{
+  background: #F9F9F9;
+  padding-top: 5%;
+  padding-left: 3%;
+  padding-bottom: 2%;
+  height: 270px;
+  width: 23%;
+  border-radius: 10px;
+  margin: 1%;
+  margin-bottom: 5%;
 }
 
-.tarif-block {
-    border-radius: 27px;
+.whyblock:hover{
+  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+  color: white;
 }
 
-.circle-list {
-    font-size: 0.5em;
+h2{
+  font-size: 20px;
+}
+
+.whyblock p{
+  font-size: 16px;
+}
+
+.getreports h1{
+  text-align: center;
+}
+
+.work{
+  margin-top: 10%
+}
+
+.blockwithpic{
+  margin-top: 5%;
 }
