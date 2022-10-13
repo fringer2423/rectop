@@ -3,13 +3,15 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Row, Col, Container, Button, Carousel, Card} from 'react-bootstrap'
 import * as url from "url";
 
+import Circles from "../components/Circles"
+import Tariff from "../components/Tariff"
 
 function HomeScreen() {
 
 
     return (
         <body className="mycustom-scroll parent-container" data-mcs-theme="minimal-dark">
-            <Container className="col-lg-7 pt-5 mt-4 p-4">
+            <Container className="col-lg-7">
                 <Card id="mainCard1" className="card border-0 mx-auto w-100 pt-5 m-lg-0">
                     <Row className="row pt-3 pt-lg-5">
                         <Col className="col-lg-6 col-md-6 col-12">
@@ -18,8 +20,9 @@ function HomeScreen() {
                                     Негативные отзывы теперь в прошлом
                                 </p>
                                 <h3 className="card-title">
-                                    <span className="text-primary font-weight-bolder">
-                                        RecTop </span> - инновационный сервис взаимодействия с клиентами.
+                                    <b><span className="text-primary font-weight-bolder">
+                                        RecTop</span> - инновационный сервис</b>
+                                        <i> взаимодействия с клиентами.</i>
                                 </h3>
                                 <p className="card-text">
                                     <small className="text-muted">
@@ -44,8 +47,6 @@ function HomeScreen() {
                     </Row>
                 </Card>
 
-                <img alt='' id="afterCard1Img" className="d-lg-block d-none"
-                     src="/images/main/afterMainCard1Img.png"/>
 
                 <section id="mainCard2" className="card border-0 mx-auto w-100 mt-4 m-lg-0">
                     <div className="row">
@@ -88,22 +89,12 @@ function HomeScreen() {
                     </div>
                 </section>
 
-                <section id="mainCard3" className="card border-0 mx-auto w-100">
+                <section className="card border-0 mx-auto w-100">
                     <div className="card-body">
                         <h3 className="card-title text-center m-2">
-                            Почему <span className="text-primary font-weight-bolder">RecTop</span>
+                            <b>Почему RecTop</b>
                         </h3>
-                        <div className="row align-items-end mt-3">
-                            <img alt='' src="/images/main/mainCard31Img.png"
-                                 className="col-lg-3 col-md-3 col-10 mx-lg-0 mx-auto my-lg-0 my-4 h-50"/>
-                            <img alt='' src="/images/main/mainCard32Img.png"
-                                 className="col-lg-3 col-md-3 col-10 mx-lg-0 mx-auto h-75"/>
-                            <img alt='' src="/images/main/mainCard33Img.png"
-                                 className="col-lg-3 col-md-3 col-10 mx-lg-0 mx-auto my-lg-0 my-4"/>
-                            <img alt='' src="/images/main/mainCard34Img.png"
-                                 className="col-lg-3 col-md-3 col-10 mx-lg-0 mx-auto h-75"/>
-                        </div>
-                    </div>
+                </div>
                 </section>
 
                 <section id="mainCard4" className="card border-0 mx-auto w-100 mt-0">
@@ -122,166 +113,20 @@ function HomeScreen() {
                             <p className="card-text text-center m-2">
                                 Больше положительных отзывов = Больше доверия = Больше продаж
                             </p>
-                            <div className="row d-flex flex-lg-wrap flex-nowrap mt-5 justify-content-center">
-                                <Carousel slide id="carouselPlatforms" className="carousel carousel-dark slide"
-                                     data-bs-ride="carousel" data-bs-interval="false">
-                                    <div className="carousel-indicators my-2 align-self-end">
-                                        <button type="button" data-bs-target="#carouselPlatforms"
-                                                data-bs-slide-to="0" className="active" aria-current="true"
-                                                aria-label="Slide 1"></button>
-                                        <button type="button" data-bs-target="#carouselPlatforms"
-                                                data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                        <button type="button" data-bs-target="#carouselPlatforms"
-                                                data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                        <button type="button" data-bs-target="#carouselPlatforms"
-                                                data-bs-slide-to="3" aria-label="Slide 4"></button>
-                                    </div>
-                                    <div className="carousel-inner mb-4">
-                                        <Carousel.Item className="carousel-item active">
-                                            <Row>
-                                                <div
-                                                    className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img alt='' className="w-75"
-                                                         src="/images/main/mainCard41Img.png"/>
-                                                    <div className="card-body">
-                                                        <h4 className="card-title text-center m-2">
-                                                            Яндекс Карты
-                                                        </h4>
-                                                        <p className="card-text text-center">
-                                                            <small className="text-muted">
-                                                                55 млн чел./месяц
-                                                            </small>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div
-                                                    className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img alt='' className="w-75"
-                                                         src="/images/main/mainCard42Img.png"/>
-                                                    <div className="card-body">
-                                                        <h4 className="card-title text-center m-2">
-                                                            Google Карты
-                                                        </h4>
-                                                        <p className="card-text text-center">
-                                                            <small className="text-muted">
-                                                                30 млн чел./месяц
-                                                            </small>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </Row>
-                                        </Carousel.Item>
-                                        <div className="carousel-item">
-                                            <div className="row">
-                                                <div
-                                                    className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img alt='' className="w-75" src="/images/main/mainCard43Img.png"/>
-                                                    <div className="card-body">
-                                                        <h4 className="card-title text-center m-2">
-                                                            2ГИС
-                                                        </h4>
-                                                        <p className="card-text text-center">
-                                                            <small className="text-muted">
-                                                                30 млн чел./месяц
-                                                            </small>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div
-                                                    className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img alt='' className="w-75" src="/images/main/mainCard44Img.png"/>
-                                                    <div className="card-body">
-                                                        <h4 className="card-title text-center m-2">
-                                                            Wildberries
-                                                        </h4>
-                                                        <p className="card-text text-center">
-                                                            <small className="text-muted">
-                                                                92 млн чел./месяц
-                                                            </small>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="carousel-item">
-                                            <div className="row">
-                                                <div
-                                                    className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img alt='' className="w-75" src="/images/main/mainCard45Img.png"/>
-                                                    <div className="card-body">
-                                                        <h4 className="card-title text-center m-2">
-                                                            Zoon
-                                                        </h4>
-                                                        <p className="card-text text-center">
-                                                            <small className="text-muted">
-                                                                24 млн чел./месяц
-                                                            </small>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div
-                                                    className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img alt='' className="w-75" src="/images/main/mainCard46Img.png"/>
-                                                    <div className="card-body">
-                                                        <h4 className="card-title text-center m-2">
-                                                            OZON
-                                                        </h4>
-                                                        <p className="card-text text-center">
-                                                            <small className="text-muted">
-                                                                80 млн чел./месяц
-                                                            </small>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="carousel-item">
-                                            <div className="row">
-                                                <div
-                                                    className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img alt='' className="w-75" src="/images/main/mainCard47Img.png"/>
-                                                    <div className="card-body">
-                                                        <h4 className="card-title text-center m-2">
-                                                            Yell
-                                                        </h4>
-                                                        <p className="card-text text-center">
-                                                            <small className="text-muted">
-                                                                3 млн чел./месяц
-                                                            </small>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div
-                                                    className="card border-0 col-lg-3 col-6 col-md-6 align-items-center">
-                                                    <img alt='' className="w-75"
-                                                         src="/images/main/mainCard48Img.png"/>
-                                                    <div className="card-body">
-                                                        <h4 className="card-title text-center m-2">
-                                                            Flamp
-                                                        </h4>
-                                                        <p className="card-text text-center">
-                                                            <small className="text-muted">
-                                                                50 млн чел./месяц
-                                                            </small>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Carousel>
-                            </div>
+
                         </div>
                     </div>
                 </section>
 
-                <img alt='' id="afterCard4Img" className="img-fluid mx-auto" src="/images/main/afterMainCard4Img.png"/>
+                <Circles/>
+
+{/*<img alt='' id="afterCard4Img" className="img-fluid mx-auto" src="/images/main/afterMainCard4Img.png"/>*/}
 
                 <section id="mainCard5" className="mx-auto w-100">
                     <div className="card row border-0 col-lg-6 col-md-6 mt-0">
                         <div className="card-body">
                             <h3 className="card-title">
-                                Как мы <span className="text-primary font-weight-bolder">работаем?</span>
+                                <b>Как мы <span className="text-primary font-weight-bolder">работаем?</span></b>
                             </h3>
                             <p className="card-text">
                                 Сервис "Генератор отзывов"
@@ -300,8 +145,8 @@ function HomeScreen() {
                         <div className="card row border-0 col-lg-6 col-md-6 mt-3 mt-lg-5">
                             <div className="card-body">
                                 <h3 className="card-title">
-                                    Акцент на <span className="text-primary font-weight-bolder">положительных </span>
-                                    отзывах
+                                    <b>Акцент на <span className="text-primary font-weight-bolder">положительных </span>
+                                    отзывах</b>
                                 </h3>
                                 <p className="card-text">
                                     Клиенту все понравилось?
@@ -367,7 +212,7 @@ function HomeScreen() {
                     </div>
                 </section>
 
-                <section id="mainCard6" className="card border-0 mt-5">
+                <section className="card border-0 mt-5">
                     <div className="row col-lg-9 align-self-center">
                         <div className="card-body">
                             <h3 className="card-title text-center m-4">
@@ -460,318 +305,23 @@ function HomeScreen() {
                     </div>
                 </section>
 
+                <Tariff/> 
+
+
+
                 <img alt='' id="afterCard6Img" src="/images/main/afterMainCard6Img.png"/>
 
-                <section id="mainCard7" className="border-0 row justify-content-center mt-lg-0 mt-5">
-                    <h3 className="text-center m-lg-4">
-                        Выбирайте то, что удобно Вам для управления репутацией
-                    </h3>
-                    <div className="btn-group bg-light w-75 mt-3 mb-lg-3 rounded-pill mx-auto col-12"
-                         role="group" aria-label="Базовая группа переключателей радио">
-                        <input type="radio" className="btn-check" autoComplete="off"/>
-                        <label
-                            className="fst-btn-tarif btn btn-outline-primary bg-gradient text-dark border-0 rounded-pill"
-                            htmlFor="btnradio1" data-tariff-class=".tarif-block:eq(0)" data-slide="0">
-                            На неделю
-                        </label>
 
-                        <input type="radio" className="btn-check" autoComplete="off"/>
-                        <label
-                            className="btn btn-outline-primary bg-gradient text-dark border-0 rounded-pill"
-                            htmlFor="btnradio2" data-tariff-class=".tarif-block:eq(1)"
-                            data-slide="1">
-                            На месяц
-                        </label>
-
-                        <input type="radio" className="btn-check" autoComplete="off"/>
-                        <label
-                            className="btn btn-outline-primary bg-gradient text-dark border-0 rounded-pill"
-                            htmlFor="btnradio3" data-tariff-class=".tarif-block:eq(2)"
-                            data-slide="2">
-                            На год
-                        </label>
-                    </div>
-                    <div className="carousel carousel-dark row g-0 p-0 m-0" data-bs-ride="carousel"
-                         id="carouselTariff" data-bs-interval="false" data-bs-touch="false">
-                        <div className="carousel-inner row m-lg-3 flex-nowrap">
-                            <div className="carousel-item row active">
-                                <div className="row m-1 m-lg-0 pb-3 flex-nowrap">
-                                    <div
-                                        className="tarif-block bg-gradient d-block col-lg-4 col-12 m-4 m-lg-2 p-0 row justify-content-center text-center border shadow">
-                                        <p className="h5 text-dark mt-4">
-                                            "Генератор Отзывов"
-                                        </p>
-                                        <p className="text-dark">
-                                            1 филиал
-                                        </p>
-                                        <p className="h5 price">
-                                            1200 РУБ./МЕС.
-                                        </p>
-                                        <div
-                                            className="unner-tarif-block bg-primary bg-gradient text-white p-3 mx-auto my-3 col-10 shadow">
-                                            <span><span className="fw-bold">
-                                                Производите сбор отзывов
-                                            </span>
-                                                от ваших клиентов при помощи QR-кодов на точках продаж
-                                            </span>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Сбор отзывов
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Оповещения в телеграме
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Отчетность в телеграме
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Система кешбэка
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Статистика
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Обратная связь
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Поддержка 24/7
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Формирование qr-кода
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <button type="button"
-                                                className="getTariff btn btn-outline-primary bg-gradient text-nowrap rounded-pill align-self-end mb-3 mt-2 col-8 col-md-6">
-                                            Приобрести тариф
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="carousel-item row">
-                                <div className="row m-1 m-lg-0 flex-nowrap">
-                                    <div
-                                        className="tarif-block bg-gradient d-block col-lg-4 col-12 m-4 m-lg-2 p-0 row justify-content-end text-center border shadow">
-                                        <p className="h5 text-dark mt-4">
-                                            Какое-то название
-                                        </p>
-                                        <div className="col-8 mx-auto my-2 px-0">
-                                            <label htmlFor="customRange2" className="for-range form-label text-dark">
-                                                1 филиал
-                                            </label>
-                                            <div className="row flex-nowrap col-10 p-0">
-                                                <button type="button"
-                                                        className="range-btn range-minus-btn btn btn-sm rounded-circle btn-primary bg-gradient col-1 m-2"
-                                                        data-range-id="customRange2">
-                                                    <i className="bi bi-dash"/>
-                                                </button>
-                                                <input type="range" data-price-id="tariff-price-2"
-                                                       className="form-range col-8" min="1" max="150"
-                                                       id="customRange2" value="1"/>
-                                                <button type="button"
-                                                        className="range-btn range-plus-btn btn btn-sm rounded-circle btn-primary bg-gradient col-1 m-2"
-                                                        data-range-id="customRange2">
-                                                    <i className="bi bi-plus"/>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <p className="h5 price">
-                                            от
-                                            <span className="price-val" id="tariff-price-2">
-                                                1200
-                                            </span>
-                                            РУБ./МЕС.
-                                        </p>
-                                        <span className="after-price-info d-none"
-                                              data-price-id="tariff-price-2"/>
-                                        <div
-                                            className="unner-tarif-block bg-primary bg-gradient text-white p-3 mx-auto my-3 col-10 shadow">
-                                            <span><span className="fw-bold">
-                                                Работа с отзывами
-                                            </span>
-                                                на крупнейших интернет-площадках и сервисах
-                                            </span>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Аналитика по филиалу
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Постоянная актуализация
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Система кэшбека
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Скидки от партнеров
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Поддержка 24/7
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                                        <span
-                                                            className="text-dark">
-                                                            Ответы на отзывы в одном месте
-                                                        </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Обратная связь
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Подробная аналитика
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <button type="button"
-                                                className="getTariff btn btn-outline-primary bg-gradient text-nowrap rounded-pill align-self-end mb-3 mt-2 col-8 col-md-6">
-                                            Приобрести тариф
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="carousel-item row">
-                                <div className="row m-1 m-lg-0 flex-nowrap">
-                                    <div
-                                        className="tarif-block bg-gradient d-block col-lg-4 col-12 m-4 m-lg-2 p-0 row justify-content-end text-center border shadow">
-                                        <p className="h5 text-dark mt-4">
-                                            Репутация под ключ
-                                        </p>
-                                        <div className="row col-8 mx-auto my-2 px-0">
-                                            <label htmlFor="customRange1"
-                                                   className="for-range form-label text-dark">
-                                                1 филиал
-                                            </label>
-                                            <div className="row flex-nowrap col-10 p-0">
-                                                <button type="button"
-                                                        className="range-btn range-minus-btn btn btn-sm rounded-circle btn-primary bg-gradient col-1 m-2"
-                                                        data-range-id="customRange1">
-                                                    <i className="bi bi-dash"/>
-                                                </button>
-                                                <input type="range" data-price-id="tariff-price-3"
-                                                       className="form-range col-9" min="1" max="150"
-                                                       id="customRange1" value="1"/>
-                                                <button type="button"
-                                                        className="range-btn range-plus-btn btn btn-sm rounded-circle btn-primary bg-gradient col-1 m-2"
-                                                        data-range-id="customRange1">
-                                                    <i className="bi bi-plus"/>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <p className="h5 price">
-                                            от
-                                            <span className="price-val" id="tariff-price-3">
-                                                4000
-                                            </span>
-                                            РУБ./МЕС.
-                                        </p>
-                                        <span className="after-price-info d-none"
-                                              data-price-id="tariff-price-3"/>
-                                        <div
-                                            className="unner-tarif-block bg-primary bg-gradient text-white p-3 mx-auto my-3 col-10 shadow">
-                                            <span>
-                                                <span className="fw-bold">
-                                                    Работа с отзывами
-                                                </span>
-                                                на крупнейших интернет-площадках и сервисах
-                                            </span>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Генератор и агрегатор отзывов
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Ответы на отзывы нашими специалистами
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Проверка выставленных отзывов
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                                        <span className="text-dark">
-                                                            "Спровоцируем" выставление отзывов
-                                                        </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Подробная отчетность
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <div className="details-tariff col-lg-10 mx-auto">
-                                            <span className="text-dark">
-                                                Аналитика в реальном времени
-                                            </span>
-                                            <hr className="mt-2"/>
-                                        </div>
-                                        <button type="button"
-                                                className="getTariff btn btn-outline-primary bg-gradient text-nowrap rounded-pill align-self-end mb-3 mt-2 col-8 col-md-6">
-                                            Приобрести тариф
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
 
                 <section id="mainCard8" className="row border-0 mt-5">
                     <div className="card border-0 col-lg-7 col-md-6">
                         <div className="card-body">
                             <h3 className="card-title">
-                                Запишитесь на
+                                <b>Запишитесь на
                                 <br/>
                                 <span className="text-primary font-weight-bolder">
                                     бесплатный звонок
-                                </span>
+                                </span></b>
                             </h3>
                             <p className="card-text h6 mt-4 mb-3">
                                 Наш менеджер перезвонит вам через 10 минут, в течение которых вы сможете:
@@ -849,8 +399,8 @@ function HomeScreen() {
                     </div>
                 </section>
 
-                <img alt='' id="afterCard8Img" className="img-fluid mt-5 mx-auto"
-                     src="/images/main/afterMainCard8Img.png"/>
+                {/*<img alt='' id="afterCard8Img" className="img-fluid mt-5 mx-auto"
+                     src="/images/main/afterMainCard8Img.png"/>*/}
 
                 <section id="mainCard9" className="card border-0">
                     <div className="card-body row w-100">
