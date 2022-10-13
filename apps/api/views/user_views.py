@@ -114,11 +114,10 @@ def register_user(request):
     data = request.data
     try:
         user = create_user_by_data(data)
-
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
     except Exception as e:
-        message = {'detail': f'Пользователем с таким email уже существует {e}'}
+        message = {'message': f'Пользователем с таким email уже существует {e}'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -236,5 +235,6 @@ def update_user_profile(request):
             serializer.save()
 
         return Response(serializer.data, status=status.HTTP_200_OK)
-    except:
-        return Response(data={'message': 'Ошибка при обработке запроса'}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)

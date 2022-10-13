@@ -52,12 +52,11 @@ def create_company(request):
 
     try:
         company = create_company_by_company_name(user, request.data['name'])
-
         serializer = CompanySerializer(company, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    except Exception as er:
-        message = f'Ошибка при создании {er}'
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
         return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -102,8 +101,9 @@ def read_company(request, pk):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception:
-        return Response(data={'message': 'Ошибка при запросе'}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -144,24 +144,24 @@ def read_company(request, pk):
 def update_company(request, pk):
     """Контроллер для обновления информации компании"""
     user = request.user
+    data = request.data
 
     try:
         company = get_company_by_id(user, pk)
-
         if company:
-            company.name = request.data['name']
-            company.save()
-
-            serializer = CompanySerializer(company, many=False)
+            serializer = CompanySerializer(company, many=False, partial=True, data=data)
+            if serializer.is_valid():
+                serializer.save()
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
+    except ObjectDoesNotExist:
         return Response(data={'message': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception:
-        return Response(data={'message': 'Ошибка при запросе '}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = 'Ошибка при запросе ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -196,10 +196,8 @@ def delete_company(request, pk):
 
     try:
         company = get_company_by_id(user, pk)
-
         if company:
             company.delete()
-
             return Response(data={'message': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
         else:
             return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
@@ -207,5 +205,6 @@ def delete_company(request, pk):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception:
-        return Response(data={'message': 'Ошибка при запросе '}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = 'Ошибка при запросе ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)

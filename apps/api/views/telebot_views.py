@@ -22,6 +22,13 @@ from ..services.telebot_service import create_telebot_by_branch_id, get_telebot_
             type=openapi.TYPE_STRING,
             required=True,
             description='Идентификатор Telegram'
+        ),
+        openapi.Parameter(
+            name='branch_id',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=True,
+            description='Id филиала'
         )
     ],
     responses={
@@ -47,18 +54,20 @@ from ..services.telebot_service import create_telebot_by_branch_id, get_telebot_
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_telebot(request, pk):
+def create_telebot(request):
     """
     Контроллер для создания telebot
-    :param pk: id филиала
     :param request:
     :return: response
     """
     user = request.user
-    print(pk)
 
     try:
-        telebot = create_telebot_by_branch_id(user=user, tg_id=request.data['tg_id'], branch_id=pk)
+        telebot = create_telebot_by_branch_id(
+            user=user,
+            tg_id=request.data['tg_id'],
+            branch_id=request.data['branch_id']
+        )
         if telebot:
             serializer = TelebotSerializer(telebot, many=False)
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -68,8 +77,8 @@ def create_telebot(request, pk):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такого филиала не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception as er:
-        message = f'Ошибка при создании {er}'
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
         return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -113,8 +122,9 @@ def read_telebot(request, pk):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception:
-        return Response(data={'message': 'Ошибка при запросе'}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -155,24 +165,24 @@ def read_telebot(request, pk):
 def update_telebot(request, pk):
     """Контроллер для обновления информации telebot"""
     user = request.user
+    data = request.data
 
     try:
         telebot = get_telebot_by_id(user, pk)
-
         if telebot:
-            telebot.tg_id = request.data['tg_id']
-            telebot.save()
-
-            serializer = TelebotSerializer(telebot, many=False)
+            serializer = TelebotSerializer(telebot, many=False, partial=True, data=data)
+            if serializer.is_valid():
+                serializer.save()
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
+    except ObjectDoesNotExist:
         return Response(data={'message': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception:
-        return Response(data={'message': 'Ошибка при запросе '}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -206,10 +216,8 @@ def delete_telebot(request, pk):
 
     try:
         telebot = get_telebot_by_id(user, pk)
-
         if telebot:
             telebot.delete()
-
             return Response(data={'message': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
         else:
             return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
@@ -217,5 +225,6 @@ def delete_telebot(request, pk):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception:
-        return Response(data={'message': 'Ошибка при запросе '}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)

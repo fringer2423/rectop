@@ -88,8 +88,8 @@ def create_connect(request):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception as er:
-        message = f'Ошибка при создании {er}'
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
         return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -133,8 +133,9 @@ def read_connect(request, pk):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception:
-        return Response(data={'message': 'Ошибка при запросе'}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -177,8 +178,9 @@ def read_connect_list(request, pk):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception:
-        return Response(data={'message': 'Ошибка при запросе'}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -242,7 +244,8 @@ def update_connect(request, pk):
         return Response(data={'message': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        return Response(data={'message': f'Ошибка при запросе {e}'}, status=status.HTTP_400_BAD_REQUEST)
+        message = 'Ошибка при создании ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -276,10 +279,8 @@ def delete_connect(request, pk):
 
     try:
         connect = get_connect_by_id(user, pk)
-
         if connect:
             connect.delete()
-
             return Response(data={'message': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
         else:
             return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
@@ -287,5 +288,6 @@ def delete_connect(request, pk):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception:
-        return Response(data={'message': 'Ошибка при запросе '}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)

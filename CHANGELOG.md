@@ -12,6 +12,13 @@
 ### Изменено
 
 - Endpoints create и update у connect [@fringer2423](https://github.com/fringer2423)
+- Endpoints create и update у branch
+- Endpoints create и update у company
+- Endpoints create и update у review
+- Endpoints create и update у telebot
+- Endpoints у user
+- Refactor all endpoints
+- Refactor Create URLS (endpoints)
 
 ## [0.0.6] - 2022-10-12
 

@@ -10,7 +10,6 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from ..serializers import ReviewSerializer
 
-from ..services.connect_service import create_connect_by_company_id, get_connect_by_id
 from ..services.branch_service import get_branch_by_branch_id
 from ..services.review_service import create_review_by_branch_id, get_review_by_id
 
@@ -38,7 +37,14 @@ from ..services.review_service import create_review_by_branch_id, get_review_by_
             type=openapi.TYPE_STRING,
             required=True,
             description='Рейтинг'
-        )
+        ),
+        openapi.Parameter(
+            name='branch_id',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=True,
+            description='Id филиала'
+        ),
     ],
     responses={
         201: openapi.Response(
@@ -63,7 +69,7 @@ from ..services.review_service import create_review_by_branch_id, get_review_by_
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_review(request, pk):
+def create_review(request):
     """
     Контроллер для создания review
     :param pk: id филиала
@@ -71,12 +77,11 @@ def create_review(request, pk):
     :return: response
     """
     user = request.user
-    print(pk)
 
     try:
         review = create_review_by_branch_id(
             user=user,
-            branch_id=pk,
+            branch_id=request.data['branch_id'],
             full_name=request.data['full_name'],
             link=request.data['link'],
             rating=request.data['rating'],
@@ -90,9 +95,10 @@ def create_review(request, pk):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой филиал не найден'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception as er:
-        message = f'Ошибка при создании {er}'
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
         return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
+
 
 @swagger_auto_schema(
     method="get",
@@ -134,8 +140,9 @@ def read_review(request, pk):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой review не найден'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception:
-        return Response(data={'message': 'Ошибка при запросе'}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -178,8 +185,9 @@ def read_review_list(request, pk):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой филиал не найден'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception:
-        return Response(data={'message': 'Ошибка при запросе'}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -189,22 +197,29 @@ def read_review_list(request, pk):
             name='full_name',
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
-            required=True,
+            required=False,
             description='Полное имя'
         ),
         openapi.Parameter(
             name='link',
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
-            required=True,
+            required=False,
             description='Ссылка'
         ),
         openapi.Parameter(
             name='rating',
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
-            required=True,
+            required=False,
             description='Рейтинг'
+        ),
+        openapi.Parameter(
+            name='status',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=False,
+            description='Статус заявки'
         )
     ],
     responses={
@@ -234,17 +249,14 @@ def read_review_list(request, pk):
 def update_review(request, pk):
     """Контроллер для обновления информации review"""
     user = request.user
+    data = request.data
 
     try:
         review = get_review_by_id(user=user, review_id=pk)
-
         if review:
-            review.rating = request.data['rating']
-            review.link = request.data['link']
-            review.full_name = request.data['full_name']
-            review.save()
-
-            serializer = ReviewSerializer(review, many=False)
+            serializer = ReviewSerializer(review, many=False, partial=True, data=data)
+            if serializer.is_valid():
+                serializer.save()
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(data={'message': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
@@ -252,8 +264,9 @@ def update_review(request, pk):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой review не найден'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception:
-        return Response(data={'message': 'Ошибка при запросе '}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(
@@ -287,10 +300,8 @@ def delete_review(request, pk):
 
     try:
         review = get_review_by_id(user=user, review_id=pk)
-
         if review:
             review.delete()
-
             return Response(data={'message': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
         else:
             return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
@@ -298,5 +309,6 @@ def delete_review(request, pk):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception:
-        return Response(data={'message': 'Ошибка при запросе '}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = 'Ошибка при создании ' + e.__str__()
+        return Response(data={'message': message}, status=status.HTTP_400_BAD_REQUEST)
