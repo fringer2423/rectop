@@ -62,9 +62,9 @@ def create_review_settings(request):
     :return: response
     """
     user = request.user
-    company_id = request.data['company_id']
 
     try:
+        company_id = request.data['company_id']
         review_settings = create_review_settings_by_company_id(
             user=user,
             mask=request.data['mask'],

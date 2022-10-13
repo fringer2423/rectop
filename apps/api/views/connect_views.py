@@ -70,9 +70,9 @@ def create_connect(request):
     :return: response
     """
     user = request.user
-    company_id = request.data['company_id']
 
     try:
+        company_id = request.data['company_id']
         connect = create_connect_by_company_id(
             user=user,
             connect_type=request.data['type'],

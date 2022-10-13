@@ -132,6 +132,11 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class ReviewSettingsSerializer(serializers.ModelSerializer):
+    created_at = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = ReviewSettings
         fields = '__all__'
+
+    def get_created_at(self, obj):
+        return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
