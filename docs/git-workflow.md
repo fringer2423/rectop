@@ -30,7 +30,7 @@
  Перейдите в директорию проекта и введите команду:
 
  ```
- git remote add upstream git://github.com/fringer2423/rectop.git
+ git remote add upstream https://github.com/fringer2423/rectop.git
  ```
 
  ### 3. Настройте рабочее окружение
