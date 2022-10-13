@@ -86,10 +86,7 @@ img {
     margin-right: 53px;
 }
 
-.header-layout {
-    margin-top: 10px;
-    margin-left: 100px;
-}
+
 
 @media (min-width: 992px) {
     .header-layout {
@@ -97,6 +94,12 @@ img {
     }
     .alert {
         margin-top: 110px;
+    }
+    .btn{
+      margin-left: 100px;
+    }
+    .log-button{
+      margin-left: 20px;
     }
 }
 
@@ -129,15 +132,4 @@ img {
 
 .log-button > i {
     font-size: 1.35em;
-}
-
-#vkButtonImage  {
-    padding: 7px 0px 0px 5px;
-    width: 30px;
-    height: 30px;
-    font-size: 1.1em;
-}
-
-#tgButtonImage {
-    font-size: 1.9em;
 }
