@@ -30,6 +30,13 @@ from ..services.company_services import get_company_by_id
             type=openapi.TYPE_STRING,
             required=True,
             description='Ключ для подключения'
+        ),
+        openapi.Parameter(
+            name='company_id',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=True,
+            description='Id компании'
         )
     ],
     responses={
@@ -55,7 +62,7 @@ from ..services.company_services import get_company_by_id
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_connect(request, pk):
+def create_connect(request):
     """
     Контроллер для создания connect
     :param pk: id компании
@@ -63,14 +70,14 @@ def create_connect(request, pk):
     :return: response
     """
     user = request.user
-    print(pk)
+    company_id = request.data['company_id']
 
     try:
         connect = create_connect_by_company_id(
             user=user,
             connect_type=request.data['type'],
             key=request.data['key'],
-            company_id=pk
+            company_id=company_id
         )
         if connect:
             serializer = ConnectSerializer(connect, many=False)
@@ -211,7 +218,7 @@ def read_connect_list(request, pk):
         )
     },
     operation_description='Данный endpoint изменяет информацию о connect по {id}. Если владельцем компании является не'
-                          ' авторизованный пользователь, будет отказано в изменении.',
+                          ' авторизованный пользователь, будет отказано в изменении. Можно изменять не все поля.',
     operation_summary='Изменить информацию о connect'
 )
 @api_view(['PUT'])
@@ -219,16 +226,14 @@ def read_connect_list(request, pk):
 def update_connect(request, pk):
     """Контроллер для обновления информации connect"""
     user = request.user
+    data = request.data
 
     try:
         connect = get_connect_by_id(user, pk)
-
         if connect:
-            connect.type = request.data['type']
-            connect.key = request.data['key']
-            connect.save()
-
-            serializer = ConnectSerializer(connect, many=False)
+            serializer = ConnectSerializer(connect, many=False, partial=True, data=data)
+            if serializer.is_valid():
+                serializer.save()
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(data={'message': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
@@ -236,8 +241,8 @@ def update_connect(request, pk):
     except ObjectDoesNotExist as er:
         return Response(data={'message': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
 
-    except Exception:
-        return Response(data={'message': 'Ошибка при запросе '}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        return Response(data={'message': f'Ошибка при запросе {e}'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @swagger_auto_schema(

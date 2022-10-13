@@ -9,6 +9,10 @@
 - Endpoints для Review [@fringer2423](https://github.com/fringer2423)
 - Serializer для Review
 
+### Изменено
+
+- Endpoints create и update у connect [@fringer2423](https://github.com/fringer2423)
+
 ## [0.0.6] - 2022-10-12
 
 ### Добавлено
