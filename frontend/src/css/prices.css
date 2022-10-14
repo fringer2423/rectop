@@ -1,0 +1,66 @@
+.tableforprice{
+  background: #F9F9F9;
+  border-radius: 30px;
+  border: 1px solid #4584FF;
+  width: 30%;
+  padding: 3%;
+  text-align: center;
+}
+
+.blockintable{
+  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  padding: 10%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.tableforprice h3{
+  font-size: 24px;
+}
+
+.tableforprice h5{
+  font-size: 24px;
+}
+
+.tableforprice h4{
+  font-size: 20px;
+  margin-top: 10%;
+}
+
+.tableforprice p{
+  text-align: center;
+  font-size: 20px;
+}
+
+.blackbutton{
+  background: #F9F9F9;
+  border: 1px solid #4584FF;
+  border-radius: 40px;
+  padding: 5%;
+  color: #4584FF;
+}
+
+.tableforprice:hover{
+  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+  color: white;
+}
+
+.tableforprice:hover > button{
+  background: black;
+  color: white;
+  border: 2px solid #232323;
+  border-radius: 40px;
+}
+
+.tableforprice:hover > div{
+  background: #FFFFFF;
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  color: black;
+  border: 1px solid #4584FF;
+}

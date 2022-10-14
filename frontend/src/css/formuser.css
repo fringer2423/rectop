@@ -1,0 +1,56 @@
+.forform{
+  background: #F9F9F9;
+  border-radius: 30px;
+  width: 40%;
+  height: 100%;
+  margin-bottom: 10%;
+  padding: 3%;
+  text-align: center;
+}
+
+.inputsinform{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.inputform{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 2%;
+  border-radius: 37.5px;
+  border: 1px solid #CDCDCD;
+  margin-bottom: 5%;
+  text-align: center;
+  padding: 1%;
+}
+
+.forform h3{
+  font-size: 32px;
+}
+
+.forform{
+  font-size: 24px;
+}
+
+.forform p{
+  margin-bottom: 10%;
+}
+
+.forform button{
+  border-radius: 40px;
+  color: #4584FF;
+  border: 1px solid #4584FF;
+  background: #F9F9F9;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.forform:hover > button{
+  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+  border-radius: 40px;
+  color: white;
+}

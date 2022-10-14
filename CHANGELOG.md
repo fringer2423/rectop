@@ -9,12 +9,15 @@
 - Документация по всем слоям бизнес логики [@fringer2423](https://github.com/fringer2423)
 - Добавлен endpoint для возврата всех отзывов компании
 - Расширен слой бизнес логики для review
+- Добавлен FormUser [@AlexTrubkina](https://github.com/alextrubkina)
+- Добавлен Prices
 
 ### Изменено
 
 - Fix Response detail performance [@fringer2423](https://github.com/fringer2423)
 - Fix Review serializer field (answered_at)
 - Refactor code
+- Изменен HomeScreen [@AlexTrubkina](https://github.com/alextrubkina)
 
 ## [0.0.7] - 2022-10-13
 

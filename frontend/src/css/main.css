@@ -1,3 +1,12 @@
+@font-face {
+  font-family: Gilroy;
+  src: url(../../public/fonts/Raleway-Medium.ttf)
+}
+
+*{
+  font-family: Gilroy;
+}
+
 .body {
   margin-left: 10%;
   margin-right: 10%;
@@ -7,24 +16,30 @@
   border-radius: 40px;
   background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
   color: white;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 2%;
-  padding-right: 2%;
-  font-size: 15px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
+  font-size: 20px;
   border-style: none;
   margin: 2%;
+}
+
+.fullb:hover {
+  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+  box-shadow: 0px 20px 30px rgba(69, 104, 223, 0.3);
+  border-radius: 40px;
 }
 
 .whiteb{
   border-radius: 40px;
   color: #4584FF;
   background: white;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 2%;
-  padding-right: 2%;
-  font-size: 15px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
+  font-size: 20px;
   border-color: #4584FF;
   border-width: thin;
   margin: 2%;
@@ -33,6 +48,11 @@
 .whiteb:hover{
   background: #4584FF;
   color: white;
+}
+
+.aboutcomptext h2{
+  margin-bottom: 5%;
+  font-size: 24px;
 }
 
 @media (min-width: 800px){
@@ -55,15 +75,16 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 58px 465px 58px 75px;
+    padding: 5% 5% 5% 5%;
     gap: 10px;
     margin-top: 10%;
   }
+
 }
 
-@media(max-width: 600px){
+@media(max-width: 799px){
   .fblock{
-    margin-top: 80px;
+    margin-top: 200px;
     text-align: center;
   }
   .whyblocks{
@@ -71,13 +92,11 @@
     flex-direction: column;
     margin-top: 10%;
     justify-content: center;
+    align-items: center;
+    width: 150%
   }
   .purpleblock{
-    position: absolute;
-    width: 330px;
-    height: 563px;
-    left: 30px;
-    top: 3502px;
+
     background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
@@ -90,17 +109,12 @@ span{
   color: #4333A6;
 }
 
-h1{
-  font-size: 40px;
-}
-
-.fblock p{
-  font-size: 24px
-}
 
 .fsmtext{
   font-size: 16px;
 }
+
+
 .blueball{
   margin-left: -15%;
 }
@@ -127,22 +141,88 @@ h1{
   color: white;
 }
 
-h2{
-  font-size: 20px;
-}
 
 .whyblock p{
   font-size: 16px;
 }
 
+.whyblock h2{
+  font-size: 20px;
+}
+
+
 .getreports h1{
   text-align: center;
+  margin-bottom: 2%;
+}
+
+.getreports h2{
+  font-size: 24px;
+  text-align: center;
+}
+
+.getreports p {
+  text-align: center;
+  padding-left: 30%;
+  padding-right: 30%;
 }
 
 .work{
   margin-top: 10%
 }
 
-.blockwithpic{
+.work h2{
+  font-size: 24px;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.recomendations{
+  text-align: center;
+}
+
+
+.forButtons{
+  background: #F9F9F9;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-between;
+  padding-left: 10%;
+  padding-right: 10%;
   margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10%;
+}
+
+.bforp{
+  background: #F9F9F9;
+  font-size: 20px;
+  padding: 2%;
+  border-width: inherit;
+}
+
+.bforp:hover {
+  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 35px;
+  color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+#tariffs{
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.forprices{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-between;
 }
