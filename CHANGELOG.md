@@ -10,7 +10,7 @@
 
 ### Изменено
 
--
+- Fix Response detail performance 
 
 ## [0.0.7] - 2022-10-13
 

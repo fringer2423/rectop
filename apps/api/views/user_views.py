@@ -236,5 +236,5 @@ def update_user_profile(request):
 
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
