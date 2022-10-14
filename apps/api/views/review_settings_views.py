@@ -56,11 +56,7 @@ from ..services.review_settings_service import get_review_settings_by_id, create
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_review_settings(request):
-    """
-    Контроллер для создания review settings
-    :param request:
-    :return: response
-    """
+    """Контроллер для создания review settings """
     user = request.user
 
     try:

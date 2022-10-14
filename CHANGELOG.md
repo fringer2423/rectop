@@ -14,6 +14,7 @@
 
 - Fix Response detail performance [@fringer2423](https://github.com/fringer2423)
 - Fix Review serializer field (answered_at)
+- Refactor code
 
 ## [0.0.7] - 2022-10-13
 

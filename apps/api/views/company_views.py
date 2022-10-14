@@ -43,11 +43,7 @@ from ..services.company_services import get_company_by_id, create_company_by_com
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_company(request):
-    """
-    Контроллер для создания компании
-    :param request:
-    :return: response
-    """
+    """Контроллер для создания компании"""
     user = request.user
 
     try:

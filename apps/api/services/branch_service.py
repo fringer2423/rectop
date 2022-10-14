@@ -3,7 +3,7 @@ from apps.core.models import Branch
 from .company_services import verification_owner_company
 
 
-def get_branch_by_branch_id(user, branch_id):
+def get_branch_by_id(user, branch_id):
     """
     Функция возвращает филиал по его id. Если текущий пользователь не владелец этого филиала, вернется False
     :param user: Текущий пользователь

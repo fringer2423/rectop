@@ -63,12 +63,7 @@ from ..services.company_services import get_company_by_id
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_connect(request):
-    """
-    Контроллер для создания connect
-    :param pk: id компании
-    :param request:
-    :return: response
-    """
+    """Контроллер для создания connect"""
     user = request.user
 
     try:

@@ -55,11 +55,7 @@ from ..services.telebot_service import create_telebot_by_branch_id, get_telebot_
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_telebot(request):
-    """
-    Контроллер для создания telebot
-    :param request:
-    :return: response
-    """
+    """Контроллер для создания telebot"""
     user = request.user
 
     try:

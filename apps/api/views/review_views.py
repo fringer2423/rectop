@@ -8,9 +8,9 @@ from drf_yasg.utils import swagger_auto_schema
 
 from django.core.exceptions import ObjectDoesNotExist
 
-from ..serializers import ReviewSerializer, BranchSerializer
+from ..serializers import ReviewSerializer
 
-from ..services.branch_service import get_branch_by_branch_id
+from ..services.branch_service import get_branch_by_id
 from ..services.review_service import create_review_by_branch_id, get_review_by_id, get_all_review_by_company_id
 
 
@@ -70,12 +70,7 @@ from ..services.review_service import create_review_by_branch_id, get_review_by_
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_review(request):
-    """
-    Контроллер для создания review
-    :param pk: id филиала
-    :param request:
-    :return: response
-    """
+    """Контроллер для создания review"""
     user = request.user
 
     try:
@@ -175,7 +170,7 @@ def read_review_list(request, pk):
     user = request.user
 
     try:
-        branch = get_branch_by_branch_id(user=user, branch_id=pk)
+        branch = get_branch_by_id(user=user, branch_id=pk)
         if branch:
             serializer = ReviewSerializer(branch.review_set, many=True)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
@@ -331,7 +326,7 @@ def delete_review(request, pk):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Филиал не найден'
+            description='Компания не найдена'
         )
     },
     operation_description='Данный endpoint возвращает базовые данные о всех review по {id} компании.',
