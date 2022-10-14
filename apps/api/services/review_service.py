@@ -1,6 +1,7 @@
 from apps.core.models import Review
 
 from .branch_service import verification_owner_branch
+from .company_services import verification_owner_company
 
 
 def get_review_by_id(user, review_id):
@@ -43,3 +44,12 @@ def verification_owner_review(user, review_id):
     """
     review = Review.objects.get(pk=review_id)
     return verification_owner_branch(user, review.branch_id)
+
+
+def get_all_review_by_company_id(user, company_id):
+    reviews = Review.objects.filter(branch__company_id=company_id)
+
+    if verification_owner_company(user, company_id):
+        return reviews
+    else:
+        return False

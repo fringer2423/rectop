@@ -8,10 +8,10 @@ from drf_yasg.utils import swagger_auto_schema
 
 from django.core.exceptions import ObjectDoesNotExist
 
-from ..serializers import ReviewSerializer
+from ..serializers import ReviewSerializer, BranchSerializer
 
 from ..services.branch_service import get_branch_by_branch_id
-from ..services.review_service import create_review_by_branch_id, get_review_by_id
+from ..services.review_service import create_review_by_branch_id, get_review_by_id, get_all_review_by_company_id
 
 
 @swagger_auto_schema(
@@ -308,6 +308,51 @@ def delete_review(request, pk):
 
     except ObjectDoesNotExist as er:
         return Response(data={'detail': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
+
+    except Exception as e:
+        message = f'Ошибка при обработке запроса {e}'
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@swagger_auto_schema(
+    method="get",
+    responses={
+        200: openapi.Response(
+            description='Запрос выполнен успешно',
+            schema=ReviewSerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при запросе'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Филиал не найден'
+        )
+    },
+    operation_description='Данный endpoint возвращает базовые данные о всех review по {id} компании.',
+    operation_summary='Получить информацию о reviews по id компании'
+)
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def read_review_list_all(request, pk):
+    """Контроллер для отдачи информации о всех review компании"""
+    user = request.user
+
+    try:
+        reviews = get_all_review_by_company_id(user=user, company_id=pk)
+        if reviews:
+            serializer = ReviewSerializer(reviews, many=True)
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+
+    except ObjectDoesNotExist as er:
+        return Response(data={'detail': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
