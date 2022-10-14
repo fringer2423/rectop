@@ -56,17 +56,13 @@ from ..services.answer_service import get_answer_by_id, create_answer_by_review_
             description='Отзыв не найден'
         )
     },
-    operation_description='Данный endpoint создает answer по {id} отзыва, после возвращает информацию о answer.',
+    operation_description='Данный endpoint создает answer по {id} review, после возвращает информацию о answer.',
     operation_summary='Создать answer'
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_answer(request):
-    """
-    Контроллер для создания answer
-    :param request:
-    :return: response
-    """
+    """Контроллер для создания answer"""
     user = request.user
 
     try:
@@ -86,7 +82,7 @@ def create_answer(request):
         return Response(data={'detail': 'Такой отзыв не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -131,7 +127,7 @@ def read_answer(request, pk):
         return Response(data={'detail': 'Такой ответ не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -171,8 +167,8 @@ def read_answer(request, pk):
             description='answer не найден'
         )
     },
-    operation_description='Данный endpoint изменяет информацию о answer по {id}. Если владельцем филиала является не'
-                          ' авторизованный пользователь, будет отказано в изменении.',
+    operation_description='Данный endpoint изменяет информацию о answer по {id}. Если у пользователя нет прав на'
+                          ' изменение отзыва, будет отказано в изменении.',
     operation_summary='Изменить информацию о answer'
 )
 @api_view(['PUT'])
@@ -196,7 +192,7 @@ def update_answer(request, pk):
         return Response(data={'detail': 'Такой answer не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -241,5 +237,5 @@ def delete_answer(request, pk):
         return Response(data={'detail': 'Такой answer не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)

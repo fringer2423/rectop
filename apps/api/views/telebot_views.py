@@ -55,11 +55,7 @@ from ..services.telebot_service import create_telebot_by_branch_id, get_telebot_
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_telebot(request):
-    """
-    Контроллер для создания telebot
-    :param request:
-    :return: response
-    """
+    """Контроллер для создания telebot"""
     user = request.user
 
     try:
@@ -78,7 +74,7 @@ def create_telebot(request):
         return Response(data={'detail': 'Такого филиала не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -123,7 +119,7 @@ def read_telebot(request, pk):
         return Response(data={'detail': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -181,7 +177,7 @@ def update_telebot(request, pk):
         return Response(data={'detail': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -226,5 +222,5 @@ def delete_telebot(request, pk):
         return Response(data={'detail': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)

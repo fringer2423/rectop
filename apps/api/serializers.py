@@ -122,6 +122,7 @@ class ConnectSerializer(serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.ModelSerializer):
     created_at = serializers.SerializerMethodField(read_only=True)
+    answered_at = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Review
@@ -129,6 +130,13 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     def get_created_at(self, obj):
         return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
+
+    def get_answered_at(self, obj):
+        field = obj.answered_at
+        if field:
+            return field.__format__('%Y-%m-%d %H:%M:%S')
+        else:
+            return field
 
 
 class ReviewSettingsSerializer(serializers.ModelSerializer):

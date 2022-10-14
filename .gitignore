@@ -4,7 +4,7 @@
 frontend/node_modules
 frontend/.pnp
 .pnp.js
-
+.fleet
 # testing
 frontend/coverage
 frontend/README.md

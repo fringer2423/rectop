@@ -63,12 +63,7 @@ from ..services.company_services import get_company_by_id
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_connect(request):
-    """
-    Контроллер для создания connect
-    :param pk: id компании
-    :param request:
-    :return: response
-    """
+    """Контроллер для создания connect"""
     user = request.user
 
     try:
@@ -89,7 +84,7 @@ def create_connect(request):
         return Response(data={'detail': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -134,7 +129,7 @@ def read_connect(request, pk):
         return Response(data={'detail': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -179,7 +174,7 @@ def read_connect_list(request, pk):
         return Response(data={'detail': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -244,7 +239,7 @@ def update_connect(request, pk):
         return Response(data={'detail': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -289,5 +284,5 @@ def delete_connect(request, pk):
         return Response(data={'detail': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)

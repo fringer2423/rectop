@@ -15,9 +15,7 @@ from ..services.user_services import create_user_by_data
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
-    """
-    Контроллер для авторизации
-    """
+    """Контроллер для авторизации"""
     serializer_class = MyTokenObtainPairSerializer
 
     @swagger_auto_schema(
@@ -106,11 +104,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
 )
 @api_view(['POST'])
 def register_user(request):
-    """
-    Контроллер для регистрации новых пользователей
-    :param request:
-    :return: response: Данные пользователя с Token
-    """
+    """Контроллер для регистрации новых пользователей"""
     data = request.data
     try:
         user = create_user_by_data(data)
@@ -141,11 +135,7 @@ def register_user(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def read_user_profile(request):
-    """
-    Контроллер для отдачи информации о текущем пользователе
-    :param request:
-    :return: response: информация о пользователе
-    """
+    """Контроллер для отдачи информации о текущем пользователе"""
     user = request.user
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
@@ -222,11 +212,7 @@ def read_user_profile(request):
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def update_user_profile(request):
-    """
-    Контроллер обновления пользовательских настроек
-    :param request:
-    :return: response
-    """
+    """Контроллер обновления пользовательских настроек"""
     user = request.user
     data = request.data
     try:
@@ -236,5 +222,5 @@ def update_user_profile(request):
 
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)

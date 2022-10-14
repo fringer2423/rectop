@@ -1,5 +1,5 @@
 from apps.core.models import Telebot
-from .branch_service import get_branch_by_branch_id
+from .branch_service import get_branch_by_id
 from .company_services import verification_owner_company
 
 
@@ -11,7 +11,7 @@ def create_telebot_by_branch_id(user, tg_id, branch_id):
     :param branch_id: id филиала
     :return: telebot или False
     """
-    branch = get_branch_by_branch_id(user, branch_id)
+    branch = get_branch_by_id(user, branch_id)
     if branch:
         telebot = Telebot.objects.create(branch=branch, tg_id=tg_id)
         return telebot

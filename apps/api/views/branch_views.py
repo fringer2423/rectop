@@ -11,7 +11,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from ..serializers import BranchSerializer
 
 from ..services.company_services import get_company_by_id
-from ..services.branch_service import get_branch_by_branch_id
+from ..services.branch_service import get_branch_by_id
 
 
 @swagger_auto_schema(
@@ -55,7 +55,7 @@ def read_branch_list(request, pk):
         return Response(data={'detail': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -89,7 +89,7 @@ def read_branch(request, pk):
     user = request.user
 
     try:
-        branch = get_branch_by_branch_id(user=user, branch_id=pk)
+        branch = get_branch_by_id(user=user, branch_id=pk)
         if branch:
             serializer = BranchSerializer(branch, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
@@ -100,5 +100,5 @@ def read_branch(request, pk):
         return Response(data={'detail': 'Такой филиал не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
-        message = 'Ошибка при обработке запроса ' + e.__str__()
+        message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
