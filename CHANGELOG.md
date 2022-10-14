@@ -12,6 +12,7 @@
 - Endpoints для Review settings
 - Serializer для Answer
 - Endpoints для Answer
+- main.css [@AlexTrubkina](https://github.com/alextrubkina)
 
 ### Изменено
 
@@ -26,6 +27,11 @@
 - Serializers fix
 - Exception info fix
 - Serializer answer fix
+- Header.js, HomeScreen.js [@AlexTrubkina](https://github.com/alextrubkina)
+
+### Удалено
+
+- Старый фронт[@AlexTrubkina](https://github.com/alextrubkina)
 
 ## [0.0.6] - 2022-10-12
 
