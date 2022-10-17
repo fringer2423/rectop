@@ -322,9 +322,13 @@ class QRCode(models.Model):
         null=True,
         blank=True
     )
+    image = models.FileField(
+        null=True,
+        blank=True
+    )
 
     def save(self, *args, **kwargs):
-        branch_name = f'{self.branch.name}_{self.branch.id}'
+        branch_name = f'{self.branch.company.name}-{self.branch.name}-{self.branch.id}'
         self.slug_name = translit.slugify(branch_name)
         super().save(*args, **kwargs)
 

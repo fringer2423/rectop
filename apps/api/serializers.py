@@ -3,7 +3,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from rest_framework import serializers
 
-from apps.core.models import User, Company, Branch, Schedule, WorkDay, Telebot, Connect, Review, ReviewSettings, Answer
+from apps.core.models import User, Company, Branch, Schedule, WorkDay, Telebot, Connect, Review, ReviewSettings, \
+    Answer, QRCode
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -159,3 +160,9 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     def get_created_at(self, obj):
         return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
+
+
+class QRCodeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QRCode
+        fields = '__all__'

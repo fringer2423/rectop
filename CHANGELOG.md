@@ -6,7 +6,10 @@
 
 ### Добавлено
 
--
+- Serializer для QRCode
+- Endpoints для QRCode
+- Генератор QRCode
+- Бизнес логика связанная с QRCode
 
 ## [0.0.8] - 2022-10-14
 
