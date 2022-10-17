@@ -15,6 +15,10 @@ DEBUG = local_settings.DEBUG
 
 ALLOWED_HOSTS = local_settings.ALLOWED_HOSTS
 
+# ==============================================================================
+# APPS SETTINGS
+# ==============================================================================
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -33,11 +37,19 @@ INSTALLED_APPS = [
 
 ]
 
+# ==============================================================================
+# DRF SETTINGS
+# ==============================================================================
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+
+# ==============================================================================
+# JWT SETTINGS
+# ==============================================================================
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=30),
@@ -70,6 +82,10 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+# ==============================================================================
+# MIDDLEWARE SETTINGS
+# ==============================================================================
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -104,6 +120,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+# ==============================================================================
+# DATABASE SETTINGS
+# ==============================================================================
 
 DATABASES = {
     'default': {
