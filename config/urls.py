@@ -3,6 +3,8 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+import apps.core.views
+
 urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
@@ -16,6 +18,8 @@ urlpatterns = [
     path('api/review_settings/', include('apps.api.urls.review_settings_urls', namespace='review_settings_endpoints')),
     path('api/answer/', include('apps.api.urls.answer_urls', namespace='answer_endpoints')),
     path('api/qrcode/', include('apps.api.urls.qrcode_urls', namespace='qrcode_endpoints')),
+
+    path('test/ping/', apps.core.views.ping, name='ping'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

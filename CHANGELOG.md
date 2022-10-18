@@ -7,6 +7,9 @@
 ### Добавлено
 
 - Endpoint для отдачи всех qrcode [@fringer2423](https://github.com/fringer2423)
+- Pytest
+- Тест ping
+- Entrypoint script для Docker
 
 ### Изменено
 
