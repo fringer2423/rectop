@@ -64,3 +64,10 @@
   color: black;
   border: 1px solid #4584FF;
 }
+.tableforprice:hover > h4{
+  color: white;
+}
+
+h4{
+  color: #4584FF;
+}
