@@ -7,6 +7,13 @@ from apps.core.models import User, Company, Branch, Schedule, WorkDay, Telebot, 
     Answer, QRCode
 
 
+def format_data(field):
+    if field is None:
+        return None
+    else:
+        return field.__format__('%Y-%m-%d %H:%M:%S')
+
+
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     """
     Сериалайзер для авторизации
@@ -61,7 +68,7 @@ class CompanySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_created_at(self, obj):
-        return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
+        return format_data(obj.created_at)
 
 
 class WorkDaySerializer(serializers.ModelSerializer):
@@ -85,7 +92,7 @@ class ScheduleSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_created_at(self, obj):
-        return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
+        return format_data(obj.created_at)
 
 
 class BranchSerializer(serializers.ModelSerializer):
@@ -98,10 +105,10 @@ class BranchSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_created_at(self, obj):
-        return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
+        return format_data(obj.created_at)
 
     def get_last_date_load_reviews(self, obj):
-        return obj.last_date_load_reviews.__format__('%Y-%m-%d %H:%M:%S')
+        return format_data(obj.last_date_load_reviews)
 
 
 class TelebotSerializer(serializers.ModelSerializer):
@@ -118,7 +125,7 @@ class ConnectSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_created_at(self, obj):
-        return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
+        return format_data(obj.created_at)
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -130,14 +137,10 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_created_at(self, obj):
-        return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
+        return format_data(obj.created_at)
 
     def get_answered_at(self, obj):
-        field = obj.answered_at
-        if field:
-            return field.__format__('%Y-%m-%d %H:%M:%S')
-        else:
-            return field
+        return format_data(obj.answered_at)
 
 
 class ReviewSettingsSerializer(serializers.ModelSerializer):
@@ -148,7 +151,7 @@ class ReviewSettingsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_created_at(self, obj):
-        return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
+        return format_data(obj.created_at)
 
 
 class AnswerSerializer(serializers.ModelSerializer):
@@ -159,10 +162,15 @@ class AnswerSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_created_at(self, obj):
-        return obj.created_at.__format__('%Y-%m-%d %H:%M:%S')
+        return format_data(obj.created_at)
 
 
 class QRCodeSerializer(serializers.ModelSerializer):
+    created_at = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = QRCode
         fields = '__all__'
+
+    def get_created_at(self, obj):
+        return format_data(obj.created_at)

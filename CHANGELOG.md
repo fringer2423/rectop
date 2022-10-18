@@ -14,6 +14,7 @@
 ### Изменено
 
 - Fix media URLs [@fringer2423](https://github.com/fringer2423)
+- Serializer fix 
 
 ## [0.0.9] - 2022-10-17
 
