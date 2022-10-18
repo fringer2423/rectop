@@ -10,6 +10,7 @@
 - Pytest
 - Тест ping
 - Entrypoint script для Docker
+- Именование всех urls
 
 ### Изменено
 

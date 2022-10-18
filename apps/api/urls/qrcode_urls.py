@@ -4,7 +4,7 @@ from ..views import qrcode_views as views
 
 app_name = 'QRCode endpoints'
 urlpatterns = [
-    path('create/', views.create_qrcode),
-    path('read/<int:pk>', views.read_qrcode),
-    path('read/all', views.read_all_qrcodes),
+    path('create/', views.create_qrcode, name='create'),
+    path('read/<int:pk>', views.read_qrcode, name='read'),
+    path('read/all', views.read_all_qrcodes, name='read_all'),
 ]
