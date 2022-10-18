@@ -170,6 +170,8 @@
     - БД PostgreSQL
     - Django ORM
     - Aiogram для интеграции с Telegram
+    - Celery
+    - Redis
 * Фронтенд:
     - React
     - TypeScript

@@ -1,4 +1,5 @@
 from apps.core.models import Connect
+
 from .company_services import verification_owner_company
 
 

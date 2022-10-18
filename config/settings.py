@@ -1,4 +1,4 @@
-import local_settings
+from local_settings import *
 
 from datetime import timedelta
 from pathlib import Path
@@ -8,12 +8,6 @@ from pathlib import Path
 # ==============================================================================
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-SECRET_KEY = local_settings.SECRET_KEY
-
-DEBUG = local_settings.DEBUG
-
-ALLOWED_HOSTS = local_settings.ALLOWED_HOSTS
 
 # ==============================================================================
 # APPS SETTINGS

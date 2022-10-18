@@ -50,7 +50,8 @@ class User(AbstractUser):
         max_length=80,
         null=True,
         blank=True,
-        verbose_name='Проверочный код'
+        verbose_name='Проверочный код',
+        unique=True
     )
     rate = models.CharField(
         max_length=30,

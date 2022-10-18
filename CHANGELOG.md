@@ -15,6 +15,8 @@
 
 - Fix media URLs [@fringer2423](https://github.com/fringer2423)
 - Serializer fix 
+- Refactor code
+- QRCode generator вынесен в отдельную функцию
 
 ## [0.0.9] - 2022-10-17
 
