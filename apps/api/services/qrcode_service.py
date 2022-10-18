@@ -11,6 +11,11 @@ from .branch_service import verification_owner_branch
 
 
 def generate_qc_code(slug):
+    """
+    Функция генерирует QRCode и сохраняет его
+    :param slug: ссылка
+    :return: qr_image_name
+    """
     qr_url = f'https://www.rectop.ru/qrcoderates/{slug}'
 
     qr = qrcode.QRCode(
@@ -35,6 +40,12 @@ def generate_qc_code(slug):
 
 
 def create_qrcode_by_branch_id(user, branch_id):
+    """
+    Функция создает QRCode по branch id и возвращает его, если есть доступ. Иначе вернет False
+    :param user: Текущий пользователь
+    :param branch_id: id филиала
+    :return: QRCode или False
+    """
     if verification_owner_branch(user, branch_id):
         new_qrcode = QRCode.objects.create(branch_id=branch_id)
 
@@ -50,6 +61,12 @@ def create_qrcode_by_branch_id(user, branch_id):
 
 
 def get_qrcode_by_id(user, qrcode_id):
+    """
+    Функция возвращает QRCode по id, если есть доступ, иначе вернется False
+    :param user: Текущий пользователь
+    :param qrcode_id: id QRCode
+    :return: QRCode или False
+    """
     qr_code = QRCode.objects.get(pk=qrcode_id)
     if verification_owner_branch(user=user, branch_id=qr_code.branch_id):
         return qr_code
@@ -58,5 +75,9 @@ def get_qrcode_by_id(user, qrcode_id):
 
 
 def get_all_qrcode():
+    """
+    Функция возвращает все QRCode
+    :return: Все QRCode
+    """
     qrcodes_list = QRCode.objects.all()
     return qrcodes_list
