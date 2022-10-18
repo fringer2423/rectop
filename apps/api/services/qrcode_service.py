@@ -50,3 +50,8 @@ def get_qrcode_by_id(user, qrcode_id):
         return qr_code
     else:
         return False
+
+
+def get_all_qrcode():
+    qrcodes_list = QRCode.objects.all()
+    return qrcodes_list
