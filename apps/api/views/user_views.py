@@ -42,6 +42,9 @@ class MyTokenObtainPairView(TokenObtainPairView):
             ),
             400: openapi.Response(
                 description='Ошибка авторизации'
+            ),
+            405: openapi.Response(
+                description='Данный метод запроса запрещен'
             )
         },
         operation_description='Данный endpoint позволяет авторизовать пользователя.',
@@ -97,10 +100,16 @@ class MyTokenObtainPairView(TokenObtainPairView):
         ),
         400: openapi.Response(
             description='Ошибка при регистрации'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
+        ),
+        422: openapi.Response(
+            description='Отсутствует обязательное поле'
         )
     },
     operation_description='Данный endpoint позволяет зарегистрировать пользователя.',
-    operation_summary='Зарегистрировать пользователя'
+    operation_summary='Зарегистрировать user'
 )
 @api_view(['POST'])
 def register_user(request):
@@ -110,6 +119,11 @@ def register_user(request):
         user = create_user_by_data(data)
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
+
+    except KeyError as e:
+        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
     except Exception as e:
         message = {'detail': f'Пользователем с таким email уже существует {e}'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
@@ -127,10 +141,13 @@ def register_user(request):
         ),
         401: openapi.Response(
             description='Пустой или неправильный токен'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
         )
     },
     operation_description='Данный endpoint возвращает базовые данные о пользователе.',
-    operation_summary='Получить информацию о пользователе'
+    operation_summary='Получить user'
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -204,10 +221,16 @@ def read_user_profile(request):
         ),
         401: openapi.Response(
             description='Пустой или неправильный токен'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
+        ),
+        422: openapi.Response(
+            description='Отсутствует обязательное поле'
         )
     },
     operation_description='Данный endpoint изменяет базовые данные о пользователе.',
-    operation_summary='Изменить информацию о пользователе'
+    operation_summary='Изменить user'
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
@@ -221,6 +244,11 @@ def update_user_profile(request):
             serializer.save()
 
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    except KeyError as e:
+        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)

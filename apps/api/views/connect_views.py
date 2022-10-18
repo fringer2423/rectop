@@ -36,7 +36,7 @@ from ..services.company_services import get_company_by_id
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='Id компании'
+            description='Id company'
         )
     ],
     responses={
@@ -54,10 +54,16 @@ from ..services.company_services import get_company_by_id
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Компания не найдена'
+            description='Company не найдена'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
+        ),
+        422: openapi.Response(
+            description='Отсутствует обязательное поле'
         )
     },
-    operation_description='Данный endpoint создает connect по {id} компании, после возвращает информацию о connect.',
+    operation_description='Данный endpoint создает connect по {id} company, после возвращает информацию о connect.',
     operation_summary='Создать connect'
 )
 @api_view(['POST'])
@@ -78,10 +84,14 @@ def create_connect(request):
             serializer = ConnectSerializer(connect, many=False)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой company не найдено'}, status=status.HTTP_404_NOT_FOUND)
+
+    except KeyError as e:
+        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -105,11 +115,14 @@ def create_connect(request):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Компания не найдена'
+            description='Connect не найден'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
         )
     },
     operation_description='Данный endpoint возвращает базовые данные о connect по {id}.',
-    operation_summary='Получить информацию о connect'
+    operation_summary='Получить connect'
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -123,7 +136,7 @@ def read_connect(request, pk):
             serializer = ConnectSerializer(telebot, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
         return Response(data={'detail': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
@@ -150,16 +163,19 @@ def read_connect(request, pk):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Компания не найдена'
+            description='Company не найдена'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
         )
     },
-    operation_description='Данный endpoint возвращает базовые данные о всех connect по {id} компании.',
-    operation_summary='Получить информацию о connects по id компании'
+    operation_description='Данный endpoint возвращает базовые данные о всех connect по {id} company.',
+    operation_summary='Получить connects list'
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def read_connect_list(request, pk):
-    """Контроллер для отдачи информации о всех connect компании"""
+    """Контроллер для отдачи информации о всех connect company"""
     user = request.user
 
     try:
@@ -168,10 +184,10 @@ def read_connect_list(request, pk):
             serializer = ConnectSerializer(company.connect_set, many=True)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой company не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -211,12 +227,18 @@ def read_connect_list(request, pk):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Компания не найдена'
+            description='Connect не найден'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
+        ),
+        422: openapi.Response(
+            description='Отсутствует обязательное поле'
         )
     },
-    operation_description='Данный endpoint изменяет информацию о connect по {id}. Если владельцем компании является не'
-                          ' авторизованный пользователь, будет отказано в изменении. Можно изменять не все поля.',
-    operation_summary='Изменить информацию о connect'
+    operation_description='Данный endpoint изменяет информацию о connect по {id}. Если владельцем company является не'
+                          ' текущий пользователь, будет отказано в изменении. Можно изменять не все поля.',
+    operation_summary='Изменить connect'
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
@@ -233,10 +255,14 @@ def update_connect(request, pk):
                 serializer.save()
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
         return Response(data={'detail': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
+
+    except KeyError as e:
+        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -259,12 +285,15 @@ def update_connect(request, pk):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Компания не найдена'
+            description='Connect не найден'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
         )
     },
-    operation_description='Данный endpoint удаляет информацию о connect по {id}. Если владельцем компании является не'
-                          ' авторизованный пользователь, будет отказано в удалении.',
-    operation_summary='Удалить информацию о connect'
+    operation_description='Данный endpoint удаляет информацию о connect по {id}. Если владельцем company является не'
+                          ' текущий пользователь, будет отказано в удалении.',
+    operation_summary='Удалить connect'
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
@@ -278,7 +307,7 @@ def delete_connect(request, pk):
             connect.delete()
             return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
         return Response(data={'detail': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)

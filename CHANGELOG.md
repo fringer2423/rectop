@@ -11,6 +11,8 @@
 - Тест ping
 - Entrypoint script для Docker
 - Именование всех urls
+- Обработка 405 статуса
+- Обработка 422 статуса
 
 ### Изменено
 
@@ -18,6 +20,7 @@
 - Serializer fix 
 - Refactor code
 - QRCode generator вынесен в отдельную функцию
+- Refactor docs
 
 ## [0.0.9] - 2022-10-17
 

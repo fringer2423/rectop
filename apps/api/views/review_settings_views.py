@@ -21,7 +21,7 @@ from ..services.review_settings_service import get_review_settings_by_id, create
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='id компании'
+            description='id company'
         ),
         openapi.Parameter(
             name='mask',
@@ -46,10 +46,16 @@ from ..services.review_settings_service import get_review_settings_by_id, create
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Компания не найдена'
+            description='Company не найдена'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
+        ),
+        422: openapi.Response(
+            description='Отсутствует обязательное поле'
         )
     },
-    operation_description='Данный endpoint создает review settings по {id} компании, после возвращает информацию о'
+    operation_description='Данный endpoint создает review settings по {id} company, после возвращает информацию о'
                           ' review settings.',
     operation_summary='Создать review settings'
 )
@@ -70,10 +76,14 @@ def create_review_settings(request):
             serializer = ReviewSettingsSerializer(review_settings, many=False)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой company не найдено'}, status=status.HTTP_404_NOT_FOUND)
+
+    except KeyError as e:
+        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -97,11 +107,14 @@ def create_review_settings(request):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Компания не найдена'
+            description='Company не найдена'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
         )
     },
     operation_description='Данный endpoint возвращает базовые данные о review settings по {id}.',
-    operation_summary='Получить информацию о review settings'
+    operation_summary='Получить review settings'
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -115,7 +128,7 @@ def read_review_settings(request, pk):
             serializer = ReviewSettingsSerializer(review_settings, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
         return Response(data={'detail': 'Такой review settings не найден'}, status=status.HTTP_404_NOT_FOUND)
@@ -151,13 +164,19 @@ def read_review_settings(request, pk):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Компания не найдена'
+            description='Company не найдена'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
+        ),
+        422: openapi.Response(
+            description='Отсутствует обязательное поле'
         )
     },
-    operation_description='Данный endpoint изменяет информацию о review settings по {id}. Если владельцем компании '
-                          'является не авторизованный пользователь, будет отказано в изменении. Можно изменять не все '
+    operation_description='Данный endpoint изменяет информацию о review settings по {id}. Если владельцем company '
+                          'является не текущий пользователь, будет отказано в изменении. Можно изменять не все '
                           'поля.',
-    operation_summary='Изменить информацию о review settings'
+    operation_summary='Изменить review settings'
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
@@ -174,10 +193,14 @@ def update_review_settings(request, pk):
                 serializer.save()
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
         return Response(data={'detail': 'Такой review settings не найден'}, status=status.HTTP_404_NOT_FOUND)
+
+    except KeyError as e:
+        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -200,12 +223,15 @@ def update_review_settings(request, pk):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Компания не найдена'
+            description='Company не найдена'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
         )
     },
-    operation_description='Данный endpoint удаляет информацию о connect по {id}. Если владельцем компании является не'
-                          ' авторизованный пользователь, будет отказано в удалении.',
-    operation_summary='Удалить информацию о connect'
+    operation_description='Данный endpoint удаляет информацию о connect по {id}. Если владельцем company является не'
+                          ' текущий пользователь, будет отказано в удалении.',
+    operation_summary='Удалить review settings'
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
@@ -219,7 +245,7 @@ def delete_review_settings(request, pk):
             review_settings.delete()
             return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
         return Response(data={'detail': 'Такой review_settings не найден'}, status=status.HTTP_404_NOT_FOUND)

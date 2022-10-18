@@ -21,12 +21,12 @@ from ..services.company_services import get_company_by_id, create_company_by_com
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='Название компании'
+            description='Название'
         )
     ],
     responses={
         201: openapi.Response(
-            description='Компания создана',
+            description='Company успешно создана',
             schema=CompanySerializer
         ),
         400: openapi.Response(
@@ -34,22 +34,32 @@ from ..services.company_services import get_company_by_id, create_company_by_com
         ),
         401: openapi.Response(
             description='Пустой или неправильный токен'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
+        ),
+        422: openapi.Response(
+            description='Отсутствует обязательное поле'
         )
     },
-    operation_description='Данный endpoint создает компанию, после возвращает информацию о ней. Поле owner показывает'
-                          ' данные владельца компании.',
-    operation_summary='Создать компанию'
+    operation_description='Данный endpoint создает company, после возвращает информацию о ней. Поле owner показывает'
+                          ' данные владельца.',
+    operation_summary='Создать company'
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_company(request):
-    """Контроллер для создания компании"""
+    """Контроллер для создания company"""
     user = request.user
 
     try:
         company = create_company_by_company_name(user, request.data['name'])
         serializer = CompanySerializer(company, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    except KeyError as e:
+        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -73,17 +83,20 @@ def create_company(request):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Компания не найдена'
+            description='Company не найдена'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
         )
     },
-    operation_description='Данный endpoint возвращает базовые данные о компании по {id}. Поле owner показывает данные'
-                          ' владельца компании.',
-    operation_summary='Получить информацию о компании'
+    operation_description='Данный endpoint возвращает базовые данные о company по {id}. Поле owner показывает данные'
+                          ' владельца.',
+    operation_summary='Получить company'
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def read_company(request, pk):
-    """Контроллер для отдачи информации о компании"""
+    """Контроллер для отдачи информации о company"""
     user = request.user
 
     try:
@@ -92,10 +105,10 @@ def read_company(request, pk):
             serializer = CompanySerializer(company, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой company не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -110,7 +123,7 @@ def read_company(request, pk):
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='Название компании')
+            description='Название')
     ],
     responses={
         200: openapi.Response(
@@ -127,18 +140,24 @@ def read_company(request, pk):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Компания не найдена'
+            description='Company не найдена'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
+        ),
+        422: openapi.Response(
+            description='Отсутствует обязательное поле'
         )
     },
-    operation_description='Данный endpoint изменяет информацию о компании по {id}. Если владельцем компании является не'
-                          ' авторизованный пользователь, будет отказано в изменении. Поле owner показывает данные '
-                          'владельца компании.',
-    operation_summary='Изменить информацию о компании'
+    operation_description='Данный endpoint изменяет информацию о company по {id}. Если владельцем company является не'
+                          ' текущий пользователь, будет отказано в изменении. Поле owner показывает данные '
+                          'владельца.',
+    operation_summary='Изменить company'
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def update_company(request, pk):
-    """Контроллер для обновления информации компании"""
+    """Контроллер для обновления информации company"""
     user = request.user
     data = request.data
 
@@ -150,10 +169,14 @@ def update_company(request, pk):
                 serializer.save()
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist:
-        return Response(data={'detail': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой company не найдено'}, status=status.HTTP_404_NOT_FOUND)
+
+    except KeyError as e:
+        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -176,18 +199,21 @@ def update_company(request, pk):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Компания не найдена'
+            description='Company не найдена'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
         )
     },
-    operation_description='Данный endpoint удаляет информацию о компании по {id}. Если владельцем компании является не'
-                          ' авторизованный пользователь, будет отказано в изменении. Поле owner показывает данные '
-                          'владельца компании.',
-    operation_summary='Удалить информацию о компании'
+    operation_description='Данный endpoint удаляет информацию о company по {id}. Если владельцем company является не'
+                          ' текущий пользователь, будет отказано в изменении. Поле owner показывает данные '
+                          'владельца.',
+    operation_summary='Удалить company'
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def delete_company(request, pk):
-    """Контроллер для удаления информации компании"""
+    """Контроллер для удаления информации company"""
     user = request.user
 
     try:
@@ -196,10 +222,10 @@ def delete_company(request, pk):
             company.delete()
             return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой company не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'

@@ -167,6 +167,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
 class QRCodeSerializer(serializers.ModelSerializer):
     created_at = serializers.SerializerMethodField(read_only=True)
+    branch = BranchSerializer()
 
     class Meta:
         model = QRCode
@@ -174,3 +175,9 @@ class QRCodeSerializer(serializers.ModelSerializer):
 
     def get_created_at(self, obj):
         return format_data(obj.created_at)
+
+
+class AllQRCodesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QRCode
+        fields = ['slug_name', 'branch']

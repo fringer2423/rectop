@@ -31,16 +31,19 @@ from ..services.branch_service import get_branch_by_id
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Компания не найдена'
+            description='Company не найдена'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
         )
     },
-    operation_description='Данный endpoint возвращает базовые данные о всех филиалах по {id} компании.',
-    operation_summary='Получить информацию о филиалах'
+    operation_description='Данный endpoint возвращает базовые данные о всех branch по {id} company.',
+    operation_summary='Получить branch list'
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def read_branch_list(request, pk):
-    """Контроллер для отдачи информации о филиалах"""
+    """Контроллер для отдачи информации о branch"""
     user = request.user
 
     try:
@@ -49,10 +52,10 @@ def read_branch_list(request, pk):
             serializer = BranchSerializer(company.branchs, many=True)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой компании не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой company не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -76,16 +79,19 @@ def read_branch_list(request, pk):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Компания не найдена'
+            description='Company не найдена'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
         )
     },
-    operation_description='Данный endpoint возвращает базовые данные о всех филиалах по {id} компании.',
-    operation_summary='Получить информацию о филиале'
+    operation_description='Данный endpoint возвращает базовые данные о branch по {id}.',
+    operation_summary='Получить branch'
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def read_branch(request, pk):
-    """Контроллер для отдачи информации о филиале"""
+    """Контроллер для отдачи информации о branch"""
     user = request.user
 
     try:
@@ -94,10 +100,10 @@ def read_branch(request, pk):
             serializer = BranchSerializer(branch, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваш Филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой филиал не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой branch не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'

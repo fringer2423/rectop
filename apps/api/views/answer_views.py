@@ -21,26 +21,26 @@ from ..services.answer_service import get_answer_by_id, create_answer_by_review_
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='Тип отзыва'
+            description='Тип answer'
         ),
         openapi.Parameter(
             name='body',
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='Тело ответа'
+            description='Тело answer'
         ),
         openapi.Parameter(
             name='review_id',
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='Id отзыва'
+            description='Id review'
         ),
     ],
     responses={
         201: openapi.Response(
-            description='Review создан',
+            description='Answer создан',
             schema=AnswerSerializer
         ),
         400: openapi.Response(
@@ -53,7 +53,13 @@ from ..services.answer_service import get_answer_by_id, create_answer_by_review_
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Отзыв не найден'
+            description='Review не найден'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
+        ),
+        422: openapi.Response(
+            description='Отсутствует обязательное поле'
         )
     },
     operation_description='Данный endpoint создает answer по {id} review, после возвращает информацию о answer.',
@@ -76,10 +82,14 @@ def create_answer(request):
             serializer = AnswerSerializer(answer, many=False)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваш отзыв'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш review'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой отзыв не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой review не найден'}, status=status.HTTP_404_NOT_FOUND)
+
+    except KeyError as e:
+        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -104,10 +114,13 @@ def create_answer(request):
         ),
         404: openapi.Response(
             description='answer не найден'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
         )
     },
     operation_description='Данный endpoint возвращает базовые данные о answer по {id}.',
-    operation_summary='Получить информацию о answer'
+    operation_summary='Получить answer'
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -121,10 +134,10 @@ def read_answer(request, pk):
             serializer = AnswerSerializer(answer, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваш ответ'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш answer'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой ответ не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой answer не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -139,14 +152,14 @@ def read_answer(request, pk):
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='Тип отзыва'
+            description='Тип answer'
         ),
         openapi.Parameter(
             name='body',
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='Тело ответа'
+            description='Тело answer'
         )
     ],
     responses={
@@ -164,12 +177,18 @@ def read_answer(request, pk):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='answer не найден'
+            description='Answer не найден'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
+        ),
+        422: openapi.Response(
+            description='Отсутствует обязательное поле'
         )
     },
     operation_description='Данный endpoint изменяет информацию о answer по {id}. Если у пользователя нет прав на'
                           ' изменение отзыва, будет отказано в изменении.',
-    operation_summary='Изменить информацию о answer'
+    operation_summary='Изменить answer'
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
@@ -186,10 +205,14 @@ def update_answer(request, pk):
                 serializer.save()
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваш ответ'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш answer'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
         return Response(data={'detail': 'Такой answer не найден'}, status=status.HTTP_404_NOT_FOUND)
+
+    except KeyError as e:
+        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -212,12 +235,15 @@ def update_answer(request, pk):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Ответ не найден'
+            description='Answer не найден'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
         )
     },
     operation_description='Данный endpoint удаляет информацию о answer по {id}. Если владельцем компании является не'
-                          ' авторизованный пользователь, будет отказано в удалении.',
-    operation_summary='Удалить информацию о answer'
+                          ' текущий пользователь, будет отказано в удалении.',
+    operation_summary='Удалить answer'
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])

@@ -8,7 +8,7 @@ from drf_yasg.utils import swagger_auto_schema
 
 from django.core.exceptions import ObjectDoesNotExist
 
-from ..serializers import QRCodeSerializer
+from ..serializers import QRCodeSerializer, AllQRCodesSerializer
 
 from ..services.qrcode_service import create_qrcode_by_branch_id, get_qrcode_by_id, get_all_qrcode
 
@@ -39,10 +39,16 @@ from ..services.qrcode_service import create_qrcode_by_branch_id, get_qrcode_by_
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Филиал не найдена'
+            description='Branch не найден'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
+        ),
+        422: openapi.Response(
+            description='Отсутствует обязательное поле'
         )
     },
-    operation_description='Данный endpoint создает QRCode по {id} филиала, после возвращает информацию о QRCode.',
+    operation_description='Данный endpoint создает QRCode по {id} branch, после возвращает информацию о QRCode.',
     operation_summary='Создать QRCode'
 )
 @api_view(['POST'])
@@ -61,10 +67,14 @@ def create_qrcode(request):
             serializer = QRCodeSerializer(qr_code, many=False)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой филиал не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой branch не найден'}, status=status.HTTP_404_NOT_FOUND)
+
+    except KeyError as e:
+        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -89,10 +99,13 @@ def create_qrcode(request):
         ),
         404: openapi.Response(
             description='QRCode не найден'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
         )
     },
     operation_description='Данный endpoint возвращает базовые данные о QRCode по {id}.',
-    operation_summary='Получить информацию о QRCode'
+    operation_summary='Получить QRCode'
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -106,7 +119,7 @@ def read_qrcode(request, pk):
             serializer = QRCodeSerializer(qr_code, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваш филиал'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
         return Response(data={'detail': 'Такой QRCode не найден'}, status=status.HTTP_404_NOT_FOUND)
@@ -121,23 +134,20 @@ def read_qrcode(request, pk):
     responses={
         200: openapi.Response(
             description='Запрос выполнен успешно',
-            schema=QRCodeSerializer
+            schema=AllQRCodesSerializer
         ),
         400: openapi.Response(
             description='Ошибка при запросе'
         ),
-        401: openapi.Response(
-            description='Пустой или неправильный токен'
-        ),
-        403: openapi.Response(
-            description='Ошибка доступа'
-        ),
         404: openapi.Response(
             description='QRCode не найден'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
         )
     },
     operation_description='Данный endpoint возвращает базовые данные о всех QRCode.',
-    operation_summary='Получить информацию о всех QRCode'
+    operation_summary='Получить все QRCode'
 )
 @api_view(['GET'])
 def read_all_qrcodes(request):
@@ -145,7 +155,7 @@ def read_all_qrcodes(request):
 
     try:
         qr_code_list = get_all_qrcode()
-        serializer = QRCodeSerializer(qr_code_list, many=True, partial=True)
+        serializer = AllQRCodesSerializer(qr_code_list, many=True)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     except ObjectDoesNotExist as er:
