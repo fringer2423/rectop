@@ -1,38 +1,51 @@
-import React, {useEffect} from 'react'
+import React, {useEffect} from 'react';
 
-import "../css/main.css"
+import "../css/main.css";
 
-import Prices from "../components/Prices"
-import FormUser from "../components/FormUser"
+import Prices from "../components/Prices";
+import FormUser from "../components/FormUser";
+import Refprogram from "../components/Refprogram";
+import Questions from "../components/Questions";
+import PurpleCircle from "../components/PurpleCircle";
+import Brands from "../components/Brands";
+
 
 const HomeScreen = () => {
   return(
-   <div className="body">
+   <div id="body">
    <div className="fblock">
-     <h2> Негативные отзывы теперь в прошлом!</h2>
-     <h1><b> <span>RecTOP</span> - инновационый сервис</b> <i>взаимодейтсвия с клиентами.</i></h1>
-     <br/><br/>
-     <div className="fsmtext">
-     Отзывы собираются по QR-коду, когда клиент посещает заведение или сайт.
+     <div className="fblocktext">
+       <h2> Негативные отзывы теперь в прошлом!</h2>
+       <h1><b> <span>RecTOP</span> - инновационый сервис</b> <i>взаимодейтсвия с клиентами.</i></h1>
+       <br/><br/>
+       <div className="fsmtext">
+         Отзывы собираются по QR-коду, когда клиент посещает заведение или сайт.
+       </div>
+       <button className="fullb">7 дней бесплатно</button>
+       <button className="whiteb">Запросить демо</button>
      </div>
-     <button className="fullb">7 дней бесплатно</button>
-     <button className="whiteb">Запросить демо</button>
+     <img src="/images/main/mainCard1Img.png" className="fimage"/>
    </div>
    <img
       src='/images/main/afterMainCard1Img.png'
       width="425px"
       className="blueball"
     />
-    <div className="aboutcomptext">
-      <h1><b>О компании <span>Rectop</span></b></h1>
+    <div id="about">
+      <div className="aboutcomptext">
+        <h1><b>О компании <span>Rectop</span></b></h1>
 
-        <h2>Качественно повышаем вашу репутацию</h2>
-        <div className="fsmtext">
-        <b>RecTop</b> - это бизнес- решение для тех, кто хочет получать дополнительный трафик за счёт сбора и мониторинга отзывов.<br/><br/>
-        Обратная связь с недовольными клиентами позволит разрешить конфликтную ситуацию вовремя и без последствий. Получайте уведомления о новых отзывах в Telegram, отвечайте из личного кабинета.
-        </div>
+          <h2>Качественно повышаем вашу репутацию</h2>
+          <div className="fsmtext">
+            <b>RecTop</b> - это бизнес- решение для тех, кто хочет получать дополнительный трафик за счёт сбора и мониторинга отзывов.<br/><br/>
+            Обратная связь с недовольными клиентами позволит разрешить конфликтную ситуацию вовремя и без последствий. Получайте уведомления о новых отзывах в Telegram, отвечайте из личного кабинета.
+          </div>
+      </div>
+      <div>
+        <PurpleCircle/>
+      </div>
     </div>
-    <div className="whyrectop">
+    <div id="whyrectop">
       <h1><b>Почему RecTop</b></h1>
       <div className="whyblocks">
         <div className="whyblock">
@@ -61,47 +74,54 @@ const HomeScreen = () => {
         Наша команда ежедневно просматривает и анализирует крупнейшие популярные сервисы по сбору отзывов
         </p>
       <h2>Больше положительных отзывов = Больше доверия = Больше продаж</h2>
+
+      <Brands/>
+
       <div className="purpleblock">
-        <h2>Сбор отзывов по QR-коду  при посещении вашего заведения онлайн/оффлайн</h2>
-        <div className="fsmtext">
-        Уникальная система мотивации оставления отзывов от клиентов. Клиент получает кэшбек за отзыв на любом сервисе - его можно обменять на скидку/услугу у партнеров.
+        <div>
+          <h2><b>Сбор отзывов по QR-коду  при посещении вашего заведения онлайн/оффлайн</b></h2>
+          <div className="fsmtext">
+            Уникальная система мотивации оставления отзывов от клиентов. Клиент получает кэшбек за отзыв на любом сервисе - его можно обменять на скидку/услугу у партнеров.
+          </div>
         </div>
+        <img src="/images/mobileforpurpleblock.png" id="picinpurpleb"/>
       </div>
+
     </div>
 
-    <div className="work">
+    <div id="work">
       <h1><b>Как мы <span>работаем?</span></b></h1>
       <h2>Сервис “Генератор отзывов”</h2>
       <div className="fsmtext">
       Уникальный генератор отзывов о компании. Эффективно и просто: клиент сканирует QR-код, оставляет отзыв, вы получаете уведомления в Telegram.
       </div>
       <div className="blockwithpicone">
-      {/*
         <img
           src="/images/main/mainCard51Img.png"
         />
-      */}
-        <h1><b>Акцент на <span>положительных отзывах</span></b></h1>
-        <h2>Клиенту все понравилось?</h2>
-        <div className="fblock">
-        <br />Довольные клиенты смогут оставлять отзывы в личной карточке компании – их увидят тысячи людей!
+        <div className="blockwithpiconetext">
+          <h1><b>Акцент на <span>положительных отзывах</span></b></h1>
+          <h2>Клиенту все понравилось?</h2>
+          <div className="fblock">
+            <br />Довольные клиенты смогут оставлять отзывы в личной карточке компании – их увидят тысячи людей!
+          </div>
+          <button className="fullb">Попробовать бесплатно</button>
         </div>
-        <button className="fullb">Попробовать бесплатно</button>
       </div>
       <div className="blockwithpictwo">
-      {/*
+        <div className="blockwithpiconetext">
+          <h1><b>Негативные отзывы - <span>в службу поддержки</span></b></h1>
+          <h2>Клиент недоволен?</h2>
+          <div className="fblock">
+            <br/>Устраняйте конфликтные ситуации в чате службы поддержки в Telegram.
+
+            <br/>Вовремя разрешённый конфликт – отсутствие негативных отзывов в сети.
+          </div>
+          <button className="fullb">Попробовать бесплатно</button>
+        </div>
         <img
           src="/images/main/mainCard52Img.png"
         />
-      */}
-        <h1><b>Негативные отзывы - <span>в службу поддержки</span></b></h1>
-        <h2>Клиент недоволен?</h2>
-        <div className="fblock">
-        <br/>Устраняйте конфликтные ситуации в чате службы поддержки в Telegram.
-
-        <br/>Вовремя разрешённый конфликт – отсутствие негативных отзывов в сети.
-        </div>
-        <button className="fullb">Попробовать бесплатно</button>
       </div>
     </div>
     <div className="recomendations">
@@ -116,16 +136,64 @@ const HomeScreen = () => {
         <button className="bforp">На 1 год</button>
       </div>
       <div className="forprices">
-        <Prices/>
-        <Prices/>
-        <Prices/>
+        <Prices
+          header="Генератор отзывов"
+          price="1200 РУБ./МЕС."
+          f="Сбор отзывов"
+          s="Оповещения в Телеграме"
+          th="Отчетность в Телеграме"
+          ft="Система кэшбека"
+          ff="Статистика"
+          sx="Обратная связь"
+          sv="Поддержка 24/7"
+          eg="Формирование qr-кода"
+          />
+
+        <Prices
+          header="Какое-то название"
+          price="ОТ 1200 РУБ./МЕС."
+          f="Аналитика по филиалу"
+          s="Постоянная актуализация"
+          th="Система кэшбека"
+          ft="Скидки от партнеров"
+          ff="Поддержка 24/7"
+          sx="Ответы на отзывы в одном месте"
+          sv="Обратная связь"
+          eg="Подробная статистика"
+
+          />
+        <Prices
+          header="Репутация под ключ"
+          price="ОТ 4000 РУБ./МЕС."
+          f="Генератор и агрегатор отзывов"
+          s="Ответы на отзывы нашими специалистами"
+          th="Проверка выставленных отзывов"
+          ft="“Спровоцируем” выставление отзывов"
+          ff="Подробная отчетность"
+          sx="Аналитика в реальном времени"
+          />
       </div>
     </div>
 
     <div id="contacts">
+      <div className="textcontacts">
+        <h1><b>Запишитесь на <span>бесплатный звонок</span></b></h1>
+        <p>Наш менеджер перезвонит вам через 10 минут, в течение которых вы сможете:</p>
+        <ul>
+          <li>Узнать все отзывы о своей компании и как их отработать.</li>
+          <li>Получить список интернет-ресурсов, на которых нужно зарегистрировать компанию.</li>
+          <li> Проанализировать общий рейтинг компании и каждой точки продаж в отдельности.</li>
+          <li>Узнать откуда берутся негативные отзывы и как удалить негативный отзыв без бюджета.</li>
+        </ul>
+        <p>Rectop - Ваша репутация!</p>
+      </div>
       <FormUser/>
     </div>
-
+    <Refprogram/>
+    <div id="questions">
+      <h1><b>Часто задаваемые вопросы</b></h1>
+      <Questions/>
+    </div>
    </div>
  )
 

@@ -1,0 +1,10 @@
+#foricons{
+  display:flex;
+  flex-direction: row;
+}
+
+.iconincircle{
+  background: white;
+  border: 4px solid #4584FF;
+  
+}
