@@ -6,11 +6,15 @@
 
 ### Добавлено
 
-- Endpoint для отдачи всех qrcode
+- Endpoint для отдачи всех qrcode [@fringer2423](https://github.com/fringer2423)
+
+### Изменено
+
+- Fix media URLs [@fringer2423](https://github.com/fringer2423)
 
 ## [0.0.9] - 2022-10-17
 
-### Добавлено
+### Добавлено [@fringer2423](https://github.com/fringer2423)
 
 - Serializer для QRCode
 - Endpoints для QRCode
