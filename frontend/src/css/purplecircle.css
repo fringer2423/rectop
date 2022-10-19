@@ -47,3 +47,19 @@
 .blackblockt p{
   font-size: 13px;
 }
+@media (max-width:799px){
+  .purplecircle{
+    border-radius: 50%;
+    width: 300px;
+    height: auto;
+    padding: 10%;
+    margin-left: 20%
+  }
+  .blackblock{
+    width: 30%
+  }
+  .blackblockt{
+    width: 30%;
+    margin-left: 40%
+  }
+}

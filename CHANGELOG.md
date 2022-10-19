@@ -12,6 +12,7 @@
 
 - Connect relationship fix [@fringer2423](https://github.com/fringer2423)
 - Review serializer (add answer field)
+- Компоненты и css [AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.10] - 2022-10-18
 

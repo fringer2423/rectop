@@ -49,18 +49,22 @@ const HomeScreen = () => {
       <h1><b>Почему RecTop</b></h1>
       <div className="whyblocks">
         <div className="whyblock">
+          <img src="images/pic1.png"/>
           <h2><b>Увеличим</b></h2>
           <p> <br/> положительные отзывы реальных клиентов на 50%</p>
         </div>
         <div className="whyblock">
+          <img src="images/pic2.png"/>
           <h2><b>Освободим</b></h2>
           <p> <br/> 90% вашего времени на сбор клиентских отзывов</p>
         </div>
         <div className="whyblock">
+          <img src="images/pic3.png"/>
           <h2><b>Мотивируем</b></h2>
           <p> <br/> клиентов на повторные продажи: кэшбэк за отзывы</p>
         </div>
         <div className="whyblock">
+          <img src="images/pic4.png"/>
           <h2><b>Регулируем</b></h2>
           <p> <br/> конфликт вовремя, негативные отзывы получаете только Вы</p>
         </div>
@@ -78,13 +82,19 @@ const HomeScreen = () => {
       <Brands/>
 
       <div className="purpleblock">
-        <div>
+        <div className="textinpb">
           <h2><b>Сбор отзывов по QR-коду  при посещении вашего заведения онлайн/оффлайн</b></h2>
           <div className="fsmtext">
             Уникальная система мотивации оставления отзывов от клиентов. Клиент получает кэшбек за отзыв на любом сервисе - его можно обменять на скидку/услугу у партнеров.
           </div>
         </div>
-        <img src="/images/mobileforpurpleblock.png" id="picinpurpleb"/>
+        <img
+            src="/images/mobileforpurpleblock.png"
+            className="purpbtimg"
+            />
+        <img
+             src="/images/mobileforpurpleblockt.png"
+             className="purpbsimg"/>
       </div>
 
     </div>
@@ -135,44 +145,7 @@ const HomeScreen = () => {
         <button className="bforp">На месяц</button>
         <button className="bforp">На 1 год</button>
       </div>
-      <div className="forprices">
-        <Prices
-          header="Генератор отзывов"
-          price="1200 РУБ./МЕС."
-          f="Сбор отзывов"
-          s="Оповещения в Телеграме"
-          th="Отчетность в Телеграме"
-          ft="Система кэшбека"
-          ff="Статистика"
-          sx="Обратная связь"
-          sv="Поддержка 24/7"
-          eg="Формирование qr-кода"
-          />
-
-        <Prices
-          header="Какое-то название"
-          price="ОТ 1200 РУБ./МЕС."
-          f="Аналитика по филиалу"
-          s="Постоянная актуализация"
-          th="Система кэшбека"
-          ft="Скидки от партнеров"
-          ff="Поддержка 24/7"
-          sx="Ответы на отзывы в одном месте"
-          sv="Обратная связь"
-          eg="Подробная статистика"
-
-          />
-        <Prices
-          header="Репутация под ключ"
-          price="ОТ 4000 РУБ./МЕС."
-          f="Генератор и агрегатор отзывов"
-          s="Ответы на отзывы нашими специалистами"
-          th="Проверка выставленных отзывов"
-          ft="“Спровоцируем” выставление отзывов"
-          ff="Подробная отчетность"
-          sx="Аналитика в реальном времени"
-          />
-      </div>
+        <Prices/>
     </div>
 
     <div id="contacts">
