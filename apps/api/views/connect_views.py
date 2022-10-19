@@ -10,8 +10,8 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from ..serializers import ConnectSerializer
 
-from ..services.connect_service import create_connect_by_company_id, get_connect_by_id
-from ..services.company_services import get_company_by_id
+from ..services.connect_service import create_connect_by_branch_id, get_connect_by_id
+from ..services.branch_service import get_branch_by_id
 
 
 @swagger_auto_schema(
@@ -36,7 +36,7 @@ from ..services.company_services import get_company_by_id
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='Id company'
+            description='Id branch'
         )
     ],
     responses={
@@ -54,7 +54,7 @@ from ..services.company_services import get_company_by_id
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Company не найдена'
+            description='Branch не найден'
         ),
         405: openapi.Response(
             description='Данный метод запроса запрещен'
@@ -63,7 +63,7 @@ from ..services.company_services import get_company_by_id
             description='Отсутствует обязательное поле'
         )
     },
-    operation_description='Данный endpoint создает connect по {id} company, после возвращает информацию о connect.',
+    operation_description='Данный endpoint создает connect по {id} branch, после возвращает информацию о connect.',
     operation_summary='Создать connect'
 )
 @api_view(['POST'])
@@ -73,21 +73,21 @@ def create_connect(request):
     user = request.user
 
     try:
-        company_id = request.data['company_id']
-        connect = create_connect_by_company_id(
+        branch_id = request.data['branch_id']
+        connect = create_connect_by_branch_id(
             user=user,
             connect_type=request.data['type'],
             key=request.data['key'],
-            company_id=company_id
+            branch_id=branch_id
         )
         if connect:
             serializer = ConnectSerializer(connect, many=False)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша branch'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой company не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой branch не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
@@ -136,7 +136,7 @@ def read_connect(request, pk):
             serializer = ConnectSerializer(telebot, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваша branch'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
         return Response(data={'detail': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
@@ -169,7 +169,7 @@ def read_connect(request, pk):
             description='Данный метод запроса запрещен'
         )
     },
-    operation_description='Данный endpoint возвращает базовые данные о всех connect по {id} company.',
+    operation_description='Данный endpoint возвращает базовые данные о всех connect по {id} branch.',
     operation_summary='Получить connects list'
 )
 @api_view(['GET'])
@@ -179,15 +179,15 @@ def read_connect_list(request, pk):
     user = request.user
 
     try:
-        company = get_company_by_id(user=user, company_id=pk)
-        if company:
-            serializer = ConnectSerializer(company.connect_set, many=True)
+        branch = get_branch_by_id(user=user, branch_id=pk)
+        if branch:
+            serializer = ConnectSerializer(branch.connect_set, many=True)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой company не найдено'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой branch не найдено'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -255,7 +255,7 @@ def update_connect(request, pk):
                 serializer.save()
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
         return Response(data={'detail': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
@@ -307,7 +307,7 @@ def delete_connect(request, pk):
             connect.delete()
             return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as er:
         return Response(data={'detail': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)

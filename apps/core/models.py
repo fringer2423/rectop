@@ -5,7 +5,6 @@ from pytils import translit
 from datetime import datetime, timedelta
 
 from django.db import models
-from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
 
@@ -67,7 +66,7 @@ class User(AbstractUser):
     )
 
     def __str__(self):
-        return self.get_full_name()
+        return f'{self.get_full_name()} {self.id}'
 
 
 class Company(models.Model):
@@ -359,10 +358,10 @@ class Connect(models.Model):
         choices=PLATFORMS_LIST,
         verbose_name='Платформа'
     )
-    company = models.ForeignKey(
-        Company,
+    branch = models.ForeignKey(
+        Branch,
         on_delete=models.CASCADE,
-        verbose_name='Компания'
+        verbose_name='Филиал'
     )
     key = models.CharField(
         max_length=100,

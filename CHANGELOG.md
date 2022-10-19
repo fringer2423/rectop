@@ -6,7 +6,12 @@
 
 ### Добавлено
 
-- 
+-
+
+### Изменено
+
+- Connect relationship fix [@fringer2423](https://github.com/fringer2423)
+
 
 ## [0.0.10] - 2022-10-18
 
