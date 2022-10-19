@@ -131,6 +131,7 @@ class ConnectSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
     created_at = serializers.SerializerMethodField(read_only=True)
     answered_at = serializers.SerializerMethodField(read_only=True)
+    answer = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Review
@@ -141,6 +142,13 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     def get_answered_at(self, obj):
         return format_data(obj.answered_at)
+
+    def get_answer(self, obj):
+        try:
+            return AnswerSerializer(obj.answer, many=False).data
+        except Exception as e:
+            print(e)
+            return None
 
 
 class ReviewSettingsSerializer(serializers.ModelSerializer):
