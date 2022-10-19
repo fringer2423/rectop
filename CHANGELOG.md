@@ -13,7 +13,6 @@
 - Connect relationship fix [@fringer2423](https://github.com/fringer2423)
 - Review serializer (add answer field)
 
-
 ## [0.0.10] - 2022-10-18
 
 ### Добавлено
