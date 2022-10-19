@@ -13,11 +13,12 @@
 - Именование всех urls
 - Обработка 405 статуса
 - Обработка 422 статуса
+- Компоненты и css [AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 
 - Fix media URLs [@fringer2423](https://github.com/fringer2423)
-- Serializer fix 
+- Serializer fix
 - Refactor code
 - QRCode generator вынесен в отдельную функцию
 - Refactor docs
