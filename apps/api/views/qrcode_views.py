@@ -7,6 +7,7 @@ from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.db import IntegrityError
 
 from ..serializers import QRCodeSerializer, AllQRCodesSerializer
 
@@ -44,6 +45,9 @@ from ..services.qrcode_service import create_qrcode_by_branch_id, get_qrcode_by_
         405: openapi.Response(
             description='Данный метод запроса запрещен'
         ),
+        406: openapi.Response(
+            description='QRCode уже создан для этого branch'
+        ),
         422: openapi.Response(
             description='Отсутствует обязательное поле'
         )
@@ -75,6 +79,9 @@ def create_qrcode(request):
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+    except IntegrityError as e:
+        return Response(data={'detail': 'QRCode уже создан для этого branch'}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'

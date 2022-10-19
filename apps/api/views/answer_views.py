@@ -7,6 +7,7 @@ from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.db import IntegrityError
 
 from ..serializers import AnswerSerializer
 
@@ -58,6 +59,9 @@ from ..services.answer_service import get_answer_by_id, create_answer_by_review_
         405: openapi.Response(
             description='Данный метод запроса запрещен'
         ),
+        406: openapi.Response(
+            description='Answer уже создан для этого review'
+        ),
         422: openapi.Response(
             description='Отсутствует обязательное поле'
         )
@@ -90,6 +94,9 @@ def create_answer(request):
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+    except IntegrityError as e:
+        return Response(data={'detail': 'Answer уже создан для этого review'}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'

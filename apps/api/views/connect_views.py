@@ -7,6 +7,7 @@ from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.db import IntegrityError
 
 from ..serializers import ConnectSerializer
 
@@ -59,6 +60,9 @@ from ..services.branch_service import get_branch_by_id
         405: openapi.Response(
             description='Данный метод запроса запрещен'
         ),
+        406: openapi.Response(
+            description='Connect уже создан для этого branch'
+        ),
         422: openapi.Response(
             description='Отсутствует обязательное поле'
         )
@@ -92,6 +96,9 @@ def create_connect(request):
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+    except IntegrityError as e:
+        return Response(data={'detail': 'QRCode уже создан для этого branch'}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
