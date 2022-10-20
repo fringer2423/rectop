@@ -6,12 +6,11 @@
 
 ### Добавлено
 
--
+- Компонент ListOfRec и css [AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 
 - Компонент Prices.js (добавлена карусель) [AlexTrubkina](https://github.com/AlexTrubkina)
-
 
 ## [0.0.11] - 2022-10-19
 

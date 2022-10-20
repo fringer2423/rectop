@@ -15,7 +15,7 @@ const Prices = (props) => {
         <b>
         Производите сбор отзывов </b> от ваших клиентов при помощи QR-кодов на точках продаж
       </div>
-      <p>
+      <div className="textinprice">
         Сбор отзывов
         <hr/>
         Оповещения в Телеграме
@@ -32,7 +32,7 @@ const Prices = (props) => {
         <hr/>
         Формирование qr-кода
         <hr/>
-      </p>
+      </div>
       <button className="blackbutton">Приобрести тариф</button>
     </div>
     <div className="tableforprice">
@@ -42,7 +42,7 @@ const Prices = (props) => {
       <div className="blockintable">
         <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
       </div>
-      <p>
+      <div className="textinprice">
         Аналитика по филиалу
         <hr/>
         Постоянная актуализация
@@ -59,7 +59,7 @@ const Prices = (props) => {
         <hr/>
         Подробная статистика
         <hr/>
-      </p>
+      </div>
       <button className="blackbutton">Приобрести тариф</button>
     </div>
     <div className="tableforprice">
@@ -69,7 +69,7 @@ const Prices = (props) => {
       <div className="blockintable">
         <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
       </div>
-        <p>
+        <div className="textinprice">
         Генератор и агрегатор отзывов
         <hr/>
         Ответы на отзывы нашими специалистами
@@ -81,7 +81,7 @@ const Prices = (props) => {
         Подробная отчетность
         <hr/>
         Аналитика в реальном времени
-      </p>
+      </div>
       <button className="blackbutton">Приобрести тариф</button>
     </div>
     </div>
@@ -98,7 +98,7 @@ const Prices = (props) => {
                 <b>
                 Производите сбор отзывов </b> от ваших клиентов при помощи QR-кодов на точках продаж
               </div>
-              <p>
+              <div className="textinprice">
                 Сбор отзывов
                 <hr/>
                 Оповещения в Телеграме
@@ -115,7 +115,7 @@ const Prices = (props) => {
                 <hr/>
                 Формирование qr-кода
                 <hr/>
-              </p>
+              </div>
               <button className="blackbutton">Приобрести тариф</button>
             </div>
           </Carousel.Item>
@@ -127,7 +127,7 @@ const Prices = (props) => {
               <div className="blockintable">
                 <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
               </div>
-              <p>
+              <div className="textinprice">
                 Аналитика по филиалу
                 <hr/>
                 Постоянная актуализация
@@ -144,7 +144,7 @@ const Prices = (props) => {
                 <hr/>
                 Подробная статистика
                 <hr/>
-              </p>
+              </div>
               <button className="blackbutton">Приобрести тариф</button>
             </div>
           </Carousel.Item>
@@ -156,7 +156,7 @@ const Prices = (props) => {
               <div className="blockintable">
                 <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
               </div>
-                <p>
+                <div className="textinprice">
                 Генератор и агрегатор отзывов
                 <hr/>
                 Ответы на отзывы нашими специалистами
@@ -168,7 +168,7 @@ const Prices = (props) => {
                 Подробная отчетность
                 <hr/>
                 Аналитика в реальном времени
-              </p>
+              </div>
               <button className="blackbutton">Приобрести тариф</button>
             </div>
           </Carousel.Item>

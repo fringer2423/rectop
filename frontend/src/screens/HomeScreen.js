@@ -8,7 +8,7 @@ import Refprogram from "../components/Refprogram";
 import Questions from "../components/Questions";
 import PurpleCircle from "../components/PurpleCircle";
 import Brands from "../components/Brands";
-
+import ListOfRec from "../components/ListOfRec"
 
 const HomeScreen = () => {
   return(
@@ -137,6 +137,7 @@ const HomeScreen = () => {
     <div className="recomendations">
       <h1><b><span>Как ликвидировать</span> негативные отзывы?</b></h1>
       <h2>Один негативный отзыв - это 100 положительных, и если вы хотите его убрать, то лучше ответить на него в момент возникновения</h2>
+      <ListOfRec />
     </div>
     <div id='tariffs'>
       <h1><b>Выбирайте то, что удобно Вам для управления репутацией</b></h1>
