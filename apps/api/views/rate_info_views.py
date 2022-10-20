@@ -37,7 +37,7 @@ from ..services.rate_info_service import get_rate_info
     operation_summary='Получить rate info'
 )
 @api_view(['GET'])
-def read_rate_info(request, pk):
+def read_rate_info(request):
     """Контроллер для отдачи информации о rate_info"""
     user = request.user
 
