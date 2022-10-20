@@ -7,6 +7,7 @@
 ### Добавлено
 
 - Компонент ListOfRec и css [AlexTrubkina](https://github.com/AlexTrubkina)
+- CSS для кнопок [AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 

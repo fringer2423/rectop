@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 
 import "../css/main.css";
+import "../css/buttons.css";
 
 import Prices from "../components/Prices";
 import FormUser from "../components/FormUser";
@@ -24,13 +25,22 @@ const HomeScreen = () => {
        <button className="fullb">7 дней бесплатно</button>
        <button className="whiteb">Запросить демо</button>
      </div>
-     <img src="/images/main/mainCard1Img.png" className="fimage"/>
+     <img
+         src="/images/main/mainCard1Img.png"
+         className="fimage"
+      />
+      <img
+          src="/images/main/mainCard1ImgMobile.png"
+          className="fimagemobile"
+          />
    </div>
+   {/*
    <img
       src='/images/main/afterMainCard1Img.png'
       width="425px"
       className="blueball"
     />
+    */}
     <div id="about">
       <div className="aboutcomptext">
         <h1><b>О компании <span>Rectop</span></b></h1>
@@ -84,14 +94,16 @@ const HomeScreen = () => {
       <div className="purpleblock">
         <div className="textinpb">
           <h2><b>Сбор отзывов по QR-коду  при посещении вашего заведения онлайн/оффлайн</b></h2>
-          <div className="fsmtext">
+          <p>
             Уникальная система мотивации оставления отзывов от клиентов. Клиент получает кэшбек за отзыв на любом сервисе - его можно обменять на скидку/услугу у партнеров.
-          </div>
+          </p>
         </div>
+        {/*
         <img
             src="/images/mobileforpurpleblock.png"
             className="purpbtimg"
             />
+            */}
         <img
              src="/images/mobileforpurpleblockt.png"
              className="purpbsimg"/>
@@ -112,7 +124,7 @@ const HomeScreen = () => {
         <div className="blockwithpiconetext">
           <h1><b>Акцент на <span>положительных отзывах</span></b></h1>
           <h2>Клиенту все понравилось?</h2>
-          <div className="fblock">
+          <div >
             <br />Довольные клиенты смогут оставлять отзывы в личной карточке компании – их увидят тысячи людей!
           </div>
           <button className="fullb">Попробовать бесплатно</button>
@@ -122,7 +134,7 @@ const HomeScreen = () => {
         <div className="blockwithpiconetext">
           <h1><b>Негативные отзывы - <span>в службу поддержки</span></b></h1>
           <h2>Клиент недоволен?</h2>
-          <div className="fblock">
+          <div>
             <br/>Устраняйте конфликтные ситуации в чате службы поддержки в Telegram.
 
             <br/>Вовремя разрешённый конфликт – отсутствие негативных отзывов в сети.

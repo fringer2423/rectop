@@ -1,0 +1,92 @@
+.blackbutton{
+  background: #F9F9F9;
+  border: 1px solid #4584FF;
+  border-radius: 40px;
+  padding: 5%;
+  color: #4584FF;
+}
+
+
+.blackbutton:active{
+  background: #000000;
+  box-shadow: inset 0px 6px 10px #565656;
+  color: white;
+}
+
+
+
+.fullb{
+  border-radius: 40px;
+  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+  color: white;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-style: none;
+  margin: 2%;
+}
+
+.fullb:hover {
+  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+  box-shadow: 0px 20px 30px rgba(69, 104, 223, 0.3);
+  border-radius: 40px;
+}
+
+.fullb:active {
+  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+  box-shadow: inset 0px 6px 10px #2E4BB3;
+}
+
+.whiteb{
+  border-radius: 40px;
+  color: #4584FF;
+  background: white;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border: 2px solid #4584FF;
+  margin: 2%;
+}
+
+.whiteb:hover{
+  background: #4584FF;
+  color: white;
+}
+
+.whiteb:active {
+  background: #4584FF;
+  box-shadow: inset 0px 6px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  color: white;
+}
+
+@media (min-width: 800px){
+  .fullb{
+    font-size: 20px
+  }
+
+  .whiteb{
+    font-size: 20px;
+  }
+
+  .blackbutton{
+    font-size: 20px;
+  }
+}
+
+
+@media(max-width: 799px){
+  .fullb{
+    font-size: 16px;
+  }
+
+  .whiteb{
+    font-size: 16px;
+  }
+
+  .blackbutton{
+    font-size: 16px;
+  }
+}

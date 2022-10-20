@@ -59,6 +59,7 @@ const Prices = (props) => {
         <hr/>
         Подробная статистика
         <hr/>
+        <br/>
       </div>
       <button className="blackbutton">Приобрести тариф</button>
     </div>
@@ -81,6 +82,7 @@ const Prices = (props) => {
         Подробная отчетность
         <hr/>
         Аналитика в реальном времени
+        <hr/>
       </div>
       <button className="blackbutton">Приобрести тариф</button>
     </div>
