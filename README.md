@@ -1,7 +1,5 @@
 # RecTop
 
-![Logo](frontend/public/images/whiteLogo.png)
-
 ## Система управления отзывами
 
 ### Документация:
