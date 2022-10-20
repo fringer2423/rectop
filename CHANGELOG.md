@@ -6,7 +6,12 @@
 
 ### Добавлено
 
-- 
+-
+
+### Изменено
+
+- Компонент Prices.js (добавлена карусель) [AlexTrubkina](https://github.com/AlexTrubkina)
+
 
 ## [0.0.11] - 2022-10-19
 

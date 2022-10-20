@@ -9,7 +9,7 @@
   background: #F9F9F9;
   border-radius: 30px;
   border: 1px solid #4584FF;
-  width: 30%;
+
   padding: 3%;
   text-align: center;
 }
@@ -75,12 +75,34 @@
   color: white;
 }
 
-h4{
+.tableforprice h4{
   color: #4584FF;
 }
 
+
+
 @media (max-width: 799px){
   #listofprices{
-    display: none;
+    display: none
+  }
+  .tableforprice{
+    width: 70%;
+    margin-left: 15%
+  }
+}
+
+@media (min-width:800px) {
+  #sliderforprices{
+    display: none
+  }
+  .tableforprice{
+    width: 30%;
+  }
+}
+
+@media (max-width: 500px){
+  .tableforprice{
+    width: 90%;
+    margin-left: 5%
   }
 }
