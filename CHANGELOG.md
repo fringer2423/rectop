@@ -11,6 +11,14 @@
 - Rate info serializer
 - Rate info endpoints
 - Rate info service
+- Rate serializer
+- Rate endpoints
+- Rate service
+
+### Изменено
+
+- Connect fix
+- User model
 
 ## [0.0.11] - 2022-10-19
 
