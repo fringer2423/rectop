@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import User, Company, Schedule, Branch, Telebot, QRCode, Connect, Review, ReviewSettings, Answer, WorkDay
+from .models import User, Company, Schedule, Branch, Telebot, QRCode, Connect, Review, ReviewSettings, Answer, \
+    WorkDay, Rate, RateInfo
 
 admin.site.register(User)
 admin.site.register(Company)
@@ -12,3 +13,5 @@ admin.site.register(Review)
 admin.site.register(ReviewSettings)
 admin.site.register(Answer)
 admin.site.register(WorkDay)
+admin.site.register(Rate)
+admin.site.register(RateInfo)

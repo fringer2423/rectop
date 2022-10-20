@@ -6,7 +6,20 @@
 
 ### Добавлено
 
-- 
+- Модели Rate и RateInfo [@fringer2423](https://github.com/fringer2423)
+- Обработка 401 статуса в авторизации
+- Rate info serializer
+- Rate info endpoints
+- Rate info service
+- Rate serializer
+- Rate endpoints
+- Rate service
+
+### Изменено
+
+- Connect fix [@fringer2423](https://github.com/fringer2423)
+- User model
+- Добавлено поле rate в UserSerializer
 
 ## [0.0.11] - 2022-10-19
 
