@@ -33,7 +33,7 @@ const Prices = (props) => {
         Формирование qr-кода
         <hr/>
       </div>
-      <button className="blackbutton">Приобрести тариф</button>
+      <button className="blackbutton"><b>Приобрести тариф</b></button>
     </div>
     <div className="tableforprice">
       <h3><b>Какое-то название</b></h3>
@@ -59,9 +59,8 @@ const Prices = (props) => {
         <hr/>
         Подробная статистика
         <hr/>
-        <br/>
       </div>
-      <button className="blackbutton">Приобрести тариф</button>
+      <button className="blackbutton"><b>Приобрести тариф</b></button>
     </div>
     <div className="tableforprice">
       <h3><b>Репутация под ключ</b></h3>
@@ -84,7 +83,7 @@ const Prices = (props) => {
         Аналитика в реальном времени
         <hr/>
       </div>
-      <button className="blackbutton">Приобрести тариф</button>
+      <button className="blackbutton"><b>Приобрести тариф</b></button>
     </div>
     </div>
 
@@ -118,7 +117,7 @@ const Prices = (props) => {
                 Формирование qr-кода
                 <hr/>
               </div>
-              <button className="blackbutton">Приобрести тариф</button>
+              <button className="blackbutton"><b>Приобрести тариф</b></button>
             </div>
           </Carousel.Item>
           <Carousel.Item>
@@ -147,7 +146,7 @@ const Prices = (props) => {
                 Подробная статистика
                 <hr/>
               </div>
-              <button className="blackbutton">Приобрести тариф</button>
+              <button className="blackbutton"><b>Приобрести тариф</b></button>
             </div>
           </Carousel.Item>
           <Carousel.Item>
@@ -171,7 +170,7 @@ const Prices = (props) => {
                 <hr/>
                 Аналитика в реальном времени
               </div>
-              <button className="blackbutton">Приобрести тариф</button>
+              <button className="blackbutton"><b>Приобрести тариф</b></button>
             </div>
           </Carousel.Item>
       </Carousel>

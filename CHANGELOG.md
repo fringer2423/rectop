@@ -12,6 +12,8 @@
 ### Изменено
 
 - Компонент Prices.js (добавлена карусель) [AlexTrubkina](https://github.com/AlexTrubkina)
+- Компоненты Prices и HomeScreen [AlexTrubkina](https://github.com/AlexTrubkina)
+- CSS buttons, main, purplecircle [AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.11] - 2022-10-19
 

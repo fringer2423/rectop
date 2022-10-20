@@ -13,7 +13,11 @@
   color: white;
 }
 
-
+.blackbutton:disabled{
+  bbackground: white;
+  color: #EBEBEB;
+  border: #EBEBEB
+}
 
 .fullb{
   border-radius: 40px;
@@ -38,6 +42,11 @@
   box-shadow: inset 0px 6px 10px #2E4BB3;
 }
 
+.fullb:disabled {
+  background: #EBEBEB;
+  color: #23232399;
+}
+
 .whiteb{
   border-radius: 40px;
   color: #4584FF;
@@ -60,6 +69,12 @@
   box-shadow: inset 0px 6px 10px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   color: white;
+}
+
+.whiteb:disabled {
+    background: white;
+    color: #EBEBEB;
+    border: #EBEBEB
 }
 
 @media (min-width: 800px){
@@ -89,4 +104,27 @@
   .blackbutton{
     font-size: 16px;
   }
+}
+
+.bforp{
+  background: #F9F9F9;
+  font-size: 20px;
+  padding: 2%;
+  border-width: inherit;
+}
+
+.bforp:hover {
+  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 35px;
+  color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.bforp:active {
+  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+  box-shadow: inset 0px 6px 10px #2E4BB3;
 }
