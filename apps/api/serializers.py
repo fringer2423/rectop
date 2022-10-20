@@ -4,7 +4,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import serializers
 
 from apps.core.models import User, Company, Branch, Schedule, WorkDay, Telebot, Connect, Review, ReviewSettings, \
-    Answer, QRCode
+    Answer, QRCode, RateInfo, Rate
 
 
 def format_data(field):
@@ -189,3 +189,15 @@ class AllQRCodesSerializer(serializers.ModelSerializer):
     class Meta:
         model = QRCode
         fields = ['slug_name', 'branch']
+
+
+class RateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rate
+        fields = '__all__'
+
+
+class RateInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RateInfo
+        fields = '__all__'

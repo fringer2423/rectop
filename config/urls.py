@@ -18,6 +18,7 @@ urlpatterns = [
     path('api/review_settings/', include('apps.api.urls.review_settings_urls', namespace='review_settings_endpoints')),
     path('api/answer/', include('apps.api.urls.answer_urls', namespace='answer_endpoints')),
     path('api/qrcode/', include('apps.api.urls.qrcode_urls', namespace='qrcode_endpoints')),
+    path('api/rate_info/', include('apps.api.urls.rate_info_urls', namespace='rate_info_endpoints')),
 
     path('test/ping/', apps.core.views.ping, name='ping'),
 ]
