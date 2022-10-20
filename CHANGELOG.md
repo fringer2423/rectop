@@ -6,6 +6,8 @@
 
 ### Добавлено
 
+- Компонент ListOfRec и css [AlexTrubkina](https://github.com/AlexTrubkina)
+- CSS для кнопок 
 - Модели Rate и RateInfo [@fringer2423](https://github.com/fringer2423)
 - Обработка 401 статуса в авторизации
 - Rate info serializer
@@ -20,6 +22,10 @@
 - Connect fix [@fringer2423](https://github.com/fringer2423)
 - User model
 - Добавлено поле rate в UserSerializer
+- Компонент Prices.js (добавлена карусель) [AlexTrubkina](https://github.com/AlexTrubkina)
+- Компоненты Prices и HomeScreen 
+- CSS buttons, main, purplecircle 
+
 
 ## [0.0.11] - 2022-10-19
 

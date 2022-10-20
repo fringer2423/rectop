@@ -5,7 +5,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 10%;
-  gap: 8%
+  gap: 9%
 }
 
 .iconincircle{
@@ -37,6 +37,7 @@
 }
 
 #sliderforicons{
-  margin-top: 10%;
-  margin-bottom: 10%
+  margin-top: 15%;
+  margin-bottom: 10%;
+  text-align: center;
 }

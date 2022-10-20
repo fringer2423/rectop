@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 
 import "../css/main.css";
+import "../css/buttons.css";
 
 import Prices from "../components/Prices";
 import FormUser from "../components/FormUser";
@@ -8,7 +9,7 @@ import Refprogram from "../components/Refprogram";
 import Questions from "../components/Questions";
 import PurpleCircle from "../components/PurpleCircle";
 import Brands from "../components/Brands";
-
+import ListOfRec from "../components/ListOfRec"
 
 const HomeScreen = () => {
   return(
@@ -24,13 +25,22 @@ const HomeScreen = () => {
        <button className="fullb">7 дней бесплатно</button>
        <button className="whiteb">Запросить демо</button>
      </div>
-     <img src="/images/main/mainCard1Img.png" className="fimage"/>
+     <img
+         src="/images/main/mainCard1Img.png"
+         className="fimage"
+      />
+      <img
+          src="/images/main/mainCard1ImgMobile.png"
+          className="fimagemobile"
+          />
    </div>
+   {/*
    <img
       src='/images/main/afterMainCard1Img.png'
       width="425px"
       className="blueball"
     />
+    */}
     <div id="about">
       <div className="aboutcomptext">
         <h1><b>О компании <span>Rectop</span></b></h1>
@@ -38,7 +48,9 @@ const HomeScreen = () => {
           <h2>Качественно повышаем вашу репутацию</h2>
           <div className="fsmtext">
             <b>RecTop</b> - это бизнес- решение для тех, кто хочет получать дополнительный трафик за счёт сбора и мониторинга отзывов.<br/><br/>
-            Обратная связь с недовольными клиентами позволит разрешить конфликтную ситуацию вовремя и без последствий. Получайте уведомления о новых отзывах в Telegram, отвечайте из личного кабинета.
+            <ul>
+              <li>Обратная связь с недовольными клиентами позволит разрешить конфликтную ситуацию вовремя и без последствий. Получайте уведомления о новых отзывах в Telegram, отвечайте из личного кабинета</li>
+            </ul>
           </div>
       </div>
       <div>
@@ -84,14 +96,16 @@ const HomeScreen = () => {
       <div className="purpleblock">
         <div className="textinpb">
           <h2><b>Сбор отзывов по QR-коду  при посещении вашего заведения онлайн/оффлайн</b></h2>
-          <div className="fsmtext">
+          <p>
             Уникальная система мотивации оставления отзывов от клиентов. Клиент получает кэшбек за отзыв на любом сервисе - его можно обменять на скидку/услугу у партнеров.
-          </div>
+          </p>
         </div>
+        {/*
         <img
             src="/images/mobileforpurpleblock.png"
             className="purpbtimg"
             />
+            */}
         <img
              src="/images/mobileforpurpleblockt.png"
              className="purpbsimg"/>
@@ -112,20 +126,21 @@ const HomeScreen = () => {
         <div className="blockwithpiconetext">
           <h1><b>Акцент на <span>положительных отзывах</span></b></h1>
           <h2>Клиенту все понравилось?</h2>
-          <div className="fblock">
+          <div >
             <br />Довольные клиенты смогут оставлять отзывы в личной карточке компании – их увидят тысячи людей!
           </div>
           <button className="fullb">Попробовать бесплатно</button>
         </div>
       </div>
       <div className="blockwithpictwo">
-        <div className="blockwithpiconetext">
+        <div className="blockwithpictwotext">
           <h1><b>Негативные отзывы - <span>в службу поддержки</span></b></h1>
           <h2>Клиент недоволен?</h2>
-          <div className="fblock">
-            <br/>Устраняйте конфликтные ситуации в чате службы поддержки в Telegram.
-
-            <br/>Вовремя разрешённый конфликт – отсутствие негативных отзывов в сети.
+          <div>
+          <ul>
+            <li>Устраняйте конфликтные ситуации в чате службы поддержки в Telegram.</li>
+            <li>Вовремя разрешённый конфликт – отсутствие негативных отзывов в сети.</li>
+          </ul>
           </div>
           <button className="fullb">Попробовать бесплатно</button>
         </div>
@@ -137,6 +152,7 @@ const HomeScreen = () => {
     <div className="recomendations">
       <h1><b><span>Как ликвидировать</span> негативные отзывы?</b></h1>
       <h2>Один негативный отзыв - это 100 положительных, и если вы хотите его убрать, то лучше ответить на него в момент возникновения</h2>
+      <ListOfRec />
     </div>
     <div id='tariffs'>
       <h1><b>Выбирайте то, что удобно Вам для управления репутацией</b></h1>

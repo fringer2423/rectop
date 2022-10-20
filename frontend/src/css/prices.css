@@ -9,7 +9,7 @@
   background: #F9F9F9;
   border-radius: 30px;
   border: 1px solid #4584FF;
-  width: 30%;
+
   padding: 3%;
   text-align: center;
 }
@@ -39,18 +39,12 @@
   margin-top: 10%;
 }
 
-.tableforprice p{
+.textinprice{
   text-align: center;
   font-size: 20px;
 }
 
-.blackbutton{
-  background: #F9F9F9;
-  border: 1px solid #4584FF;
-  border-radius: 40px;
-  padding: 5%;
-  color: #4584FF;
-}
+
 
 .tableforprice:hover{
   background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
@@ -64,7 +58,7 @@
   border-radius: 40px;
 }
 
-.tableforprice:hover > div{
+.tableforprice:hover > .blockintable{
   background: #FFFFFF;
   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
@@ -75,12 +69,34 @@
   color: white;
 }
 
-h4{
+.tableforprice h4{
   color: #4584FF;
 }
 
+
+
 @media (max-width: 799px){
   #listofprices{
-    display: none;
+    display: none
+  }
+  .tableforprice{
+    width: 70%;
+    margin-left: 15%
+  }
+}
+
+@media (min-width:800px) {
+  #sliderforprices{
+    display: none
+  }
+  .tableforprice{
+    width: 30%;
+  }
+}
+
+@media (max-width: 500px){
+  .tableforprice{
+    width: 90%;
+    margin-left: 5%
   }
 }

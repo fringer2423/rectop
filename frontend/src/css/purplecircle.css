@@ -47,6 +47,7 @@
 .blackblockt p{
   font-size: 13px;
 }
+
 @media (max-width:799px){
   .purplecircle{
     border-radius: 50%;
