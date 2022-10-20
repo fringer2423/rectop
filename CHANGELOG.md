@@ -6,7 +6,7 @@
 
 ### Добавлено
 
-- 
+- Модели Rate и RateInfo [@fringer2423](https://github.com/fringer2423)
 
 ## [0.0.11] - 2022-10-19
 

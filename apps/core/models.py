@@ -18,6 +18,36 @@ def my_awesome_upload_function(instance, filename):
     return os.path.join('media/QRCodes/{}/'.format(instance.get_directory()), filename)
 
 
+class Rate(models.Model):
+    """
+    Модель тарифа
+    """
+
+    class Meta:
+        verbose_name = 'Тариф'
+        verbose_name_plural = 'Тарифы'
+
+    RATE_TYPE_LIST = [
+        (0, 'Тестовый'),
+        (1, 'Начальный'),
+        (2, 'Средний'),
+        (3, 'Профессиональный')
+    ]
+
+    number_of_branches = models.IntegerField(
+        verbose_name='Количество филиалов',
+        default=0
+    )
+    type = models.CharField(
+        max_length=1,
+        default=0,
+        choices=RATE_TYPE_LIST
+    )
+
+    def __str__(self):
+        return f'Тариф {self.id}'
+
+
 class User(AbstractUser):
     """
     Модель пользователя платформы
@@ -52,11 +82,12 @@ class User(AbstractUser):
         verbose_name='Проверочный код',
         unique=True
     )
-    rate = models.CharField(
-        max_length=30,
+    rate = models.OneToOneField(
+        Rate,
+        on_delete=models.CASCADE,
+        verbose_name='Тариф',
         null=True,
-        blank=True,
-        verbose_name='Тариф'
+        blank=True
     )
     job_title = models.CharField(
         max_length=50,
@@ -508,3 +539,16 @@ class Answer(models.Model):
 
     def __str__(self):
         return f'Ответ на отзыв {self.review.full_name}'
+
+
+class RateInfo(models.Model):
+    class Meta:
+        verbose_name = 'Информация о тарифах'
+        verbose_name_plural = 'Информации о тарифах'
+
+    first_rate = models.IntegerField(verbose_name='Первый тариф')
+    second_rate = models.IntegerField(verbose_name='Второй тариф')
+    third_rate = models.IntegerField(verbose_name='Третий тариф')
+
+    def __str__(self):
+        return f'Информация {self.id}'
