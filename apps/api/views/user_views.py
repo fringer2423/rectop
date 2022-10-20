@@ -43,6 +43,9 @@ class MyTokenObtainPairView(TokenObtainPairView):
             400: openapi.Response(
                 description='Ошибка авторизации'
             ),
+            401: openapi.Response(
+                description='Пользователь с такими данными не найден'
+            ),
             405: openapi.Response(
                 description='Данный метод запроса запрещен'
             )

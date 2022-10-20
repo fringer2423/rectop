@@ -4,7 +4,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import serializers
 
 from apps.core.models import User, Company, Branch, Schedule, WorkDay, Telebot, Connect, Review, ReviewSettings, \
-    Answer, QRCode
+    Answer, QRCode, RateInfo, Rate
 
 
 def format_data(field):
@@ -34,14 +34,22 @@ class UserSerializer(serializers.ModelSerializer):
     Сериалайзер модели User
     """
     isAdmin = serializers.SerializerMethodField(read_only=True)
+    rate = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = User
         fields = ['id', 'first_name', 'last_name', 'email', 'description', 'phone_number', 'rate', 'job_title',
-                  'isAdmin']
+                  'isAdmin', 'rate']
 
     def get_isAdmin(self, obj):
         return obj.is_staff
+
+    def get_rate(self, obj):
+        try:
+            return RateSerializer(obj.rate, many=False).data
+        except Exception as e:
+            print(e)
+            return None
 
 
 class UserSerializerWithToken(UserSerializer):
@@ -189,3 +197,15 @@ class AllQRCodesSerializer(serializers.ModelSerializer):
     class Meta:
         model = QRCode
         fields = ['slug_name', 'branch']
+
+
+class RateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rate
+        fields = '__all__'
+
+
+class RateInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RateInfo
+        fields = '__all__'

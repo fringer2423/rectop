@@ -52,12 +52,6 @@ class User(AbstractUser):
         verbose_name='Проверочный код',
         unique=True
     )
-    rate = models.CharField(
-        max_length=30,
-        null=True,
-        blank=True,
-        verbose_name='Тариф'
-    )
     job_title = models.CharField(
         max_length=50,
         null=True,
@@ -67,6 +61,44 @@ class User(AbstractUser):
 
     def __str__(self):
         return f'{self.get_full_name()} {self.id}'
+
+
+class Rate(models.Model):
+    """
+    Модель тарифа
+    """
+
+    class Meta:
+        verbose_name = 'Тариф'
+        verbose_name_plural = 'Тарифы'
+
+    RATE_TYPE_LIST = [
+        (0, 'Тестовый'),
+        (1, 'Начальный'),
+        (2, 'Средний'),
+        (3, 'Профессиональный')
+    ]
+
+    number_of_branches = models.IntegerField(
+        verbose_name='Количество филиалов',
+        default=0
+    )
+    type = models.IntegerField(
+        default=0,
+        choices=RATE_TYPE_LIST
+    )
+
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name='Пользователь',
+        related_name='rate',
+        null=True,
+        blank=True
+    )
+
+    def __str__(self):
+        return f'Тариф {self.id}'
 
 
 class Company(models.Model):
@@ -370,7 +402,7 @@ class Connect(models.Model):
     created_at = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True, null=True, blank=True)
 
     def __str__(self):
-        return f'Настройка подключения к платформе {self.type} для {self.company.name}'
+        return f'Настройка подключения к платформе {self.type} для {self.branch.name}'
 
 
 class Review(models.Model):
@@ -508,3 +540,22 @@ class Answer(models.Model):
 
     def __str__(self):
         return f'Ответ на отзыв {self.review.full_name}'
+
+
+class RateInfo(models.Model):
+    class Meta:
+        verbose_name = 'Информация о тарифах'
+        verbose_name_plural = 'Информации о тарифах'
+
+    first_rate = models.IntegerField(
+        verbose_name='Первый тариф'
+    )
+    second_rate = models.IntegerField(
+        verbose_name='Второй тариф'
+    )
+    third_rate = models.IntegerField(
+        verbose_name='Третий тариф'
+    )
+
+    def __str__(self):
+        return f'Информация {self.id}'
