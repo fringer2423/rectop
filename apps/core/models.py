@@ -23,10 +23,6 @@ class User(AbstractUser):
     Модель пользователя платформы
     """
 
-    class Meta:
-        verbose_name = 'Пользователь'
-        verbose_name_plural = 'Пользователи'
-
     description = models.TextField(
         max_length=500,
         null=True,
@@ -59,6 +55,10 @@ class User(AbstractUser):
         verbose_name='Должность'
     )
 
+    class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
+
     def __str__(self):
         return f'{self.get_full_name()} {self.id}'
 
@@ -68,11 +68,7 @@ class Rate(models.Model):
     Модель тарифа
     """
 
-    class Meta:
-        verbose_name = 'Тариф'
-        verbose_name_plural = 'Тарифы'
-
-    RATE_TYPE_LIST = [
+    RATE_TYPE_CHOICES = [
         (0, 'Тестовый'),
         (1, 'Начальный'),
         (2, 'Средний'),
@@ -85,7 +81,7 @@ class Rate(models.Model):
     )
     type = models.IntegerField(
         default=0,
-        choices=RATE_TYPE_LIST
+        choices=RATE_TYPE_CHOICES
     )
 
     user = models.OneToOneField(
@@ -97,6 +93,10 @@ class Rate(models.Model):
         blank=True
     )
 
+    class Meta:
+        verbose_name = 'Тариф'
+        verbose_name_plural = 'Тарифы'
+
     def __str__(self):
         return f'Тариф {self.id}'
 
@@ -105,10 +105,6 @@ class Company(models.Model):
     """
     Модель компании, которую создает пользователь
     """
-
-    class Meta:
-        verbose_name = 'Компания'
-        verbose_name_plural = 'Компании'
 
     owner = models.ForeignKey(
         User,
@@ -127,13 +123,17 @@ class Company(models.Model):
         blank=True
     )
 
+    class Meta:
+        verbose_name = 'Компания'
+        verbose_name_plural = 'Компании'
+
     def __str__(self):
         return self.name
 
 
 class WorkDay(models.Model):
     """Модель рабочего дня"""
-    DAYS_OF_WEEK = [
+    DAYS_OF_WEEK_CHOICES = [
         (1, 'Понедельник'),
         (2, 'Вторник'),
         (3, 'Среда'),
@@ -142,14 +142,14 @@ class WorkDay(models.Model):
         (6, 'Суббота'),
         (7, 'Воскресенье'),
     ]
-    DAY_TYPES = [
+    DAY_TYPES_CHOICES = [
         ('weekday', 'Будний день'),
         ('holiday', 'Праздничный день'),
         ('day_off', 'Выходной')
     ]
     day_of_the_week = models.PositiveIntegerField(
         verbose_name='День недели',
-        choices=DAYS_OF_WEEK
+        choices=DAYS_OF_WEEK_CHOICES
     )
     start_time = models.TimeField(
         verbose_name='Начало рабочего дня',
@@ -161,8 +161,12 @@ class WorkDay(models.Model):
     day_type = models.CharField(
         verbose_name='day type',
         max_length=255,
-        choices=DAY_TYPES
+        choices=DAY_TYPES_CHOICES
     )
+
+    class Meta:
+        verbose_name = 'Рабочий день'
+        verbose_name_plural = 'Рабочие дни'
 
     def __str__(self):
         return f'{self.get_day_of_the_week_display()} {self.get_day_type_display()}'
@@ -172,10 +176,6 @@ class Schedule(models.Model):
     """
     Модель для хранения графика работы филиалов
     """
-
-    class Meta:
-        verbose_name = 'График работы'
-        verbose_name_plural = 'Графики работы'
 
     monday = models.ForeignKey(
         WorkDay,
@@ -240,6 +240,10 @@ class Schedule(models.Model):
         blank=True
     )
 
+    class Meta:
+        verbose_name = 'График работы'
+        verbose_name_plural = 'Графики работы'
+
     def __str__(self):
         return f'График работы от {self.created_at.__format__("%Y-%m-%d %H:%M:%S")}'
 
@@ -248,10 +252,6 @@ class Branch(models.Model):
     """
     Модель филиала
     """
-
-    class Meta:
-        verbose_name = 'Филиал'
-        verbose_name_plural = 'Филиалы'
 
     company = models.ForeignKey(
         Company,
@@ -298,6 +298,10 @@ class Branch(models.Model):
         verbose_name='Последняя дата загрузки отзывов'
     )
 
+    class Meta:
+        verbose_name = 'Филиал'
+        verbose_name_plural = 'Филиалы'
+
     def __str__(self):
         return f'{self.name} {self.id}'
 
@@ -306,10 +310,6 @@ class Telebot(models.Model):
     """
     Модель для хранения настроек telegram уведомлений
     """
-
-    class Meta:
-        verbose_name = 'Настройка отправки Telegram уведомлений'
-        verbose_name_plural = 'Настройки отправки Telegram уведомлений'
 
     branch = models.ForeignKey(
         Branch,
@@ -322,6 +322,10 @@ class Telebot(models.Model):
         verbose_name='ID в Telegram'
     )
 
+    class Meta:
+        verbose_name = 'Настройка отправки Telegram уведомлений'
+        verbose_name_plural = 'Настройки отправки Telegram уведомлений'
+
     def __str__(self):
         return f'Настройка для {self.branch.name}'
 
@@ -330,10 +334,6 @@ class QRCode(models.Model):
     """
     Модель для хранения QRCodes
     """
-
-    class Meta:
-        verbose_name = 'QRCode'
-        verbose_name_plural = 'QRCodes'
 
     branch = models.ForeignKey(
         Branch,
@@ -359,13 +359,17 @@ class QRCode(models.Model):
         blank=True
     )
 
+    class Meta:
+        verbose_name = 'QRCode'
+        verbose_name_plural = 'QRCodes'
+
+    def __str__(self):
+        return f'QRCode для {self.branch.name}'
+
     def save(self, *args, **kwargs):
         branch_name = f'{self.branch.company.name}-{self.branch.name}-{self.branch.id}'
         self.slug_name = translit.slugify(branch_name)
         super().save(*args, **kwargs)
-
-    def __str__(self):
-        return f'QRCode для {self.branch.name}'
 
 
 class Connect(models.Model):
@@ -373,11 +377,7 @@ class Connect(models.Model):
     Модель для настроек соединения с платформами
     """
 
-    class Meta:
-        verbose_name = 'Настройка соединения'
-        verbose_name_plural = 'Настройки соединения'
-
-    PLATFORMS_LIST = [
+    PLATFORMS_CHOICES = [
         (0, 'Yandex'),
         (1, '2GIS'),
         (2, 'Google'),
@@ -387,7 +387,7 @@ class Connect(models.Model):
 
     type = models.CharField(
         max_length=20,
-        choices=PLATFORMS_LIST,
+        choices=PLATFORMS_CHOICES,
         verbose_name='Платформа'
     )
     branch = models.ForeignKey(
@@ -401,6 +401,10 @@ class Connect(models.Model):
     )
     created_at = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True, null=True, blank=True)
 
+    class Meta:
+        verbose_name = 'Настройка соединения'
+        verbose_name_plural = 'Настройки соединения'
+
     def __str__(self):
         return f'Настройка подключения к платформе {self.type} для {self.branch.name}'
 
@@ -410,11 +414,7 @@ class Review(models.Model):
     Модель отзывов
     """
 
-    class Meta:
-        verbose_name = 'Отзыв'
-        verbose_name_plural = 'Отзывы'
-
-    LIST_OF_RATINGS = [
+    RATINGS_CHOICES = [
         (0, 'Очень плохо'),
         (1, 'Плохо'),
         (2, 'Неплохо'),
@@ -422,7 +422,7 @@ class Review(models.Model):
         (4, 'Хорошо'),
         (5, 'Отлично')]
 
-    STATUS_LIST = [
+    STATUS_CHOICES = [
         (0, 'Не прочитано'),
         (1, 'Прочитано'),
         (2, 'С ответом'),
@@ -443,13 +443,13 @@ class Review(models.Model):
     )
     status = models.CharField(
         max_length=20,
-        choices=STATUS_LIST,
+        choices=STATUS_CHOICES,
         default=0,
         verbose_name='Статус'
     )
     rating = models.CharField(
         max_length=20,
-        choices=LIST_OF_RATINGS,
+        choices=RATINGS_CHOICES,
         verbose_name='Оценка'
     )
     created_at = models.DateTimeField(
@@ -464,6 +464,10 @@ class Review(models.Model):
         blank=True
     )
 
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+
     def __str__(self):
         return self.full_name
 
@@ -472,10 +476,6 @@ class ReviewSettings(models.Model):
     """
     Модель для хранения и управления настройками автоответов на отзывы
     """
-
-    class Meta:
-        verbose_name = 'Настройка автоответов на отзывы'
-        verbose_name_plural = 'Настройки автоответов на отзывы'
 
     company = models.ForeignKey(
         Company,
@@ -493,6 +493,10 @@ class ReviewSettings(models.Model):
         blank=True
     )
 
+    class Meta:
+        verbose_name = 'Настройка автоответов на отзывы'
+        verbose_name_plural = 'Настройки автоответов на отзывы'
+
     def __str__(self):
         return f'Настройка отзывов для {self.company.name}'
 
@@ -502,11 +506,7 @@ class Answer(models.Model):
     Модель для хранения ответов на отзывы
     """
 
-    class Meta:
-        verbose_name = 'Ответ на отзыв'
-        verbose_name_plural = 'Ответы на отзывы'
-
-    TYPE_LIST = [
+    TYPE_CHOICES = [
         (0, 'Ответ создан автоматически'),
         (1, 'Ответ от пользователя')
     ]
@@ -534,19 +534,19 @@ class Answer(models.Model):
     )
     type = models.CharField(
         max_length=100,
-        choices=TYPE_LIST,
+        choices=TYPE_CHOICES,
         verbose_name='Тип ответа'
     )
+
+    class Meta:
+        verbose_name = 'Ответ на отзыв'
+        verbose_name_plural = 'Ответы на отзывы'
 
     def __str__(self):
         return f'Ответ на отзыв {self.review.full_name}'
 
 
 class RateInfo(models.Model):
-    class Meta:
-        verbose_name = 'Информация о тарифах'
-        verbose_name_plural = 'Информации о тарифах'
-
     first_rate = models.IntegerField(
         verbose_name='Первый тариф'
     )
@@ -556,6 +556,10 @@ class RateInfo(models.Model):
     third_rate = models.IntegerField(
         verbose_name='Третий тариф'
     )
+
+    class Meta:
+        verbose_name = 'Информация о тарифах'
+        verbose_name_plural = 'Информации о тарифах'
 
     def __str__(self):
         return f'Информация {self.id}'
