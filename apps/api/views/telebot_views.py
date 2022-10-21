@@ -60,7 +60,7 @@ from ..services.telebot_service import create_telebot_by_branch_id, get_telebot_
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_telebot(request):
+def create_telebot_view(request):
     """Контроллер для создания telebot"""
     user = request.user
 
@@ -116,7 +116,7 @@ def create_telebot(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_telebot(request, pk):
+def read_telebot_view(request, pk):
     """Контроллер для отдачи информации о telebot"""
     user = request.user
 
@@ -177,7 +177,7 @@ def read_telebot(request, pk):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_telebot(request, pk):
+def update_telebot_view(request, pk):
     """Контроллер для обновления информации telebot"""
     user = request.user
     data = request.data
@@ -232,7 +232,7 @@ def update_telebot(request, pk):
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_telebot(request, pk):
+def delete_telebot_view(request, pk):
     """Контроллер для удаления информации telebot"""
     user = request.user
 

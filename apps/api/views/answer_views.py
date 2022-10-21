@@ -71,7 +71,7 @@ from ..services.answer_service import get_answer_by_id, create_answer_by_review_
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_answer(request):
+def create_answer_view(request):
     """Контроллер для создания answer"""
     user = request.user
 
@@ -131,7 +131,7 @@ def create_answer(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_answer(request, pk):
+def read_answer_view(request, pk):
     """Контроллер для отдачи информации о answer"""
     user = request.user
 
@@ -199,7 +199,7 @@ def read_answer(request, pk):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_answer(request, pk):
+def update_answer_view(request, pk):
     """Контроллер для обновления информации answer"""
     user = request.user
     data = request.data
@@ -254,7 +254,7 @@ def update_answer(request, pk):
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_answer(request, pk):
+def delete_answer_view(request, pk):
     """Контроллер для удаления информации answer"""
     user = request.user
 

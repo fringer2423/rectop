@@ -57,7 +57,7 @@ from ..services.qrcode_service import create_qrcode_by_branch_id, get_qrcode_by_
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_qrcode(request):
+def create_qrcode_view(request):
     """Контроллер для создания qrcode"""
     user = request.user
 
@@ -116,7 +116,7 @@ def create_qrcode(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_qrcode(request, pk):
+def read_qrcode_view(request, pk):
     """Контроллер для отдачи информации о QRCode"""
     user = request.user
 
@@ -157,7 +157,7 @@ def read_qrcode(request, pk):
     operation_summary='Получить все QRCode'
 )
 @api_view(['GET'])
-def read_all_qrcodes(request):
+def read_all_qrcodes_view(request):
     """Контроллер для отдачи информации о всех QRCode"""
 
     try:

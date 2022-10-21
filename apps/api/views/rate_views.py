@@ -54,7 +54,7 @@ from ..services.rate_service import get_rate_by_user, create_rate_by_user
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_rate(request):
+def create_rate_view(request):
     """Контроллер для создания rate"""
     user = request.user
 
@@ -105,7 +105,7 @@ def create_rate(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_rate(request):
+def read_rate_view(request):
     """Контроллер для отдачи информации о rate"""
     user = request.user
 
@@ -162,7 +162,7 @@ def read_rate(request):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_rate(request):
+def update_rate_view(request):
     """Контроллер для обновления информации rate"""
     user = request.user
     data = request.data

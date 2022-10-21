@@ -11,6 +11,7 @@
 ### Изменено
 
 - Context fix urls [@fringer2423](https://github.com/fringer2423)
+- Refactor code
 
 ## [0.0.12] - 2022-10-20
 

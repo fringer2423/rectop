@@ -115,7 +115,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
     operation_summary='Зарегистрировать user'
 )
 @api_view(['POST'])
-def register_user(request):
+def register_user_view(request):
     """Контроллер для регистрации новых пользователей"""
     data = request.data
     try:
@@ -154,7 +154,7 @@ def register_user(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_user_profile(request):
+def read_user_profile_view(request):
     """Контроллер для отдачи информации о текущем пользователе"""
     user = request.user
     serializer = UserSerializer(user, many=False)
@@ -237,7 +237,7 @@ def read_user_profile(request):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_user_profile(request):
+def update_user_profile_view(request):
     """Контроллер обновления пользовательских настроек"""
     user = request.user
     data = request.data

@@ -75,7 +75,7 @@ from ..services.review_service import create_review_by_branch_id, get_review_by_
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_review(request):
+def create_review_view(request):
     """Контроллер для создания review"""
     user = request.user
 
@@ -133,7 +133,7 @@ def create_review(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_review(request, pk):
+def read_review_view(request, pk):
     """Контроллер для отдачи информации о review"""
     user = request.user
 
@@ -181,7 +181,7 @@ def read_review(request, pk):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_review_list(request, pk):
+def read_review_list_view(request, pk):
     """Контроллер для отдачи информации о всех review branch"""
     user = request.user
 
@@ -263,7 +263,7 @@ def read_review_list(request, pk):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_review(request, pk):
+def update_review_view(request, pk):
     """Контроллер для обновления информации review"""
     user = request.user
     data = request.data
@@ -318,7 +318,7 @@ def update_review(request, pk):
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_review(request, pk):
+def delete_review_view(request, pk):
     """Контроллер для удаления информации review"""
     user = request.user
 
@@ -366,7 +366,7 @@ def delete_review(request, pk):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_review_list_all(request, pk):
+def read_review_list_all_view(request, pk):
     """Контроллер для отдачи информации о всех review компании"""
     user = request.user
 
