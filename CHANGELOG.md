@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [0.0.13] - 2022-10-21
+
+### Добавлено 
+
+- Docs for new service [@fringer2423](https://github.com/fringer2423)
+
+### Изменено
+
+- Context fix urls [@fringer2423](https://github.com/fringer2423)
+
 ## [0.0.12] - 2022-10-20
 
 ### Добавлено

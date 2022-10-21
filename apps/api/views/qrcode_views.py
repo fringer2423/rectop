@@ -68,7 +68,7 @@ def create_qrcode(request):
             branch_id=branch_id
         )
         if qr_code:
-            serializer = QRCodeSerializer(qr_code, many=False)
+            serializer = QRCodeSerializer(qr_code, many=False, context={"request": request})
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
@@ -123,7 +123,7 @@ def read_qrcode(request, pk):
     try:
         qr_code = get_qrcode_by_id(user=user, qrcode_id=pk)
         if qr_code:
-            serializer = QRCodeSerializer(qr_code, many=False)
+            serializer = QRCodeSerializer(qr_code, many=False, context={"request": request})
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
@@ -162,7 +162,7 @@ def read_all_qrcodes(request):
 
     try:
         qr_code_list = get_all_qrcode()
-        serializer = AllQRCodesSerializer(qr_code_list, many=True)
+        serializer = AllQRCodesSerializer(qr_code_list, many=True, context={"request": request})
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     except ObjectDoesNotExist as er:
