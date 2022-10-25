@@ -190,62 +190,9 @@ const HomeScreen = () => {
             </div>
             <Refprogram/>
             <div id="questions">
-                <h1><b>Часто задаваемые вопросы</b></h1>
-                <Questions/>
+              <h1><b>Часто задаваемые вопросы</b></h1>
+              <Accordion/>
             </div>
-        </div>
-      
-      <div className="blockwithpictwo">
-        <div className="blockwithpictwotext">
-          <h1><b>Негативные отзывы - <span>в службу поддержки</span></b></h1>
-          <h2>Клиент недоволен?</h2>
-          <div>
-          <ul>
-            <li>Устраняйте конфликтные ситуации в чате службы поддержки в Telegram.</li>
-            <li>Вовремя разрешённый конфликт – отсутствие негативных отзывов в сети.</li>
-          </ul>
-          </div>
-          <button className="fullb">Попробовать бесплатно</button>
-        </div>
-        <img
-          src="/images/main/mainCard52Img.png"
-        />
-      </div>
-    </div>
-    <div className="recomendations">
-      <h1><b><span>Как ликвидировать</span> негативные отзывы?</b></h1>
-      <h2>Один негативный отзыв - это 100 положительных, и если вы хотите его убрать, то лучше ответить на него в момент возникновения</h2>
-      <ListOfRec />
-    </div>
-    <div id='tariffs'>
-      <h1><b>Выбирайте то, что удобно Вам для управления репутацией</b></h1>
-      <div className="forButtons">
-        <button className="bforp">На неделю</button>
-        <button className="bforp">На месяц</button>
-        <button className="bforp">На 1 год</button>
-      </div>
-        <Prices/>
-    </div>
-
-    <div id="contacts">
-      <div className="textcontacts">
-        <h1><b>Запишитесь на <span>бесплатный звонок</span></b></h1>
-        <p>Наш менеджер перезвонит вам через 10 минут, в течение которых вы сможете:</p>
-        <ul>
-          <li>Узнать все отзывы о своей компании и как их отработать.</li>
-          <li>Получить список интернет-ресурсов, на которых нужно зарегистрировать компанию.</li>
-          <li> Проанализировать общий рейтинг компании и каждой точки продаж в отдельности.</li>
-          <li>Узнать откуда берутся негативные отзывы и как удалить негативный отзыв без бюджета.</li>
-        </ul>
-        <p>Rectop - Ваша репутация!</p>
-      </div>
-      <FormUser/>
-    </div>
-    <Refprogram/>
-    <div id="questions">
-      <h1><b>Часто задаваемые вопросы</b></h1>
-      <Accordion/>
-    </div>
    </div>
 
  )
