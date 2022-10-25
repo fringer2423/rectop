@@ -1,7 +1,7 @@
 from apps.core.models import RateInfo
 
 
-def get_rate_info():
+def get_rate_info_service():
     """
     Функция возвращает последний rate info
     :return: rate info

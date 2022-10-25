@@ -10,7 +10,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from ..serializers import CompanySerializer
 
-from ..services.company_services import get_company_by_id, create_company_by_company_name
+from ..services.company_services import get_company_by_id_service, create_company_by_company_name_service
 
 
 @swagger_auto_schema(
@@ -53,7 +53,7 @@ def create_company_view(request):
     user = request.user
 
     try:
-        company = create_company_by_company_name(user, request.data['name'])
+        company = create_company_by_company_name_service(user, request.data['name'])
         serializer = CompanySerializer(company, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -100,7 +100,7 @@ def read_company_view(request, pk):
     user = request.user
 
     try:
-        company = get_company_by_id(user, pk)
+        company = get_company_by_id_service(user, pk)
         if company:
             serializer = CompanySerializer(company, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
@@ -162,7 +162,7 @@ def update_company_view(request, pk):
     data = request.data
 
     try:
-        company = get_company_by_id(user, pk)
+        company = get_company_by_id_service(user, pk)
         if company:
             serializer = CompanySerializer(company, many=False, partial=True, data=data)
             if serializer.is_valid():
@@ -217,7 +217,7 @@ def delete_company_view(request, pk):
     user = request.user
 
     try:
-        company = get_company_by_id(user, pk)
+        company = get_company_by_id_service(user, pk)
         if company:
             company.delete()
             return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)

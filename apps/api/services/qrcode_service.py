@@ -7,10 +7,10 @@ from django.conf import settings
 
 from apps.core.models import QRCode
 
-from .branch_service import verification_owner_branch
+from .branch_service import verification_owner_branch_service
 
 
-def generate_qc_code(slug):
+def generate_qc_code_service(slug):
     """
     Функция генерирует QRCode и сохраняет его
     :param slug: ссылка
@@ -39,17 +39,17 @@ def generate_qc_code(slug):
     return qr_name_image
 
 
-def create_qrcode_by_branch_id(user, branch_id):
+def create_qrcode_by_branch_id_service(user, branch_id):
     """
     Функция создает QRCode по branch id и возвращает его, если есть доступ. Иначе вернет False
     :param user: Текущий пользователь
     :param branch_id: id филиала
     :return: QRCode или False
     """
-    if verification_owner_branch(user, branch_id):
+    if verification_owner_branch_service(user, branch_id):
         new_qrcode = QRCode.objects.create(branch_id=branch_id)
 
-        qr_name_image = generate_qc_code(new_qrcode.slug_name)
+        qr_name_image = generate_qc_code_service(new_qrcode.slug_name)
 
         new_qrcode.image = f'/media/branch/qrcode/{qr_name_image}'
 
@@ -60,7 +60,7 @@ def create_qrcode_by_branch_id(user, branch_id):
         return False
 
 
-def get_qrcode_by_id(user, qrcode_id):
+def get_qrcode_by_id_service(user, qrcode_id):
     """
     Функция возвращает QRCode по id, если есть доступ, иначе вернется False
     :param user: Текущий пользователь
@@ -68,13 +68,13 @@ def get_qrcode_by_id(user, qrcode_id):
     :return: QRCode или False
     """
     qr_code = QRCode.objects.get(pk=qrcode_id)
-    if verification_owner_branch(user=user, branch_id=qr_code.branch_id):
+    if verification_owner_branch_service(user=user, branch_id=qr_code.branch_id):
         return qr_code
     else:
         return False
 
 
-def get_all_qrcode():
+def get_all_qrcode_service():
     """
     Функция возвращает все QRCode
     :return: Все QRCode

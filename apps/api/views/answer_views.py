@@ -11,7 +11,7 @@ from django.db import IntegrityError
 
 from ..serializers import AnswerSerializer
 
-from ..services.answer_service import get_answer_by_id, create_answer_by_review_id
+from ..services.answer_service import get_answer_by_id_service, create_answer_by_review_id_service
 
 
 @swagger_auto_schema(
@@ -76,7 +76,7 @@ def create_answer_view(request):
     user = request.user
 
     try:
-        answer = create_answer_by_review_id(
+        answer = create_answer_by_review_id_service(
             user=user,
             review_id=request.data['review_id'],
             body=request.data['body'],
@@ -136,7 +136,7 @@ def read_answer_view(request, pk):
     user = request.user
 
     try:
-        answer = get_answer_by_id(user=user, answer_id=pk)
+        answer = get_answer_by_id_service(user=user, answer_id=pk)
         if answer:
             serializer = AnswerSerializer(answer, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
@@ -205,7 +205,7 @@ def update_answer_view(request, pk):
     data = request.data
 
     try:
-        answer = get_answer_by_id(user=user, answer_id=pk)
+        answer = get_answer_by_id_service(user=user, answer_id=pk)
         if answer:
             serializer = AnswerSerializer(answer, many=False, partial=True, data=data)
             if serializer.is_valid():
@@ -259,7 +259,7 @@ def delete_answer_view(request, pk):
     user = request.user
 
     try:
-        answer = get_answer_by_id(user=user, answer_id=pk)
+        answer = get_answer_by_id_service(user=user, answer_id=pk)
         if answer:
             answer.delete()
             return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)

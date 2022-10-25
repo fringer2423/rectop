@@ -10,8 +10,9 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from ..serializers import ReviewSerializer
 
-from ..services.branch_service import get_branch_by_id
-from ..services.review_service import create_review_by_branch_id, get_review_by_id, get_all_review_by_company_id
+from ..services.branch_service import get_branch_by_id_service
+from ..services.review_service import create_review_by_branch_id_service, get_review_by_id_service, \
+    get_all_review_by_company_id_service
 
 
 @swagger_auto_schema(
@@ -80,7 +81,7 @@ def create_review_view(request):
     user = request.user
 
     try:
-        review = create_review_by_branch_id(
+        review = create_review_by_branch_id_service(
             user=user,
             branch_id=request.data['branch_id'],
             full_name=request.data['full_name'],
@@ -138,7 +139,7 @@ def read_review_view(request, pk):
     user = request.user
 
     try:
-        review = get_review_by_id(user=user, review_id=pk)
+        review = get_review_by_id_service(user=user, review_id=pk)
         if review:
             serializer = ReviewSerializer(review, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
@@ -186,7 +187,7 @@ def read_review_list_view(request, pk):
     user = request.user
 
     try:
-        branch = get_branch_by_id(user=user, branch_id=pk)
+        branch = get_branch_by_id_service(user=user, branch_id=pk)
         if branch:
             serializer = ReviewSerializer(branch.review_set, many=True)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
@@ -269,7 +270,7 @@ def update_review_view(request, pk):
     data = request.data
 
     try:
-        review = get_review_by_id(user=user, review_id=pk)
+        review = get_review_by_id_service(user=user, review_id=pk)
         if review:
             serializer = ReviewSerializer(review, many=False, partial=True, data=data)
             if serializer.is_valid():
@@ -323,7 +324,7 @@ def delete_review_view(request, pk):
     user = request.user
 
     try:
-        review = get_review_by_id(user=user, review_id=pk)
+        review = get_review_by_id_service(user=user, review_id=pk)
         if review:
             review.delete()
             return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
@@ -371,7 +372,7 @@ def read_review_list_all_view(request, pk):
     user = request.user
 
     try:
-        reviews = get_all_review_by_company_id(user=user, company_id=pk)
+        reviews = get_all_review_by_company_id_service(user=user, company_id=pk)
         if reviews:
             serializer = ReviewSerializer(reviews, many=True)
             return Response(data=serializer.data, status=status.HTTP_200_OK)

@@ -11,7 +11,7 @@ from drf_yasg.utils import swagger_auto_schema
 
 from ..serializers import MyTokenObtainPairSerializer, UserSerializerWithToken, UserSerializer
 
-from ..services.user_services import create_user_by_data
+from ..services.user_services import create_user_by_data_service
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -119,7 +119,7 @@ def register_user_view(request):
     """Контроллер для регистрации новых пользователей"""
     data = request.data
     try:
-        user = create_user_by_data(data)
+        user = create_user_by_data_service(data)
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
 

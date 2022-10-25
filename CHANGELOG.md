@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## [0.0.14] - 2022-10-25
+
+### Изменено
+
+- Обновление проекта и подключение python 3.11 [@fringer2423](https://github.com/fringer2423)
+- Refactor code
+
 ## [0.0.13] - 2022-10-21
 
 ### Добавлено 
@@ -17,7 +24,7 @@
 
 ### Добавлено
 
-- Компонент ListOfRec и css [AlexTrubkina](https://github.com/AlexTrubkina)
+- Компонент ListOfRec и css [@AlexTrubkina](https://github.com/AlexTrubkina)
 - CSS для кнопок 
 - Модели Rate и RateInfo [@fringer2423](https://github.com/fringer2423)
 - Обработка 401 статуса в авторизации
@@ -33,7 +40,7 @@
 - Connect fix [@fringer2423](https://github.com/fringer2423)
 - User model
 - Добавлено поле rate в UserSerializer
-- Компонент Prices.js (добавлена карусель) [AlexTrubkina](https://github.com/AlexTrubkina)
+- Компонент Prices.js (добавлена карусель) [@AlexTrubkina](https://github.com/AlexTrubkina)
 - Компоненты Prices и HomeScreen 
 - CSS buttons, main, purplecircle 
 
@@ -48,7 +55,7 @@
 
 - Connect relationship fix [@fringer2423](https://github.com/fringer2423)
 - Review serializer (add answer field)
-- Компоненты и css [AlexTrubkina](https://github.com/AlexTrubkina)
+- Компоненты и css [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.10] - 2022-10-18
 
@@ -61,7 +68,7 @@
 - Именование всех urls
 - Обработка 405 статуса
 - Обработка 422 статуса
-- Компоненты и css [AlexTrubkina](https://github.com/AlexTrubkina)
+- Компоненты и css [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 

@@ -10,7 +10,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from ..serializers import TelebotSerializer
 
-from ..services.telebot_service import create_telebot_by_branch_id, get_telebot_by_id
+from ..services.telebot_service import create_telebot_by_branch_id_service, get_telebot_by_id_service
 
 
 @swagger_auto_schema(
@@ -65,7 +65,7 @@ def create_telebot_view(request):
     user = request.user
 
     try:
-        telebot = create_telebot_by_branch_id(
+        telebot = create_telebot_by_branch_id_service(
             user=user,
             tg_id=request.data['tg_id'],
             branch_id=request.data['branch_id']
@@ -121,7 +121,7 @@ def read_telebot_view(request, pk):
     user = request.user
 
     try:
-        telebot = get_telebot_by_id(user, pk)
+        telebot = get_telebot_by_id_service(user, pk)
         if telebot:
             serializer = TelebotSerializer(telebot, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
@@ -183,7 +183,7 @@ def update_telebot_view(request, pk):
     data = request.data
 
     try:
-        telebot = get_telebot_by_id(user, pk)
+        telebot = get_telebot_by_id_service(user, pk)
         if telebot:
             serializer = TelebotSerializer(telebot, many=False, partial=True, data=data)
             if serializer.is_valid():
@@ -237,7 +237,7 @@ def delete_telebot_view(request, pk):
     user = request.user
 
     try:
-        telebot = get_telebot_by_id(user, pk)
+        telebot = get_telebot_by_id_service(user, pk)
         if telebot:
             telebot.delete()
             return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)

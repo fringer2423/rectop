@@ -11,7 +11,7 @@ from django.db import IntegrityError
 
 from ..serializers import QRCodeSerializer, AllQRCodesSerializer
 
-from ..services.qrcode_service import create_qrcode_by_branch_id, get_qrcode_by_id, get_all_qrcode
+from ..services.qrcode_service import create_qrcode_by_branch_id_service, get_qrcode_by_id_service, get_all_qrcode_service
 
 
 @swagger_auto_schema(
@@ -63,7 +63,7 @@ def create_qrcode_view(request):
 
     try:
         branch_id = request.data['branch_id']
-        qr_code = create_qrcode_by_branch_id(
+        qr_code = create_qrcode_by_branch_id_service(
             user=user,
             branch_id=branch_id
         )
@@ -121,7 +121,7 @@ def read_qrcode_view(request, pk):
     user = request.user
 
     try:
-        qr_code = get_qrcode_by_id(user=user, qrcode_id=pk)
+        qr_code = get_qrcode_by_id_service(user=user, qrcode_id=pk)
         if qr_code:
             serializer = QRCodeSerializer(qr_code, many=False, context={"request": request})
             return Response(data=serializer.data, status=status.HTTP_200_OK)
@@ -161,7 +161,7 @@ def read_all_qrcodes_view(request):
     """Контроллер для отдачи информации о всех QRCode"""
 
     try:
-        qr_code_list = get_all_qrcode()
+        qr_code_list = get_all_qrcode_service()
         serializer = AllQRCodesSerializer(qr_code_list, many=True, context={"request": request})
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 

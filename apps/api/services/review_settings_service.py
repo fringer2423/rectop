@@ -1,9 +1,9 @@
 from apps.core.models import ReviewSettings
 
-from .company_services import verification_owner_company
+from .company_services import verification_owner_company_service
 
 
-def create_review_settings_by_company_id(user, company_id, mask):
+def create_review_settings_by_company_id_service(user, company_id, mask):
     """
     Функция создает review settings если у пользователя есть доступ, иначе вернет False
     :param user: Текущий пользователь
@@ -11,7 +11,7 @@ def create_review_settings_by_company_id(user, company_id, mask):
     :param mask: Маска
     :return: review или False
     """
-    if verification_owner_company(user=user, company_id=company_id):
+    if verification_owner_company_service(user=user, company_id=company_id):
         review_settings = ReviewSettings.objects.create(
             company_id=company_id,
             mask=mask
@@ -21,7 +21,7 @@ def create_review_settings_by_company_id(user, company_id, mask):
         return False
 
 
-def get_review_settings_by_id(user, review_settings_id):
+def get_review_settings_by_id_service(user, review_settings_id):
     """
     Функция возвращает review settings если у пользователя есть доступ, иначе вернет False
     :param user: Текущий пользователь
@@ -29,7 +29,7 @@ def get_review_settings_by_id(user, review_settings_id):
     :return: review settings или False
     """
     review_settings = ReviewSettings.objects.get(pk=review_settings_id)
-    if verification_owner_company(user=user, company_id=review_settings.company_id):
+    if verification_owner_company_service(user=user, company_id=review_settings.company_id):
         return review_settings
     else:
         return False

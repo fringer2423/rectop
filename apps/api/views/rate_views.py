@@ -11,7 +11,7 @@ from django.db import IntegrityError
 
 from ..serializers import RateSerializer
 
-from ..services.rate_service import get_rate_by_user, create_rate_by_user
+from ..services.rate_service import get_rate_by_user_service, create_rate_by_user_service
 
 
 @swagger_auto_schema(
@@ -59,7 +59,7 @@ def create_rate_view(request):
     user = request.user
 
     try:
-        rate = create_rate_by_user(
+        rate = create_rate_by_user_service(
             user=user,
         )
         serializer = RateSerializer(rate, many=False)
@@ -110,7 +110,7 @@ def read_rate_view(request):
     user = request.user
 
     try:
-        rate = get_rate_by_user(user=user)
+        rate = get_rate_by_user_service(user=user)
         serializer = RateSerializer(rate, many=False)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
@@ -167,7 +167,7 @@ def update_rate_view(request):
     user = request.user
     data = request.data
     try:
-        rate = get_rate_by_user(user=user)
+        rate = get_rate_by_user_service(user=user)
         serializer = RateSerializer(rate, many=False, partial=True, data=data)
         if serializer.is_valid():
             serializer.save()
