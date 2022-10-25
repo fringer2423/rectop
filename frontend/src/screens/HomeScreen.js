@@ -12,6 +12,9 @@ import PurpleCircle from "../components/PurpleCircle";
 import Brands from "../components/Brands";
 import ListOfRec from "../components/ListOfRec";
 
+import dataForAccordion from "../components/dataForAccordion"
+
+
 
 const HomeScreen = () => {
     return (
@@ -191,7 +194,14 @@ const HomeScreen = () => {
             <Refprogram/>
             <div id="questions">
               <h1><b>Часто задаваемые вопросы</b></h1>
-              <Accordion/>
+              <div className="block-with-accordion">
+                  {
+                        dataForAccordion.map( ({ title, text }) => (
+                                <Accordion title={title} text={text} key={title}/>
+                          )
+                      )
+                  }
+              </div>
             </div>
    </div>
 

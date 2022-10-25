@@ -350,3 +350,11 @@ span{
   color: #4584FF;
   font-size: 35px;
 }
+
+#questions h1{
+    margin-bottom: 5%
+}
+
+.block-with-accordion {
+    margin-bottom: 7%
+}

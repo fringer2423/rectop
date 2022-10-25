@@ -2,9 +2,19 @@
 
 ## [Unreleased]
 
+## [0.0.14] - 2022-10-25
+
+### Добавлено
+
+- Компонент Accordion.js и css accordion.css [AlexTrubkina](https://github.com/AlexTrubkina)
+
+### Изменено
+
+- HomeScreen.js [AlexTrubkina](https://github.com/AlexTrubkina)
+
 ## [0.0.13] - 2022-10-21
 
-### Добавлено 
+### Добавлено
 
 - Docs for new service [@fringer2423](https://github.com/fringer2423)
 
@@ -18,7 +28,7 @@
 ### Добавлено
 
 - Компонент ListOfRec и css [AlexTrubkina](https://github.com/AlexTrubkina)
-- CSS для кнопок 
+- CSS для кнопок
 - Модели Rate и RateInfo [@fringer2423](https://github.com/fringer2423)
 - Обработка 401 статуса в авторизации
 - Rate info serializer
@@ -34,8 +44,8 @@
 - User model
 - Добавлено поле rate в UserSerializer
 - Компонент Prices.js (добавлена карусель) [AlexTrubkina](https://github.com/AlexTrubkina)
-- Компоненты Prices и HomeScreen 
-- CSS buttons, main, purplecircle 
+- Компоненты Prices и HomeScreen
+- CSS buttons, main, purplecircle
 
 
 ## [0.0.11] - 2022-10-19
