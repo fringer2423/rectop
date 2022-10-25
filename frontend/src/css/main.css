@@ -222,12 +222,6 @@
     margin-bottom: 10%
 }
 
-.img-in-purple-block{
-  position: relative;
-  width: 30%;
-  height: 50%;
-}
-
 .about-comp-text h2{
   margin-bottom: 5%;
   font-size: 24px;
@@ -269,6 +263,8 @@ span{
 .block-with-pic-two-text ul{
   margin-left: 5%
 }
+
+
 
 
 #why-rectop h1{
@@ -315,9 +311,7 @@ span{
     font-size: 24px;
 }
 
-#work{
-  margin-top: 10%
-}
+
 
 #work h2{
   font-size: 24px;

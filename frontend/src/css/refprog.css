@@ -40,7 +40,10 @@
     .ref-block p{
         font-size: 16px
     }
-    img{
+    .megaphone {
+        width: 20%;
+    }
+    .bell-ring {
         width: 20%;
     }
 }

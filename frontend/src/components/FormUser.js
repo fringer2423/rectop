@@ -14,7 +14,7 @@ const FormUser = () => {
         <input type="text"  className="input-form"/>
         <input type="text"  className="input-form"/>
       </div>
-      <button>Отправить заявку</button>
+      <button className="white-button">Отправить заявку</button>
     </div>
   )
 }

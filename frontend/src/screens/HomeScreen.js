@@ -112,18 +112,16 @@ const HomeScreen = () => {
                             на любом сервисе - его можно обменять на скидку/услугу у партнеров.
                         </p>
                     </div>
-                    {/*
-        <img
-            src="/images/mobileforpurpleblock.png"
-            className="img-in-purple-block"
-            />
-            */}
                     <img
                         src="/images/mobileforpurpleblockt.png"
-                        className="img-in-purple-block-mobile"/>
+                        className="img-in-purple-block-mobile"
+                    />
                 </div>
-
             </div>
+            <img
+                src="/images/mobileforpurpleblock.png"
+                className="img-in-purple-block"
+            />
 
             <div id="work">
                 <h1><b>Как мы <span>работаем?</span></b></h1>
@@ -198,8 +196,8 @@ const HomeScreen = () => {
               <h1><b>Часто задаваемые вопросы</b></h1>
               <div className="block-with-accordion">
                   {
-                        dataForAccordion.map( ({ title, text }) => (
-                                <Accordion title={title} text={text} key={title}/>
+                      dataForAccordion.map( ({ title, text }) => (
+                          <Accordion title={title} text={text} key={title}/>
                           )
                       )
                   }
