@@ -1,0 +1,20 @@
+.title-of-accordion{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    font-size: 24px;
+}
+
+.symbol-for-accordion{
+    font-size: 40px;
+    color: #4584FF
+}
+
+.body-for-accordion{
+    font-size: 16px;
+}
+
+.accordion{
+    margin-top: 5%;
+    margin-bottom: 10%
+}

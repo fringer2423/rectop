@@ -6,10 +6,12 @@ import "../css/buttons.css";
 import Prices from "../components/Prices";
 import FormUser from "../components/FormUser";
 import Refprogram from "../components/Refprogram";
-import Questions from "../components/Questions";
+import Accordion from "../components/Accordion";
+
 import PurpleCircle from "../components/PurpleCircle";
 import Brands from "../components/Brands";
-import ListOfRec from "../components/ListOfRec"
+import ListOfRec from "../components/ListOfRec";
+
 
 const HomeScreen = () => {
   return(
@@ -181,7 +183,7 @@ const HomeScreen = () => {
     <Refprogram/>
     <div id="questions">
       <h1><b>Часто задаваемые вопросы</b></h1>
-      <Questions/>
+      <Accordion/>
     </div>
    </div>
  )
