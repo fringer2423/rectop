@@ -3,16 +3,16 @@ import "../css/formuser.css"
 
 const FormUser = () => {
   return(
-    <div className="forform">
+    <div className="for-form">
       <h3>
         <b>Заполните форму заявки</b>
       </h3>
       <p><br/>Мы перезвоним в течение 10 минут</p>
-      <div className="inputsinform">
-        <input type="text"  className="inputform"/>
-        <input type="text"  className="inputform"/>
-        <input type="text"  className="inputform"/>
-        <input type="text"  className="inputform"/>
+      <div className="inputs-in-form">
+        <input type="text"  className="input-form"/>
+        <input type="text"  className="input-form"/>
+        <input type="text"  className="input-form"/>
+        <input type="text"  className="input-form"/>
       </div>
       <button>Отправить заявку</button>
     </div>

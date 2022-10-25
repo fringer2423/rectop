@@ -5,16 +5,16 @@ import "../css/purplecircle.css"
 const PurpleCircle = () =>{
   return(
     <div>
-      <div className="blackblock">
+      <div className="black-block">
         <h2>Клиенты</h2>
         <p>Делятся впечатлениями</p>
       </div>
-      <div className="purplecircle">
+      <div className="purple-circle">
         <h1><b>Rectop</b></h1>
         <hr/>
         <p>Мы сводим клиентов и компании вместе!</p>
       </div>
-      <div className="blackblockt">
+      <div className="black-blockt">
         <h2>Бизнес</h2>
         <p>Повышает репутацию</p>
       </div>

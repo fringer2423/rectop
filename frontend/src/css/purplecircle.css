@@ -1,4 +1,4 @@
-.purplecircle{
+.purple-circle{
   background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
   color: white;
   text-align: center;
@@ -7,7 +7,7 @@
   width: 82%
 }
 
-.blackblock{
+.black-block{
   background: #0F0F0F;
   border-radius: 15px;
   color: white;
@@ -19,15 +19,15 @@
   transform: rotate(-14deg);
 }
 
-.blackblock h2{
+.black-block h2{
   font-size: 18px;
 }
 
-.blackblock p{
+.black-block p{
   font-size: 13px;
 }
 
-.blackblockt{
+.black-blockt{
   background: #0F0F0F;
   border-radius: 15px;
   color: white;
@@ -39,26 +39,26 @@
   margin: 10% 10% 10% 20%;
 }
 
-.blackblockt h2{
+.black-blockt h2{
   font-size: 18px;
 }
 
-.blackblockt p{
+.black-blockt p{
   font-size: 13px;
 }
 
 @media (max-width:799px){
-  .purplecircle{
+  .purple-circle{
     border-radius: 50%;
     width: 300px;
     height: auto;
     padding: 10%;
     margin-left: 20%
   }
-  .blackblock{
+  .black-block{
     width: 30%
   }
-  .blackblockt{
+  .black-blockt{
     width: 30%;
     margin-left: 40%
   }
