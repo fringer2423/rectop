@@ -7,10 +7,12 @@
 ### Добавлено
 
 - Компонент Accordion.js и css accordion.css [AlexTrubkina](https://github.com/AlexTrubkina)
+- Добавлены картинки 
 
 ### Изменено
 
 - HomeScreen.js [AlexTrubkina](https://github.com/AlexTrubkina)
+- Refprogram.js и css
 
 ## [0.0.13] - 2022-10-21
 

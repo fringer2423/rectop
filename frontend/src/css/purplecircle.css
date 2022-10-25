@@ -50,16 +50,16 @@
 @media (max-width:799px){
   .purple-circle{
     border-radius: 50%;
-    width: 300px;
+    width: 68%;
     height: auto;
     padding: 10%;
     margin-left: 20%
   }
   .black-block{
-    width: 30%
+    width: 50%
   }
   .black-blockt{
-    width: 30%;
+    width: 50%;
     margin-left: 40%
   }
 }

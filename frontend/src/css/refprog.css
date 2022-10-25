@@ -2,12 +2,11 @@
   border-radius: 30px;
   border: 2px solid #4584FF;
   text-align: center;
-  padding: 5% 30% 3%;
-  margin-bottom: 10%;
+  padding: 5% 4% 3% 3%;
 }
 
 .ref-block h1{
-  margin-bottom: 5%;
+  margin-bottom: 4%;
   color: #4584FF;
 }
 
@@ -18,4 +17,38 @@
 
 .ref-block:hover > h1{
   color:white;
+}
+
+.ref-block p{
+    font-size: 24px
+}
+
+.bell-ring{
+    position: relative;
+    right: 7%;
+    bottom: -100px
+}
+
+.megaphone{
+    position: relative;
+    left: 87%;
+    bottom: 100px
+
+}
+
+@media (max-width: 1000px){
+    .ref-block p{
+        font-size: 16px
+    }
+    img{
+        width: 20%;
+    }
+}
+@media (max-width: 799px){
+    .bell-ring{
+        top: 200px
+    }
+    .megaphone{
+        bottom: 200px
+    }
 }
