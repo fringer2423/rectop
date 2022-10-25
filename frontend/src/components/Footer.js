@@ -5,7 +5,7 @@ import {LinkContainer} from 'react-router-bootstrap'
 
 function Footer() {
     return (
-      <Navbar fixed='bottom' bg="primary" variant="dark">
+      <Navbar bg="primary" variant="dark">
       <Container>
         <Nav className="me-auto">
           <Nav.Link href="/">Home</Nav.Link>

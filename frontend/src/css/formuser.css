@@ -11,14 +11,12 @@
 .inputsinform{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   justify-content: space-between;
 }
 
 .inputform{
   margin-left: 10%;
   margin-right: 10%;
-  margin-bottom: 2%;
   border-radius: 37.5px;
   border: 1px solid #CDCDCD;
   margin-bottom: 5%;
@@ -44,10 +42,7 @@
   color: #4584FF;
   border: 1px solid #4584FF;
   background: #F9F9F9;
-  padding-left: 3%;
-  padding-right: 3%;
-  padding-top: 2%;
-  padding-bottom: 2%;
+  padding: 2% 3%;
   font-size: 18px;
 }
 

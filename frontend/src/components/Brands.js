@@ -10,7 +10,7 @@ const Brands = () => {
     <div id="tabforicons">
       <div className="brandicon">
         <div className="iconincircle">
-          <img src="images/main/image49.png"/>
+          <img src="/images/main/image49.png"/>
         </div>
         <h5>Яндекс.Карты</h5>
         <p>55 млн чел./месяц</p>
@@ -71,7 +71,7 @@ const Brands = () => {
           <div className="slide">
             <div className="brandicon">
               <div className="iconincircle">
-                <img src="images/main/image49.png"/>
+                <img src="/images/main/image49.png"/>
               </div>
               <h5>Яндекс.Карты</h5>
               <p>55 млн чел./месяц</p>
@@ -89,7 +89,7 @@ const Brands = () => {
         <div className="slide">
           <div className="brandicon">
             <div className="iconincircle">
-              <img src="images/main/image51.png"/>
+              <img src="/images/main/image51.png"/>
             </div>
             <h5>2ГИС</h5>
             <p>30 млн чел./месяц</p>
@@ -107,7 +107,7 @@ const Brands = () => {
         <div className="slide">
           <div className="brandicon">
             <div className="iconincircle">
-              <img src="images/main/image54.png"/>
+              <img src="/images/main/image54.png"/>
             </div>
             <h5>Zoon</h5>
             <p>24 млн чел./месяц</p>
@@ -125,7 +125,7 @@ const Brands = () => {
         <div className="slide">
           <div className="brandicon">
             <div className="iconincircle">
-              <img src="images/main/image54.png"/>
+              <img src="/images/main/image54.png"/>
             </div>
             <h5>Yell</h5>
             <p>3 млн чел./месяц</p>
