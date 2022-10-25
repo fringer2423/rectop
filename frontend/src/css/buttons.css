@@ -1,4 +1,4 @@
-.blackbutton{
+.black-button{
   background: #F9F9F9;
   border: 1px solid #4584FF;
   border-radius: 40px;
@@ -7,124 +7,115 @@
 }
 
 
-.blackbutton:active{
+.black-button:active{
   background: #000000;
-  box-shadow: inset 0px 6px 10px #565656;
+  box-shadow: inset 0 6px 10px #565656;
   color: white;
 }
 
-.blackbutton:disabled{
-  bbackground: white;
+.black-button:disabled{
+  background: white;
   color: #EBEBEB;
   border: #EBEBEB
 }
 
-.fullb{
+.blue-button{
   border-radius: 40px;
   background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
   color: white;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  padding-left: 3%;
-  padding-right: 3%;
+  padding: 2% 3%;
   border-style: none;
   margin: 2%;
 }
 
-.fullb:hover {
+.blue-button:hover {
   background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-  box-shadow: 0px 20px 30px rgba(69, 104, 223, 0.3);
+  box-shadow: 0 20px 30px rgba(69, 104, 223, 0.3);
   border-radius: 40px;
 }
 
-.fullb:active {
+.blue-button:active {
   background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-  box-shadow: inset 0px 6px 10px #2E4BB3;
+  box-shadow: inset 0 6px 10px #2E4BB3;
 }
 
-.fullb:disabled {
+.blue-button:disabled {
   background: #EBEBEB;
   color: #23232399;
 }
 
-.whiteb{
+.white-button{
   border-radius: 40px;
   color: #4584FF;
   background: white;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  padding-left: 3%;
-  padding-right: 3%;
+  padding: 2% 3%;
   border: 2px solid #4584FF;
   margin: 2%;
 }
 
-.whiteb:hover{
+.white-button:hover{
   background: #4584FF;
   color: white;
 }
 
-.whiteb:active {
+.white-button:active {
   background: #4584FF;
-  box-shadow: inset 0px 6px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 6px 10px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   color: white;
 }
 
-.whiteb:disabled {
+.white-button:disabled {
     background: white;
     color: #EBEBEB;
     border: #EBEBEB
 }
 
 @media (min-width: 800px){
-  .fullb{
+  .blue-button{
     font-size: 20px
   }
 
-  .whiteb{
+  .white-button{
     font-size: 20px;
   }
 
-  .blackbutton{
+  .black-button{
     font-size: 20px;
   }
 }
 
 
 @media(max-width: 799px){
-  .fullb{
+  .blue-button{
     font-size: 16px;
   }
 
-  .whiteb{
+  .white-button{
     font-size: 16px;
   }
 
-  .blackbutton{
+  .black-button{
     font-size: 16px;
   }
 }
 
-.bforp{
+.button-for-rate{
   background: #F9F9F9;
   font-size: 20px;
   padding: 2%;
   border-width: inherit;
 }
 
-.bforp:hover {
+.button-for-rate:hover {
   background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   border-radius: 35px;
   color: white;
-  padding-left: 3%;
-  padding-right: 3%;
-  padding-top: 2%;
-  padding-bottom: 2%;
+  padding: 2% 3%;
 }
 
-.bforp:active {
+.button-for-rate:active {
   background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-  box-shadow: inset 0px 6px 10px #2E4BB3;
+  box-shadow: inset 0 6px 10px #2E4BB3;
 }

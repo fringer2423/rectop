@@ -72,7 +72,7 @@ from ..services.branch_service import get_branch_by_id
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_connect(request):
+def create_connect_view(request):
     """Контроллер для создания connect"""
     user = request.user
 
@@ -133,7 +133,7 @@ def create_connect(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_connect(request, pk):
+def read_connect_view(request, pk):
     """Контроллер для отдачи информации о connect"""
     user = request.user
 
@@ -181,7 +181,7 @@ def read_connect(request, pk):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_connect_list(request, pk):
+def read_connect_list_view(request, pk):
     """Контроллер для отдачи информации о всех connect company"""
     user = request.user
 
@@ -249,7 +249,7 @@ def read_connect_list(request, pk):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_connect(request, pk):
+def update_connect_view(request, pk):
     """Контроллер для обновления информации connect"""
     user = request.user
     data = request.data
@@ -304,7 +304,7 @@ def update_connect(request, pk):
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_connect(request, pk):
+def delete_connect_view(request, pk):
     """Контроллер для удаления информации connect"""
     user = request.user
 

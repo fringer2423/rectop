@@ -42,7 +42,7 @@ from ..services.branch_service import get_branch_by_id
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_branch_list(request, pk):
+def read_branch_list_view(request, pk):
     """Контроллер для отдачи информации о branch"""
     user = request.user
 
@@ -90,7 +90,7 @@ def read_branch_list(request, pk):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_branch(request, pk):
+def read_branch_view(request, pk):
     """Контроллер для отдачи информации о branch"""
     user = request.user
 

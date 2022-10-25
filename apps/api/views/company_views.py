@@ -48,7 +48,7 @@ from ..services.company_services import get_company_by_id, create_company_by_com
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_company(request):
+def create_company_view(request):
     """Контроллер для создания company"""
     user = request.user
 
@@ -95,7 +95,7 @@ def create_company(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_company(request, pk):
+def read_company_view(request, pk):
     """Контроллер для отдачи информации о company"""
     user = request.user
 
@@ -156,7 +156,7 @@ def read_company(request, pk):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_company(request, pk):
+def update_company_view(request, pk):
     """Контроллер для обновления информации company"""
     user = request.user
     data = request.data
@@ -212,7 +212,7 @@ def update_company(request, pk):
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_company(request, pk):
+def delete_company_view(request, pk):
     """Контроллер для удаления информации company"""
     user = request.user
 

@@ -9,9 +9,9 @@ from drf_yasg.utils import swagger_auto_schema
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 
-from ..serializers import QRCodeSerializer, AllQRCodesSerializer
+from ..serializers import RateSerializer
 
-from ..services.qrcode_service import create_qrcode_by_branch_id, get_qrcode_by_id, get_all_qrcode
+from ..services.rate_service import get_rate_by_user, create_rate_by_user
 
 
 @swagger_auto_schema(
@@ -22,13 +22,13 @@ from ..services.qrcode_service import create_qrcode_by_branch_id, get_qrcode_by_
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
             required=True,
-            description='branch_id'
-        )
+            description='Тип rate'
+        ),
     ],
     responses={
         201: openapi.Response(
-            description='QRCode создан',
-            schema=QRCodeSerializer
+            description='Rate создан',
+            schema=RateSerializer
         ),
         400: openapi.Response(
             description='Ошибка при создании'
@@ -39,49 +39,38 @@ from ..services.qrcode_service import create_qrcode_by_branch_id, get_qrcode_by_
         403: openapi.Response(
             description='Ошибка доступа'
         ),
-        404: openapi.Response(
-            description='Branch не найден'
-        ),
         405: openapi.Response(
             description='Данный метод запроса запрещен'
         ),
         406: openapi.Response(
-            description='QRCode уже создан для этого branch'
+            description='Rate уже создан для этого user'
         ),
         422: openapi.Response(
             description='Отсутствует обязательное поле'
         )
     },
-    operation_description='Данный endpoint создает QRCode по {id} branch, после возвращает информацию о QRCode.',
-    operation_summary='Создать QRCode'
+    operation_description='Данный endpoint создает rate по user, после возвращает информацию о rate.',
+    operation_summary='Создать rate'
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_qrcode_view(request):
-    """Контроллер для создания qrcode"""
+def create_rate_view(request):
+    """Контроллер для создания rate"""
     user = request.user
 
     try:
-        branch_id = request.data['branch_id']
-        qr_code = create_qrcode_by_branch_id(
+        rate = create_rate_by_user(
             user=user,
-            branch_id=branch_id
         )
-        if qr_code:
-            serializer = QRCodeSerializer(qr_code, many=False, context={"request": request})
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        else:
-            return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
-
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой branch не найден'}, status=status.HTTP_404_NOT_FOUND)
+        serializer = RateSerializer(rate, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except IntegrityError as e:
-        return Response(data={'detail': 'QRCode уже создан для этого branch'}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        return Response(data={'detail': 'Rate уже создан для этого user'}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -93,7 +82,7 @@ def create_qrcode_view(request):
     responses={
         200: openapi.Response(
             description='Запрос выполнен успешно',
-            schema=QRCodeSerializer
+            schema=RateSerializer
         ),
         400: openapi.Response(
             description='Ошибка при запросе'
@@ -105,31 +94,28 @@ def create_qrcode_view(request):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='QRCode не найден'
+            description='Rate не найден'
         ),
         405: openapi.Response(
             description='Данный метод запроса запрещен'
         )
     },
-    operation_description='Данный endpoint возвращает базовые данные о QRCode по {id}.',
-    operation_summary='Получить QRCode'
+    operation_description='Данный endpoint возвращает базовые данные о rate.',
+    operation_summary='Получить rate'
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_qrcode_view(request, pk):
-    """Контроллер для отдачи информации о QRCode"""
+def read_rate_view(request):
+    """Контроллер для отдачи информации о rate"""
     user = request.user
 
     try:
-        qr_code = get_qrcode_by_id(user=user, qrcode_id=pk)
-        if qr_code:
-            serializer = QRCodeSerializer(qr_code, many=False, context={"request": request})
-            return Response(data=serializer.data, status=status.HTTP_200_OK)
-        else:
-            return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
+        rate = get_rate_by_user(user=user)
+        serializer = RateSerializer(rate, many=False)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой QRCode не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой rate не найден'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -137,36 +123,62 @@ def read_qrcode_view(request, pk):
 
 
 @swagger_auto_schema(
-    method="get",
+    method="put",
+    manual_parameters=[
+        openapi.Parameter(
+            name='type',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=True,
+            description='Тип rate'
+        )
+    ],
     responses={
         200: openapi.Response(
             description='Запрос выполнен успешно',
-            schema=AllQRCodesSerializer
+            schema=RateSerializer
         ),
         400: openapi.Response(
             description='Ошибка при запросе'
         ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
         404: openapi.Response(
-            description='QRCode не найден'
+            description='Rate не найден'
         ),
         405: openapi.Response(
             description='Данный метод запроса запрещен'
+        ),
+        422: openapi.Response(
+            description='Отсутствует обязательное поле'
         )
     },
-    operation_description='Данный endpoint возвращает базовые данные о всех QRCode.',
-    operation_summary='Получить все QRCode'
+    operation_description='Данный endpoint изменяет информацию о rate.',
+    operation_summary='Изменить rate'
 )
-@api_view(['GET'])
-def read_all_qrcodes_view(request):
-    """Контроллер для отдачи информации о всех QRCode"""
-
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def update_rate_view(request):
+    """Контроллер для обновления информации rate"""
+    user = request.user
+    data = request.data
     try:
-        qr_code_list = get_all_qrcode()
-        serializer = AllQRCodesSerializer(qr_code_list, many=True, context={"request": request})
+        rate = get_rate_by_user(user=user)
+        serializer = RateSerializer(rate, many=False, partial=True, data=data)
+        if serializer.is_valid():
+            serializer.save()
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой QRCode не найден'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'detail': 'Такой rate не найден'}, status=status.HTTP_404_NOT_FOUND)
+
+    except KeyError as e:
+        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'

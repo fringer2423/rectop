@@ -61,7 +61,7 @@ from ..services.review_settings_service import get_review_settings_by_id, create
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_review_settings(request):
+def create_review_settings_view(request):
     """Контроллер для создания review settings """
     user = request.user
 
@@ -118,7 +118,7 @@ def create_review_settings(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_review_settings(request, pk):
+def read_review_settings_view(request, pk):
     """Контроллер для отдачи информации о review settings"""
     user = request.user
 
@@ -180,7 +180,7 @@ def read_review_settings(request, pk):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_review_settings(request, pk):
+def update_review_settings_view(request, pk):
     """Контроллер для обновления информации review settings"""
     user = request.user
     data = request.data
@@ -235,7 +235,7 @@ def update_review_settings(request, pk):
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_review_settings(request, pk):
+def delete_review_settings_view(request, pk):
     """Контроллер для удаления информации review settings"""
     user = request.user
 

@@ -1,4 +1,4 @@
-#tabforicons{
+#tab-for-icons{
   display:flex;
   flex-direction: row;
   text-align: center;
@@ -8,7 +8,7 @@
   gap: 9%
 }
 
-.iconincircle{
+.icon-in-circle{
   background: white;
   border: 20px solid #4584FF;
   border-radius: 100px;
@@ -16,13 +16,13 @@
 }
 
 @media (min-width:800px){
-  #sliderforicons{
+  #slider-for-icons{
     display: none;
   }
 }
 
 @media (max-width:799px){
-  #tabforicons{
+  #tab-for-icons{
     display: none;
   }
 
@@ -36,7 +36,7 @@
   justify-content: center;
 }
 
-#sliderforicons{
+#slider-for-icons{
   margin-top: 15%;
   margin-bottom: 10%;
   text-align: center;

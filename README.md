@@ -1,7 +1,5 @@
 # RecTop
 
-![Logo](frontend/public/images/whiteLogo.png)
-
 ## Система управления отзывами
 
 ### Документация:
@@ -11,4 +9,4 @@
 - Структура проекта [здесь](docs/struct_project.md)
 - Список изменений [здесь](CHANGELOG.md)
 
-### [v0.0.10]
+### [v0.0.13]

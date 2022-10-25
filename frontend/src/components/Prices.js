@@ -5,17 +5,17 @@ import Carousel from "react-bootstrap/Carousel"
 
 const Prices = (props) => {
   return(
-  <>
-    <div id="listofprices">
-    <div className="tableforprice">
+    <>
+    <div id="list-of-prices">
+    <div className="table-for-price">
       <h3><b>“Генератор отзывов”</b></h3>
       <h5>1 филиал</h5>
       <h4><b>1200 РУБ./МЕС.</b></h4>
-      <div className="blockintable">
+      <div className="block-in-table">
         <b>
         Производите сбор отзывов </b> от ваших клиентов при помощи QR-кодов на точках продаж
       </div>
-      <div className="textinprice">
+      <div className="text-in-price">
         Сбор отзывов
         <hr/>
         Оповещения в Телеграме
@@ -33,16 +33,16 @@ const Prices = (props) => {
         Формирование qr-кода
         <hr/>
       </div>
-      <button className="blackbutton"><b>Приобрести тариф</b></button>
+      <button className="black-button"><b>Приобрести тариф</b></button>
     </div>
-    <div className="tableforprice">
+    <div className="table-for-price">
       <h3><b>Какое-то название</b></h3>
       <h5>1 филиал</h5>
       <h4><b>1200 РУБ./МЕС.</b></h4>
-      <div className="blockintable">
+      <div className="block-in-table">
         <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
       </div>
-      <div className="textinprice">
+      <div className="text-in-price">
         Аналитика по филиалу
         <hr/>
         Постоянная актуализация
@@ -60,16 +60,16 @@ const Prices = (props) => {
         Подробная статистика
         <hr/>
       </div>
-      <button className="blackbutton"><b>Приобрести тариф</b></button>
+      <button className="black-button"><b>Приобрести тариф</b></button>
     </div>
-    <div className="tableforprice">
+    <div className="table-for-price">
       <h3><b>Репутация под ключ</b></h3>
       <h5>1 филиал</h5>
       <h4><b>ОТ 4000 РУБ./МЕС.</b></h4>
-      <div className="blockintable">
+      <div className="block-in-table">
         <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
       </div>
-        <div className="textinprice">
+        <div className="text-in-price">
         Генератор и агрегатор отзывов
         <hr/>
         Ответы на отзывы нашими специалистами
@@ -83,7 +83,7 @@ const Prices = (props) => {
         Аналитика в реальном времени
         <hr/>
       </div>
-      <button className="blackbutton"><b>Приобрести тариф</b></button>
+      <button className="black-button"><b>Приобрести тариф</b></button>
     </div>
     </div>
 
@@ -91,15 +91,15 @@ const Prices = (props) => {
     <div id="sliderforprices">
       <Carousel>
           <Carousel.Item>
-            <div className="tableforprice">
+            <div className="table-for-price">
               <h3><b>“Генератор отзывов”</b></h3>
               <h5>1 филиал</h5>
               <h4><b>1200 РУБ./МЕС.</b></h4>
-              <div className="blockintable">
+              <div className="block-in-table">
                 <b>
                 Производите сбор отзывов </b> от ваших клиентов при помощи QR-кодов на точках продаж
               </div>
-              <div className="textinprice">
+              <div className="text-in-price">
                 Сбор отзывов
                 <hr/>
                 Оповещения в Телеграме
@@ -117,18 +117,18 @@ const Prices = (props) => {
                 Формирование qr-кода
                 <hr/>
               </div>
-              <button className="blackbutton"><b>Приобрести тариф</b></button>
+              <button className="black-button"><b>Приобрести тариф</b></button>
             </div>
           </Carousel.Item>
           <Carousel.Item>
-            <div className="tableforprice">
+            <div className="table-for-price">
               <h3><b>Какое-то название</b></h3>
               <h5>1 филиал</h5>
               <h4><b>1200 РУБ./МЕС.</b></h4>
-              <div className="blockintable">
+              <div className="block-in-table">
                 <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
               </div>
-              <div className="textinprice">
+              <div className="text-in-price">
                 Аналитика по филиалу
                 <hr/>
                 Постоянная актуализация
@@ -146,18 +146,18 @@ const Prices = (props) => {
                 Подробная статистика
                 <hr/>
               </div>
-              <button className="blackbutton"><b>Приобрести тариф</b></button>
+              <button className="black-button"><b>Приобрести тариф</b></button>
             </div>
           </Carousel.Item>
           <Carousel.Item>
-            <div className="tableforprice">
+            <div className="table-for-price">
               <h3><b>Репутация под ключ</b></h3>
               <h5>1 филиал</h5>
               <h4><b>ОТ 4000 РУБ./МЕС.</b></h4>
-              <div className="blockintable">
+              <div className="block-in-table">
                 <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
               </div>
-                <div className="textinprice">
+                <div className="text-in-price">
                 Генератор и агрегатор отзывов
                 <hr/>
                 Ответы на отзывы нашими специалистами
@@ -170,7 +170,7 @@ const Prices = (props) => {
                 <hr/>
                 Аналитика в реальном времени
               </div>
-              <button className="blackbutton"><b>Приобрести тариф</b></button>
+              <button className="black-button"><b>Приобрести тариф</b></button>
             </div>
           </Carousel.Item>
       </Carousel>

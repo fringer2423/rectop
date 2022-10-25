@@ -1,5 +1,5 @@
 @media(min-width:800px){
-  #blockofrecs{
+  #block-of-recs{
     margin-top: 10%;
     margin-bottom: 10%;
     text-align: left;
@@ -21,11 +21,11 @@
     margin-bottom: 20%
   }
 
-  .blockofrec img{
+  .block-of-rec img{
     margin-left: 25%
   }
 
-  .forthrec{
+  .rec-last{
     margin-top: 100%
   }
 }
