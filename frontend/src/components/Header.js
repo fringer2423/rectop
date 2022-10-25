@@ -37,7 +37,7 @@ function Header() {
       <Nav.Link>Контакты</Nav.Link>
       <Nav.Link>FAQ</Nav.Link>
     </Nav>
-    <button className="whiteb">Регистрация</button>
+    <button className="white-button">Регистрация</button>
   </Navbar.Collapse>
 </Container>
 </Navbar>
