@@ -13,6 +13,8 @@ services:
       - .env.dev
     depends_on:
       - rectop-db
+      - redis
+
   rectop-db:
     image: postgres:14-alpine
     container_name: rectop-db
@@ -22,6 +24,7 @@ services:
       - POSTGRES_USER=rectop
       - POSTGRES_PASSWORD=rectop
       - POSTGRES_DB=rectop_dev
+
   frontend:
     build:
       context: ./frontend
@@ -34,5 +37,38 @@ services:
       - ./frontend:/usr/src/app/frontend
       - /usr/src/app/frontend/node_modules
 
+  redis:
+    container_name: redis
+    image: redis:alpine
+
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=mypass
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - rabbitmq_go_net
+
 volumes:
   postgres_data:
+
+networks:
+  rabbitmq_go_net:
+    driver: bridge

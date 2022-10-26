@@ -6,10 +6,13 @@
 
 ### Добавлено
 
-- Проект упакован в Docker
+- Проект упакован в Docker [@fringer2423](https://github.com/fringer2423)
 - Отдельный сервис с PostgreSQL
 - Отдельный сервис с Backend 
 - Отдельный сервис с Frontend
+- Отдельный сервис с RabbitMQ
+- Отдельный сервис с Redis
+- Отдельный сервис с Redis commander
 
 ## [0.0.14] - 2022-10-25
 
