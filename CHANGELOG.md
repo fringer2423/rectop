@@ -17,7 +17,7 @@
 ### Изменено
 
 - Локальные dev конфигурации [@fringer2423](https://github.com/fringer2423)
-- 
+- fix minimatch ReDoS vulnerability
 
 ## [0.0.14] - 2022-10-25
 
