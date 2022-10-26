@@ -1,0 +1,38 @@
+version: '3.10'
+
+services:
+  rectop-backend:
+    build: ./
+    container_name: rectop-backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./:/usr/src/app/api/
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env.dev
+    depends_on:
+      - rectop-db
+  rectop-db:
+    image: postgres:14-alpine
+    container_name: rectop-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=rectop
+      - POSTGRES_PASSWORD=rectop
+      - POSTGRES_DB=rectop_dev
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    container_name: frontend
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./frontend:/usr/src/app/frontend
+      - /usr/src/app/frontend/node_modules
+
+volumes:
+  postgres_data:
