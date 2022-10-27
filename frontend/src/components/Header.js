@@ -8,17 +8,24 @@ import { Navbar,
         NavDropdown,
         NavbarCollapse } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Registration from "../components/Registration";
+import LogIn from "../components/LogIn";
+import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons';
 
 import "../css/main.css"
 
 function Header() {
 
     const [show, setShow] = useState(false);
+    const [showlogin, setShowlogin] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const handleCloseLogIn = () => setShowlogin(false);
+    const handleShowLogIn = () => setShowlogin(true);
 
     return (
     <>
@@ -45,10 +52,12 @@ function Header() {
                       <Nav.Link >FAQ</Nav.Link>
                     </Nav>
                  <button className="white-button" onClick={handleShow}>Регистрация</button>
+                 <button className="button-log-in" onClick={handleShowLogIn}><FontAwesomeIcon icon={faCircleArrowRight} className="arrow-in-button"/></button>
              </Navbar.Collapse>
          </Container>
        </Navbar>
        < Registration show={show} handleClose={handleClose}/>
+       < LogIn show={showlogin} handleClose={handleCloseLogIn}/>
    </>
 
 
