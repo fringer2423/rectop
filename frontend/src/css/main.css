@@ -44,7 +44,7 @@
     width: 50%;
     margin-top: 10%;
   }
-  .first-block{
+  #first-block{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -106,15 +106,6 @@
   }
 }
 
-
-.get-reports-text{
-    text-align: center;
-    padding-left: 10%;
-    padding-right: 10%;
-    margin-bottom: 3%
-}
-
-
 @media(max-width: 799px){
   #body{
     margin-left: 3%;
@@ -126,7 +117,7 @@
   #about{
     margin-top: 10%
   }
-  .first-block{
+  #first-block{
     margin-top: 200px;
     text-align: center;
   }
@@ -265,7 +256,20 @@ span{
 }
 
 
+.get-reports-text{
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 3%
+}
 
+.first-block-text h2{
+    font-size: 24px
+}
+
+.first-block-text{
+    margin-top: 10%
+}
 
 #why-rectop h1{
   text-align: center;

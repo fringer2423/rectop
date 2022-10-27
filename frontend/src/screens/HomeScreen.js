@@ -19,7 +19,7 @@ import dataForAccordion from "../components/dataForAccordion"
 const HomeScreen = () => {
     return (
         <div id="body">
-            <div className="first-block">
+            <div id="first-block">
                 <div className="first-block-text">
                     <h2> Негативные отзывы теперь в прошлом!</h2>
                     <h1><b> <span>RecTOP</span> - инновационный сервис</b> <i>взаимодействия с клиентами.</i></h1>

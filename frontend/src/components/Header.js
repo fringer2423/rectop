@@ -30,12 +30,12 @@ function Header() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto w-100 justify-content-between mx-4">
-                  <Nav.Link>Главная</Nav.Link>
-                  <Nav.Link>О нас</Nav.Link>
-                  <Nav.Link>Наши услуги</Nav.Link>
-                  <Nav.Link>Тарифы</Nav.Link>
-                  <Nav.Link>Контакты</Nav.Link>
-                  <Nav.Link>FAQ</Nav.Link>
+                  <Nav.Link href="/">Главная</Nav.Link>
+                  <Nav.Link >О нас</Nav.Link>
+                  <Nav.Link >Наши услуги</Nav.Link>
+                  <Nav.Link >Тарифы</Nav.Link>
+                  <Nav.Link >Контакты</Nav.Link>
+                  <Nav.Link >FAQ</Nav.Link>
                 </Nav>
              <button className="white-button">Регистрация</button>
          </Navbar.Collapse>
