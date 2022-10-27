@@ -11,8 +11,8 @@ from django.db import IntegrityError
 
 from ..serializers import ConnectSerializer
 
-from ..services.connect_service import create_connect_by_branch_id, get_connect_by_id
-from ..services.branch_service import get_branch_by_id
+from ..services.connect_service import create_connect_by_branch_id_service, get_connect_by_id_service
+from ..services.branch_service import get_branch_by_id_service
 
 
 @swagger_auto_schema(
@@ -78,7 +78,7 @@ def create_connect_view(request):
 
     try:
         branch_id = request.data['branch_id']
-        connect = create_connect_by_branch_id(
+        connect = create_connect_by_branch_id_service(
             user=user,
             connect_type=request.data['type'],
             key=request.data['key'],
@@ -138,7 +138,7 @@ def read_connect_view(request, pk):
     user = request.user
 
     try:
-        telebot = get_connect_by_id(user=user, connect_id=pk)
+        telebot = get_connect_by_id_service(user=user, connect_id=pk)
         if telebot:
             serializer = ConnectSerializer(telebot, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
@@ -186,7 +186,7 @@ def read_connect_list_view(request, pk):
     user = request.user
 
     try:
-        branch = get_branch_by_id(user=user, branch_id=pk)
+        branch = get_branch_by_id_service(user=user, branch_id=pk)
         if branch:
             serializer = ConnectSerializer(branch.connect_set, many=True)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
@@ -255,7 +255,7 @@ def update_connect_view(request, pk):
     data = request.data
 
     try:
-        connect = get_connect_by_id(user, pk)
+        connect = get_connect_by_id_service(user, pk)
         if connect:
             serializer = ConnectSerializer(connect, many=False, partial=True, data=data)
             if serializer.is_valid():
@@ -309,7 +309,7 @@ def delete_connect_view(request, pk):
     user = request.user
 
     try:
-        connect = get_connect_by_id(user, pk)
+        connect = get_connect_by_id_service(user, pk)
         if connect:
             connect.delete()
             return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)

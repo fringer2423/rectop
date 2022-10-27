@@ -1,4 +1,4 @@
-from local_settings import *
+import os
 
 from datetime import timedelta
 from pathlib import Path
@@ -12,6 +12,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ==============================================================================
 # APPS SETTINGS
 # ==============================================================================
+
+SECRET_KEY = os.environ.get("SECRET_KEY", default='django-insecure-v6$@j@0-xcje+wg-)g*!0dm!tfdghf^&%3dfg%+f&5nn^fi0')
+
+DEBUG = int(os.environ.get("DEBUG", default=1))
+
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default='localhost 127.0.0.1 [::1]').split(" ")
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -120,11 +126,22 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # ==============================================================================
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.environ.get("SQL_USER", "user"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {

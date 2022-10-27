@@ -10,7 +10,8 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from ..serializers import ReviewSettingsSerializer
 
-from ..services.review_settings_service import get_review_settings_by_id, create_review_settings_by_company_id
+from ..services.review_settings_service import get_review_settings_by_id_service, \
+    create_review_settings_by_company_id_service
 
 
 @swagger_auto_schema(
@@ -67,7 +68,7 @@ def create_review_settings_view(request):
 
     try:
         company_id = request.data['company_id']
-        review_settings = create_review_settings_by_company_id(
+        review_settings = create_review_settings_by_company_id_service(
             user=user,
             mask=request.data['mask'],
             company_id=company_id
@@ -123,7 +124,7 @@ def read_review_settings_view(request, pk):
     user = request.user
 
     try:
-        review_settings = get_review_settings_by_id(user=user, review_settings_id=pk)
+        review_settings = get_review_settings_by_id_service(user=user, review_settings_id=pk)
         if review_settings:
             serializer = ReviewSettingsSerializer(review_settings, many=False)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
@@ -186,7 +187,7 @@ def update_review_settings_view(request, pk):
     data = request.data
 
     try:
-        review_settings = get_review_settings_by_id(user, pk)
+        review_settings = get_review_settings_by_id_service(user, pk)
         if review_settings:
             serializer = ReviewSettingsSerializer(review_settings, many=False, partial=True, data=data)
             if serializer.is_valid():
@@ -240,7 +241,7 @@ def delete_review_settings_view(request, pk):
     user = request.user
 
     try:
-        review_settings = get_review_settings_by_id(user, pk)
+        review_settings = get_review_settings_by_id_service(user, pk)
         if review_settings:
             review_settings.delete()
             return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)

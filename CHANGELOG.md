@@ -2,6 +2,23 @@
 
 ## [Unreleased]
 
+## [0.0.15] - 2022-10-26
+
+### Добавлено
+
+- Проект упакован в Docker [@fringer2423](https://github.com/fringer2423)
+- Отдельный сервис с PostgreSQL
+- Отдельный сервис с Backend 
+- Отдельный сервис с Frontend
+- Отдельный сервис с RabbitMQ
+- Отдельный сервис с Redis
+- Отдельный сервис с Redis commander
+
+### Изменено
+
+- Локальные dev конфигурации [@fringer2423](https://github.com/fringer2423)
+- fix minimatch ReDoS vulnerability
+
 ## [0.0.14] - 2022-10-25
 
 ### Добавлено
@@ -11,6 +28,8 @@
 
 ### Изменено
 
+- Обновление проекта и подключение python 3.11 [@fringer2423](https://github.com/fringer2423)
+- Refactor code
 - HomeScreen.js [AlexTrubkina](https://github.com/AlexTrubkina)
 - Refprogram.js и css
 
@@ -29,8 +48,8 @@
 
 ### Добавлено
 
-- Компонент ListOfRec и css [AlexTrubkina](https://github.com/AlexTrubkina)
-- CSS для кнопок
+- Компонент ListOfRec и css [@AlexTrubkina](https://github.com/AlexTrubkina)
+- CSS для кнопок 
 - Модели Rate и RateInfo [@fringer2423](https://github.com/fringer2423)
 - Обработка 401 статуса в авторизации
 - Rate info serializer
@@ -45,10 +64,9 @@
 - Connect fix [@fringer2423](https://github.com/fringer2423)
 - User model
 - Добавлено поле rate в UserSerializer
-- Компонент Prices.js (добавлена карусель) [AlexTrubkina](https://github.com/AlexTrubkina)
-- Компоненты Prices и HomeScreen
-- CSS buttons, main, purplecircle
-
+- Компонент Prices.js (добавлена карусель) [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Компоненты Prices и HomeScreen 
+- CSS buttons, main, purplecircle 
 
 ## [0.0.11] - 2022-10-19
 
@@ -60,7 +78,7 @@
 
 - Connect relationship fix [@fringer2423](https://github.com/fringer2423)
 - Review serializer (add answer field)
-- Компоненты и css [AlexTrubkina](https://github.com/AlexTrubkina)
+- Компоненты и css [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.10] - 2022-10-18
 
@@ -73,7 +91,7 @@
 - Именование всех urls
 - Обработка 405 статуса
 - Обработка 422 статуса
-- Компоненты и css [AlexTrubkina](https://github.com/AlexTrubkina)
+- Компоненты и css [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 

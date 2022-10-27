@@ -10,7 +10,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from ..serializers import RateInfoSerializer
 
-from ..services.rate_info_service import get_rate_info
+from ..services.rate_info_service import get_rate_info_service
 
 
 @swagger_auto_schema(
@@ -42,7 +42,7 @@ def read_rate_info_view(request):
     user = request.user
 
     try:
-        rate_info = get_rate_info()
+        rate_info = get_rate_info_service()
         serializer = RateInfoSerializer(rate_info, many=False)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 

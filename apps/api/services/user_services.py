@@ -3,7 +3,7 @@ from django.contrib.auth.hashers import make_password
 from apps.core.models import User
 
 
-def create_user_by_data(data):
+def create_user_by_data_service(data):
     """
     Функция создает нового пользователя по данным из request
     :param data: request.data
