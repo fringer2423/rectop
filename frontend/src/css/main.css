@@ -44,11 +44,12 @@
     width: 50%;
     margin-top: 10%;
   }
-  .first-block{
+  #first-block{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
+
   #about{
     display: flex;
     flex-direction: row;
@@ -60,12 +61,14 @@
     margin-top: 10%;
     justify-content: center;
   }
+
   .purple-block{
     background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
     border-radius: 30px;
     color: white;
     margin-top: 10%;
-    padding-top: 5%;
+    padding: 5% 4% 3% 5%;
+
   }
 
   .text-in-pb{
@@ -103,14 +106,6 @@
   }
 }
 
-@media (min-width:1401px){
-  .get-reports p {
-    text-align: center;
-    padding-left: 30%;
-    padding-right: 30%;
-  }
-}
-
 @media(max-width: 799px){
   #body{
     margin-left: 3%;
@@ -122,7 +117,7 @@
   #about{
     margin-top: 10%
   }
-  .first-block{
+  #first-block{
     margin-top: 200px;
     text-align: center;
   }
@@ -134,7 +129,8 @@
     display: flex;
     flex-direction: column;
     margin-top: 10%;
-    margin-bottom: 10%
+    margin-bottom: 10%;
+
   }
 
   .purple-block{
@@ -152,6 +148,7 @@
   .purple-block b{
     font-size: 20px;
   }
+
   .purple-block p{
     font-size: 14px;
     margin-bottom: 10%;
@@ -216,12 +213,6 @@
     margin-bottom: 10%
 }
 
-.img-in-purple-block{
-  position: relative;
-  width: 30%;
-  height: 50%;
-}
-
 .about-comp-text h2{
   margin-bottom: 5%;
   font-size: 24px;
@@ -265,6 +256,21 @@ span{
 }
 
 
+.get-reports-text{
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 3%
+}
+
+.first-block-text h2{
+    font-size: 24px
+}
+
+.first-block-text{
+    margin-top: 10%
+}
+
 #why-rectop h1{
   text-align: center;
   margin-top: 5%;
@@ -304,14 +310,12 @@ span{
   margin-bottom: 2%;
 }
 
-.get-reports h2{
-  font-size: 24px;
-  text-align: center;
+.get-reports-equality{
+    text-align: center;
+    font-size: 24px;
 }
 
-#work{
-  margin-top: 10%
-}
+
 
 #work h2{
   font-size: 24px;
@@ -349,4 +353,12 @@ span{
 .text-contacts li::marker{
   color: #4584FF;
   font-size: 35px;
+}
+
+#questions h1{
+    margin-bottom: 5%
+}
+
+.block-with-accordion {
+    margin-bottom: 7%
 }

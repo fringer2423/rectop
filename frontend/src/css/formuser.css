@@ -55,7 +55,7 @@
 .for-form:hover > .inputs-in-form input{
   border-color: #4584FF;
 }
-@media (max-width:500px){
+@media (max-width:799px){
   .for-form{
     width: 100%
   }
