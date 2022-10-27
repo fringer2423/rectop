@@ -18,7 +18,8 @@
   }
 
   .rec h3{
-    margin-bottom: 20%
+    margin-bottom: 20%;
+    font-size: 40px
   }
 
   .block-of-rec img{
@@ -28,8 +29,42 @@
   .rec-last{
     margin-top: 100%
   }
+  .arrow-for-mobile{
+      display: none;
+  }
 }
 
 .rec h3{
   color: #4584FF
+}
+
+@media(max-width:799px){
+    #block-of-recs{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        justify-content: space-between;
+    }
+    .block-of-rec{
+        display: flex;
+        flex-direction: row;
+    }
+    .rec p{
+        font-size: 14px;
+    }
+    .rec h3{
+        font-size: 32px;
+    }
+    .rec{
+        width: 30%;
+        margin-left: 17%;
+        margin-right: 15%
+    }
+    .arrow{
+        display: none
+    }
+    .rec-last{
+      margin-left: 150%;
+      width: 100%
+    }
 }

@@ -12,6 +12,7 @@ import PurpleCircle from "../components/PurpleCircle";
 import Brands from "../components/Brands";
 import ListOfRec from "../components/ListOfRec";
 
+
 import dataForAccordion from "../components/dataForAccordion"
 
 
