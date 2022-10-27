@@ -27,13 +27,7 @@
   }
 }
 
-@media (max-width: 1800px) {
-  #body {
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 15%;
-  }
-}
+
 
 @media (min-width: 800px){
   .img-in-purple-block-mobile{
@@ -130,6 +124,8 @@
     flex-direction: column;
     margin-top: 10%;
     margin-bottom: 10%;
+    margin-left: 10%;
+    width: 125%;
 
   }
 
@@ -176,15 +172,16 @@
   }
   .why-block{
     text-align: center;
-    width: 60%
+    width: 60%;
+  }
+  .why-block img{
+      position: relative;
+      top: -30px;
+      margin-bottom: -30px;
+      width: 30%
   }
 }
 
-@media (max-width:450px){
-  #body{
-    margin-left: 3%;
-  }
-}
 
 
 @media(max-width:1300px){
@@ -199,7 +196,7 @@
 
 @media(max-width:1099px){
   #body{
-    margin-left: 10%;
+    margin-left: 5%;
     margin-right: 1%
   }
 }
