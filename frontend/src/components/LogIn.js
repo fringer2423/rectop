@@ -15,45 +15,24 @@ import "../css/registration.css"
 
 
 
-const Registration = ({ show, handleClose }) => {
+const LogIn = ({ show, handleClose }) => {
     return (
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title><b>Регистрация</b></Modal.Title>
+          <Modal.Title><b>Вход</b></Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <InputGroup className="mt-5 mb-4 w-75 ms-5">
-                <Form.Control
-                  placeholder="Имя"
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
-                />
-            </InputGroup>
-            <InputGroup className="mb-4 w-75 ms-5">
-                <Form.Control
-                  placeholder="Фамилия"
-                  aria-label="Surname"
-                  aria-describedby="basic-addon1"
-                />
-            </InputGroup>
-            <InputGroup className="mb-5 w-75 ms-5">
+            <InputGroup className="mt-5 mb-3 w-75 ms-5">
                 <Form.Control
                   placeholder="Почта"
                   aria-label="Post"
                   aria-describedby="basic-addon1"
                 />
             </InputGroup>
-            <InputGroup className=" mb-4 w-75 ms-5">
+            <InputGroup className=" mb-5 w-75 ms-5">
                 <Form.Control
                   placeholder="Пароль"
                   aria-label="Password"
-                  aria-describedby="basic-addon1"
-                />
-            </InputGroup>
-            <InputGroup className="mb-5 w-75 ms-5">
-                <Form.Control
-                  placeholder="Повторите пароль"
-                  aria-label="PasswordAgain"
                   aria-describedby="basic-addon1"
                 />
             </InputGroup>
@@ -68,11 +47,11 @@ const Registration = ({ show, handleClose }) => {
             Закрыть
           </button>
           <button className="blue-button" onClick={handleClose}>
-            Регистрация
+            Войти
           </button>
         </Modal.Footer>
       </Modal>
     )
 }
 
-export default Registration;
+export default LogIn;

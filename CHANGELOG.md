@@ -8,7 +8,12 @@
 
 - Отдельный сервис с Celery [@fringer2423](https://github.com/fringer2423)
 - Отдельный сервис с Flower
-- Возможность балансировки задач между всеми workers 
+- Возможность балансировки задач между всеми workers
+- Компоненты LogIn и Registration [AlexTrubkina](https://github.com/AlexTrubkina)
+
+### Изменено
+
+- HomeScreen.js и css
 
 ## [0.0.15] - 2022-10-26
 
@@ -16,7 +21,7 @@
 
 - Проект упакован в Docker [@fringer2423](https://github.com/fringer2423)
 - Отдельный сервис с PostgreSQL
-- Отдельный сервис с Backend 
+- Отдельный сервис с Backend
 - Отдельный сервис с Frontend
 - Отдельный сервис с RabbitMQ
 - Отдельный сервис с Redis
@@ -32,7 +37,7 @@
 ### Добавлено
 
 - Компонент Accordion.js и css accordion.css [AlexTrubkina](https://github.com/AlexTrubkina)
-- Добавлены картинки 
+- Добавлены картинки
 
 ### Изменено
 
@@ -57,7 +62,7 @@
 ### Добавлено
 
 - Компонент ListOfRec и css [@AlexTrubkina](https://github.com/AlexTrubkina)
-- CSS для кнопок 
+- CSS для кнопок
 - Модели Rate и RateInfo [@fringer2423](https://github.com/fringer2423)
 - Обработка 401 статуса в авторизации
 - Rate info serializer
@@ -73,8 +78,8 @@
 - User model
 - Добавлено поле rate в UserSerializer
 - Компонент Prices.js (добавлена карусель) [@AlexTrubkina](https://github.com/AlexTrubkina)
-- Компоненты Prices и HomeScreen 
-- CSS buttons, main, purplecircle 
+- Компоненты Prices и HomeScreen
+- CSS buttons, main, purplecircle
 
 ## [0.0.11] - 2022-10-19
 
