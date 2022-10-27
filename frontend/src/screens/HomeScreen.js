@@ -105,6 +105,11 @@ const HomeScreen = () => {
 
                 <Brands/>
 
+                <img
+                    src="/images/mobileforpurpleblock.png"
+                    className="img-in-purple-block"
+                />
+
                 <div className="purple-block">
                     <div className="text-in-pb">
                         <h2><b>Сбор отзывов по QR-коду при посещении вашего заведения онлайн/оффлайн</b></h2>
@@ -119,11 +124,6 @@ const HomeScreen = () => {
                     />
                 </div>
             </div>
-            <img
-                src="/images/mobileforpurpleblock.png"
-                className="img-in-purple-block"
-            />
-
             <div id="work">
                 <h1><b>Как мы <span>работаем?</span></b></h1>
                 <h2>Сервис “Генератор отзывов”</h2>

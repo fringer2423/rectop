@@ -13,7 +13,8 @@ function App() {
         <Router>
             <Header/>
             <Container>
-                <Route path='/' component={HomeScreen} exact/>
+                <Route path='/' component={HomeScreen} />
+
             </Container>
             <Footer/>
         </Router>

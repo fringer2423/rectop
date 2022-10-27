@@ -64,12 +64,12 @@ const Registration = ({ show, handleClose }) => {
             </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <button className="white-button" onClick={handleClose}>
             Закрыть
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
+          </button>
+          <button className="blue-button" onClick={handleClose}>
             Регистрация
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
     )
