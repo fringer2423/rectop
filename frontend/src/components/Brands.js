@@ -125,14 +125,14 @@ const Brands = () => {
         <div className="slide">
           <div className="brandicon">
             <div className="icon-in-circle">
-              <img src="/images/main/image54.png"/>
+              <img src="/images/main/image56.png"/>
             </div>
             <h5>Yell</h5>
             <p>3 млн чел./месяц</p>
           </div>
           <div className="brandicon">
             <div className="icon-in-circle">
-              <img src="/images/main/image55.png"/>
+              <img src="/images/main/image57.png"/>
             </div>
             <h5>Flamp</h5>
             <p>50 млн чел./месяц</p>

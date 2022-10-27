@@ -23,14 +23,21 @@
 
 ## [0.0.14] - 2022-10-25
 
+### Добавлено
+
+- Компонент Accordion.js и css accordion.css [AlexTrubkina](https://github.com/AlexTrubkina)
+- Добавлены картинки 
+
 ### Изменено
 
 - Обновление проекта и подключение python 3.11 [@fringer2423](https://github.com/fringer2423)
 - Refactor code
+- HomeScreen.js [AlexTrubkina](https://github.com/AlexTrubkina)
+- Refprogram.js и css
 
 ## [0.0.13] - 2022-10-21
 
-### Добавлено 
+### Добавлено
 
 - Docs for new service [@fringer2423](https://github.com/fringer2423)
 
@@ -62,7 +69,6 @@
 - Компонент Prices.js (добавлена карусель) [@AlexTrubkina](https://github.com/AlexTrubkina)
 - Компоненты Prices и HomeScreen 
 - CSS buttons, main, purplecircle 
-
 
 ## [0.0.11] - 2022-10-19
 

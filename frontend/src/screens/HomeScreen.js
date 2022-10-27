@@ -6,15 +6,20 @@ import "../css/buttons.css";
 import Prices from "../components/Prices";
 import FormUser from "../components/FormUser";
 import Refprogram from "../components/Refprogram";
-import Questions from "../components/Questions";
+import Accordion from "../components/Accordion";
+
 import PurpleCircle from "../components/PurpleCircle";
 import Brands from "../components/Brands";
-import ListOfRec from "../components/ListOfRec"
+import ListOfRec from "../components/ListOfRec";
+
+import dataForAccordion from "../components/dataForAccordion"
+
+
 
 const HomeScreen = () => {
     return (
         <div id="body">
-            <div className="first-block">
+            <div id="first-block">
                 <div className="first-block-text">
                     <h2> Негативные отзывы теперь в прошлом!</h2>
                     <h1><b> <span>RecTOP</span> - инновационный сервис</b> <i>взаимодействия с клиентами.</i></h1>
@@ -90,10 +95,12 @@ const HomeScreen = () => {
                 <h1>
                     <b>Получайте <span>положительные</span> отзывы</b>
                 </h1>
-                <p>
+                <div className="get-reports-text">
                     Наша команда ежедневно просматривает и анализирует крупнейшие популярные сервисы по сбору отзывов
-                </p>
-                <h2>Больше положительных отзывов = Больше доверия = Больше продаж</h2>
+                </div>
+                <div className="get-reports-equality">
+                    Больше положительных отзывов = Больше доверия = Больше продаж
+                </div>
 
                 <Brands/>
 
@@ -105,18 +112,16 @@ const HomeScreen = () => {
                             на любом сервисе - его можно обменять на скидку/услугу у партнеров.
                         </p>
                     </div>
-                    {/*
-        <img
-            src="/images/mobileforpurpleblock.png"
-            className="img-in-purple-block"
-            />
-            */}
                     <img
                         src="/images/mobileforpurpleblockt.png"
-                        className="img-in-purple-block-mobile"/>
+                        className="img-in-purple-block-mobile"
+                    />
                 </div>
-
             </div>
+            <img
+                src="/images/mobileforpurpleblock.png"
+                className="img-in-purple-block"
+            />
 
             <div id="work">
                 <h1><b>Как мы <span>работаем?</span></b></h1>
@@ -188,11 +193,19 @@ const HomeScreen = () => {
             </div>
             <Refprogram/>
             <div id="questions">
-                <h1><b>Часто задаваемые вопросы</b></h1>
-                <Questions/>
+              <h1><b>Часто задаваемые вопросы</b></h1>
+              <div className="block-with-accordion">
+                  {
+                      dataForAccordion.map( ({ title, text }) => (
+                          <Accordion title={title} text={text} key={title}/>
+                          )
+                      )
+                  }
+              </div>
             </div>
-        </div>
-    )
+   </div>
+
+ )
 
 }
 
