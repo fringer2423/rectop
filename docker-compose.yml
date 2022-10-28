@@ -62,7 +62,7 @@ services:
       - RABBITMQ_DEFAULT_PASS=mypass
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
-      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+      - ./logs/:/var/app/log/rabbitmq
     networks:
       - rabbitmq_go_net
 

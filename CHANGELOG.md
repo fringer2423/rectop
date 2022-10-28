@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.0.17] - 2022-10-28
+
+### Изменено
+
+- RabbitMQ Linux fix [@fringer2423](https://github.com/fringer2423)
+
 ## [0.0.16] - 2022-10-27
 
 ### Добавлено
