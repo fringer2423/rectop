@@ -40,4 +40,4 @@ uritemplate==4.1.1
 urllib3==1.26.12
 celery==4.4.1
 redis==3.4.1
-flower==0.9.3
+flower==1.2.0
