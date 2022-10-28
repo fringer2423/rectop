@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 
 import { Navbar,
-        Image,
         Nav,
-        Button,
-        Container,
-        NavDropdown,
-        NavbarCollapse } from 'react-bootstrap';
+        Container } from 'react-bootstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -32,7 +28,7 @@ function Header() {
 
         <Navbar bg="white" expand="lg" fixed="top" >
             <Container>
-                <Navbar.Brand className="d-flex flex-row">
+                <Navbar.Brand className="d-flex flex-row" href="/">
                     <img
                      src="/images/favicon.png"
                      width="50px"

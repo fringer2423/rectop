@@ -1,11 +1,12 @@
 import React from "react";
 import "../css/prices.css"
 
-import Carousel from "react-bootstrap/Carousel"
+import { Carousel, Container } from 'react-bootstrap'
 
 const Prices = (props) => {
   return(
     <>
+
     <div id="list-of-prices">
     <div className="table-for-price">
       <h3><b>“Генератор отзывов”</b></h3>

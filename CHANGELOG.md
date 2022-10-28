@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [0.0.17] - 2022-10-28
+
+### Добавлено
+
+- Анимация [AlexTrubkina](https://github.com/AlexTrubkina)
+
+### Изменено
+
+- Footer, Header, Форма заполнения контактных данных и css [AlexTrubkina](https://github.com/AlexTrubkina)
+
 ## [0.0.16] - 2022-10-27
 
 ### Добавлено
@@ -13,7 +23,7 @@
 
 ### Изменено
 
-- HomeScreen.js и css
+- HomeScreen.js и css [AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.15] - 2022-10-26
 

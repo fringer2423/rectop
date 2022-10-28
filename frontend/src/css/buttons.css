@@ -79,7 +79,7 @@
     background: white;
     border: 2px solid #4584FF;
     margin: 1%;
-    font-size: 35px
+    font-size: 30px
 }
 
 .button-log-in:hover{
@@ -133,6 +133,9 @@
   .button-for-rate{
       font-size: 14px;
   }
+  .button-log-in{
+      font-size: 20px;
+  }
 }
 
 
@@ -147,7 +150,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   border-radius: 35px;
   color: white;
-  padding: 2% 3%;
+  padding: 2%;
 }
 
 .button-for-rate:active {

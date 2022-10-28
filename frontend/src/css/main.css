@@ -110,6 +110,7 @@
   #first-block{
     margin-top: 200px;
     text-align: center;
+    
   }
   .first-image{
     display: none;
@@ -120,7 +121,6 @@
     flex-direction: column;
     margin-top: 10%;
     margin-bottom: 10%;
-
 
 
   }
