@@ -9,6 +9,7 @@ import "../css/accordion.css"
 
 const Accordion = ({ title, text }) =>{
     const [show, setShow] = useState(false);
+
     return(
         <div className="accordions">
             <div className="accordion-item">

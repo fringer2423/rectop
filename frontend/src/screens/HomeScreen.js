@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useState } from 'react';
 
 import "../css/main.css";
 import "../css/buttons.css";
@@ -18,6 +18,7 @@ import dataForAccordion from "../components/dataForAccordion"
 
 
 const HomeScreen = () => {
+    
     return (
         <div id="body">
             <div id="first-block">
