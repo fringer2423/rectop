@@ -70,7 +70,7 @@ def create_rate_view(request):
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except IntegrityError as e:
-        return Response(data={'detail': 'Rate уже создан для этого user'}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        return Response(data={'detail': f'Rate уже создан для этого user {e}'}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -114,8 +114,8 @@ def read_rate_view(request):
         serializer = RateSerializer(rate, many=False)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой rate не найден'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой rate не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -173,8 +173,8 @@ def update_rate_view(request):
             serializer.save()
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой rate не найден'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой rate не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'

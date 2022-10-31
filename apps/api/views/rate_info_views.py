@@ -1,6 +1,5 @@
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from drf_yasg import openapi
@@ -39,15 +38,14 @@ from ..services.rate_info_service import get_rate_info_service
 @api_view(['GET'])
 def read_rate_info_view(request):
     """Контроллер для отдачи информации о rate_info"""
-    user = request.user
 
     try:
         rate_info = get_rate_info_service()
         serializer = RateInfoSerializer(rate_info, many=False)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Нет информации о тарифах'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Нет информации о тарифах {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'

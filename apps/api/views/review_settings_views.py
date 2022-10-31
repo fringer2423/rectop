@@ -79,8 +79,8 @@ def create_review_settings_view(request):
         else:
             return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой company не найдено'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой company не найдено {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
@@ -131,8 +131,8 @@ def read_review_settings_view(request, pk):
         else:
             return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой review settings не найден'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой review settings не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -196,8 +196,8 @@ def update_review_settings_view(request, pk):
         else:
             return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой review settings не найден'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой review settings не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
@@ -248,8 +248,8 @@ def delete_review_settings_view(request, pk):
         else:
             return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой review_settings не найден'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой review_settings не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'

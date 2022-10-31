@@ -98,8 +98,8 @@ def create_review_view(request):
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой branch не найден'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой branch не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -146,8 +146,8 @@ def read_review_view(request, pk):
         else:
             return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой review не найден'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой review не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -194,8 +194,8 @@ def read_review_list_view(request, pk):
         else:
             return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой branch не найден'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой branch не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -279,8 +279,8 @@ def update_review_view(request, pk):
         else:
             return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой review не найден'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой review не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
@@ -331,8 +331,8 @@ def delete_review_view(request, pk):
         else:
             return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой connect не найден'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой connect не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -379,8 +379,8 @@ def read_review_list_all_view(request, pk):
         else:
             return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой company не найдено'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой company не найдено {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'

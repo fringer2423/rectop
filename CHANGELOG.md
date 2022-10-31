@@ -16,6 +16,7 @@
 
 - Refactor frontend [@fringer2423](https://github.com/fringer2423)
 - Node version in docker config
+- Edited details endpoints 4** status
 
 ## [0.0.17] - 2022-10-28
 

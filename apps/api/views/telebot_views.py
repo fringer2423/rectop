@@ -76,8 +76,8 @@ def create_telebot_view(request):
         else:
             return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такого branch не найдено'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такого branch не найдено {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
@@ -128,8 +128,8 @@ def read_telebot_view(request, pk):
         else:
             return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой telebot не найдено {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -244,8 +244,8 @@ def delete_telebot_view(request, pk):
         else:
             return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой telebot не найдено'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой telebot не найдено {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'

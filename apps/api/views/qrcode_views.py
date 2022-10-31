@@ -11,7 +11,8 @@ from django.db import IntegrityError
 
 from ..serializers import QRCodeSerializer, AllQRCodesSerializer
 
-from ..services.qrcode_service import create_qrcode_by_branch_id_service, get_qrcode_by_id_service, get_all_qrcode_service
+from ..services.qrcode_service import create_qrcode_by_branch_id_service, get_qrcode_by_id_service,\
+    get_all_qrcode_service
 
 
 @swagger_auto_schema(
@@ -73,15 +74,18 @@ def create_qrcode_view(request):
         else:
             return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой branch не найден'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой branch не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except IntegrityError as e:
-        return Response(data={'detail': 'QRCode уже создан для этого branch'}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        return Response(
+            data={'detail': f'QRCode уже создан для этого branch {e}'},
+            status=status.HTTP_406_NOT_ACCEPTABLE
+        )
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -128,8 +132,8 @@ def read_qrcode_view(request, pk):
         else:
             return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой QRCode не найден'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой QRCode не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
@@ -165,8 +169,8 @@ def read_all_qrcodes_view(request):
         serializer = AllQRCodesSerializer(qr_code_list, many=True, context={"request": request})
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
-    except ObjectDoesNotExist as er:
-        return Response(data={'detail': 'Такой QRCode не найден'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой QRCode не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
