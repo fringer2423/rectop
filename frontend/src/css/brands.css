@@ -12,7 +12,6 @@
   background: white;
   border: 20px solid #4584FF;
   border-radius: 100px;
-  color: black;
 }
 
 @media (min-width:800px){
@@ -25,9 +24,25 @@
   #tab-for-icons{
     display: none;
   }
-
-
+  .slide{
+      gap: 5%
+  }
 }
+
+@media (max-width:1200px){
+    .icon-in-circle img{
+        width: 100%;
+        height: 100px
+
+    }
+}
+
+@media (max-width:1000px){
+    #tab-for-icons{
+        gap: 6%
+    }
+}
+
 
 .slide{
   display: flex;

@@ -4,6 +4,10 @@
 
 ## [0.0.17] - 2022-10-28
 
+### Добавлено
+
+- Анимация [AlexTrubkina](https://github.com/AlexTrubkina)
+
 ### Изменено
 
 - RabbitMQ Linux fix [@fringer2423](https://github.com/fringer2423)
@@ -12,6 +16,7 @@
 - Updated celery / flower
 - Fix Flower OAuth authentication bypass 
 - Fix OS Command Injection in celery 
+- Footer, Header, Форма заполнения контактных данных и css [AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.16] - 2022-10-27
 
@@ -24,7 +29,7 @@
 
 ### Изменено
 
-- HomeScreen.js и css
+- HomeScreen.js и css [AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.15] - 2022-10-26
 
