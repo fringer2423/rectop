@@ -4,6 +4,14 @@
 
 ## [0.0.18] - 2022-10-31
 
+### Добавлено
+
+- User constants [@fringer2423](https://github.com/fringer2423)
+- Store provider 
+- Proxy config
+- User actions 
+- User reducers
+
 ### Изменено
 
 - Refactor frontend [@fringer2423](https://github.com/fringer2423)
