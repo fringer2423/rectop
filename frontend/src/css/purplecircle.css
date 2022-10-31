@@ -1,65 +1,67 @@
-.purple-circle{
-  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-  color: white;
-  text-align: center;
-  padding: 16%;
-  border-radius: 50%;
-  width: 82%
-}
-
-.black-block{
-  background: #0F0F0F;
-  border-radius: 15px;
-  color: white;
-  text-align: center;
-  width: 60%;
-  padding-top: 3%;
-  padding-bottom: 0.5%;
-  margin: 10%;
-  transform: rotate(-14deg);
-}
-
-.black-block h2{
-  font-size: 18px;
-}
-
-.black-block p{
-  font-size: 13px;
-}
-
-.black-blockt{
-  background: #0F0F0F;
-  border-radius: 15px;
-  color: white;
-  text-align: center;
-  width: 60%;
-  padding-top: 3%;
-  padding-bottom: 0.5%;
-  transform: rotate(14deg);
-  margin: 10% 10% 10% 20%;
-}
-
-.black-blockt h2{
-  font-size: 18px;
-}
-
-.black-blockt p{
-  font-size: 13px;
-}
-
-@media (max-width:799px){
-  .purple-circle{
+.purple-circle {
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    color: white;
+    text-align: center;
+    padding: 16%;
     border-radius: 50%;
-    width: 68%;
-    height: auto;
-    padding: 10%;
-    margin-left: 20%
-  }
-  .black-block{
-    width: 50%
-  }
-  .black-blockt{
-    width: 50%;
-    margin-left: 40%
-  }
+    width: 82%
+}
+
+.black-block {
+    background: #0F0F0F;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    width: 60%;
+    padding-top: 3%;
+    padding-bottom: 0.5%;
+    margin: 10%;
+    transform: rotate(-14deg);
+}
+
+.black-block h2 {
+    font-size: 18px;
+}
+
+.black-block p {
+    font-size: 13px;
+}
+
+.black-blockt {
+    background: #0F0F0F;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    width: 60%;
+    padding-top: 3%;
+    padding-bottom: 0.5%;
+    transform: rotate(14deg);
+    margin: 10% 10% 10% 20%;
+}
+
+.black-blockt h2 {
+    font-size: 18px;
+}
+
+.black-blockt p {
+    font-size: 13px;
+}
+
+@media (max-width: 799px) {
+    .purple-circle {
+        border-radius: 50%;
+        width: 68%;
+        height: auto;
+        padding: 10%;
+        margin-left: 20%
+    }
+
+    .black-block {
+        width: 50%
+    }
+
+    .black-blockt {
+        width: 50%;
+        margin-left: 40%
+    }
 }

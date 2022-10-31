@@ -1,19 +1,15 @@
-import  React, { useState } from "react";
-
-
+import React, {useState} from "react";
 
 import "../css/accordion.css"
 
 
-
-
-const Accordion = ({ title, text }) =>{
+const Accordion = ({title, text}) => {
     const [show, setShow] = useState(false);
 
-    return(
+    return (
         <div className="accordions">
             <div className="accordion-item">
-                <div className="title-of-accordion" onClick={()=>setShow(!show)}>
+                <div className="title-of-accordion" onClick={() => setShow(!show)}>
                     <div>
                         {title}
                     </div>
@@ -23,7 +19,7 @@ const Accordion = ({ title, text }) =>{
                 </div>
                 {
                     show &&
-                    <div className="body-of-accоrdion">
+                    <div className="body-of-accordion">
                         {text}
                     </div>
                 }

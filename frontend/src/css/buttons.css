@@ -1,70 +1,70 @@
-.black-button{
-  background: #F9F9F9;
-  border: 1px solid #4584FF;
-  border-radius: 40px;
-  padding: 5%;
-  color: #4584FF;
+.black-button {
+    background: #F9F9F9;
+    border: 1px solid #4584FF;
+    border-radius: 40px;
+    padding: 5%;
+    color: #4584FF;
 }
 
 
-.black-button:active{
-  background: #000000;
-  box-shadow: inset 0 6px 10px #565656;
-  color: white;
+.black-button:active {
+    background: #000000;
+    box-shadow: inset 0 6px 10px #565656;
+    color: white;
 }
 
-.black-button:disabled{
-  background: white;
-  color: #EBEBEB;
-  border: #EBEBEB
+.black-button:disabled {
+    background: white;
+    color: #EBEBEB;
+    border: #EBEBEB
 }
 
-.blue-button{
-  border-radius: 40px;
-  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-  color: white;
-  padding: 1% 2%;
-  border-style: none;
-  margin: 2%;
+.blue-button {
+    border-radius: 40px;
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    color: white;
+    padding: 1% 2%;
+    border-style: none;
+    margin: 2%;
 }
 
 .blue-button:hover {
-  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-  box-shadow: 0 20px 30px rgba(69, 104, 223, 0.3);
-  border-radius: 40px;
-  transition: 0.3s
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    box-shadow: 0 20px 30px rgba(69, 104, 223, 0.3);
+    border-radius: 40px;
+    transition: 0.3s
 }
 
 .blue-button:active {
-  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-  box-shadow: inset 0 6px 10px #2E4BB3;
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    box-shadow: inset 0 6px 10px #2E4BB3;
 }
 
 .blue-button:disabled {
-  background: #EBEBEB;
-  color: #23232399;
+    background: #EBEBEB;
+    color: #23232399;
 }
 
-.white-button{
-  border-radius: 40px;
-  color: #4584FF;
-  background: white;
-  padding: 1% 2%;
-  border: 2px solid #4584FF;
-  margin: 2%;
-  transition: 0.3s
+.white-button {
+    border-radius: 40px;
+    color: #4584FF;
+    background: white;
+    padding: 1% 2%;
+    border: 2px solid #4584FF;
+    margin: 2%;
+    transition: 0.3s
 }
 
-.white-button:hover{
-  background: #4584FF;
-  color: white;
+.white-button:hover {
+    background: #4584FF;
+    color: white;
 }
 
 .white-button:active {
-  background: #4584FF;
-  box-shadow: inset 0 6px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 40px;
-  color: white;
+    background: #4584FF;
+    box-shadow: inset 0 6px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    color: white;
 }
 
 .white-button:disabled {
@@ -73,7 +73,7 @@
     border: #EBEBEB
 }
 
-.button-log-in{
+.button-log-in {
     border-radius: 48%;
     color: #4584FF;
     background: white;
@@ -82,16 +82,16 @@
     font-size: 30px
 }
 
-.button-log-in:hover{
-  background: #4584FF;
-  color: white;
-  transition: 0.3s
+.button-log-in:hover {
+    background: #4584FF;
+    color: white;
+    transition: 0.3s
 }
 
 .button-log-in:active {
-  background: #4584FF;
-  box-shadow: inset 0 6px 10px rgba(0, 0, 0, 0.25);
-  color: white;
+    background: #4584FF;
+    box-shadow: inset 0 6px 10px rgba(0, 0, 0, 0.25);
+    color: white;
 }
 
 .button-log-in:disabled {
@@ -100,60 +100,63 @@
     border: #EBEBEB
 }
 
-@media (min-width: 800px){
-  .blue-button{
-    font-size: 20px
-  }
+@media (min-width: 800px) {
+    .blue-button {
+        font-size: 20px
+    }
 
-  .white-button{
-    font-size: 20px;
-  }
+    .white-button {
+        font-size: 20px;
+    }
 
-  .black-button{
-    font-size: 20px;
-  }
-.button-for-rate{
-    font-size: 20px;
-}
-}
+    .black-button {
+        font-size: 20px;
+    }
 
-
-@media(max-width: 799px){
-  .blue-button{
-    font-size: 16px;
-  }
-
-  .white-button{
-    font-size: 16px;
-  }
-
-  .black-button{
-    font-size: 16px;
-  }
-  .button-for-rate{
-      font-size: 14px;
-  }
-  .button-log-in{
-      font-size: 20px;
-  }
+    .button-for-rate {
+        font-size: 20px;
+    }
 }
 
 
-.button-for-rate{
-  background: #F9F9F9;
-  padding: 2%;
-  border-width: inherit;
+@media (max-width: 799px) {
+    .blue-button {
+        font-size: 16px;
+    }
+
+    .white-button {
+        font-size: 16px;
+    }
+
+    .black-button {
+        font-size: 16px;
+    }
+
+    .button-for-rate {
+        font-size: 14px;
+    }
+
+    .button-log-in {
+        font-size: 20px;
+    }
+}
+
+
+.button-for-rate {
+    background: #F9F9F9;
+    padding: 2%;
+    border-width: inherit;
 }
 
 .button-for-rate:hover {
-  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  border-radius: 35px;
-  color: white;
-  padding: 2%;
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 35px;
+    color: white;
+    padding: 2%;
 }
 
 .button-for-rate:active {
-  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-  box-shadow: inset 0 6px 10px #2E4BB3;
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    box-shadow: inset 0 6px 10px #2E4BB3;
 }

@@ -4,9 +4,15 @@
 
 ## [0.0.17] - 2022-10-28
 
+### Изменено
+
+- Refactor frontend [@fringer2423](https://github.com/fringer2423)
+
+## [0.0.17] - 2022-10-28
+
 ### Добавлено
 
-- Анимация [AlexTrubkina](https://github.com/AlexTrubkina)
+- Анимация [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 
@@ -16,7 +22,7 @@
 - Updated celery / flower
 - Fix Flower OAuth authentication bypass 
 - Fix OS Command Injection in celery 
-- Footer, Header, Форма заполнения контактных данных и css [AlexTrubkina](https://github.com/AlexTrubkina)
+- Footer, Header, Форма заполнения контактных данных и css [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.16] - 2022-10-27
 
@@ -25,11 +31,11 @@
 - Отдельный сервис с Celery [@fringer2423](https://github.com/fringer2423)
 - Отдельный сервис с Flower
 - Возможность балансировки задач между всеми workers
-- Компоненты LogIn и Registration [AlexTrubkina](https://github.com/AlexTrubkina)
+- Компоненты LogIn и Registration [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 
-- HomeScreen.js и css [AlexTrubkina](https://github.com/AlexTrubkina)
+- HomeScreen.js и css [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.15] - 2022-10-26
 
@@ -52,14 +58,14 @@
 
 ### Добавлено
 
-- Компонент Accordion.js и css accordion.css [AlexTrubkina](https://github.com/AlexTrubkina)
+- Компонент Accordion.js и css accordion.css [@AlexTrubkina](https://github.com/AlexTrubkina)
 - Добавлены картинки
 
 ### Изменено
 
 - Обновление проекта и подключение python 3.11 [@fringer2423](https://github.com/fringer2423)
 - Refactor code
-- HomeScreen.js [AlexTrubkina](https://github.com/AlexTrubkina)
+- HomeScreen.js [@AlexTrubkina](https://github.com/AlexTrubkina)
 - Refprogram.js и css
 
 ## [0.0.13] - 2022-10-21

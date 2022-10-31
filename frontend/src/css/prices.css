@@ -1,108 +1,109 @@
-#list-of-prices{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+#list-of-prices {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 
-.table-for-price{
-  background: #F9F9F9;
-  border-radius: 30px;
-  border: 1px solid #4584FF;
-  padding: 3%;
-  text-align: center;
+.table-for-price {
+    background: #F9F9F9;
+    border-radius: 30px;
+    border: 1px solid #4584FF;
+    padding: 3%;
+    text-align: center;
 
 }
 
-.block-in-table{
-  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-  color: white;
-  font-size: 16px;
-  text-align: center;
-  padding: 10%;
-  margin-top: 10%;
-  margin-bottom: 10%;
+.block-in-table {
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    padding: 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
 
-.table-for-price h3{
-  font-size: 24px;
+.table-for-price h3 {
+    font-size: 24px;
 }
 
-.table-for-price h5{
-  font-size: 24px;
+.table-for-price h5 {
+    font-size: 24px;
 }
 
-.table-for-price h4{
-  font-size: 20px;
-  margin-top: 10%;
+.table-for-price h4 {
+    font-size: 20px;
+    margin-top: 10%;
 }
 
-.text-in-price{
-  text-align: center;
-  font-size: 18px;
-}
-
-
-
-.table-for-price:hover{
-  background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-  color: white;
-  transition: background 0.3s ease;
-
-
-}
-
-.table-for-price:hover > button{
-  background: black;
-  color: white;
-  border: 1px solid #232323;
-  border-radius: 40px;
-  transition: 0.3s
-}
-
-.table-for-price:hover > .block-in-table{
-  background: #FFFFFF;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-  color: black;
-  border: 1px solid #4584FF;
-  transition: 0.3s
-}
-.table-for-price:hover > h4{
-  color: white;
-  transition: 0.3s
-}
-
-.table-for-price h4{
-  color: #4584FF;
+.text-in-price {
+    text-align: center;
+    font-size: 18px;
 }
 
 
+.table-for-price:hover {
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    color: white;
+    transition: background 0.3s ease;
 
-@media (max-width: 799px){
-  #list-of-prices{
-    display: none
-  }
-  .table-for-price{
-    width: 70%;
-    margin-left: 15%
-  }
+
 }
 
-@media (min-width:800px) {
-  #sliderforprices{
-    display: none
-  }
-  .table-for-price{
-    width: 30%;
-  }
+.table-for-price:hover > button {
+    background: black;
+    color: white;
+    border: 1px solid #232323;
+    border-radius: 40px;
+    transition: 0.3s
 }
 
-@media (max-width: 500px){
-  .table-for-price{
-    width: 90%;
-    margin-left: 5%
-  }
+.table-for-price:hover > .block-in-table {
+    background: #FFFFFF;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    color: black;
+    border: 1px solid #4584FF;
+    transition: 0.3s
+}
+
+.table-for-price:hover > h4 {
+    color: white;
+    transition: 0.3s
+}
+
+.table-for-price h4 {
+    color: #4584FF;
+}
+
+
+@media (max-width: 799px) {
+    #list-of-prices {
+        display: none
+    }
+
+    .table-for-price {
+        width: 70%;
+        margin-left: 15%
+    }
+}
+
+@media (min-width: 800px) {
+    #slider-for-prices {
+        display: none
+    }
+
+    .table-for-price {
+        width: 30%;
+    }
+}
+
+@media (max-width: 500px) {
+    .table-for-price {
+        width: 90%;
+        margin-left: 5%
+    }
 }

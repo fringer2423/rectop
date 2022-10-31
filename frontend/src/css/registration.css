@@ -1,20 +1,20 @@
-.icons-of-registration-brands{
+.icons-of-registration-brands {
     display: flex;
     justify-content: center;
     gap: 10%
 }
 
-.icon-google{
+.icon-google {
     color: red;
     font-size: 30px
 }
 
-.icon-vk{
+.icon-vk {
     color: dodgerblue;
     font-size: 30px
 }
 
-.icon-yandex{
+.icon-yandex {
     color: darkorange;
     font-size: 30px
 }

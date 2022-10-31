@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
-import { Navbar,
-        Nav,
-        Container } from 'react-bootstrap';
+import {
+    Navbar,
+    Nav,
+    Container
+} from 'react-bootstrap';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 import Registration from "../components/Registration";
 import LogIn from "../components/LogIn";
@@ -24,51 +26,52 @@ function Header() {
     const handleShowLogIn = () => setShowlogin(true);
 
     return (
-    <>
+        <>
 
-        <Navbar bg="white" expand="lg" fixed="top" >
-            <Container>
-                <Navbar.Brand className="d-flex flex-row" href="/">
-                    <img
-                     src="/images/favicon.png"
-                     width="50px"
-                     height="50px"
-                     />
-                     <div className="fs-6">
-                    <b>Rec<span>top</span></b> <br/>
-                    Ваша репутация
-                    </div>
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto w-100 justify-content-between mx-4">
+            <Navbar bg="white" expand="lg" fixed="top">
+                <Container>
+                    <Navbar.Brand className="d-flex flex-row" href="/">
+                        <img
+                            src="/images/favicon.png"
+                            width="50px"
+                            height="50px"
+                        />
+                        <div className="fs-6">
+                            <b>Rec<span>top</span></b> <br/>
+                            Ваша репутация
+                        </div>
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto w-100 justify-content-between mx-4">
 
-                          <Nav.Link>Главная</Nav.Link>
-
-
-                          <Nav.Link>О нас</Nav.Link>
+                            <Nav.Link>Главная</Nav.Link>
 
 
-                          <Nav.Link>Наши услуги</Nav.Link>
+                            <Nav.Link>О нас</Nav.Link>
 
 
-                          <Nav.Link>Тарифы</Nav.Link>
+                            <Nav.Link>Наши услуги</Nav.Link>
 
 
-                          <Nav.Link>Контакты</Nav.Link>
+                            <Nav.Link>Тарифы</Nav.Link>
 
 
-                          <Nav.Link>FAQ</Nav.Link>
+                            <Nav.Link>Контакты</Nav.Link>
 
-                    </Nav>
-                 <button className="white-button" onClick={handleShow}>Регистрация</button>
-                 <button className="button-log-in" onClick={handleShowLogIn}><FontAwesomeIcon icon={faCircleArrowRight} className="arrow-in-button"/></button>
-             </Navbar.Collapse>
-         </Container>
-       </Navbar>
-       < Registration show={show} handleClose={handleClose}/>
-       < LogIn show={showlogin} handleClose={handleCloseLogIn}/>
-   </>
+
+                            <Nav.Link>FAQ</Nav.Link>
+
+                        </Nav>
+                        <button className="white-button" onClick={handleShow}>Регистрация</button>
+                        <button className="button-log-in" onClick={handleShowLogIn}><FontAwesomeIcon
+                            icon={faCircleArrowRight} className="arrow-in-button"/></button>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+            < Registration show={show} handleClose={handleClose}/>
+            < LogIn show={showlogin} handleClose={handleCloseLogIn}/>
+        </>
 
 
     )

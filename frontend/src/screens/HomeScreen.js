@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 import "../css/main.css";
 import "../css/buttons.css";
@@ -16,9 +16,8 @@ import ListOfRec from "../components/ListOfRec";
 import dataForAccordion from "../components/dataForAccordion"
 
 
-
 const HomeScreen = () => {
-    
+
     return (
         <div id="body">
             <div id="first-block">
@@ -163,7 +162,7 @@ const HomeScreen = () => {
                     />
                 </div>
             </div>
-            <div className="recomendations">
+            <div className="recommendations">
                 <h1><b><span>Как ликвидировать</span> негативные отзывы?</b></h1>
                 <h2>Один негативный отзыв - это 100 положительных, и если вы хотите его убрать, то лучше ответить на
                     него в момент возникновения</h2>
@@ -195,19 +194,19 @@ const HomeScreen = () => {
             </div>
             <Refprogram/>
             <div id="questions">
-              <h1><b>Часто задаваемые вопросы</b></h1>
-              <div className="block-with-accordion">
-                  {
-                      dataForAccordion.map( ({ title, text }) => (
-                          <Accordion title={title} text={text} key={title}/>
-                          )
-                      )
-                  }
-              </div>
+                <h1><b>Часто задаваемые вопросы</b></h1>
+                <div className="block-with-accordion">
+                    {
+                        dataForAccordion.map(({title, text}) => (
+                                <Accordion title={title} text={text} key={title}/>
+                            )
+                        )
+                    }
+                </div>
             </div>
-   </div>
+        </div>
 
- )
+    )
 
 }
 

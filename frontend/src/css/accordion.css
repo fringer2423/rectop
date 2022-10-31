@@ -1,4 +1,4 @@
-.title-of-accordion{
+.title-of-accordion {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -7,22 +7,22 @@
 }
 
 
-.symbol-for-accordion{
+.symbol-for-accordion {
     font-size: 40px;
     color: #4584FF
 }
 
-.body-of-accоrdion{
+.body-of-accordion {
     font-size: 16px;
-    margin-bottom: 3%;    
+    margin-bottom: 3%;
 }
 
-.accordions{
+.accordions {
     border-bottom: 2px solid #F9F9F9;
 }
 
-@media (min-width: 800px){
-    .body-of-accоrdion{
+@media (min-width: 800px) {
+    .body-of-accordion {
         margin-top: 5%;
         width: 50%;
         margin-bottom: 5%
