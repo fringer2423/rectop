@@ -15,6 +15,7 @@
 ### Изменено
 
 - Refactor frontend [@fringer2423](https://github.com/fringer2423)
+- Node version in docker config
 
 ## [0.0.17] - 2022-10-28
 
