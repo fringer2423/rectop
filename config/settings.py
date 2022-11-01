@@ -34,6 +34,7 @@ INSTALLED_APPS = [
 
     'apps.core.apps.CoreConfig',
     'apps.api.apps.ApiConfig',
+    'apps.tasks.apps.TasksConfig',
 
 ]
 
