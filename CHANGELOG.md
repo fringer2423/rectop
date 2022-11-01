@@ -6,7 +6,7 @@
 
 ### Добавлено
 
-- 
+- Added app Tasks [@fringer2423](https://github.com/fringer2423)
 
 ### Изменено 
 
