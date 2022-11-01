@@ -1,65 +1,81 @@
-import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {Navbar, Nav, Container, NavDropdown, Image} from 'react-bootstrap'
-import {LinkContainer} from 'react-router-bootstrap'
-import NavbarCollapse from "react-bootstrap/NavbarCollapse";
+import React, {useState} from 'react';
 
+import {
+    Navbar,
+    Nav,
+    Container
+} from 'react-bootstrap';
+
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { HashLink } from 'react-router-hash-link';
+import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons';
+
+import Registration from "../components/Registration";
+import LogIn from "../components/LogIn";
+
+
+import "../css/main.css"
 
 function Header() {
 
+    const [show, setShow] = useState(false);
+    const [showlogin, setShowlogin] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const handleCloseLogIn = () => setShowlogin(false);
+    const handleShowLogIn = () => setShowlogin(true);
 
     return (
+        <>
 
-            <Navbar fixed='top' variant='light' expand='lg' bg='white'>
-                <Container fluid>
-                    <Navbar.Brand href="/">
-                        <Image id="LogoImage" src="/images/Logo.png"/>
+            <Navbar bg="white" expand="lg" fixed="top">
+                <Container>
+                    <Navbar.Brand className="d-flex flex-row" href="/">
+                        <img
+                            src="/images/favicon.png"
+                            width="50px"
+                            height="50px"
+                        />
+                        <div className="fs-6">
+                            <b>Rec<span>top</span></b> <br/>
+                            Ваша репутация
+                        </div>
                     </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto w-100 justify-content-between mx-4">
 
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" className=""/>
-
-
-
-                    <Navbar.Collapse className="navbar-collapse collapse" id="navbarResponsive">
-                        <Nav className="header-layout nav navbar-nav">
-                                <Nav.Link href="/" className="nav-link active" aria-current="page">Главная</Nav.Link>
-                                <Nav.Link href="/about" className="nav-link text-nowrap" aria-disabled="true">О нас</Nav.Link>
+                            <Nav.Item><HashLink to="/#top">Главная</HashLink></Nav.Item>
 
 
-                                <Nav.Link  href="" className="nav-link">Наши услуги</Nav.Link >
-
-                                <Nav.Link  href="/stores_list" className="nav-link">Тарифы</Nav.Link >
+                            <Nav.Item><HashLink to="/#about">О нас</HashLink></Nav.Item>
 
 
-                                <Nav.Link  href="/stores_list" className="nav-link">Контакты</Nav.Link >
+                            <Nav.Item><HashLink to="/#work">Наши услуги</HashLink></Nav.Item>
 
 
-                                <Nav.Link href="/stores_list" className="nav-link">FAQ</Nav.Link>
-                                </Nav>
-                                <Nav >
+                            <Nav.Item><HashLink to="/#tariffs">Тарифы</HashLink></Nav.Item>
 
 
-                                    <button type="button" id="RegistrationButton"
-                                            className="btn btn-outline-primary bg-gradient text-nowrap rounded-pill"
-                                            data-bs-toggle="modal" data-bs-target="#modalReg">Регистрация
-                                    </button>
-
-                                    <button type="button" id="LogInButton"
-                                            className="log-button btn-outline-primary bg-gradient rounded-circle"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseLogData"
-                                            aria-expanded="false" aria-controls="collapseLogData">
-                                        <i className="bi bi-arrow-right-circle-fill"></i>
-                                    </button>
-                                  </Nav>
+                            <Nav.Item><HashLink to="/#contacts">Контакты</HashLink></Nav.Item>
 
 
+                            <Nav.Item><HashLink to="/#questions">FAQ</HashLink></Nav.Item>
 
-
+                        </Nav>
+                        <button className="white-button" onClick={handleShow}>Регистрация</button>
+                        <button className="button-log-in" onClick={handleShowLogIn}><FontAwesomeIcon
+                            icon={faCircleArrowRight} className="arrow-in-button"/></button>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+            < Registration show={show} handleClose={handleClose}/>
+            < LogIn show={showlogin} handleClose={handleCloseLogIn}/>
+        </>
 
-
+        
 
     )
 }
