@@ -6,11 +6,13 @@
 
 ### Добавлено
 
-- 
+- Добавлены hashlinks [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Добавлен css для Header
 
 ### Изменено 
 
-- 
+- Изменены css и компоненты ListOfRec, Prices, Header, Footer [@AlexTrubkina](https://github.com/AlexTrubkina)
+
 
 ## [0.0.18] - 2022-10-31
 

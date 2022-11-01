@@ -17,7 +17,7 @@
         margin-top: 30%;
     }
 
-    .rec h3 {
+    .rec h3, .rec-last h3  {
         margin-bottom: 20%;
         font-size: 40px
     }
@@ -35,7 +35,7 @@
     }
 }
 
-.rec h3 {
+.rec h3, .rec-last h3{
     color: #4584FF
 }
 
@@ -50,14 +50,23 @@
     .block-of-rec {
         display: flex;
         flex-direction: row;
-
+        gap: 10%;
+        margin-left: 20%;
+    }
+    .rec {
+        width: 156px;
+    }
+    .rec-last {
+        text-align: right;
+        width: 188px;
+        margin-left: 30%
     }
 
-    .rec p {
+    .rec p, .rec-last p {
         font-size: 14px;
     }
 
-    .rec h3 {
+    .rec h3, .rec-last h3 {
         font-size: 32px;
     }
 

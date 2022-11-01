@@ -7,6 +7,14 @@
     font-family: Gilroy;
 }
 
+@media (max-width: 1000px){
+    .first-image {
+        width: 60%
+    }
+    #first-block {
+        gap: 10%
+    }
+}
 
 @media (min-width: 2400px) {
 
