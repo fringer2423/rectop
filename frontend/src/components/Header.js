@@ -7,10 +7,12 @@ import {
 } from 'react-bootstrap';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { HashLink } from 'react-router-hash-link';
+import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons';
 
 import Registration from "../components/Registration";
 import LogIn from "../components/LogIn";
-import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons';
+
 
 import "../css/main.css"
 
@@ -45,22 +47,22 @@ function Header() {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto w-100 justify-content-between mx-4">
 
-                            <Nav.Link>Главная</Nav.Link>
+                            <Nav.Item><HashLink to="/#top">Главная</HashLink></Nav.Item>
 
 
-                            <Nav.Link>О нас</Nav.Link>
+                            <Nav.Item><HashLink to="/#about">О нас</HashLink></Nav.Item>
 
 
-                            <Nav.Link>Наши услуги</Nav.Link>
+                            <Nav.Item><HashLink to="/#work">Наши услуги</HashLink></Nav.Item>
 
 
-                            <Nav.Link>Тарифы</Nav.Link>
+                            <Nav.Item><HashLink to="/#tariffs">Тарифы</HashLink></Nav.Item>
 
 
-                            <Nav.Link>Контакты</Nav.Link>
+                            <Nav.Item><HashLink to="/#contacts">Контакты</HashLink></Nav.Item>
 
 
-                            <Nav.Link>FAQ</Nav.Link>
+                            <Nav.Item><HashLink to="/#questions">FAQ</HashLink></Nav.Item>
 
                         </Nav>
                         <button className="white-button" onClick={handleShow}>Регистрация</button>
@@ -73,6 +75,7 @@ function Header() {
             < LogIn show={showlogin} handleClose={handleCloseLogIn}/>
         </>
 
+        
 
     )
 }

@@ -14,7 +14,6 @@ function App() {
             <Header/>
             <Container>
                 <Route path='/' component={HomeScreen}/>
-
             </Container>
             <Footer/>
         </Router>
