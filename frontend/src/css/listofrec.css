@@ -1,4 +1,4 @@
-@media (min-width: 800px) {
+@media (min-width: 991px) {
     #block-of-recs {
         margin-top: 10%;
         margin-bottom: 10%;
@@ -39,7 +39,7 @@
     color: #4584FF
 }
 
-@media (max-width: 799px) {
+@media (max-width: 990px) {
     #block-of-recs {
         display: flex;
         flex-direction: column;
@@ -50,6 +50,7 @@
     .block-of-rec {
         display: flex;
         flex-direction: row;
+
     }
 
     .rec p {
@@ -60,18 +61,9 @@
         font-size: 32px;
     }
 
-    .rec {
-        width: 30%;
-        margin-left: 17%;
-
-    }
 
     .arrow {
         display: none
     }
 
-    .rec-last {
-        margin-left: 150%;
-        width: 100%
-    }
 }

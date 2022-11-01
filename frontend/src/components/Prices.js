@@ -91,7 +91,7 @@ const Prices = (props) => {
 
             <div id="slider-for-prices">
                 <Carousel>
-                    <Carousel.Item>
+                    <Carousel.Item className="m-5">
                         <div className="table-for-price">
                             <h3><b>“Генератор отзывов”</b></h3>
                             <h5>1 филиал</h5>
@@ -121,7 +121,7 @@ const Prices = (props) => {
                             <button className="black-button"><b>Приобрести тариф</b></button>
                         </div>
                     </Carousel.Item>
-                    <Carousel.Item>
+                    <Carousel.Item className="m-5">
                         <div className="table-for-price">
                             <h3><b>Какое-то название</b></h3>
                             <h5>1 филиал</h5>
@@ -150,7 +150,7 @@ const Prices = (props) => {
                             <button className="black-button"><b>Приобрести тариф</b></button>
                         </div>
                     </Carousel.Item>
-                    <Carousel.Item>
+                    <Carousel.Item className="m-5">
                         <div className="table-for-price">
                             <h3><b>Репутация под ключ</b></h3>
                             <h5>1 филиал</h5>
