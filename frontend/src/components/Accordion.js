@@ -9,7 +9,7 @@ const Accordion = ({title, text}) => {
     return (
         <div className="accordions">
             <div className="accordion-item">
-                <div className="title-of-accordion" onClick={() => setShow(!show)}>
+                <div  className="title-of-accordion" onClick={() => setShow(!show)}>
                     <div>
                         {title}
                     </div>
