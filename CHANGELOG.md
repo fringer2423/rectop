@@ -6,7 +6,8 @@
 
 ### Добавлено
 
--
+- Google tasks [@fringer2423](https://github.com/fringer2423)
+- Added new point in connect service
 
 ### Изменено 
 
