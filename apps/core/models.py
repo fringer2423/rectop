@@ -463,6 +463,13 @@ class Review(models.Model):
         null=True,
         blank=True
     )
+    connect = models.ForeignKey(
+        Connect,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name='reviews'
+    )
 
     class Meta:
         verbose_name = 'Отзыв'

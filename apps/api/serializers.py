@@ -209,3 +209,8 @@ class RateInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = RateInfo
         fields = '__all__'
+
+
+class TaskSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    status = serializers.BooleanField()

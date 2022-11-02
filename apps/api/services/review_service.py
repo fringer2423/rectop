@@ -18,9 +18,10 @@ def get_review_by_id_service(user, review_id):
         return False
 
 
-def create_review_by_branch_id_service(user, branch_id, full_name, link, rating):
+def create_review_by_branch_id_service(user, branch_id, full_name, link, rating, connect_id=None):
     """
     Функция создает review, если у текущего пользователя есть доступ, иначе вернет False
+    :param connect_id: connect id
     :param user: Текущий пользователь
     :param branch_id: branch id
     :param full_name: Полное имя
@@ -29,7 +30,21 @@ def create_review_by_branch_id_service(user, branch_id, full_name, link, rating)
     :return: review или False
     """
     if verification_owner_branch_service(user=user, branch_id=branch_id):
-        review = Review.objects.create(branch_id=branch_id, full_name=full_name, link=link, rating=rating)
+        if connect_id is None:
+            review = Review.objects.create(
+                branch_id=branch_id,
+                full_name=full_name,
+                link=link,
+                rating=rating
+            )
+        else:
+            review = Review.objects.create(
+                branch_id=branch_id,
+                full_name=full_name,
+                link=link,
+                rating=rating,
+                connect_id=connect_id
+            )
         return review
     else:
         return False

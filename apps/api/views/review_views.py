@@ -46,6 +46,13 @@ from ..services.review_service import create_review_by_branch_id_service, get_re
             required=True,
             description='Id branch'
         ),
+        openapi.Parameter(
+            name='connect_id',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=True,
+            description='Id connect'
+        ),
     ],
     responses={
         201: openapi.Response(
@@ -71,7 +78,8 @@ from ..services.review_service import create_review_by_branch_id_service, get_re
             description='Отсутствует обязательное поле'
         )
     },
-    operation_description='Данный endpoint создает review по {id} branch, после возвращает информацию о review.',
+    operation_description='Данный endpoint создает review по {id} branch и connect_id, после возвращает информацию'
+                          ' о review.',
     operation_summary='Создать review'
 )
 @api_view(['POST'])
@@ -81,12 +89,18 @@ def create_review_view(request):
     user = request.user
 
     try:
+        try:
+            connect_id = request.data['connect_id']
+        except Exception as e:
+            print(e)
+            connect_id = None
         review = create_review_by_branch_id_service(
             user=user,
             branch_id=request.data['branch_id'],
             full_name=request.data['full_name'],
             link=request.data['link'],
             rating=request.data['rating'],
+            connect_id=connect_id
         )
         if review:
             serializer = ReviewSerializer(review, many=False)
