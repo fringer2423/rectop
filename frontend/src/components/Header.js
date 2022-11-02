@@ -7,14 +7,14 @@ import {
 } from 'react-bootstrap';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { HashLink } from 'react-router-hash-link';
+import { NavHashLink } from 'react-router-hash-link';
 import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons';
 
 import Registration from "../components/Registration";
 import LogIn from "../components/LogIn";
 
 
-import "../css/main.css"
+import "../css/header.css"
 
 function Header() {
 
@@ -30,7 +30,7 @@ function Header() {
     return (
         <>
 
-            <Navbar bg="white" expand="lg" fixed="top">
+            <Navbar bg="white" fixed="top">
                 <Container>
                     <Navbar.Brand className="d-flex flex-row" href="/">
                         <img
@@ -45,26 +45,46 @@ function Header() {
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto w-100 justify-content-between mx-4">
+                            <Nav className="me-auto w-100 justify-content-between mx-4">
+                                <div className="link-block">
+                                    <NavHashLink activeClassName="active-link" className="link-for-nav" to="/">
+                                        Главная
+                                        <div className="dot"></div>
+                                    </NavHashLink>
+                                </div>
+                                <div className="link-block">
+                                    <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#about">
+                                        О нас
+                                        <div className="dot"></div>
+                                    </NavHashLink>
+                                </div>
+                                <div className="link-block">
+                                    <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#work">
+                                        Наши услуги
+                                        <div className="dot"></div>
+                                    </NavHashLink>
 
-                            <Nav.Item><HashLink to="/#top">Главная</HashLink></Nav.Item>
+                                </div>
+                                <div className="link-block">
+                                    <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#tariffs">
+                                        Тарифы
+                                        <div className="dot"></div>
+                                    </NavHashLink>
+                                </div>
+                                <div className="link-block">
+                                    <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#contacts">
+                                        Контакты
+                                        <div className="dot"></div>
+                                    </NavHashLink>
 
-
-                            <Nav.Item><HashLink to="/#about">О нас</HashLink></Nav.Item>
-
-
-                            <Nav.Item><HashLink to="/#work">Наши услуги</HashLink></Nav.Item>
-
-
-                            <Nav.Item><HashLink to="/#tariffs">Тарифы</HashLink></Nav.Item>
-
-
-                            <Nav.Item><HashLink to="/#contacts">Контакты</HashLink></Nav.Item>
-
-
-                            <Nav.Item><HashLink to="/#questions">FAQ</HashLink></Nav.Item>
-
-                        </Nav>
+                                </div>
+                                <div className="link-block">
+                                    <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#questions">
+                                        FAQ
+                                        <div className="dot"></div>
+                                    </NavHashLink>
+                                </div>
+                            </Nav>
                         <button className="white-button" onClick={handleShow}>Регистрация</button>
                         <button className="button-log-in" onClick={handleShowLogIn}><FontAwesomeIcon
                             icon={faCircleArrowRight} className="arrow-in-button"/></button>
@@ -75,7 +95,6 @@ function Header() {
             < LogIn show={showlogin} handleClose={handleCloseLogIn}/>
         </>
 
-        
 
     )
 }
