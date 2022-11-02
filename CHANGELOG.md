@@ -2,11 +2,21 @@
 
 ## [Unreleased]
 
+## [0.0.20] - 2022-11-02
+
+### Добавлено
+
+-
+
+### Изменено 
+
+-
+
 ## [0.0.19] - 2022-11-01
 
 ### Добавлено
 
-- Добавлены hashlinks [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Добавлены hash links [@AlexTrubkina](https://github.com/AlexTrubkina)
 - Добавлен css для Header
 - Added app Tasks [@fringer2423](https://github.com/fringer2423)
 - Added new services (yandex_tasks, google_tasks, 2gis_tasks, zoon_tasks)
