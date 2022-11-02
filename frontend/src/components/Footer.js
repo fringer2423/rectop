@@ -37,7 +37,7 @@ function Footer() {
                         </Nav.Item>
                     </Nav>
                 </Nav>
-                <Nav className="me-auto d-flex flex-column mt-5 ms-5 mb-5 text-white">
+                <Nav className="me-auto d-flex flex-column mt-5  mb-5 text-white">
                     <Nav.Item><b>Навигация</b></Nav.Item>
                     <Nav.Link href="/">Главная</Nav.Link>
                     <Nav.Link>О нас</Nav.Link>

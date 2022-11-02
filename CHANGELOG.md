@@ -6,6 +6,8 @@
 
 ### Добавлено
 
+- Добавлены hashlinks [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Добавлен css для Header
 - Added app Tasks [@fringer2423](https://github.com/fringer2423)
 - Added new services (yandex_tasks, google_tasks, 2gis_tasks, zoon_tasks)
 - Added new api-service 
@@ -13,6 +15,7 @@
 ### Изменено 
 
 - Edited model review [@fringer2423](https://github.com/fringer2423)
+- Изменены css и компоненты ListOfRec, Prices, Header, Footer [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.18] - 2022-10-31
 

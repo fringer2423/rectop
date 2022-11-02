@@ -30,11 +30,9 @@ const ListOfRec = () => {
                 <img src="/images/main/mainCard61ImgMobile.png" className="arrow-for-mobile"/>
             </div>
             <div className="block-of-rec">
-                <div className="rec">
-                    <div className="rec-last">
+                <div className="rec-last">
                         <h3><b>04</b></h3>
                         <p><b>Попросите клиента выслать </b> контактные данные на ваш электронный адрес.</p>
-                    </div>
                 </div>
             </div>
         </div>

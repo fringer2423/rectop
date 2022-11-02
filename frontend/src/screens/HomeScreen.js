@@ -109,19 +109,20 @@ const HomeScreen = () => {
                     src="/images/mobileforpurpleblock.png"
                     className="img-in-purple-block"
                 />
-
-                <div className="purple-block">
-                    <div className="text-in-pb">
-                        <h2><b>Сбор отзывов по QR-коду при посещении вашего заведения онлайн/оффлайн</b></h2>
-                        <p>
-                            Уникальная система мотивации оставления отзывов от клиентов. Клиент получает кэшбек за отзыв
-                            на любом сервисе - его можно обменять на скидку/услугу у партнеров.
-                        </p>
+                <div className="wrapper-for-purple-block">
+                    <div className="purple-block">
+                        <div className="text-in-pb">
+                            <h2><b>Сбор отзывов по QR-коду при посещении вашего заведения онлайн/оффлайн</b></h2>
+                            <p>
+                                Уникальная система мотивации оставления отзывов от клиентов. Клиент получает кэшбек за отзыв
+                                на любом сервисе - его можно обменять на скидку/услугу у партнеров.
+                            </p>
+                        </div>
+                        <img
+                            src="/images/mobileforpurpleblockt.png"
+                            className="img-in-purple-block-mobile"
+                        />
                     </div>
-                    <img
-                        src="/images/mobileforpurpleblockt.png"
-                        className="img-in-purple-block-mobile"
-                    />
                 </div>
             </div>
             <div id="work">
