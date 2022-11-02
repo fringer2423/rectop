@@ -8,6 +8,7 @@
 
 - Добавлены hashlinks [@AlexTrubkina](https://github.com/AlexTrubkina)
 - Добавлен css для Header
+- Added app Tasks [@fringer2423](https://github.com/fringer2423)
 
 ### Изменено 
 
