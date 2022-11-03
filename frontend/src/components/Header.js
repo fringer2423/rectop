@@ -87,7 +87,7 @@ function Header() {
                                     </NavHashLink>
                                 </div>
                             </Nav>
-                        <button className="white-button" onClick={handleShow}>Регистрация</button>
+                        <button className="registration-button" onClick={handleShow}>Регистрация</button>
                         <button className="button-log-in" onClick={handleShowLogIn}><FontAwesomeIcon
                             icon={faCircleArrowRight} className="arrow-in-button"/></button>
                     </Navbar.Collapse>
