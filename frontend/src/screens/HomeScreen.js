@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 
 import "../css/main.css";
 import "../css/buttons.css";
-import "../css/whyblocks.css"
+import "../css/whyblocks.css";
+import "../css/purpleblock.css";
 
 import Prices from "../components/Prices";
 import FormUser from "../components/FormUser";
@@ -14,7 +15,7 @@ import Brands from "../components/Brands";
 import ListOfRec from "../components/ListOfRec";
 
 
-import dataForAccordion from "../components/dataForAccordion"
+import dataForAccordion from "../components/dataForAccordion";
 
 
 const HomeScreen = () => {
@@ -24,7 +25,7 @@ const HomeScreen = () => {
             <div id="first-block">
                 <div className="first-block-text">
                     <h2> Негативные отзывы теперь в прошлом!</h2>
-                    <h1><b> <span>RecTOP</span> - инновационный сервис</b> <span className="cursive-text">взаимодействия с клиентами.</span></h1>
+                    <h1><b> <span className="gradient-text">RecTOP</span> - инновационный сервис</b> <span className="cursive-text">взаимодействия с клиентами.</span></h1>
                     <br/><br/>
                     <div className="small-text">
                         Отзывы собираются по QR-коду, когда клиент посещает заведение или сайт.
@@ -50,7 +51,7 @@ const HomeScreen = () => {
     */}
             <div id="about">
                 <div className="about-comp-text">
-                    <h1><b>О компании <span>Rectop</span></b></h1>
+                    <h1><b>О компании <span className="gradient-text">Rectop</span></b></h1>
 
                     <h2>Качественно повышаем вашу репутацию</h2>
                     <div className="small-text">
@@ -95,7 +96,7 @@ const HomeScreen = () => {
             </div>
             <div className="get-reports">
                 <h1>
-                    <b>Получайте <span>положительные</span> отзывы</b>
+                    <b>Получайте <span className="gradient-text">положительные</span> отзывы</b>
                 </h1>
                 <div className="get-reports-text">
                     Наша команда ежедневно просматривает и анализирует крупнейшие популярные сервисы по сбору отзывов
@@ -127,7 +128,7 @@ const HomeScreen = () => {
                 </div>
             </div>
             <div id="work">
-                <h1><b>Как мы <span>работаем?</span></b></h1>
+                <h1><b>Как мы <span className="gradient-text">работаем?</span></b></h1>
                 <h3>Сервис “Генератор отзывов”</h3>
                 <div className="small-text">
                     Уникальный генератор отзывов о компании. Эффективно и просто: клиент сканирует QR-код, оставляет
@@ -139,7 +140,7 @@ const HomeScreen = () => {
                         className ="pic-in-block-one"
                     />
                     <div className="block-with-pic-one-text">
-                        <h2><b>Акцент на <span>положительных отзывах</span></b></h2>
+                        <h2><b>Акцент на <span className="gradient-text">положительных отзывах</span></b></h2>
                         <h3>Клиенту все понравилось?</h3>
                         <div className="small-text">
                             <br/>Довольные клиенты смогут оставлять отзывы в личной карточке компании – их увидят тысячи
@@ -154,7 +155,7 @@ const HomeScreen = () => {
                         className="block-two-pic-mobile"
                     />
                     <div className="block-with-pic-two-text">
-                        <h2><b>Негативные отзывы - <span>в службу поддержки</span></b></h2>
+                        <h2><b>Негативные отзывы - <span className="gradient-text">в службу поддержки</span></b></h2>
                         <h3>Клиент недоволен?</h3>
                         <div>
                             <ul>
@@ -171,7 +172,7 @@ const HomeScreen = () => {
                 </div>
             </div>
             <div className="recommendations">
-                <h1><b><span>Как ликвидировать</span> негативные отзывы?</b></h1>
+                <h1><b><span className="gradient-text">Как ликвидировать</span> негативные отзывы?</b></h1>
                 <h2>Один негативный отзыв - это 100 положительных, и если вы хотите его убрать, то лучше ответить на
                     него в момент возникновения</h2>
                 <ListOfRec/>
@@ -188,7 +189,7 @@ const HomeScreen = () => {
 
             <div id="contacts">
                 <div className="text-contacts">
-                    <h1><b>Запишитесь на <span>бесплатный звонок</span></b></h1>
+                    <h1><b>Запишитесь на <span className="gradient-text">бесплатный звонок</span></b></h1>
                     <p>Наш менеджер перезвонит вам через 10 минут, в течение которых вы сможете:</p>
                     <ul>
                         <li>Узнать все отзывы о своей компании и как их отработать.</li>

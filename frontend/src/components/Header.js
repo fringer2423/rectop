@@ -41,7 +41,7 @@ function Header() {
                             height="50px"
                         />
                         <div className="fs-6">
-                            <b>Rec<span>top</span></b> <br/>
+                            <b>Rec<span className="gradient-text">top</span></b> <br/>
                             Ваша репутация
                         </div>
                     </Navbar.Brand>
