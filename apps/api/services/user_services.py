@@ -16,3 +16,7 @@ def create_user_by_data_service(data):
         password=make_password(data['password'])
     )
     return user
+
+
+def get_user_service(user_id):
+    return User.objects.get(pk=user_id)

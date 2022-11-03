@@ -68,7 +68,18 @@ services:
 
   celery:
     build: ./
-    command: celery -A config worker --loglevel=info --logfile=logs/celery.log
+    command: celery -A config worker --loglevel=info -f logs/celery.log --concurrency=4
+    volumes:
+      - ./:/usr/src/app/celery
+    env_file:
+      - .env.dev
+    depends_on:
+      - backend
+      - redis
+
+  celery-beat:
+    build: ./
+    command: celery -A config beat --loglevel=info --logfile=logs/celery-beat.log
     volumes:
       - ./:/usr/src/app/celery
     env_file:

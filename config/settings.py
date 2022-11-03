@@ -31,11 +31,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'drf_yasg',
+    'django_celery_beat',
 
     'apps.core.apps.CoreConfig',
     'apps.api.apps.ApiConfig',
     'apps.tasks.apps.TasksConfig',
-
 ]
 
 # ==============================================================================
@@ -137,12 +137,9 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+# ==============================================================================
+# VALIDATORS SETTINGS
+# ==============================================================================
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -158,6 +155,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# ==============================================================================
+# MORE SETTINGS
+# ==============================================================================
 
 AUTH_USER_MODEL = 'core.User'
 
@@ -175,5 +176,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+# ==============================================================================
+# CELERY SETTINGS
+# ==============================================================================
+
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
+
+CELERYBEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'

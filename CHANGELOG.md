@@ -2,16 +2,30 @@
 
 ## [Unreleased]
 
+## [0.0.21] - 2022-11-03
+
+### Добавлено
+
+- Celery beat [@fringer2423](https://github.com/fringer2423)
+- Periodic tasks
+- New branch service
+- New user service
+- Schedule beat tasks
+
+### Изменено
+
+- Docker-compose config (celery) [@fringer2423](https://github.com/fringer2423)
+- Google tasks
+- Added new field to Branch model (is_detected)
+- First download of branch information task
+- Uploading branch reviews task
+
 ## [0.0.20] - 2022-11-02
 
 ### Добавлено
 
 - Google tasks [@fringer2423](https://github.com/fringer2423)
 - Added new point in connect service
-
-### Изменено 
-
--
 
 ## [0.0.19] - 2022-11-01
 
@@ -21,9 +35,9 @@
 - Добавлен css для Header
 - Added app Tasks [@fringer2423](https://github.com/fringer2423)
 - Added new services (yandex_tasks, google_tasks, 2gis_tasks, zoon_tasks)
-- Added new api-service 
+- Added new api-service
 
-### Изменено 
+### Изменено
 
 - Edited model review [@fringer2423](https://github.com/fringer2423)
 - Изменены css и компоненты ListOfRec, Prices, Header, Footer [@AlexTrubkina](https://github.com/AlexTrubkina)
