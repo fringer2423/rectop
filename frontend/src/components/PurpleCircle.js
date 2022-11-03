@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../css/purplecircle.css"
+import "../css/purpleCircle.css"
 
 const PurpleCircle = () => {
     return (

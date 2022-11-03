@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import "../css/main.css";
 import "../css/buttons.css";
-import "../css/whyblocks.css";
-import "../css/purpleblock.css";
+import "../css/whyBlocks.css";
+import "../css/purpleBlock.css";
 
 import Prices from "../components/Prices";
 import FormUser from "../components/FormUser";
@@ -36,10 +36,12 @@ const HomeScreen = () => {
                 <img
                     src="/images/main/mainCard1Img.png"
                     className="first-image"
+                    alt="first"
                 />
                 <img
                     src="/images/main/mainCard1ImgMobile.png"
                     className="first-img-for-mobile"
+                    alt="first for mobile"
                 />
             </div>
             {/*
@@ -73,22 +75,34 @@ const HomeScreen = () => {
                 <h1><b>Почему RecTop</b></h1>
                 <div className="why-blocks">
                     <div className="why-block">
-                        <img src="/images/pic1.png"/>
+                        <img
+                            src="/images/pic1.png"
+                            alt="mobile"
+                        />
                         <h2><b>Увеличим</b></h2>
                         <p><br/> положительные отзывы реальных клиентов на 50%</p>
                     </div>
                     <div className="why-block">
-                        <img src="/images/pic2.png"/>
+                        <img
+                            src="/images/pic2.png"
+                            alt="mobile"
+                        />
                         <h2><b>Освободим</b></h2>
                         <p><br/> 90% вашего времени на сбор клиентских отзывов</p>
                     </div>
                     <div className="why-block">
-                        <img src="/images/pic3.png"/>
+                        <img
+                            src="/images/pic3.png"
+                            alt="mobile"
+                        />
                         <h2><b>Мотивируем</b></h2>
                         <p><br/> клиентов на повторные продажи: кэшбэк за отзывы</p>
                     </div>
                     <div className="why-block">
-                        <img src="/images/pic4.png"/>
+                        <img
+                            src="/images/pic4.png"
+                            alt="mobile"
+                        />
                         <h2><b>Регулируем</b></h2>
                         <p><br/> конфликт вовремя, негативные отзывы получаете только Вы</p>
                     </div>
@@ -110,6 +124,7 @@ const HomeScreen = () => {
                 <img
                     src="/images/mobileforpurpleblock.png"
                     className="img-in-purple-block"
+                    alt="mobile"
                 />
                 <div className="wrapper-for-purple-block">
                     <div className="purple-block">
@@ -123,6 +138,7 @@ const HomeScreen = () => {
                         <img
                             src="/images/mobileforpurpleblockt.png"
                             className="img-in-purple-block-mobile"
+                            alt="mobile half"
                         />
                     </div>
                 </div>
@@ -138,6 +154,7 @@ const HomeScreen = () => {
                     <img
                         src="/images/main/mainCard51Img.png"
                         className ="pic-in-block-one"
+                        alt="mobile"
                     />
                     <div className="block-with-pic-one-text">
                         <h2><b>Акцент на <span className="gradient-text">положительных отзывах</span></b></h2>
@@ -153,6 +170,7 @@ const HomeScreen = () => {
                     <img
                         src="/images/main/mainCard52Img.png"
                         className="block-two-pic-mobile"
+                        alt="mobile"
                     />
                     <div className="block-with-pic-two-text">
                         <h2><b>Негативные отзывы - <span className="gradient-text">в службу поддержки</span></b></h2>
@@ -168,6 +186,7 @@ const HomeScreen = () => {
                     <img
                         src="/images/main/mainCard52Img.png"
                         className="block-two-pic"
+                        alt="mobile"
                     />
                 </div>
             </div>

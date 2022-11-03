@@ -3,14 +3,13 @@ import React, {useState} from 'react';
 import {
     Navbar,
     Nav,
-    Container,
-    Offcanvas
+    Container
 } from 'react-bootstrap';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { NavHashLink } from 'react-router-hash-link';
 import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons';
-import {faBars} from '@fortawesome/free-solid-svg-icons';
+
 
 import Registration from "../components/Registration";
 import LogIn from "../components/LogIn";
@@ -39,6 +38,7 @@ function Header() {
                             src="/images/favicon.png"
                             width="50px"
                             height="50px"
+                            alt="logo"
                         />
                         <div className="fs-6">
                             <b>Rec<span className="gradient-text">top</span></b> <br/>
