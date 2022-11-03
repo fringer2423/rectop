@@ -24,7 +24,7 @@ const HomeScreen = () => {
             <div id="first-block">
                 <div className="first-block-text">
                     <h2> Негативные отзывы теперь в прошлом!</h2>
-                    <h1><b> <span>RecTOP</span> - инновационный сервис</b> <i>взаимодействия с клиентами.</i></h1>
+                    <h1><b> <span>RecTOP</span> - инновационный сервис</b> <span className="cursive-text">взаимодействия с клиентами.</span></h1>
                     <br/><br/>
                     <div className="small-text">
                         Отзывы собираются по QR-коду, когда клиент посещает заведение или сайт.
@@ -128,7 +128,7 @@ const HomeScreen = () => {
             </div>
             <div id="work">
                 <h1><b>Как мы <span>работаем?</span></b></h1>
-                <h2>Сервис “Генератор отзывов”</h2>
+                <h3>Сервис “Генератор отзывов”</h3>
                 <div className="small-text">
                     Уникальный генератор отзывов о компании. Эффективно и просто: клиент сканирует QR-код, оставляет
                     отзыв, вы получаете уведомления в Telegram.
@@ -136,11 +136,12 @@ const HomeScreen = () => {
                 <div className="block-with-pic-one">
                     <img
                         src="/images/main/mainCard51Img.png"
+                        className ="pic-in-block-one"
                     />
                     <div className="block-with-pic-one-text">
-                        <h1><b>Акцент на <span>положительных отзывах</span></b></h1>
-                        <h2>Клиенту все понравилось?</h2>
-                        <div>
+                        <h2><b>Акцент на <span>положительных отзывах</span></b></h2>
+                        <h3>Клиенту все понравилось?</h3>
+                        <div className="small-text">
                             <br/>Довольные клиенты смогут оставлять отзывы в личной карточке компании – их увидят тысячи
                             людей!
                         </div>
@@ -148,9 +149,13 @@ const HomeScreen = () => {
                     </div>
                 </div>
                 <div className="block-with-pic-two">
+                    <img
+                        src="/images/main/mainCard52Img.png"
+                        className="block-two-pic-mobile"
+                    />
                     <div className="block-with-pic-two-text">
-                        <h1><b>Негативные отзывы - <span>в службу поддержки</span></b></h1>
-                        <h2>Клиент недоволен?</h2>
+                        <h2><b>Негативные отзывы - <span>в службу поддержки</span></b></h2>
+                        <h3>Клиент недоволен?</h3>
                         <div>
                             <ul>
                                 <li>Устраняйте конфликтные ситуации в чате службы поддержки в Telegram.</li>
@@ -161,6 +166,7 @@ const HomeScreen = () => {
                     </div>
                     <img
                         src="/images/main/mainCard52Img.png"
+                        className="block-two-pic"
                     />
                 </div>
             </div>
@@ -190,8 +196,9 @@ const HomeScreen = () => {
                         <li> Проанализировать общий рейтинг компании и каждой точки продаж в отдельности.</li>
                         <li>Узнать откуда берутся негативные отзывы и как удалить негативный отзыв без бюджета.</li>
                     </ul>
-                    <p>Rectop - Ваша репутация!</p>
+                    <p><b>Rectop - Ваша репутация!</b></p>
                 </div>
+                <div className="text-contacts-mobile"><b>Подарим доступ к сервису “Электронная книга отзывов и предложений” навсегда!</b></div>
                 <FormUser/>
             </div>
             <Refprogram/>

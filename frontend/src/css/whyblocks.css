@@ -4,7 +4,8 @@
         flex-direction: row;
         margin-top: 10%;
         justify-content: center;
-        gap: 2%
+        gap: 2%;
+        margin-bottom: 180px;
     }
 }
 
@@ -17,6 +18,7 @@
         justify-content: center;
         align-items: center;
     }
+
     .why-block {
         text-align: center;
         width: 60%;

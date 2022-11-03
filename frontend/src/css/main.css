@@ -1,12 +1,26 @@
 @font-face {
-    font-family: Gilroy;
-    src: url(../../public/fonts/Gilroy-Light.woff)
+    font-family: Gilroy-Medium;
+    src: url(../../public/font/Gilroy-Medium.woff)
 }
 
 * {
-    font-family: Gilroy;
+    font-family: Gilroy-Medium
 }
 
+@media (min-width: 992px){
+    .text-contacts-mobile{
+        display: none;
+    }
+    #contacts {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .text-contacts {
+        margin-top: 10%;
+        margin-right: 5%;
+    }
+}
 
 @media (max-width: 1000px){
     .first-image {
@@ -26,8 +40,17 @@
 
 @media (min-width: 800px) {
 
+    .cursive-text {
+        font-style: italic;
+        color: #0F0F0F
+    }
+
     #body {
         margin-top: 15%;
+    }
+
+    .block-two-pic-mobile{
+        display: none;
     }
 
     .img-in-purple-block-mobile {
@@ -93,26 +116,38 @@
         margin-top: 10%;
     }
 
-    #contacts {
-        display: flex;
-        flex-direction: row;
+    .block-with-pic-two-text li::marker {
+        content: url(../../public/images/line.svg) "   "
     }
 
-    .text-contacts {
-        margin-top: 10%;
-        margin-right: 5%;
+    .block-with-pic-one img,  .block-with-pic-two img{
+        width: 50%;
+        height: 50%;
     }
 
     .first-img-for-mobile {
         display: none
     }
+
+    .small-text {
+        font-size: 16px;
+    }
+
+    #work h3, .block-with-pic-one h3, .block-with-pic-two h3 {
+        font-size: 24px;
+    }
+
+    .block-with-pic-one-text b, .block-with-pic-two-text b {
+        font-size: 40px;
+    }
+
 }
 
 @media (max-width: 799px) {
 
-
     #work {
         text-align: center;
+        margin-top: 96px
     }
 
     #about {
@@ -129,7 +164,10 @@
         display: none;
     }
 
-
+    .cursive-text {
+        color: #0F0F0F;
+        font-weight: bold;
+    }
 
     .purple-block {
         background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
@@ -158,24 +196,41 @@
         display: none
     }
 
-    .block-with-pic-one {
+    .block-with-pic-one. .block-with-pic-two {
         text-align: center;
         margin-top: 5%;
         margin-bottom: 5%;
     }
 
-    .block-with-pic-two {
-        margin-top: 5%;
-        margin-bottom: 5%;
-        text-align: center;
-    }
 
-    .block-with-pic-one-text {
+    .block-with-pic-one-text, .block-with-pic-two-text {
         margin-top: 5%;
     }
 
-    .block-with-pic-two-text {
-        margin-top: 5%;
+    .block-with-pic-two-text li {
+        list-style-type: none;
+    }
+    .block-with-pic-two-text ul {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .block-two-pic {
+        display: none;
+    }
+
+    .block-with-pic-one img, .block-with-pic-two img {
+        width: 90%;
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+
+    .small-text {
+        font-size: 14px;
+    }
+
+    #work h3, .block-with-pic-one h3, .block-with-pic-two h3 {
+        font-size: 18px;
     }
 }
 
@@ -202,24 +257,9 @@
     font-size: 24px;
 }
 
-.block-with-pic-one img {
-    width: 50%;
-    height: 50%;
-}
-
-.block-with-pic-two img {
-    width: 50%;
-    height: 50%;
-}
-
 
 span {
     color: #4584FF
-}
-
-
-.small-text {
-    font-size: 16px;
 }
 
 .small-text li::marker {
@@ -230,9 +270,6 @@ span {
     margin-left: 4%
 }
 
-.block-with-pic-two-text li::marker {
-    content: url(../../public/images/line.svg) "   "
-}
 
 .block-with-pic-two-text ul {
     margin-left: 5%
@@ -320,4 +357,8 @@ span {
 .wrapper-for-purple-block{
     display: flex;
     justify-content: center;
+}
+
+.text-contacts-mobile{
+    text-align: center;
 }
