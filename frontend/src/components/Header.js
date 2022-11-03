@@ -3,12 +3,14 @@ import React, {useState} from 'react';
 import {
     Navbar,
     Nav,
-    Container
+    Container,
+    Offcanvas
 } from 'react-bootstrap';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { NavHashLink } from 'react-router-hash-link';
 import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons';
+import {faBars} from '@fortawesome/free-solid-svg-icons';
 
 import Registration from "../components/Registration";
 import LogIn from "../components/LogIn";
@@ -30,7 +32,7 @@ function Header() {
     return (
         <>
 
-            <Navbar bg="white" fixed="top">
+            <Navbar bg="white" expand="lg" fixed="top">
                 <Container>
                     <Navbar.Brand className="d-flex flex-row" href="/">
                         <img
@@ -47,7 +49,7 @@ function Header() {
                     <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto w-100 justify-content-between mx-4">
                                 <div className="link-block">
-                                    <NavHashLink activeClassName="active-link" className="link-for-nav" to="/">
+                                    <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#top">
                                         Главная
                                         <div className="dot"></div>
                                     </NavHashLink>
@@ -89,6 +91,7 @@ function Header() {
                         <button className="button-log-in" onClick={handleShowLogIn}><FontAwesomeIcon
                             icon={faCircleArrowRight} className="arrow-in-button"/></button>
                     </Navbar.Collapse>
+
                 </Container>
             </Navbar>
             < Registration show={show} handleClose={handleClose}/>

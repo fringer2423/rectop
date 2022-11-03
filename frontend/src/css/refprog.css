@@ -32,8 +32,8 @@
 
 .megaphone {
     position: relative;
-    left: 80%;
-    bottom: 100px
+    left: 85%;
+    bottom: 60px
 
 }
 
@@ -53,10 +53,10 @@
 
 @media (max-width: 799px) {
     .bell-ring {
-        top: 250px
+        top: 220px
     }
 
     .megaphone {
-        bottom: 250px
+        bottom: 220px
     }
 }

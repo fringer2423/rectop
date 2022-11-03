@@ -46,21 +46,7 @@ function Footer() {
                     <Nav.Link>Обратная связь</Nav.Link>
                     <Nav.Link>FAQ</Nav.Link>
                 </Nav>
-                <Nav className="d-flex flex-column text-white">
-                    <Nav.Item><b>Контакты</b></Nav.Item>
-                    <Nav.Link> business@rectop.ru</Nav.Link>
-                    <Nav.Link>+ 7 (999) 888-77-66</Nav.Link>
-                    <Nav.Link>
-                        <ins>Политика конфиденциальности</ins>
-                    </Nav.Link>
-                    <Nav.Link>
-                        <ins>Лицензионный договор</ins>
-                    </Nav.Link>
-                    <Nav className="d-flex flex-row gap-3 fs-3 mt-5">
-                        <FontAwesomeIcon icon={faTelegram}/>
-                        <FontAwesomeIcon icon={faVk}/>
-                    </Nav>
-                </Nav>
+                
             </Container>
         </Navbar>
     )

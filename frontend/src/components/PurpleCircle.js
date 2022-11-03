@@ -4,7 +4,7 @@ import "../css/purplecircle.css"
 
 const PurpleCircle = () => {
     return (
-        <div>
+        <div className="block-for-pirple-circle">
             <div className="black-block">
                 <h2>Клиенты</h2>
                 <p>Делятся впечатлениями</p>

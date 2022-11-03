@@ -7,6 +7,7 @@
     font-family: Gilroy;
 }
 
+
 @media (max-width: 1000px){
     .first-image {
         width: 60%
@@ -55,13 +56,6 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-    }
-
-    .why-blocks {
-        display: flex;
-        flex-direction: row;
-        margin-top: 10%;
-        justify-content: center;
     }
 
     .purple-block {
@@ -135,14 +129,7 @@
         display: none;
     }
 
-    .why-blocks {
-        display: flex;
-        flex-direction: column;
-        margin-top: 10%;
-        margin-bottom: 10%;
 
-
-    }
 
     .purple-block {
         background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
@@ -189,18 +176,6 @@
 
     .block-with-pic-two-text {
         margin-top: 5%;
-    }
-
-    .why-block {
-        text-align: center;
-        width: 60%;
-    }
-
-    .why-block img {
-        position: relative;
-        top: -30px;
-        margin-bottom: -30px;
-        width: 30%
     }
 }
 
@@ -282,36 +257,6 @@ span {
 #why-rectop h1 {
     text-align: center;
     margin-top: 5%;
-}
-
-.why-block {
-    background: #F9F9F9;
-    padding-left: 3%;
-    padding-bottom: 2%;
-    border-radius: 10px;
-    margin: 1% 1% 5%;
-    border: 1px double grey;
-    transition: background 0.3s ease;
-}
-
-.why-block img {
-    position: relative;
-    bottom: 20%
-}
-
-.why-block:hover {
-    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-    color: white;
-    transition: 0.3s
-}
-
-.why-block p {
-    font-size: 16px;
-}
-
-.why-block h2 {
-    font-size: 20px;
-    margin-top: 2%;
 }
 
 

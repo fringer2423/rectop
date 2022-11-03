@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 import "../css/main.css";
 import "../css/buttons.css";
+import "../css/whyblocks.css"
 
 import Prices from "../components/Prices";
 import FormUser from "../components/FormUser";
