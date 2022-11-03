@@ -297,6 +297,10 @@ class Branch(models.Model):
         default=datetime.now() - timedelta(hours=13),
         verbose_name='Последняя дата загрузки отзывов'
     )
+    is_detected = models.BooleanField(
+        default=False,
+        verbose_name='Филиал обработан системой'
+    )
 
     class Meta:
         verbose_name = 'Филиал'
