@@ -214,4 +214,5 @@ class RateInfoSerializer(serializers.ModelSerializer):
 
 class TaskSerializer(serializers.Serializer):
     id = serializers.UUIDField()
-    status = serializers.BooleanField()
+    status = serializers.CharField()
+    result = serializers.CharField()
