@@ -6,7 +6,7 @@
 
 ### Добавлено
 
-- Добавлена анимация
+- Добавлена анимация [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 
