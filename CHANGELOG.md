@@ -10,7 +10,7 @@
 
 ### Изменено
 
--
+- Edited Branch model fields requirements [@fringer2423](https://github.com/fringer2423)
 
 ## [0.0.21] - 2022-11-03
 
