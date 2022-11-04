@@ -7,7 +7,11 @@
 
 .ref-block h1 {
     margin-bottom: 4%;
-    color: #4584FF;
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
 }
 
 .ref-block:hover {
@@ -32,8 +36,8 @@
 
 .megaphone {
     position: relative;
-    left: 80%;
-    bottom: 100px
+    left: 85%;
+    bottom: 60px
 
 }
 
@@ -53,10 +57,10 @@
 
 @media (max-width: 799px) {
     .bell-ring {
-        top: 250px
+        top: 220px
     }
 
     .megaphone {
-        bottom: 250px
+        bottom: 220px
     }
 }

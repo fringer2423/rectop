@@ -2,13 +2,25 @@
 
 ## [Unreleased]
 
+## [0.0.20] - 2022-11-03
+
+### Добавлено
+
+- Добавлен whyBlocks.css [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Fonts
+
+### Изменено
+
+- Изменены названия файлов CSS [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Изменены стили и Компоненты
+
 ## [0.0.20] - 2022-11-02
 
 ### Добавлено
 
 -
 
-### Изменено 
+### Изменено
 
 -
 
@@ -20,9 +32,9 @@
 - Добавлен css для Header
 - Added app Tasks [@fringer2423](https://github.com/fringer2423)
 - Added new services (yandex_tasks, google_tasks, 2gis_tasks, zoon_tasks)
-- Added new api-service 
+- Added new api-service
 
-### Изменено 
+### Изменено
 
 - Edited model review [@fringer2423](https://github.com/fringer2423)
 - Изменены css и компоненты ListOfRec, Prices, Header, Footer [@AlexTrubkina](https://github.com/AlexTrubkina)

@@ -17,6 +17,11 @@
 .table-for-price h4 {
     font-size: 20px;
     margin-top: 10%;
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
 }
 
 .text-in-price {
@@ -52,17 +57,16 @@
     transition: 0.3s
 }
 
-.table-for-price h4 {
-    color: #4584FF;
-}
-
 .table-for-price{
     background: #F9F9F9;
     border-radius: 30px;
     border: 1px solid #4584FF;
     padding: 3%;
     text-align: center;
-
+    align-items:center;
+    justify-content: center;
+    display:flex;
+    flex-direction: column;
 }
 
 .block-in-table {
@@ -96,6 +100,7 @@
         width: 300px;
         font-size: 16px
 
+
     }
 
     .text-in-price {
@@ -123,7 +128,6 @@
         text-align: center;
         height: 943px;
         width: 367px;
-
     }
 
     .block-in-table {
@@ -141,6 +145,32 @@
     }
 }
 
+@media (max-width: 450px) {
+    .table-for-price {
+        height: 700px;
+        width: 240px;
+
+    }
+
+    .text-in-price {
+        font-size: 14px
+    }
+    .table-for-price button, .table-for-price h5 {
+        font-size: 14px;
+    }
+    .table-for-price h3{
+        font-size: 20px
+    }
+
+    .block-in-table {
+        font-size: 10px;
+        padding: 15px;
+        height: 70px;
+        width: 200px
+    }
+}
+
+
 
 @media (max-width: 991px) {
     #list-of-prices {
@@ -152,6 +182,4 @@
     #slider-for-prices {
         display: none
     }
-
-
 }
