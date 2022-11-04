@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/prices.css"
 
-import {Carousel, Container} from 'react-bootstrap'
+import {Carousel} from 'react-bootstrap'
 
 const Prices = (props) => {
     return (

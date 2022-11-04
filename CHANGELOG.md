@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+
 ## [0.0.21] - 2022-11-03
 
 ### Добавлено
@@ -11,6 +12,8 @@
 - New branch service
 - New user service
 - Schedule beat tasks
+- Добавлен whyBlocks.css [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Fonts
 
 ### Изменено
 
@@ -19,10 +22,12 @@
 - Added new field to Branch model (is_detected)
 - First download of branch information task
 - Uploading branch reviews task
+- Изменены названия файлов CSS [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Изменены стили и Компоненты
 
 ## [0.0.20] - 2022-11-02
 
-### Добавлено
+### Изменено
 
 - Google tasks [@fringer2423](https://github.com/fringer2423)
 - Added new point in connect service

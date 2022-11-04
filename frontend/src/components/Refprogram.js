@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../css/refprog.css"
+import "../css/refProg.css"
 
 const Refprogram = () => {
     return (
@@ -8,6 +8,7 @@ const Refprogram = () => {
             <img
                 src="/images/main/bell_right.png"
                 className="bell-ring"
+                alt="bell ring"
             />
             <div className="ref-block">
                 <h1><b>Реферальная программа</b></h1>
@@ -16,6 +17,7 @@ const Refprogram = () => {
             <img
                 src="/images/main/megaphone_left.png"
                 className="megaphone"
+                alt="megaphone"
             />
         </>
     )

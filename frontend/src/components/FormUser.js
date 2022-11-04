@@ -3,6 +3,7 @@ import "../css/formuser.css"
 
 const FormUser = () => {
     return (
+    <div className="block-for-form">
         <div className="for-form">
             <h3>
                 <b>Заполните форму заявки</b>
@@ -16,6 +17,7 @@ const FormUser = () => {
             </div>
             <button className="white-button">Отправить заявку</button>
         </div>
+    </div>
     )
 }
 
