@@ -17,6 +17,11 @@ def get_connect_by_id_service(user, connect_id):
         return False
 
 
+def get_connect_by_id_branch_and_type(user, branch_id, connect_type):
+    connect = Connect.objects.filter(branch_id=branch_id, type=connect_type).last()
+    return connect
+
+
 def create_connect_by_branch_id_service(user, branch_id, connect_type, key):
     """
     Создает новый connect если пользователь является owner в company, иначе вернет False

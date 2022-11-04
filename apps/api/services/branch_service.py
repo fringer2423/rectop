@@ -26,3 +26,12 @@ def verification_owner_branch_service(user, branch_id):
     """
     branch = Branch.objects.get(pk=branch_id)
     return verification_owner_company_service(user=user, company_id=branch.company_id)
+
+
+def get_all_not_detected_branch_service():
+    branch_list = Branch.objects.filter(is_detected=False)
+    return branch_list
+
+
+def get_branch_service(branch_id):
+    return Branch.objects.get(pk=branch_id)
