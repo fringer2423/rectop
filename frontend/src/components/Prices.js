@@ -90,7 +90,7 @@ const Prices = (props) => {
 
 
             <div id="slider-for-prices">
-                <Carousel>
+                <Carousel variant="dark">
                     <Carousel.Item className="m-5">
                         <div className="table-for-price-first">
                             <h3><b>“Генератор отзывов”</b></h3>
