@@ -7,6 +7,7 @@
 ### Добавлено
 
 - New endpoint (branch create) [@fringer2423](https://github.com/fringer2423)
+- Added docstrings for new service
 
 ### Изменено
 

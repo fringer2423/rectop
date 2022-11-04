@@ -18,6 +18,13 @@ def get_connect_by_id_service(user, connect_id):
 
 
 def get_connect_by_id_branch_and_type(user, branch_id, connect_type):
+    """
+    Функция возвращает connect с указанным типом
+    :param user: Текущий пользователь
+    :param branch_id: id branch
+    :param connect_type: тип connect
+    :return: connect list
+    """
     connect = Connect.objects.filter(branch_id=branch_id, type=connect_type).last()
     return connect
 
