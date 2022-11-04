@@ -8,12 +8,13 @@
 
 - New endpoint (branch create) [@fringer2423](https://github.com/fringer2423)
 - Added docstrings for new service
+- New endpoint (branch update)
 
 ### Изменено
 
 - Edited Branch model fields requirements [@fringer2423](https://github.com/fringer2423)
 - Edited all views (replace 200 -> 201 status)
-
+- BranchSerializer fix
 ## [0.0.21] - 2022-11-03
 
 ### Добавлено

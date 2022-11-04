@@ -111,6 +111,7 @@ class BranchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Branch
         fields = '__all__'
+        read_only_fields = ('company', 'is_detected')
 
     def get_created_at(self, obj):
         return format_data(obj.created_at)
