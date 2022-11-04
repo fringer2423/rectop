@@ -35,3 +35,20 @@ def get_all_not_detected_branch_service():
 
 def get_branch_service(branch_id):
     return Branch.objects.get(pk=branch_id)
+
+
+def create_branch_by_company(user, company_id, name, address='', phone_number='', email=None, description='',
+                             short_description=''):
+    if verification_owner_company_service(user=user, company_id=company_id):
+        branch = Branch.objects.create(
+            company_id=company_id,
+            name=name,
+            address=address,
+            phone_number=phone_number,
+            email=email,
+            description=description,
+            short_description=short_description
+        )
+        return branch
+    else:
+        return False

@@ -11,7 +11,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from ..serializers import BranchSerializer
 
 from ..services.company_services import get_company_by_id_service
-from ..services.branch_service import get_branch_by_id_service
+from ..services.branch_service import get_branch_by_id_service, create_branch_by_company
 
 
 @swagger_auto_schema(
@@ -104,6 +104,117 @@ def read_branch_view(request, pk):
 
     except ObjectDoesNotExist as e:
         return Response(data={'detail': f'Такой branch не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
+
+    except Exception as e:
+        message = f'Ошибка при обработке запроса {e}'
+        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@swagger_auto_schema(
+    method="post",
+    manual_parameters=[
+        openapi.Parameter(
+            name='name',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=True,
+            description='Название филиала'
+        ),
+        openapi.Parameter(
+            name='address',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=False,
+            description='Адрес'
+        ),
+        openapi.Parameter(
+            name='phone_number',
+            in_=openapi.TYPE_NUMBER,
+            type=openapi.TYPE_NUMBER,
+            required=False,
+            description='Номер телефона'
+        ),
+        openapi.Parameter(
+            name='email',
+            in_=openapi.FORMAT_EMAIL,
+            type=openapi.FORMAT_EMAIL,
+            required=False,
+            description='Почта'
+        ),
+        openapi.Parameter(
+            name='description',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=False,
+            description='Описание'
+        ),
+        openapi.Parameter(
+            name='short_description',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=False,
+            description='Короткое описание'
+        ),
+        openapi.Parameter(
+            name='company_id',
+            in_=openapi.TYPE_STRING,
+            type=openapi.TYPE_STRING,
+            required=True,
+            description='Company id'
+        )
+    ],
+    responses={
+        201: openapi.Response(
+            description='Branch создан',
+            schema=BranchSerializer
+        ),
+        400: openapi.Response(
+            description='Ошибка при создании'
+        ),
+        401: openapi.Response(
+            description='Пустой или неправильный токен'
+        ),
+        403: openapi.Response(
+            description='Ошибка доступа'
+        ),
+        404: openapi.Response(
+            description='Company не найден'
+        ),
+        405: openapi.Response(
+            description='Данный метод запроса запрещен'
+        ),
+        422: openapi.Response(
+            description='Отсутствует обязательное поле'
+        )
+    },
+    operation_description='Данный endpoint создает branch по {id} company, после возвращает информацию'
+                          ' о branch.',
+    operation_summary='Создать branch'
+)
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def create_branch_view(request):
+    """Контроллер для создания review"""
+    user = request.user
+
+    try:
+        company_id = request.data['company_id']
+        name = request.data['name']
+        branch = create_branch_by_company(user=user, name=name, company_id=company_id)
+        if branch:
+            serializer = BranchSerializer(branch, data=request.data, partial=True)
+            serializer.is_valid()
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(data={'detail': 'Это не ваш company'}, status=status.HTTP_403_FORBIDDEN)
+
+    except KeyError as e:
+        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+    except ObjectDoesNotExist as e:
+        return Response(data={'detail': f'Такой company не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'

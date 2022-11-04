@@ -55,7 +55,7 @@ def create_company_view(request):
     try:
         company = create_company_by_company_name_service(user, request.data['name'])
         serializer = CompanySerializer(company, many=False)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'

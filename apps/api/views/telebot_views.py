@@ -72,7 +72,7 @@ def create_telebot_view(request):
         )
         if telebot:
             serializer = TelebotSerializer(telebot, many=False)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 

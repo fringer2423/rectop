@@ -63,7 +63,7 @@ def create_rate_view(request):
             user=user,
         )
         serializer = RateSerializer(rate, many=False)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
