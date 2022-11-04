@@ -33,3 +33,22 @@
     opacity: 1;
     left: 50%;
 }
+
+.bars {
+    font-size: 25px;
+    color: #4584FF;
+}
+
+@media (max-width: 991px) {
+    .dot {
+        display: none
+    }
+
+    .link-block {
+        margin-bottom: 2%;
+        margin-top:  2%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -4,8 +4,6 @@
     justify-content: space-between;
 }
 
-
-
 .table-for-price h3 {
     font-size: 24px;
 }
@@ -21,7 +19,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
 }
 
 .text-in-price {
@@ -34,14 +31,19 @@
     background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
     color: white;
     transition: background 0.3s ease;
-
-
 }
 
 .table-for-price:hover > button {
     background: black;
     color: white;
     transition: 0.3s
+}
+
+.table-for-price:hover > h4 {
+    background: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .table-for-price:hover .block-in-table {

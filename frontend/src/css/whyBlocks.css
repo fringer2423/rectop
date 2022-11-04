@@ -40,6 +40,13 @@
         margin-bottom: -30px;
         width: 35%
     }
+    .why-block p {
+        font-size: 14px
+    }
+
+    .why-block b {
+        font-size: 18px
+    }
 
 }
 

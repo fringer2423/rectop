@@ -1,29 +1,38 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 
 import "../css/accordion.css"
 
 
-const Accordion = ({title, text}) => {
+const Accordion = (props) => {
     const [show, setShow] = useState(false);
+    const [height, setHeight] = useState("");
+    const content = useRef(null);
 
+    const openAccordion = () => {
+        setShow(!show);
+        setHeight(show === true ? "0px" : `${content.current.scrollHeight}px`);
+    }
 
     return (
         <div className="accordions">
             <div className="accordion-item">
-                <div  className="title-of-accordion" onClick={() => setShow(!show)}>
+                <div  className="title-of-accordion" onClick={openAccordion}>
                     <div>
-                        {title}
+                        {props.title}
                     </div>
                     <span className="symbol-for-accordion">
                         {show ? "-" : "+"}
                     </span>
                 </div>
-                {
-                    show &&
-                    <div className="body-of-accordion">
-                        {text}
+                <div
+                    className="body-of-accordion"
+                    ref={content}
+                    style={{ maxHeight: `${height}` }}
+                >
+                    <div>
+                        {props.text}
                     </div>
-                }
+                </div>
             </div>
         </div>
     )
