@@ -5,12 +5,12 @@ import "../css/accordion.css"
 
 const Accordion = (props) => {
     const [show, setShow] = useState(false);
-    const [height, setHeight] = useState("");
+    const [height, setHeight] = useState("0px");
     const content = useRef(null);
 
     const openAccordion = () => {
-        setShow(!show);
         setHeight(show === true ? "0px" : `${content.current.scrollHeight}px`);
+        setShow(!show);
     }
 
     return (
@@ -24,6 +24,7 @@ const Accordion = (props) => {
                         {show ? "-" : "+"}
                     </span>
                 </div>
+
                 <div
                     className="body-of-accordion"
                     ref={content}

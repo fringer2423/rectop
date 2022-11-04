@@ -1,182 +1,103 @@
 #list-of-prices {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-}
-
-.table-for-price h3 {
-    font-size: 24px;
-}
-
-.table-for-price h5 {
-    font-size: 24px;
-}
-
-.table-for-price h4 {
-    font-size: 20px;
-    margin-top: 10%;
-    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.text-in-price {
-    text-align: center;
-    font-size: 18px;
+    justify-content: center;
+    gap: 7%
 }
 
 
-.table-for-price:hover {
-    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-    color: white;
-    transition: background 0.3s ease;
-}
 
-.table-for-price:hover > button {
-    background: black;
-    color: white;
-    transition: 0.3s
-}
-
-.table-for-price:hover > h4 {
-    background: white;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.table-for-price:hover .block-in-table {
-    background: #FFFFFF;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    color: black;
-    border: 1px solid #4584FF;
-    transition: 0.3s
-}
-
-.table-for-price:hover > h4 {
-    color: white;
-    transition: 0.3s
-}
-
-.table-for-price{
-    background: #F9F9F9;
+.table-for-price-first, .table-for-price-second, .table-for-price-third {
     border-radius: 30px;
     border: 1px solid #4584FF;
-    padding: 3%;
     text-align: center;
-    align-items:center;
-    justify-content: center;
-    display:flex;
+    background: #F9F9F9;
+    transition: background 0.3s ease;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-for-price-third > .text-in-price{
+    margin-left: 10%;
+    margin-right: 10%
 }
 
 .block-in-table {
     background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
+    color: white
+}
+
+.table-for-price-first:hover > .block-in-table, .table-for-price-second:hover > .block-in-table, .table-for-price-third:hover > .block-in-table {
+    color: #232323;
+    background: white;
+}
+
+.table-for-price-first h4, .table-for-price-second h4, .table-for-price-third h4 {
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.table-for-price-first:hover, .table-for-price-second:hover, .table-for-price-third:hover {
     color: white;
-    text-align: center;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
 }
 
-@media (min-width: 1200px) {
-    .table-for-price {
-        height: 943px;
-        width: 367px;
-
-    }
-
-    .block-in-table {
-        font-size: 14px;
-        padding: 24px;
-        height: 111px;
-        width: 264.36px
-    }
+.table-for-price-first:hover h4, .table-for-price-second:hover h4, .table-for-price-third:hover h4{
+    background: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
 }
 
-@media (max-width: 1199px){
-    .table-for-price {
-        height: 820px;
-        width: 300px;
-        font-size: 16px
-
-
-    }
-
-    .text-in-price {
-        font-size: 16px
-    }
-    .table-for-price button, .table-for-price h5 {
-        font-size: 14px;
-    }
-
-    .block-in-table {
-        font-size: 16px;
-        padding: 24px;
-        height: 121px;
-        width: 245px;
-        font-size: 14px;
-    }
+.table-for-price-first:hover button, .table-for-price-second:hover button, .table-for-price-third:hover button {
+    background: #232323;
+    color: white;
 }
-
-@media (min-width: 1200px) {
-    .table-for-price {
-        background: #F9F9F9;
-        border-radius: 30px;
-        border: 1px solid #4584FF;
-        padding: 3%;
-        text-align: center;
-        height: 943px;
-        width: 367px;
-    }
-
-    .block-in-table {
-        background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        border-radius: 20px;
-        color: white;
-        font-size: 16px;
-        text-align: center;
-        padding: 24px;
-        margin-top: 10%;
-        margin-bottom: 10%;
-        height: 121px;
-        width: 294px
-    }
-}
-
-@media (max-width: 450px) {
-    .table-for-price {
-        height: 700px;
-        width: 240px;
-
-    }
-
-    .text-in-price {
-        font-size: 14px
-    }
-    .table-for-price button, .table-for-price h5 {
-        font-size: 14px;
-    }
-    .table-for-price h3{
-        font-size: 20px
-    }
-
-    .block-in-table {
-        font-size: 10px;
-        padding: 15px;
-        height: 70px;
-        width: 200px
-    }
-}
-
-
 
 @media (max-width: 991px) {
     #list-of-prices {
         display: none
+    }
+
+    .table-for-price-first, .table-for-price-second, .table-for-price-third {
+        width: 300px;
+        height: 850px;
+    }
+
+    .text-in-price {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .block-in-table{
+        font-size: 13px;
+        width: 200px;
+        height: 100px;
+        padding: 15px;
+        margin-top: 20px
+    }
+
+    .table-for-price-first h3, .table-for-price-second h3, .table-for-price-third h3 {
+        font-size: 24px
+    }
+
+    .table-for-price-first h4, .table-for-price-second h4, .table-for-price-third h4 {
+        font-size: 20px
+    }
+
+    .table-for-price-first button, .table-for-price-second button, .table-for-price-third button {
+        height: 50px;
+        width: 200px;
+        font-size: 15px
+
     }
 }
 
@@ -184,4 +105,37 @@
     #slider-for-prices {
         display: none
     }
+
+    .table-for-price-first, .table-for-price-second, .table-for-price-third {
+        width: 300px;
+        height: 800px;
+    }
+
+    .text-in-price {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .block-in-table{
+        font-size: 15px;
+        width: 250px;
+        height: 100px;
+        padding: 15px;
+        margin-top: 20px
+    }
+
+    .table-for-price-first h3, .table-for-price-second h3, .table-for-price-third h3 {
+        font-size: 24px
+    }
+
+    .table-for-price-first h4, .table-for-price-second h4, .table-for-price-third h4 {
+        font-size: 20px
+    }
+
+    .table-for-price-first button, .table-for-price-second button, .table-for-price-third button {
+        height: 50px;
+        width: 200px;
+        font-size: 15px
+    }
+
 }

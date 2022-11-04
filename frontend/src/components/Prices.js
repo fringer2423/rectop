@@ -8,7 +8,7 @@ const Prices = (props) => {
         <>
 
             <div id="list-of-prices">
-                <div className="table-for-price">
+                <div className="table-for-price-first">
                     <h3><b>“Генератор отзывов”</b></h3>
                     <h5>1 филиал</h5>
                     <h4><b>1200 РУБ./МЕС.</b></h4>
@@ -36,7 +36,7 @@ const Prices = (props) => {
                     </div>
                     <button className="black-button"><b>Приобрести тариф</b></button>
                 </div>
-                <div className="table-for-price">
+                <div className="table-for-price-second">
                     <h3><b>Какое-то название</b></h3>
                     <h5>1 филиал</h5>
                     <h4><b>1200 РУБ./МЕС.</b></h4>
@@ -63,7 +63,7 @@ const Prices = (props) => {
                     </div>
                     <button className="black-button"><b>Приобрести тариф</b></button>
                 </div>
-                <div className="table-for-price">
+                <div className="table-for-price-third">
                     <h3><b>Репутация под ключ</b></h3>
                     <h5>1 филиал</h5>
                     <h4><b>ОТ 4000 РУБ./МЕС.</b></h4>
@@ -92,7 +92,7 @@ const Prices = (props) => {
             <div id="slider-for-prices">
                 <Carousel>
                     <Carousel.Item className="m-5">
-                        <div className="table-for-price">
+                        <div className="table-for-price-first">
                             <h3><b>“Генератор отзывов”</b></h3>
                             <h5>1 филиал</h5>
                             <h4><b>1200 РУБ./МЕС.</b></h4>
@@ -122,7 +122,7 @@ const Prices = (props) => {
                         </div>
                     </Carousel.Item>
                     <Carousel.Item className="m-5">
-                        <div className="table-for-price">
+                        <div className="table-for-price-second">
                             <h3><b>Какое-то название</b></h3>
                             <h5>1 филиал</h5>
                             <h4><b>1200 РУБ./МЕС.</b></h4>
@@ -151,7 +151,7 @@ const Prices = (props) => {
                         </div>
                     </Carousel.Item>
                     <Carousel.Item className="m-5">
-                        <div className="table-for-price">
+                        <div className="table-for-price-third">
                             <h3><b>Репутация под ключ</b></h3>
                             <h5>1 филиал</h5>
                             <h4><b>ОТ 4000 РУБ./МЕС.</b></h4>
