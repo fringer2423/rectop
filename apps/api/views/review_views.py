@@ -50,7 +50,7 @@ from ..services.review_service import create_review_by_branch_id_service, get_re
             name='connect_id',
             in_=openapi.TYPE_STRING,
             type=openapi.TYPE_STRING,
-            required=True,
+            required=False,
             description='Id connect'
         ),
     ],
@@ -104,7 +104,7 @@ def create_review_view(request):
         )
         if review:
             serializer = ReviewSerializer(review, many=False)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 

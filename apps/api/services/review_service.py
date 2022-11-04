@@ -62,9 +62,15 @@ def verification_owner_review_service(user, review_id):
 
 
 def get_all_review_by_company_id_service(user, company_id):
-    reviews = Review.objects.filter(branch__company_id=company_id)
+    """
+    Функция возвращает review list определенной company
+    :param user: текущий пользователь
+    :param company_id: company id
+    :return: review list или False
+    """
+    review_list = Review.objects.filter(branch__company_id=company_id)
 
     if verification_owner_company_service(user, company_id):
-        return reviews
+        return review_list
     else:
         return False

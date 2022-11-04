@@ -70,7 +70,7 @@ def create_qrcode_view(request):
         )
         if qr_code:
             serializer = QRCodeSerializer(qr_code, many=False, context={"request": request})
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
 
