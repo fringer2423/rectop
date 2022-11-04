@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+## [0.0.22] - 2022-11-03
+
+### Добавлено
+
+-
+
+### Изменено
+
+-
 
 ## [0.0.21] - 2022-11-03
 
@@ -156,7 +165,7 @@
 - Добавлено поле rate в UserSerializer
 - Компонент Prices.js (добавлена карусель) [@AlexTrubkina](https://github.com/AlexTrubkina)
 - Компоненты Prices и HomeScreen
-- CSS buttons, main, purplecircle
+- CSS buttons, main, purple circle
 
 ## [0.0.11] - 2022-10-19
 
