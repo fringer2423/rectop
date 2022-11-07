@@ -153,7 +153,7 @@ def read_answer_view(request, pk):
         answer = get_answer_by_id_service(user=user, answer_id=pk)
         if answer:
             serializer = AnswerSerializer(answer, many=False)
-            message = 'Запрос выполнен успешно read_answer_view'
+            message = 'Запрос выполнен успешно'
             logger.warning(f'{__name__} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
@@ -231,7 +231,7 @@ def update_answer_view(request, pk):
             serializer = AnswerSerializer(answer, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
-            message = 'Запрос прошел успешно'
+            message = 'Запрос выполнен успешно'
             logger.info(f'{__name__} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
@@ -291,7 +291,7 @@ def delete_answer_view(request, pk):
         answer = get_answer_by_id_service(user=user, answer_id=pk)
         if answer:
             answer.delete()
-            message = 'Удаление прошло успешно'
+            message = 'Удаление выполнен успешно'
             logger.info(f'{__name__} - {message} / user id:{user.id}')
             return Response(data={'detail': message}, status=status.HTTP_200_OK)
         else:

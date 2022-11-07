@@ -11,6 +11,7 @@
 - Logger custom formatter
 - Логирование Branch endpoints
 - Логирование Company endpoints
+- Логирование Connect endpoints
 
 ### Изменено 
 

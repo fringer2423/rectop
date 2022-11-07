@@ -59,7 +59,7 @@ def create_company_view(request):
     try:
         company = create_company_by_company_name_service(user, request.data['name'])
         serializer = CompanySerializer(company, many=False)
-        message = 'Запрос прошел успешно'
+        message = 'Запрос выполнен успешно'
         logger.info(f'{__name__} - {message} / user id:{user.id}')
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
@@ -111,7 +111,7 @@ def read_company_view(request, pk):
         company = get_company_by_id_service(user, pk)
         if company:
             serializer = CompanySerializer(company, many=False)
-            message = 'Запрос прошел успешно'
+            message = 'Запрос выполнен успешно'
             logger.info(f'{__name__} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
@@ -182,7 +182,7 @@ def update_company_view(request, pk):
             serializer = CompanySerializer(company, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
-                message = 'Запрос прошел успешно'
+                message = 'Запрос выполнен успешно'
                 logger.info(f'{__name__} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
@@ -243,7 +243,7 @@ def delete_company_view(request, pk):
         company = get_company_by_id_service(user, pk)
         if company:
             company.delete()
-            message = 'Удаление прошло успешно'
+            message = 'Запрос выполнен успешно'
             logger.info(f'{__name__} - {message} / user id:{user.id}')
             return Response(data={'detail': message}, status=status.HTTP_200_OK)
         else:
