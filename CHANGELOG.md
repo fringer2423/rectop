@@ -10,6 +10,7 @@
 - Логирование Answer endpoints
 - Logger custom formatter
 - Логирование Branch endpoints
+- Логирование Company endpoints
 
 ### Изменено 
 
