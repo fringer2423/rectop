@@ -13,6 +13,7 @@
 - Логирование Company endpoints
 - Логирование Connect endpoints
 - Логирование QRCodes endpoints
+- Логирование rate info endpoints
 
 ### Изменено 
 

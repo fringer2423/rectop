@@ -1,3 +1,5 @@
+import logging
+
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -10,6 +12,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from ..serializers import RateInfoSerializer
 
 from ..services.rate_info_service import get_rate_info_service
+
+logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
@@ -42,11 +46,16 @@ def read_rate_info_view(request):
     try:
         rate_info = get_rate_info_service()
         serializer = RateInfoSerializer(rate_info, many=False)
+        message = 'Запрос выполнен успешно'
+        logger.info(f'{__name__} - {message}')
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     except ObjectDoesNotExist as e:
-        return Response(data={'detail': f'Нет информации о тарифах {e}'}, status=status.HTTP_404_NOT_FOUND)
+        message = f'Нет информации о тарифах {e}'
+        logger.warning(f'{__name__} - {message}')
+        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
+        logger.critical(f'{__name__} - {message}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
