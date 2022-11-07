@@ -2,6 +2,29 @@
 
 ## [Unreleased]
 
+## [0.0.23] - 2022-11-07
+
+### Добавлено
+
+- Logger [@fringer2423](https://github.com/fringer2423)
+- Логирование Answer endpoints
+- Logger custom formatter
+- Логирование Branch endpoints
+- Логирование Company endpoints
+- Логирование Connect endpoints
+- Логирование QRCodes endpoints
+- Логирование rate info endpoints
+- Логирование rate endpoints
+- Логирование review settings endpoints
+- Логирование review endpoints
+- Логирование task endpoints 
+- Логирование telebot endpoints
+- Логирование user endpoints
+
+### Изменено 
+
+-
+
 ## [0.0.22] - 2022-11-03
 
 ### Добавлено

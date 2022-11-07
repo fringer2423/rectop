@@ -1,3 +1,5 @@
+import logging
+
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
@@ -12,6 +14,8 @@ from ..serializers import ReviewSettingsSerializer
 
 from ..services.review_settings_service import get_review_settings_by_id_service, \
     create_review_settings_by_company_id_service
+
+logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
@@ -75,19 +79,27 @@ def create_review_settings_view(request):
         )
         if review_settings:
             serializer = ReviewSettingsSerializer(review_settings, many=False)
+            message = 'Запрос выполнен успешно'
+            logger.info(f'{__name__} - {message} / user id:{user.id}')
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
+            message = 'Это не ваша company'
+            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
-        return Response(data={'detail': f'Такой company не найдено {e}'}, status=status.HTTP_404_NOT_FOUND)
+        message = f'Такой company не найдено {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
+        logger.critical(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -127,15 +139,22 @@ def read_review_settings_view(request, pk):
         review_settings = get_review_settings_by_id_service(user=user, review_settings_id=pk)
         if review_settings:
             serializer = ReviewSettingsSerializer(review_settings, many=False)
+            message = 'Запрос выполнен успешно'
+            logger.info(f'{__name__} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
+            message = 'Это не ваша company'
+            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
-        return Response(data={'detail': f'Такой review settings не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
+        message = f'Такой review settings не найден {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
+        logger.critical(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -192,19 +211,27 @@ def update_review_settings_view(request, pk):
             serializer = ReviewSettingsSerializer(review_settings, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
+            message = 'Запрос выполнен успешно'
+            logger.info(f'{__name__} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
+            message = 'Это не ваша company'
+            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
-        return Response(data={'detail': f'Такой review settings не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
+        message = f'Такой review settings не найден {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
+        logger.critical(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -244,13 +271,20 @@ def delete_review_settings_view(request, pk):
         review_settings = get_review_settings_by_id_service(user, pk)
         if review_settings:
             review_settings.delete()
-            return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
+            message = 'Запрос выполнен успешно'
+            logger.info(f'{__name__} - {message} / user id:{user.id}')
+            return Response(data={'detail': message}, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
+            message = 'Это не ваша company'
+            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
-        return Response(data={'detail': f'Такой review_settings не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
+        message = f'Такой review settings не найден {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
+        logger.critical(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)

@@ -1,3 +1,5 @@
+import logging
+
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -13,6 +15,8 @@ from ..serializers import ReviewSerializer
 from ..services.branch_service import get_branch_by_id_service
 from ..services.review_service import create_review_by_branch_id_service, get_review_by_id_service, \
     get_all_review_by_company_id_service
+
+logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
@@ -104,19 +108,27 @@ def create_review_view(request):
         )
         if review:
             serializer = ReviewSerializer(review, many=False)
+            message = 'Запрос выполнен успешно'
+            logger.info(f'{__name__} - {message} / user id:{user.id}')
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
+            message = 'Это не ваш branch'
+            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except ObjectDoesNotExist as e:
-        return Response(data={'detail': f'Такой branch не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
+        message = f'Такой branch не найден {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
+        logger.critical(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -156,15 +168,22 @@ def read_review_view(request, pk):
         review = get_review_by_id_service(user=user, review_id=pk)
         if review:
             serializer = ReviewSerializer(review, many=False)
+            message = 'Запрос выполнен успешно'
+            logger.info(f'{__name__} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
+            message = 'Это не ваш branch'
+            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
-        return Response(data={'detail': f'Такой review не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
+        message = f'Такой review не найден {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
+        logger.critical(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -204,15 +223,22 @@ def read_review_list_view(request, pk):
         branch = get_branch_by_id_service(user=user, branch_id=pk)
         if branch:
             serializer = ReviewSerializer(branch.review_set, many=True)
+            message = 'Запрос выполнен успешно'
+            logger.info(f'{__name__} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
+            message = 'Это не ваш branch'
+            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
-        return Response(data={'detail': f'Такой branch не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
+        message = f'Такой branch не найден {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
+        logger.critical(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -289,19 +315,27 @@ def update_review_view(request, pk):
             serializer = ReviewSerializer(review, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
+            message = 'Запрос выполнен успешно'
+            logger.info(f'{__name__} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваш branch'}, status=status.HTTP_403_FORBIDDEN)
+            message = 'Это не ваш branch'
+            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
-        return Response(data={'detail': f'Такой review не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
+        message = f'Такой review не найден {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
+        logger.critical(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -341,15 +375,22 @@ def delete_review_view(request, pk):
         review = get_review_by_id_service(user=user, review_id=pk)
         if review:
             review.delete()
-            return Response(data={'detail': 'Удаление прошло успешно'}, status=status.HTTP_200_OK)
+            message = 'Запрос выполнен успешно'
+            logger.info(f'{__name__} - {message} / user id:{user.id}')
+            return Response(data={'detail': message}, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша компания'}, status=status.HTTP_403_FORBIDDEN)
+            message = 'Это не ваша company'
+            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
-        return Response(data={'detail': f'Такой connect не найден {e}'}, status=status.HTTP_404_NOT_FOUND)
+        message = f'Такой review не найден {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
+        logger.critical(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -370,7 +411,7 @@ def delete_review_view(request, pk):
             description='Ошибка доступа'
         ),
         404: openapi.Response(
-            description='Company не найдена'
+            description='Review не найден'
         ),
         405: openapi.Response(
             description='Данный метод запроса запрещен'
@@ -389,13 +430,20 @@ def read_review_list_all_view(request, pk):
         reviews = get_all_review_by_company_id_service(user=user, company_id=pk)
         if reviews:
             serializer = ReviewSerializer(reviews, many=True)
+            message = 'Запрос выполнен успешно'
+            logger.info(f'{__name__} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
+            message = 'Это не ваш review'
+            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
-        return Response(data={'detail': f'Такой company не найдено {e}'}, status=status.HTTP_404_NOT_FOUND)
+        message = f'Такой review не найден {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
+        logger.critical(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
