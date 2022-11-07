@@ -12,6 +12,7 @@
 - Логирование Branch endpoints
 - Логирование Company endpoints
 - Логирование Connect endpoints
+- Логирование QRCodes endpoints
 
 ### Изменено 
 
