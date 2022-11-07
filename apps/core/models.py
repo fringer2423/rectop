@@ -265,7 +265,9 @@ class Branch(models.Model):
     )
     address = models.CharField(
         max_length=200,
-        verbose_name='Адрес'
+        verbose_name='Адрес',
+        null=True,
+        blank=True
     )
     schedule = models.OneToOneField(
         Schedule,
@@ -276,16 +278,24 @@ class Branch(models.Model):
     )
     phone_number = models.CharField(
         max_length=20,
-        verbose_name='Номер телефона'
+        verbose_name='Номер телефона',
+        null=True,
+        blank=True
     )
     email = models.EmailField(
-        verbose_name='Email'
+        verbose_name='Email',
+        null=True,
+        blank=True
     )
     description = models.TextField(
-        verbose_name='Описание'
+        verbose_name='Описание',
+        null=True,
+        blank=True
     )
     short_description = models.TextField(
-        verbose_name='Короткое описание'
+        verbose_name='Короткое описание',
+        null=True,
+        blank=True
     )
     created_at = models.DateTimeField(
         verbose_name='Дата создания',

@@ -75,7 +75,7 @@ def create_review_settings_view(request):
         )
         if review_settings:
             serializer = ReviewSettingsSerializer(review_settings, many=False)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(data={'detail': 'Это не ваша company'}, status=status.HTTP_403_FORBIDDEN)
 

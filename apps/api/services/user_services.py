@@ -19,4 +19,9 @@ def create_user_by_data_service(data):
 
 
 def get_user_service(user_id):
+    """
+    Функция возвращает user по id
+    :param user_id: user id
+    :return: user
+    """
     return User.objects.get(pk=user_id)

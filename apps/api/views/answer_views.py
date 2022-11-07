@@ -84,7 +84,7 @@ def create_answer_view(request):
         )
         if answer:
             serializer = AnswerSerializer(answer, many=False)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(data={'detail': 'Это не ваш review'}, status=status.HTTP_403_FORBIDDEN)
 
