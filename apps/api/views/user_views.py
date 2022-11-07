@@ -1,3 +1,5 @@
+import logging
+
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 
@@ -12,6 +14,8 @@ from drf_yasg.utils import swagger_auto_schema
 from ..serializers import MyTokenObtainPairSerializer, UserSerializerWithToken, UserSerializer
 
 from ..services.user_services import create_user_by_data_service
+
+logger = logging.getLogger('django')
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -59,6 +63,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
         try:
             serializer.is_valid(raise_exception=True)
         except TokenError as e:
+            logger.warning(f'{__name__} - Invalid token / {e.args[0]}')
             raise InvalidToken(e.args[0])
 
         return Response(serializer.validated_data, status=status.HTTP_200_OK)
@@ -121,14 +126,18 @@ def register_user_view(request):
     try:
         user = create_user_by_data_service(data)
         serializer = UserSerializerWithToken(user, many=False)
+        message = 'Запрос выполнен успешно'
+        logger.info(f'{__name__} - {message}')
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        logger.warning(f'{__name__} - {message}')
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = {'detail': f'Пользователем с таким email уже существует {e}'}
+        logger.critical(f'{__name__} - {message}')
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -158,6 +167,7 @@ def read_user_profile_view(request):
     """Контроллер для отдачи информации о текущем пользователе"""
     user = request.user
     serializer = UserSerializer(user, many=False)
+    logger.info(f'{__name__} - Запрос выполнен успешно')
     return Response(serializer.data)
 
 
@@ -245,13 +255,16 @@ def update_user_profile_view(request):
         serializer = UserSerializer(user, many=False, partial=True, data=data)
         if serializer.is_valid():
             serializer.save()
-
+        message = 'Запрос выполнен успешно'
+        logger.info(f'{__name__} - {message} / user id:{user.id}')
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        logger.warning(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
+        logger.critical(f'{__name__} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
