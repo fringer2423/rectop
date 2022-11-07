@@ -17,6 +17,7 @@
 - Логирование rate endpoints
 - Логирование review settings endpoints
 - Логирование review endpoints
+- Логирование task endpoints 
 
 ### Изменено 
 

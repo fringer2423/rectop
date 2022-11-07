@@ -1,3 +1,5 @@
+import logging
+
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -14,6 +16,8 @@ from django.db import IntegrityError
 from ..serializers import TaskSerializer
 
 from ..services.rate_service import get_rate_by_user_service, create_rate_by_user_service
+
+logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
@@ -44,4 +48,6 @@ from ..services.rate_service import get_rate_by_user_service, create_rate_by_use
 def read_status_task_view(request, task_id):
     task_result = AsyncResult(task_id)
     serializer = TaskSerializer(task_result)
+    message = 'Запрос выполнен успешно'
+    logger.info(f'{__name__} - {message}')
     return Response(serializer.data, status=status.HTTP_200_OK)
