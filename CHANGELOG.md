@@ -15,6 +15,7 @@
 - Логирование QRCodes endpoints
 - Логирование rate info endpoints
 - Логирование rate endpoints
+- Логирование review settings endpoints
 
 ### Изменено 
 
