@@ -198,10 +198,12 @@ const HomeScreen = () => {
             </div>
             <div id='tariffs'>
                 <h1><b>Выбирайте то, что удобно Вам для управления репутацией</b></h1>
-                <div className="for-buttons">
-                    <button className="button-for-rate">На неделю</button>
-                    <button className="button-for-rate">На месяц</button>
-                    <button className="button-for-rate">На 1 год</button>
+                <div className="wraper-for-buttons">
+                    <div className="for-buttons">
+                        <button className="button-for-rate">На неделю</button>
+                        <button className="button-for-rate">На месяц</button>
+                        <button className="button-for-rate">На 1 год</button>
+                    </div>
                 </div>
                 <Prices/>
             </div>

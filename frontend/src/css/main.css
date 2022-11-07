@@ -284,11 +284,23 @@
     padding-right: 10%;
     margin-top: 5%;
     margin-bottom: 10%;
+    width: 80%;
+    padding: 1%
+}
+
+.wraper-for-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #tariffs {
     margin-top: 10%;
     margin-bottom: 10%;
+}
+
+#tariffs h1{
+    text-align: center;
 }
 
 

@@ -9,6 +9,7 @@ import {
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { NavHashLink } from 'react-router-hash-link';
 import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons';
+import {faBars} from '@fortawesome/free-solid-svg-icons';
 
 
 import Registration from "../components/Registration";
@@ -31,7 +32,7 @@ function Header() {
     return (
         <>
 
-            <Navbar bg="white" expand="lg" fixed="top">
+            <Navbar bg="white" expand="lg" fixed="top" className="border-bottom" >
                 <Container>
                     <Navbar.Brand className="d-flex flex-row" href="/">
                         <img
@@ -40,12 +41,10 @@ function Header() {
                             height="50px"
                             alt="logo"
                         />
-                        <div className="fs-6">
-                            <b>Rec<span className="gradient-text">top</span></b> <br/>
-                            Ваша репутация
-                        </div>
                     </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" className="border border-0">
+                        <FontAwesomeIcon icon={faBars} className="bars"/>
+                    </Navbar.Toggle>
                     <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto w-100 justify-content-between mx-4">
                                 <div className="link-block">
@@ -94,8 +93,10 @@ function Header() {
 
                 </Container>
             </Navbar>
-            < Registration show={show} handleClose={handleClose}/>
-            < LogIn show={showlogin} handleClose={handleCloseLogIn}/>
+            <Nav>
+                <Registration show={show} handleClose={handleClose}/>
+                <LogIn show={showlogin} handleClose={handleCloseLogIn}/>
+            </Nav>
         </>
 
 

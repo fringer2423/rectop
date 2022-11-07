@@ -12,6 +12,7 @@
 - Task serializer
 - Task endpoints
 - Create branchs commands for tests
+- Добавлена анимация [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 
@@ -19,6 +20,8 @@
 - Edited all views (replace 200 -> 201 status)
 - BranchSerializer fix
 - Google tasks
+- Изменены  CSS [@AlexTrubkina](https://github.com/AlexTrubkina)
+
 
 ## [0.0.21] - 2022-11-03
 

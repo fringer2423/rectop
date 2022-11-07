@@ -10,23 +10,21 @@
 
 .icon-in-circle {
     background: white;
-    border: 20px solid #4584FF;
     border-radius: 100px;
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%) border-box;
+    border-radius: 50em;
+    border: 20px solid transparent;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 992px) {
     #slider-for-icons {
         display: none;
     }
 }
 
-@media (max-width: 799px) {
+@media (max-width: 991px) {
     #tab-for-icons {
         display: none;
-    }
-
-    .slide {
-        gap: 5%
     }
 }
 
@@ -34,13 +32,12 @@
     .icon-in-circle img {
         width: 100%;
         height: 100px
-
     }
 }
 
 @media (max-width: 1000px) {
     #tab-for-icons {
-        gap: 6%
+        gap: 7%
     }
 }
 
@@ -48,8 +45,9 @@
 .slide {
     display: flex;
     flex-direction: row;
-    gap: 5%;
+    gap: 10%;
     justify-content: center;
+    margin-bottom: 10%
 }
 
 #slider-for-icons {

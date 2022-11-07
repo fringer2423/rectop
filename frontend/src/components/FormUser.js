@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/formuser.css"
+import "../css/formUser.css"
 
 const FormUser = () => {
     return (
