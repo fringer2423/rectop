@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 
+## [0.0.23] - 2022-11-07
+
+### Добавлено
+
+- Logger [@fringer2423](https://github.com/fringer2423)
+- Логирование Answer endpoints
+- Logger custom formatter
+
+### Изменено 
+
+-
+
 ## [0.0.22] - 2022-11-03
 
 ### Добавлено
