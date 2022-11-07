@@ -9,6 +9,7 @@
 - Logger [@fringer2423](https://github.com/fringer2423)
 - Логирование Answer endpoints
 - Logger custom formatter
+- Логирование Branch endpoints
 
 ### Изменено 
 
