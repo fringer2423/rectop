@@ -19,6 +19,7 @@
 - Логирование review endpoints
 - Логирование task endpoints 
 - Логирование telebot endpoints
+- Логирование user endpoints
 
 ### Изменено 
 
