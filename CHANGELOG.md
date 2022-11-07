@@ -18,6 +18,7 @@
 - Логирование review settings endpoints
 - Логирование review endpoints
 - Логирование task endpoints 
+- Логирование telebot endpoints
 
 ### Изменено 
 
