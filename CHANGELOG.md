@@ -16,6 +16,7 @@
 - Логирование rate info endpoints
 - Логирование rate endpoints
 - Логирование review settings endpoints
+- Логирование review endpoints
 
 ### Изменено 
 
