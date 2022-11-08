@@ -1,4 +1,5 @@
 import logging
+import sys
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
@@ -68,22 +69,22 @@ def create_rate_view(request):
         )
         serializer = RateSerializer(rate, many=False)
         message = 'Запрос выполнен успешно'
-        logger.info(f'{__name__} - {message} / user id:{user.id}')
+        logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except IntegrityError as e:
         message = f'Rate уже создан для этого user {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
-        logger.critical(f'{__name__} - {message} / user id:{user.id}')
+        logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -123,17 +124,17 @@ def read_rate_view(request):
         rate = get_rate_by_user_service(user=user)
         serializer = RateSerializer(rate, many=False)
         message = 'Запрос выполнен успешно'
-        logger.info(f'{__name__} - {message} / user id:{user.id}')
+        logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     except ObjectDoesNotExist as e:
         message = f'Такой rate не найден {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
-        logger.critical(f'{__name__} - {message} / user id:{user.id}')
+        logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -187,20 +188,20 @@ def update_rate_view(request):
         if serializer.is_valid():
             serializer.save()
         message = 'Запрос выполнен успешно'
-        logger.info(f'{__name__} - {message} / user id:{user.id}')
+        logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     except ObjectDoesNotExist as e:
         message = f'Такой rate не найден {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
-        logger.critical(f'{__name__} - {message} / user id:{user.id}')
+        logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)

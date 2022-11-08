@@ -1,4 +1,5 @@
 import logging
+import sys
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
@@ -77,26 +78,26 @@ def create_telebot_view(request):
         if telebot:
             serializer = TelebotSerializer(telebot, many=False)
             message = 'Запрос выполнен успешно'
-            logger.info(f'{__name__} - {message} / user id:{user.id}')
+            logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             message = 'Это не ваш branch'
-            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
         message = f'Такого branch не найдено {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
-        logger.critical(f'{__name__} - {message} / user id:{user.id}')
+        logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -137,21 +138,21 @@ def read_telebot_view(request, pk):
         if telebot:
             serializer = TelebotSerializer(telebot, many=False)
             message = 'Запрос выполнен успешно'
-            logger.info(f'{__name__} - {message} / user id:{user.id}')
+            logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
             message = 'Это не ваш branch'
-            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
         message = f'Такой telebot не найден {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
-        logger.critical(f'{__name__} - {message} / user id:{user.id}')
+        logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -208,26 +209,26 @@ def update_telebot_view(request, pk):
             if serializer.is_valid():
                 serializer.save()
             message = 'Запрос выполнен успешно'
-            logger.info(f'{__name__} - {message} / user id:{user.id}')
+            logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
             message = 'Это не ваш branch'
-            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist:
         message = 'Такой telebot не найден'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
-        logger.critical(f'{__name__} - {message} / user id:{user.id}')
+        logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -268,19 +269,19 @@ def delete_telebot_view(request, pk):
         if telebot:
             telebot.delete()
             message = 'Запрос выполнен успешно'
-            logger.info(f'{__name__} - {message} / user id:{user.id}')
+            logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data={'detail': message}, status=status.HTTP_200_OK)
         else:
             message = 'Это не ваша company'
-            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
         message = f'Такой telebot не найден {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
-        logger.critical(f'{__name__} - {message} / user id:{user.id}')
+        logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)

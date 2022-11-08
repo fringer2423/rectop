@@ -1,4 +1,5 @@
 import logging
+import sys
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
@@ -49,5 +50,5 @@ def read_status_task_view(request, task_id):
     task_result = AsyncResult(task_id)
     serializer = TaskSerializer(task_result)
     message = 'Запрос выполнен успешно'
-    logger.info(f'{__name__} - {message}')
+    logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
     return Response(serializer.data, status=status.HTTP_200_OK)

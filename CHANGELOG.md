@@ -6,11 +6,11 @@
 
 ### Добавлено
 
--
+- 
 
 ### Изменено
 
--
+- Edited all loggers msg [@fringer2423](https://github.com/fringer2423)
 
 ## [0.0.23] - 2022-11-07
 
