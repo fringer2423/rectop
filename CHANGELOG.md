@@ -6,7 +6,9 @@
 
 ### Добавлено
 
-- 
+- Yandex tasks [@fringer2423](https://github.com/fringer2423)
+- Zoon tasks
+- 2GIS tasks
 
 ### Изменено
 
