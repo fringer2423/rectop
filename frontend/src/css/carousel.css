@@ -1,7 +1,3 @@
-.carousel-container {
-  height: 100%;
-  width: 41%;
-}
 
 .slider-carousel {
   height: 100%;
@@ -11,10 +7,37 @@
 
 .slide {
   height: 100%;
-  display: flex;
+
   transition: transform 0.3s ease;
 }
 
-.arrow {
+.arrow-carousel {
   cursor: pointer;
+}
+
+.circle-of-page {
+    background: #EEEEEE;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%
+}
+
+.number-of-slides {
+    justify-content: center;
+    display: flex;
+    gap: 20px
+}
+
+.arrows-in-carousel {
+    display: flex;
+    justify-content: center;
+    gap: 10%
+}
+
+.circle-of-page-active {
+    width: 13px;
+    height: 13px;
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    border-radius: 50%
+
 }
