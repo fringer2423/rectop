@@ -7,10 +7,17 @@
     font-family: Gilroy-Medium
 }
 
-@media (min-width: 992px){
-    .text-contacts-mobile{
+@media (max-width: 991px) {
+    .text-contacts-computer {
         display: none;
     }
+}
+
+@media (min-width: 992px) {
+    .text-contacts-mobile {
+        display: none;
+    }
+
     #contacts {
         display: flex;
         flex-direction: row;
@@ -215,7 +222,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
 }
 
 .small-text li::marker {
@@ -309,10 +315,19 @@
     font-size: 24px;
 }
 
-.text-contacts li::marker {
-    color: #4584FF;
-    font-size: 35px;
+.text-contacts ul {
+    list-style-image: url(../../public/images/marker_dot.png);
 }
+
+.text-contacts li + li {
+    margin-top: 2em;
+}
+
+.text-contacts li span {
+    position: relative;
+    left: 24px
+}
+
 
 #questions h1 {
     margin-bottom: 5%
