@@ -77,11 +77,7 @@ const Carousel = ({ children }) => {
             {
                 pages.map(page => {
                     return (
-                        <div
-                            className={
-                                 'circle-of-page'
-                            }
-                            key={page.index}>
+                        <div className='circle-of-page'>
                         </div>
                     )
                 })

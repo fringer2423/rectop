@@ -128,6 +128,11 @@ const HomeScreen = () => {
                 />
                 <div className="wrapper-for-purple-block">
                     <div className="purple-block">
+                        <img
+                            className="white-ellipse"
+                            src="/images/4S.png"
+                            alt="4S"
+                        />
                         <div className="text-in-pb">
                             <h2><b>Сбор отзывов по QR-коду при посещении вашего заведения онлайн/оффлайн</b></h2>
                             <p>
