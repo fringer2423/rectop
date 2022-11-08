@@ -5,6 +5,8 @@ from datetime import datetime
 from django.conf import settings
 from django.utils.module_loading import import_string
 
+from apps.tasks.services.telegram_tasks_service import send_message_task
+
 token = settings.TELEGRAM_LOGGING_TOKEN
 chat = settings.TELEGRAM_LOGGING_CHAT
 emit_on_debug = getattr(settings, 'TELEGRAM_LOGGING_EMIT_ON_DEBUG', False)
@@ -50,13 +52,5 @@ class TelegramHandler(logging.Handler):
         self.send_message(message)
 
     def send_message(self, message):
-        try:
-            api = f'https://api.telegram.org/bot{token}/sendMessage?chat_id=-{chat}&text={message}'
-
-            req = requests.post(api, data={
-                'chat_id': chat,
-                'text': message
-            })
-
-        except Exception as e:
-            print(f'we got an error when handling the exception => {e}')
+        message = f'{datetime.now().strftime("%Y%m%d%H%M%S")}.{logging.getLevelName(self.level)} - {message}'
+        send_message_task.delay(chat_id=chat, token=token, message=message)

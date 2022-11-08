@@ -235,7 +235,7 @@ LOGGING = {
             'formatter': 'simple',
         },
         'telegram': {
-            'level': 'ERROR',
+            'level': 'WARNING',
             'class': 'apps.telebot.handler.TelegramHandler'
         },
     },

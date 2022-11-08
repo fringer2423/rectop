@@ -13,6 +13,7 @@
 - New model Telebot settings
 - Log to telegram
 - Telegram admin handler
+- Telegram send message task
 
 ### Изменено
 
