@@ -128,6 +128,18 @@
         font-size: 40px;
     }
 
+    .get-reports-equality {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .get-reports-text {
+        text-align: center;
+        padding-left: 25%;
+        padding-right: 25%;
+        margin-bottom: 3%
+    }
+
 }
 
 @media (max-width: 799px) {
@@ -193,6 +205,20 @@
     #work h3, .block-with-pic-one h3, .block-with-pic-two h3 {
         font-size: 18px;
     }
+
+    .get-reports-equality {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .get-reports-text {
+        font-size: 14px;
+        text-align: center;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
 }
 
 
@@ -238,13 +264,6 @@
 }
 
 
-.get-reports-text {
-    text-align: center;
-    padding-left: 10%;
-    padding-right: 10%;
-    margin-bottom: 3%
-}
-
 .first-block-text h2 {
     font-size: 24px
 }
@@ -262,11 +281,6 @@
 .get-reports h1 {
     text-align: center;
     margin-bottom: 2%;
-}
-
-.get-reports-equality {
-    text-align: center;
-    font-size: 24px;
 }
 
 

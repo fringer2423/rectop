@@ -6,11 +6,13 @@
 
 ### Добавлено
 
--
+- Компонент Carousel [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 
--
+- Изменены маркеры [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Компоненты Brands, PurpleCircle, HomeScreen, Header
+- CSS purpleBlock, purpleCircle, main, header
 
 ## [0.0.23] - 2022-11-07
 
@@ -27,11 +29,11 @@
 - Логирование rate endpoints
 - Логирование review settings endpoints
 - Логирование review endpoints
-- Логирование task endpoints 
+- Логирование task endpoints
 - Логирование telebot endpoints
 - Логирование user endpoints
 
-### Изменено 
+### Изменено
 
 -
 

@@ -32,9 +32,9 @@ function Header() {
     return (
         <>
 
-            <Navbar bg="white" expand="lg" fixed="top" className="border-bottom" >
+            <Navbar bg="white" expand="lg" fixed="top" >
                 <Container>
-                    <Navbar.Brand className="d-flex flex-row" href="/">
+                    <Navbar.Brand className="brand-in-nav" href="/">
                         <img
                             src="/images/favicon.png"
                             width="50px"
