@@ -15,7 +15,7 @@ import Brands from "../components/Brands";
 import ListOfRec from "../components/ListOfRec";
 
 
-import dataForAccordion from "../components/dataForAccordion";
+import dataForAccordion from "../dataForAccordion";
 
 
 const HomeScreen = () => {

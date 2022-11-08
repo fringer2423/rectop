@@ -1,0 +1,20 @@
+.carousel-container {
+  height: 100%;
+  width: 41%;
+}
+
+.slider-carousel {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide {
+  height: 100%;
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.arrow {
+  cursor: pointer;
+}
