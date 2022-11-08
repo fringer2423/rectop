@@ -11,12 +11,7 @@ from celery.result import AsyncResult
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
-from django.core.exceptions import ObjectDoesNotExist
-from django.db import IntegrityError
-
 from ..serializers import TaskSerializer
-
-from ..services.rate_service import get_rate_by_user_service, create_rate_by_user_service
 
 logger = logging.getLogger('django')
 

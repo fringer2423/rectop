@@ -9,10 +9,12 @@
 - Yandex tasks [@fringer2423](https://github.com/fringer2423)
 - Zoon tasks
 - 2GIS tasks
+- New app Telebot
 
 ### Изменено
 
 - Edited all loggers msg [@fringer2423](https://github.com/fringer2423)
+- Task views
 
 ## [0.0.23] - 2022-11-07
 
