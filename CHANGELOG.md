@@ -10,6 +10,9 @@
 - Zoon tasks
 - 2GIS tasks
 - New app Telebot
+- New model Telebot settings
+- Log to telegram
+- Telegram admin handler
 
 ### Изменено
 
