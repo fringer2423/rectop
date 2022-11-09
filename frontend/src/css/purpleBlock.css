@@ -11,14 +11,12 @@
         position: relative;
         left: 55%;
         width: 35%;
-
     }
 
     .purple-block {
         background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
         border-radius: 30px;
         color: white;
-        margin-bottom: 3%;
         padding: 5% 4% 3% 5%;
         margin-top: -45%;
         margin-bottom: 15%
@@ -58,7 +56,8 @@
     .img-in-purple-block {
         display: none
     }
-    .wrapper-for-purple-block{
+
+    .wrapper-for-purple-block {
         display: flex;
         justify-content: center;
     }
@@ -88,7 +87,7 @@
     }
 }
 
-@media (max-width: 1199px) and (min-width:992px) {
+@media (max-width: 1199px) and (min-width: 992px) {
     .white-ellipse {
         bottom: 450px;
         right: 17%;
@@ -96,7 +95,7 @@
 }
 
 @media (min-width: 1400px) {
-    .white-ellipse{
+    .white-ellipse {
         bottom: 620px;
     }
 }

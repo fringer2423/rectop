@@ -87,7 +87,7 @@
     color: white;
 }
 
-.registration-button:active{
+.registration-button:active {
     background: #4584FF;
     box-shadow: inset 0 6px 10px rgba(0, 0, 0, 0.25);
     border-radius: 40px;

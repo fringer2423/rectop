@@ -8,16 +8,14 @@
         justify-content: space-between;
         margin-left: 7%;
         gap: 10%;
-
     }
-
 
     .rec {
         margin-bottom: 30%;
         margin-top: 30%;
     }
 
-    .rec h3, .rec-last h3  {
+    .rec h3, .rec-last h3 {
         margin-bottom: 20%;
         font-size: 40px
     }
@@ -35,7 +33,7 @@
     }
 }
 
-.rec h3, .rec-last h3{
+.rec h3, .rec-last h3 {
     background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -55,11 +53,12 @@
         flex-direction: row;
         gap: 10%;
         justify-content: center;
-
     }
+
     .rec {
         width: 156px;
     }
+
     .rec-last {
         text-align: right;
         width: 188px;
@@ -77,5 +76,4 @@
     .arrow {
         display: none
     }
-
 }

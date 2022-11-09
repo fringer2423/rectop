@@ -46,7 +46,7 @@ function Footer() {
                     <Nav.Link>Обратная связь</Nav.Link>
                     <Nav.Link>FAQ</Nav.Link>
                 </Nav>
-                
+
             </Container>
         </Navbar>
     )

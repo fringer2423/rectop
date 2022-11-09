@@ -4,7 +4,7 @@ import "../css/purpleCircle.css"
 
 const PurpleCircle = () => {
     return (
-        <div className="block-for-pirple-circle">
+        <div className="block-for-purple-circle">
             <div className="black-block">
                 <img
                     src="/images/user.png"

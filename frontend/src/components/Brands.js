@@ -51,24 +51,24 @@ const Brands = () => {
     return (
         <>
             <div id="tab-for-icons">
-            {brands.map(brand => {
-                return(
-                    <div className="brand-icon" key={brand.title}>
-                        <div className="icon-in-circle">
-                            <img
-                                src={brand.src}
-                                alt={brand.title}
-                            />
+                {brands.map(brand => {
+                    return (
+                        <div className="brand-icon" key={brand.title}>
+                            <div className="icon-in-circle">
+                                <img
+                                    src={brand.src}
+                                    alt={brand.title}
+                                />
+                            </div>
+                            <h5>{brand.title}</h5>
+                            <p>{brand.text}</p>
                         </div>
-                        <h5>{brand.title}</h5>
-                        <p>{brand.text}</p>
-                    </div>
-                )
-            })}
+                    )
+                })}
             </div>
             <div id="slider-for-icons">
                 <Carousel>
-                    <div className="slide" >
+                    <div className="slide">
                         <div className="brand-icon">
                             <div className="icon-in-circle">
                                 <img
@@ -148,7 +148,7 @@ const Brands = () => {
                         <div className="brand-icon">
                             <div className="icon-in-circle">
                                 <img src="/images/main/image57.png"
-                                        alt="Flamp"
+                                     alt="Flamp"
                                 />
                             </div>
                             <h5>Flamp</h5>

@@ -22,7 +22,6 @@
     border: 2px solid #CDCDCD;
     margin-bottom: 5%;
     text-align: center;
-    padding: 1%;
     background: #F9F9F9;
     font-size: 20px;
     padding: 3%
@@ -72,14 +71,17 @@
         width: 330px;
         height: 500px;
     }
+
     .input-form {
         font-size: 14px;
         color: black;
         padding: 3%;
     }
+
     .for-form h3 {
         font-size: 24px;
     }
+
     .for-form p {
         font-size: 18px;
     }
