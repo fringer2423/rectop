@@ -2,14 +2,34 @@
 
 ## [Unreleased]
 
+## [0.0.25] - 2022-11-09
+
+### Добавлено
+
+- 
+
+### Изменено
+
+- 
+
 ## [0.0.24] - 2022-11-08
 
 ### Добавлено
 
+- Yandex tasks [@fringer2423](https://github.com/fringer2423)
+- Zoon tasks
+- 2GIS tasks
+- New app Telebot
+- New model Telebot settings
+- Log to telegram
+- Telegram admin handler
+- Telegram send message task
 - Компонент Carousel [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 
+- Edited all loggers msg [@fringer2423](https://github.com/fringer2423)
+- Task views
 - Изменены маркеры [@AlexTrubkina](https://github.com/AlexTrubkina)
 - Компоненты Brands, PurpleCircle, HomeScreen, Header
 - CSS purpleBlock, purpleCircle, main, header

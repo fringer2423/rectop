@@ -1,4 +1,5 @@
 import os
+import local_settings
 
 from datetime import timedelta
 from pathlib import Path
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'apps.core.apps.CoreConfig',
     'apps.api.apps.ApiConfig',
     'apps.tasks.apps.TasksConfig',
+    'apps.telebot.apps.TelebotConfig',
 ]
 
 # ==============================================================================
@@ -187,6 +189,10 @@ CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
 
 CELERYBEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
+TELEGRAM_LOGGING_TOKEN = os.environ.get("TELEGRAM_TOKEN", local_settings.TELEGRAM_TOKEN)
+TELEGRAM_LOGGING_CHAT = os.environ.get("TELEGRAM_GROUP_ID", local_settings.TELEGRAM_GROUP_ID)
+TELEGRAM_LOGGING_EMIT_ON_DEBUG = True
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -228,20 +234,24 @@ LOGGING = {
             'level': 'INFO',
             'formatter': 'simple',
         },
+        'telegram': {
+            'level': 'WARNING',
+            'class': 'apps.telebot.handler.TelegramHandler'
+        },
     },
     'loggers': {
         'django': {
-            'handlers': ['console_debug', 'file'],
+            'handlers': ['console_debug', 'file', 'telegram'],
             'propagate': False,
         },
         'django.request': {
             'level': 'DEBUG',
-            'handlers': ['console_debug', 'file'],
+            'handlers': ['console_debug', 'file', 'telegram'],
             'propagate': False,
         },
         'django.db.backends': {
             'level': 'DEBUG',
-            'handlers': ['console_debug', 'file'],
+            'handlers': ['console_debug', 'file', 'telegram'],
             'propagate': False,
         }
 
