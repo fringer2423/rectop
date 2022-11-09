@@ -1,4 +1,5 @@
 import logging
+import sys
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
@@ -109,26 +110,26 @@ def create_review_view(request):
         if review:
             serializer = ReviewSerializer(review, many=False)
             message = 'Запрос выполнен успешно'
-            logger.info(f'{__name__} - {message} / user id:{user.id}')
+            logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             message = 'Это не ваш branch'
-            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except ObjectDoesNotExist as e:
         message = f'Такой branch не найден {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
-        logger.critical(f'{__name__} - {message} / user id:{user.id}')
+        logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -169,21 +170,21 @@ def read_review_view(request, pk):
         if review:
             serializer = ReviewSerializer(review, many=False)
             message = 'Запрос выполнен успешно'
-            logger.info(f'{__name__} - {message} / user id:{user.id}')
+            logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
             message = 'Это не ваш branch'
-            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
         message = f'Такой review не найден {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
-        logger.critical(f'{__name__} - {message} / user id:{user.id}')
+        logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -224,21 +225,21 @@ def read_review_list_view(request, pk):
         if branch:
             serializer = ReviewSerializer(branch.review_set, many=True)
             message = 'Запрос выполнен успешно'
-            logger.info(f'{__name__} - {message} / user id:{user.id}')
+            logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
             message = 'Это не ваш branch'
-            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
         message = f'Такой branch не найден {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
-        logger.critical(f'{__name__} - {message} / user id:{user.id}')
+        logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -316,26 +317,26 @@ def update_review_view(request, pk):
             if serializer.is_valid():
                 serializer.save()
             message = 'Запрос выполнен успешно'
-            logger.info(f'{__name__} - {message} / user id:{user.id}')
+            logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
             message = 'Это не ваш branch'
-            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
         message = f'Такой review не найден {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
-        logger.critical(f'{__name__} - {message} / user id:{user.id}')
+        logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -376,21 +377,21 @@ def delete_review_view(request, pk):
         if review:
             review.delete()
             message = 'Запрос выполнен успешно'
-            logger.info(f'{__name__} - {message} / user id:{user.id}')
+            logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data={'detail': message}, status=status.HTTP_200_OK)
         else:
             message = 'Это не ваша company'
-            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
         message = f'Такой review не найден {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
-        logger.critical(f'{__name__} - {message} / user id:{user.id}')
+        logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -431,19 +432,19 @@ def read_review_list_all_view(request, pk):
         if reviews:
             serializer = ReviewSerializer(reviews, many=True)
             message = 'Запрос выполнен успешно'
-            logger.info(f'{__name__} - {message} / user id:{user.id}')
+            logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         else:
             message = 'Это не ваш review'
-            logger.warning(f'{__name__} - {message} / user id:{user.id}')
+            logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
 
     except ObjectDoesNotExist as e:
         message = f'Такой review не найден {e}'
-        logger.warning(f'{__name__} - {message} / user id:{user.id}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
-        logger.critical(f'{__name__} - {message} / user id:{user.id}')
+        logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)

@@ -1,4 +1,5 @@
 import logging
+import sys
 
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -47,15 +48,15 @@ def read_rate_info_view(request):
         rate_info = get_rate_info_service()
         serializer = RateInfoSerializer(rate_info, many=False)
         message = 'Запрос выполнен успешно'
-        logger.info(f'{__name__} - {message}')
+        logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     except ObjectDoesNotExist as e:
         message = f'Нет информации о тарифах {e}'
-        logger.warning(f'{__name__} - {message}')
+        logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
         return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
-        logger.critical(f'{__name__} - {message}')
+        logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
         return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
