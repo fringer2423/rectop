@@ -186,12 +186,21 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
+CELERYD_HIJACK_ROOT_LOGGER = False
 
 CELERYBEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+# ==============================================================================
+# TELEGRAM LOGGER SETTINGS
+# ==============================================================================
 
 TELEGRAM_LOGGING_TOKEN = os.environ.get("TELEGRAM_TOKEN", local_settings.TELEGRAM_TOKEN)
 TELEGRAM_LOGGING_CHAT = os.environ.get("TELEGRAM_GROUP_ID", local_settings.TELEGRAM_GROUP_ID)
 TELEGRAM_LOGGING_EMIT_ON_DEBUG = True
+
+# ==============================================================================
+# LOGGER SETTINGS
+# ==============================================================================
 
 LOGGING = {
     'version': 1,
@@ -205,6 +214,10 @@ LOGGING = {
             '()': DjangoColorsFormatter,
             'format': '[%(asctime)s] - %(levelname)s - %(message)s \n',
             'datefmt': '%d/%b/%Y %H:%M:%S',
+        },
+        'default': {
+            'format': '[{levelname}]-[{asctime}]-[{module}]-[{process:d}]-[{thread:d}]: {message}',
+            'style': '{',
         },
     },
     'filters': {
@@ -228,32 +241,47 @@ LOGGING = {
             'filters': ['require_debug_true'],
             'level': 'DEBUG',
         },
-        'file': {
+        'backend_log': {
             'class': 'logging.FileHandler',
             'filename': BASE_DIR / 'logs/backend.log',
             'level': 'INFO',
             'formatter': 'simple',
         },
-        'telegram': {
+        'critical_error_log': {
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs/backend_errors.log',
+            'level': 'ERROR',
+            'formatter': 'simple',
+        },
+        'celery_log': {
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs/celery_worker.log',
+            'level': 'INFO',
+            'formatter': 'default',
+        },
+        'telegram_log': {
             'level': 'WARNING',
             'class': 'apps.telebot.handler.TelegramHandler'
         },
     },
     'loggers': {
         'django': {
-            'handlers': ['console_debug', 'file', 'telegram'],
+            'handlers': ['console_debug', 'backend_log', 'telegram_log', 'critical_error_log'],
             'propagate': False,
         },
         'django.request': {
             'level': 'DEBUG',
-            'handlers': ['console_debug', 'file', 'telegram'],
+            'handlers': ['console_debug', 'backend_log', 'telegram_log', 'critical_error_log'],
             'propagate': False,
         },
         'django.db.backends': {
             'level': 'DEBUG',
-            'handlers': ['console_debug', 'file', 'telegram'],
+            'handlers': ['console_debug', 'backend_log', 'telegram_log', 'critical_error_log'],
             'propagate': False,
-        }
-
+        },
+        'celery': {
+            'level': 'DEBUG',
+            'handlers': ['console_debug', 'celery_log', 'telegram_log', 'critical_error_log']
+        },
     },
 }
