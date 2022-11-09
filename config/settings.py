@@ -199,6 +199,12 @@ TELEGRAM_LOGGING_CHAT = os.environ.get("TELEGRAM_GROUP_ID", local_settings.TELEG
 TELEGRAM_LOGGING_EMIT_ON_DEBUG = True
 
 # ==============================================================================
+# TELEGRAM LOGGER SETTINGS
+# ==============================================================================
+
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", local_settings.TELEGRAM_BOT_TOKEN)
+
+# ==============================================================================
 # LOGGER SETTINGS
 # ==============================================================================
 
