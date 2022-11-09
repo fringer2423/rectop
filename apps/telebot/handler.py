@@ -1,5 +1,4 @@
 import logging
-import requests
 from copy import copy
 from datetime import datetime
 from django.conf import settings
