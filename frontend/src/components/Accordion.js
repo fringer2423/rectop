@@ -16,7 +16,7 @@ const Accordion = (props) => {
     return (
         <div className="accordions">
             <div className="accordion-item">
-                <div  className="title-of-accordion" onClick={openAccordion}>
+                <div className="title-of-accordion" onClick={openAccordion}>
                     <div>
                         {props.title}
                     </div>
@@ -28,7 +28,7 @@ const Accordion = (props) => {
                 <div
                     className="body-of-accordion"
                     ref={content}
-                    style={{ maxHeight: `${height}` }}
+                    style={{maxHeight: `${height}`}}
                 >
                     <div>
                         {props.text}

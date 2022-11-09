@@ -7,7 +7,7 @@ import {
 } from 'react-bootstrap';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { NavHashLink } from 'react-router-hash-link';
+import {NavHashLink} from 'react-router-hash-link';
 import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 
@@ -32,7 +32,7 @@ function Header() {
     return (
         <>
 
-            <Navbar bg="white" expand="lg" fixed="top" >
+            <Navbar bg="white" expand="lg" fixed="top">
                 <Container>
                     <Navbar.Brand className="brand-in-nav" href="/">
                         <img
@@ -46,46 +46,46 @@ function Header() {
                         <FontAwesomeIcon icon={faBars} className="bars"/>
                     </Navbar.Toggle>
                     <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="me-auto w-100 justify-content-between mx-4">
-                                <div className="link-block">
-                                    <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#top">
-                                        Главная
-                                        <div className="dot"></div>
-                                    </NavHashLink>
-                                </div>
-                                <div className="link-block">
-                                    <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#about">
-                                        О нас
-                                        <div className="dot"></div>
-                                    </NavHashLink>
-                                </div>
-                                <div className="link-block">
-                                    <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#work">
-                                        Наши услуги
-                                        <div className="dot"></div>
-                                    </NavHashLink>
+                        <Nav className="me-auto w-100 justify-content-between mx-4">
+                            <div className="link-block">
+                                <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#top">
+                                    Главная
+                                    <div className="dot"></div>
+                                </NavHashLink>
+                            </div>
+                            <div className="link-block">
+                                <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#about">
+                                    О нас
+                                    <div className="dot"></div>
+                                </NavHashLink>
+                            </div>
+                            <div className="link-block">
+                                <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#work">
+                                    Наши услуги
+                                    <div className="dot"></div>
+                                </NavHashLink>
 
-                                </div>
-                                <div className="link-block">
-                                    <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#tariffs">
-                                        Тарифы
-                                        <div className="dot"></div>
-                                    </NavHashLink>
-                                </div>
-                                <div className="link-block">
-                                    <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#contacts">
-                                        Контакты
-                                        <div className="dot"></div>
-                                    </NavHashLink>
+                            </div>
+                            <div className="link-block">
+                                <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#tariffs">
+                                    Тарифы
+                                    <div className="dot"></div>
+                                </NavHashLink>
+                            </div>
+                            <div className="link-block">
+                                <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#contacts">
+                                    Контакты
+                                    <div className="dot"></div>
+                                </NavHashLink>
 
-                                </div>
-                                <div className="link-block">
-                                    <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#questions">
-                                        FAQ
-                                        <div className="dot"></div>
-                                    </NavHashLink>
-                                </div>
-                            </Nav>
+                            </div>
+                            <div className="link-block">
+                                <NavHashLink activeClassName="active-link" className="link-for-nav" to="/#questions">
+                                    FAQ
+                                    <div className="dot"></div>
+                                </NavHashLink>
+                            </div>
+                        </Nav>
                         <button className="registration-button" onClick={handleShow}>Регистрация</button>
                         <button className="button-log-in" onClick={handleShowLogIn}><FontAwesomeIcon
                             icon={faCircleArrowRight} className="arrow-in-button"/></button>

@@ -15,7 +15,6 @@
     background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
     position: relative;
     border-radius: 50%;
-    top: 5px;
     transform: translateX(-50%);
     opacity: 0;
     top: 1px;
@@ -47,7 +46,7 @@
 
     .link-block {
         margin-bottom: 2%;
-        margin-top:  2%;
+        margin-top: 2%;
         display: flex;
         justify-content: center;
         align-items: center;

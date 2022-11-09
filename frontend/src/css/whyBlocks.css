@@ -33,13 +33,14 @@
     }
 }
 
-@media (max-width: 500px){
+@media (max-width: 500px) {
     .why-block img {
         position: relative;
         top: -37px;
         margin-bottom: -30px;
         width: 35%
     }
+
     .why-block p {
         font-size: 14px
     }
@@ -69,7 +70,6 @@
     color: white;
     transition: 0.3s
 }
-
 
 
 .why-block h2 {

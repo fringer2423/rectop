@@ -6,11 +6,21 @@
 
 ### Добавлено
 
-- 
+- Celery logger [@fringer2423](https://github.com/fringer2423)
+- Queue periodic for celery tasks / workers
+- Queue telegram_push for celery tasks / workers
+- Celery fast task service
+- Periodic tasks logging
+- Telegram bot integration
+- New command (start_telegram_bot)
+- New container telegram bot (Docker)
 
 ### Изменено
 
-- 
+- Frontend refactor [@fringer2423](https://github.com/fringer2423)
+- Logger config 
+- Celery config
+- Docker config
 
 ## [0.0.24] - 2022-11-08
 
@@ -52,10 +62,6 @@
 - Логирование task endpoints
 - Логирование telebot endpoints
 - Логирование user endpoints
-
-### Изменено
-
--
 
 ## [0.0.22] - 2022-11-03
 

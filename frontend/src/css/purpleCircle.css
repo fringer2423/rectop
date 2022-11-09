@@ -41,22 +41,22 @@
 }
 
 
-
 @media (max-width: 799px) and (min-width: 768px) {
-    .purple-circle{
+    .purple-circle {
         margin-bottom: -35%;
         margin-top: -32%
     }
 }
 
 @media (max-width: 767px) and (min-width: 420px) {
-    .purple-circle{
+    .purple-circle {
         margin-bottom: -47%;
         margin-top: -43%
     }
 }
+
 @media (width: 425px) {
-    .purple-circle{
+    .purple-circle {
         margin-bottom: -60%;
         margin-top: -55%
     }
@@ -64,23 +64,22 @@
 
 
 @media (max-width: 420px) {
-    .purple-circle{
+    .purple-circle {
         margin-bottom: -65%;
         margin-top: -59%
     }
 }
 
-@media (max-width: 320px)  {
-    .purple-circle{
+@media (max-width: 320px) {
+    .purple-circle {
         margin-bottom: -80%;
         margin-top: -75%
     }
 }
 
 
-
 @media (max-width: 799px ) {
-    .purple-circle{
+    .purple-circle {
         width: 200px;
         height: 200px;
         padding-top: 20px;
@@ -91,7 +90,7 @@
 
     }
 
-    .block-for-pirple-circle {
+    .block-for-purple-circle {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -142,7 +141,7 @@
         margin-top: -40%;
         bottom: 80%;
         width: 24%;
-        position:relative;
+        position: relative;
     }
 
     .purple-arrow {
@@ -156,7 +155,6 @@
     }
 
 }
-
 
 
 @media (min-width: 800px) {
@@ -191,7 +189,7 @@
 
     .pic-of-user, .pic-of-computer {
         width: 25%;
-        position:relative;
+        position: relative;
     }
 
     .pic-of-user {
@@ -210,6 +208,7 @@
         position: relative;
         right: 10%
     }
+
     .black-arrow {
         position: relative;
         right: 15%

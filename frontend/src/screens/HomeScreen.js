@@ -25,7 +25,8 @@ const HomeScreen = () => {
             <div id="first-block">
                 <div className="first-block-text">
                     <h2> Негативные отзывы теперь в прошлом!</h2>
-                    <h1><b> <span className="gradient-text">RecTOP</span> - инновационный сервис</b> <span className="cursive-text">взаимодействия с клиентами.</span></h1>
+                    <h1><b> <span className="gradient-text">RecTOP</span> - инновационный сервис</b> <span
+                        className="cursive-text">взаимодействия с клиентами.</span></h1>
                     <br/><br/>
                     <div className="small-text">
                         Отзывы собираются по QR-коду, когда клиент посещает заведение или сайт.
@@ -136,7 +137,8 @@ const HomeScreen = () => {
                         <div className="text-in-pb">
                             <h2><b>Сбор отзывов по QR-коду при посещении вашего заведения онлайн/оффлайн</b></h2>
                             <p>
-                                Уникальная система мотивации оставления отзывов от клиентов. Клиент получает кэшбек за отзыв
+                                Уникальная система мотивации оставления отзывов от клиентов. Клиент получает кэшбек за
+                                отзыв
                                 на любом сервисе - его можно обменять на скидку/услугу у партнеров.
                             </p>
                         </div>
@@ -158,7 +160,7 @@ const HomeScreen = () => {
                 <div className="block-with-pic-one">
                     <img
                         src="/images/main/mainCard51Img.png"
-                        className ="pic-in-block-one"
+                        className="pic-in-block-one"
                         alt="mobile"
                     />
                     <div className="block-with-pic-one-text">
@@ -203,7 +205,7 @@ const HomeScreen = () => {
             </div>
             <div id='tariffs'>
                 <h1><b>Выбирайте то, что удобно Вам для управления репутацией</b></h1>
-                <div className="wraper-for-buttons">
+                <div className="wrapper-for-buttons">
                     <div className="for-buttons">
                         <button className="button-for-rate">На неделю</button>
                         <button className="button-for-rate">На месяц</button>
@@ -219,13 +221,18 @@ const HomeScreen = () => {
                     <p>Наш менеджер перезвонит вам через 10 минут, в течение которых вы сможете:</p>
                     <ul>
                         <li><span>Узнать все отзывы о своей компании и как их отработать.</span></li>
-                        <li><span>Получить список интернет-ресурсов, на которых нужно зарегистрировать компанию.</span></li>
-                        <li><span>Проанализировать общий рейтинг компании и каждой точки продаж в отдельности.</span></li>
-                        <li><span>Узнать откуда берутся негативные отзывы и как удалить негативный отзыв без бюджета.</span></li>
+                        <li><span>Получить список интернет-ресурсов, на которых нужно зарегистрировать компанию.</span>
+                        </li>
+                        <li><span>Проанализировать общий рейтинг компании и каждой точки продаж в отдельности.</span>
+                        </li>
+                        <li>
+                            <span>Узнать откуда берутся негативные отзывы и как удалить негативный отзыв без бюджета.</span>
+                        </li>
                     </ul>
                     <span className="text-contacts-computer"><p><b>Rectop - Ваша репутация!</b></p></span>
                 </div>
-                <div className="text-contacts-mobile"><b>Подарим доступ к сервису “Электронная книга отзывов и предложений” навсегда!</b></div>
+                <div className="text-contacts-mobile"><b>Подарим доступ к сервису “Электронная книга отзывов и
+                    предложений” навсегда!</b></div>
                 <FormUser/>
             </div>
             <Refprogram/>
