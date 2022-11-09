@@ -15,7 +15,7 @@ import Brands from "../components/Brands";
 import ListOfRec from "../components/ListOfRec";
 
 
-import dataForAccordion from "../components/dataForAccordion";
+import dataForAccordion from "../dataForAccordion";
 
 
 const HomeScreen = () => {
@@ -128,6 +128,11 @@ const HomeScreen = () => {
                 />
                 <div className="wrapper-for-purple-block">
                     <div className="purple-block">
+                        <img
+                            className="white-ellipse"
+                            src="/images/4S.png"
+                            alt="4S"
+                        />
                         <div className="text-in-pb">
                             <h2><b>Сбор отзывов по QR-коду при посещении вашего заведения онлайн/оффлайн</b></h2>
                             <p>
@@ -213,12 +218,12 @@ const HomeScreen = () => {
                     <h1><b>Запишитесь на <span className="gradient-text">бесплатный звонок</span></b></h1>
                     <p>Наш менеджер перезвонит вам через 10 минут, в течение которых вы сможете:</p>
                     <ul>
-                        <li>Узнать все отзывы о своей компании и как их отработать.</li>
-                        <li>Получить список интернет-ресурсов, на которых нужно зарегистрировать компанию.</li>
-                        <li> Проанализировать общий рейтинг компании и каждой точки продаж в отдельности.</li>
-                        <li>Узнать откуда берутся негативные отзывы и как удалить негативный отзыв без бюджета.</li>
+                        <li><span>Узнать все отзывы о своей компании и как их отработать.</span></li>
+                        <li><span>Получить список интернет-ресурсов, на которых нужно зарегистрировать компанию.</span></li>
+                        <li><span>Проанализировать общий рейтинг компании и каждой точки продаж в отдельности.</span></li>
+                        <li><span>Узнать откуда берутся негативные отзывы и как удалить негативный отзыв без бюджета.</span></li>
                     </ul>
-                    <p><b>Rectop - Ваша репутация!</b></p>
+                    <span className="text-contacts-computer"><p><b>Rectop - Ваша репутация!</b></p></span>
                 </div>
                 <div className="text-contacts-mobile"><b>Подарим доступ к сервису “Электронная книга отзывов и предложений” навсегда!</b></div>
                 <FormUser/>

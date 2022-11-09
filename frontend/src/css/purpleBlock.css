@@ -23,6 +23,12 @@
         margin-top: -45%;
         margin-bottom: 15%
     }
+
+    .white-ellipse {
+        position: relative;
+        right: 15%;
+        margin-bottom: -100%
+    }
 }
 
 @media (max-width: 799px) {
@@ -56,6 +62,10 @@
         display: flex;
         justify-content: center;
     }
+
+    .white-ellipse {
+        display: none;
+    }
 }
 
 @media (max-width: 991px) {
@@ -63,5 +73,30 @@
         left: 60%;
         width: 45%;
         top: 100px
+    }
+
+    .white-ellipse {
+        right: 17%;
+        top: -335px;
+        width: 30%
+    }
+}
+
+@media (max-width: 1399px) {
+    .white-ellipse {
+        bottom: 540px;
+    }
+}
+
+@media (max-width: 1199px) and (min-width:992px) {
+    .white-ellipse {
+        bottom: 450px;
+        right: 17%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .white-ellipse{
+        bottom: 620px;
     }
 }

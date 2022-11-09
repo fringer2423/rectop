@@ -1,8 +1,12 @@
 #list-of-prices {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     gap: 2%
+}
+
+#slider-for-prices {
+    display: flex;
+    justify-content: center
 }
 
 .table-for-price-first, .table-for-price-second, .table-for-price-third {

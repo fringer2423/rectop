@@ -10,7 +10,7 @@
 
 ### Изменено
 
--
+- 
 
 ## [0.0.24] - 2022-11-08
 
@@ -24,11 +24,15 @@
 - Log to telegram
 - Telegram admin handler
 - Telegram send message task
+- Компонент Carousel [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 
 - Edited all loggers msg [@fringer2423](https://github.com/fringer2423)
 - Task views
+- Изменены маркеры [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Компоненты Brands, PurpleCircle, HomeScreen, Header
+- CSS purpleBlock, purpleCircle, main, header
 
 ## [0.0.23] - 2022-11-07
 
@@ -45,11 +49,11 @@
 - Логирование rate endpoints
 - Логирование review settings endpoints
 - Логирование review endpoints
-- Логирование task endpoints 
+- Логирование task endpoints
 - Логирование telebot endpoints
 - Логирование user endpoints
 
-### Изменено 
+### Изменено
 
 -
 

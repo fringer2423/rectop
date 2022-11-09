@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/prices.css"
 
-import {Carousel} from 'react-bootstrap'
+import Carousel from './Carousel.js'
 
 const Prices = (props) => {
     return (
@@ -90,8 +90,8 @@ const Prices = (props) => {
 
 
             <div id="slider-for-prices">
-                <Carousel variant="dark">
-                    <Carousel.Item className="m-5">
+                <Carousel >
+
                         <div className="table-for-price-first">
                             <h3><b>“Генератор отзывов”</b></h3>
                             <h5>1 филиал</h5>
@@ -120,8 +120,7 @@ const Prices = (props) => {
                             </div>
                             <button className="black-button"><b>Приобрести тариф</b></button>
                         </div>
-                    </Carousel.Item>
-                    <Carousel.Item className="m-5">
+
                         <div className="table-for-price-second">
                             <h3><b>Какое-то название</b></h3>
                             <h5>1 филиал</h5>
@@ -149,8 +148,7 @@ const Prices = (props) => {
                             </div>
                             <button className="black-button"><b>Приобрести тариф</b></button>
                         </div>
-                    </Carousel.Item>
-                    <Carousel.Item className="m-5">
+
                         <div className="table-for-price-third">
                             <h3><b>Репутация под ключ</b></h3>
                             <h5>1 филиал</h5>
@@ -173,7 +171,7 @@ const Prices = (props) => {
                             </div>
                             <button className="black-button"><b>Приобрести тариф</b></button>
                         </div>
-                    </Carousel.Item>
+
                 </Carousel>
             </div>
         </>

@@ -16,6 +16,11 @@
     border: 20px solid transparent;
 }
 
+#slider-for-icons {
+    display: flex;
+    justify-content: center;
+}
+
 @media (min-width: 992px) {
     #slider-for-icons {
         display: none;

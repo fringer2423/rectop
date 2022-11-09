@@ -39,6 +39,7 @@
     color: #4584FF;
 }
 
+
 @media (max-width: 991px) {
     .dot {
         display: none
@@ -50,5 +51,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .navbar-brand {
+        position: relative;
+        left: 50%
+    }
+
+    .collapsed {
+        position: relative;
+        right: 90%
     }
 }

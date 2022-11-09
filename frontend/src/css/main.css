@@ -7,10 +7,17 @@
     font-family: Gilroy-Medium
 }
 
-@media (min-width: 992px){
-    .text-contacts-mobile{
+@media (max-width: 991px) {
+    .text-contacts-computer {
         display: none;
     }
+}
+
+@media (min-width: 992px) {
+    .text-contacts-mobile {
+        display: none;
+    }
+
     #contacts {
         display: flex;
         flex-direction: row;
@@ -121,6 +128,18 @@
         font-size: 40px;
     }
 
+    .get-reports-equality {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .get-reports-text {
+        text-align: center;
+        padding-left: 25%;
+        padding-right: 25%;
+        margin-bottom: 3%
+    }
+
 }
 
 @media (max-width: 799px) {
@@ -163,6 +182,7 @@
     .block-with-pic-two-text li {
         list-style-type: none;
     }
+
     .block-with-pic-two-text ul {
         margin-left: 0;
         padding-left: 0;
@@ -184,6 +204,20 @@
 
     #work h3, .block-with-pic-one h3, .block-with-pic-two h3 {
         font-size: 18px;
+    }
+
+    .get-reports-equality {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .get-reports-text {
+        font-size: 14px;
+        text-align: center;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
     }
 }
 
@@ -214,7 +248,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
 }
 
 .small-text li::marker {
@@ -230,13 +263,6 @@
     margin-left: 5%
 }
 
-
-.get-reports-text {
-    text-align: center;
-    padding-left: 10%;
-    padding-right: 10%;
-    margin-bottom: 3%
-}
 
 .first-block-text h2 {
     font-size: 24px
@@ -255,11 +281,6 @@
 .get-reports h1 {
     text-align: center;
     margin-bottom: 2%;
-}
-
-.get-reports-equality {
-    text-align: center;
-    font-size: 24px;
 }
 
 
@@ -308,10 +329,19 @@
     font-size: 24px;
 }
 
-.text-contacts li::marker {
-    color: #4584FF;
-    font-size: 35px;
+.text-contacts ul {
+    list-style-image: url(../../public/images/marker_dot.png);
 }
+
+.text-contacts li + li {
+    margin-top: 2em;
+}
+
+.text-contacts li span {
+    position: relative;
+    left: 24px
+}
+
 
 #questions h1 {
     margin-bottom: 5%
