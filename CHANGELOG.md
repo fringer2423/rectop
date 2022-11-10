@@ -6,11 +6,15 @@
 
 ### Добавлено
 
-- 
+- Hashlinks in Footer [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Added footer.css
+
 
 ### Изменено
 
-- 
+- Header and Footer [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Changed CSS: whyBlocks.css, purpleBlock.css, refProg.CSS
+- Brands.js: changed pictures 
 
 ## [0.0.25] - 2022-11-09
 
@@ -28,7 +32,7 @@
 ### Изменено
 
 - Frontend refactor [@fringer2423](https://github.com/fringer2423)
-- Logger config 
+- Logger config
 - Celery config
 - Docker config
 
