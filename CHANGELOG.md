@@ -6,11 +6,13 @@
 
 ### Добавлено
 
-- 
+- Review list paginator [@fringer2423](https://github.com/fringer2423)
+- Branch list paginator
 
 ### Изменено
 
-- 
+- Swagger conf (added params page for paginator) [@fringer2423](https://github.com/fringer2423)
+- Refactor backend
 
 ## [0.0.25] - 2022-11-09
 

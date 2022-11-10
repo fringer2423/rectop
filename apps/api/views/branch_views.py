@@ -10,6 +10,7 @@ from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from ..serializers import BranchSerializer
 
@@ -54,10 +55,35 @@ def read_branch_list_view(request, pk):
     try:
         company = get_company_by_id_service(user, pk)
         if company:
-            serializer = BranchSerializer(company.branchs, many=True)
+            branch_list = company.branchs.all()
+            query = request.query_params.get('keyword')
+            if query is None:
+                query = ''
+            page = request.query_params.get('page')
+            paginator = Paginator(branch_list, 10)
+
+            try:
+                branch_list = paginator.page(page)
+            except PageNotAnInteger:
+                branch_list = paginator.page(1)
+            except EmptyPage:
+                branch_list = paginator.page(paginator.num_pages)
+
+            if page is None:
+                page = 1
+
+            page = int(page)
+            serializer = BranchSerializer(branch_list, many=True)
             message = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-            return Response(data=serializer.data, status=status.HTTP_200_OK)
+            return Response(
+                data={
+                    'reviews': serializer.data,
+                    'page': page,
+                    'pages': paginator.num_pages
+                },
+                status=status.HTTP_200_OK
+            )
         else:
             message = 'Это не ваша company'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
