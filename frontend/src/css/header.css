@@ -52,7 +52,7 @@
         align-items: center;
     }
 
-    .navbar-brand {
+    .brand-in-nav {
         position: relative;
         left: 50%
     }
