@@ -73,8 +73,8 @@ function Footer() {
                         <Nav.Item><b>Контакты</b></Nav.Item>
                         <Nav.Item>business@rectop.ru</Nav.Item>
                         <Nav.Item>+ 7 (999) 888-77-66</Nav.Item>
-                        <Nav.Item>Политика конфиденциальности</Nav.Item>
-                        <Nav.Item>Лицензионный договор</Nav.Item>
+                        <Nav.Item><u>Политика конфиденциальности</u></Nav.Item>
+                        <Nav.Item><u>Лицензионный договор</u></Nav.Item>
                         <div className="icons-footer">
                             <FontAwesomeIcon icon={faTelegram}/>
                             <FontAwesomeIcon icon={faVk}/>

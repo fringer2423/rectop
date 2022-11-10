@@ -33,7 +33,7 @@ function Header() {
         <>
 
             <Navbar bg="white" expand="lg" fixed="top">
-                <Container>
+                <Container className="container-for-navbar">
                     <Navbar.Brand className="brand-in-nav" href="/">
                         <img
                             src="/images/navbar_brand_computer.png"
@@ -96,13 +96,10 @@ function Header() {
                         <div className="button-log-in" onClick={handleShowLogIn}><FontAwesomeIcon
                             icon={faCircleArrowRight} className="arrow-in-button"/></div>
                     </Navbar.Collapse>
-
                 </Container>
             </Navbar>
-            <Nav>
-                <Registration show={show} handleClose={handleClose}/>
-                <LogIn show={showlogin} handleClose={handleCloseLogIn}/>
-            </Nav>
+            <Registration show={show} handleClose={handleClose}/>
+            <LogIn show={showlogin} handleClose={handleCloseLogIn}/>
         </>
 
 

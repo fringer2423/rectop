@@ -42,6 +42,11 @@
     .logo-mobile {
         display: none
     }
+
+    .container-for-navbar {
+        border-bottom: 1px solid #D6D6D6CC;
+    }
+
 }
 
 
