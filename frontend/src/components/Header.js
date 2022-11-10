@@ -36,7 +36,13 @@ function Header() {
                 <Container>
                     <Navbar.Brand className="brand-in-nav" href="/">
                         <img
+                            src="/images/navbar_brand_computer.png"
+                            className="logo-computer"
+                            alt="logo"
+                        />
+                        <img
                             src="/images/favicon.png"
+                            className="logo-mobile"
                             width="50px"
                             height="50px"
                             alt="logo"

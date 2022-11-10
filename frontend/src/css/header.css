@@ -38,6 +38,12 @@
     color: #4584FF;
 }
 
+@media (min-width: 992px) {
+    .logo-mobile {
+        display: none
+    }
+}
+
 
 @media (max-width: 991px) {
     .dot {
@@ -60,5 +66,8 @@
     .collapsed {
         position: relative;
         right: 90%
+    }
+    .logo-computer {
+        display: none
     }
 }
