@@ -38,11 +38,17 @@
 
 .megaphone {
     position: relative;
-    left: 85%;
-    bottom: 60px
+    left: 90%;
+    bottom: 100px
 
 }
 
+@media (max-width: 1499px) and (min-width: 992px) {
+    .megaphone {
+        left: 83%;
+        bottom: 90px
+    }
+}
 
 
 @media (max-width: 1100px) {
