@@ -74,3 +74,28 @@
         bottom: 220px
     }
 }
+
+@media (max-width: 610px){
+    .megaphone {
+        left: 80%
+    }
+}
+
+@media (width: 768px) {
+    .megaphone {
+        bottom: 270px;
+        left: 83%
+    }
+    .bell-ring {
+        top: 270px
+    }
+}
+
+@media (width: 425px) {
+    .megaphone {
+        bottom: 200px;
+    }
+    .bell-ring {
+        top: 190px
+    }
+}
