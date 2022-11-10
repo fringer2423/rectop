@@ -56,9 +56,6 @@ function Footer() {
                         <Nav.Item>
                             © 2018–2022 Rectop - агрегатор отзывов
                         </Nav.Item>
-                        <Nav.Item>
-                            Дизайнер - Чернев Максим (@maxim_235)
-                        </Nav.Item>
                     </div>
                 </div>
                     <div className="nav-footer-computer">
