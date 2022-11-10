@@ -93,8 +93,8 @@ function Header() {
                             </div>
                         </Nav>
                         <button className="registration-button" onClick={handleShow}>Регистрация</button>
-                        <button className="button-log-in" onClick={handleShowLogIn}><FontAwesomeIcon
-                            icon={faCircleArrowRight} className="arrow-in-button"/></button>
+                        <div className="button-log-in" onClick={handleShowLogIn}><FontAwesomeIcon
+                            icon={faCircleArrowRight} className="arrow-in-button"/></div>
                     </Navbar.Collapse>
 
                 </Container>

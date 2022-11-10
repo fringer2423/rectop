@@ -6,42 +6,42 @@ import "../css/brands.css";
 
 const brands = [
     {
-        src: "/images/main/image49.png",
+        src: "/images/main/yandex.png",
         title: "Яндекс.Карты",
         text: "55 млн чел./месяц"
     },
     {
-        src: "/images/main/image50.png",
+        src: "/images/main/google.png",
         title: "Google карты",
         text: "30 млн чел./месяц"
     },
     {
-        src: "/images/main/image51.png",
+        src: "/images/main/2GIS.png",
         title: "2ГИС",
         text: "30 млн чел./месяц"
     },
     {
-        src: "/images/main/image52.png",
+        src: "/images/main/wildberries.png",
         title: "Wildberries",
         text: "92 млн чел./месяц"
     },
     {
-        src: "/images/main/image54.png",
+        src: "/images/main/zoon.png",
         title: "Zoon",
         text: "25 млн чел./месяц"
     },
     {
-        src: "/images/main/image55.png",
+        src: "/images/main/ozon.png",
         title: "OZON",
         text: "80 млн чел./месяц"
     },
     {
-        src: "/images/main/image56.png",
+        src: "/images/main/yell.png",
         title: "Yell",
         text: "3 млн чел./месяц"
     },
     {
-        src: "/images/main/image57.png",
+        src: "/images/main/flamp.png",
         title: "Flamp",
         text: "50 млн чел./месяц"
     }
@@ -72,7 +72,7 @@ const Brands = () => {
                         <div className="brand-icon">
                             <div className="icon-in-circle">
                                 <img
-                                    src="/images/main/image49.png"
+                                    src="/images/main/yandex.png"
                                     alt="Yandex"
                                 />
                             </div>
@@ -82,7 +82,7 @@ const Brands = () => {
                         <div className="brand-icon">
                             <div className="icon-in-circle">
                                 <img
-                                    src="/images/main/image50.png"
+                                    src="/images/main/google.png"
                                     alt="Google"
                                 />
                             </div>
@@ -94,7 +94,7 @@ const Brands = () => {
                         <div className="brand-icon">
                             <div className="icon-in-circle">
                                 <img
-                                    src="/images/main/image51.png"
+                                    src="/images/main/2GIS.png"
                                     alt="2ГИС"
                                 />
                             </div>
@@ -104,7 +104,7 @@ const Brands = () => {
                         <div className="brand-icon">
                             <div className="icon-in-circle">
                                 <img
-                                    src="/images/main/image52.png"
+                                    src="/images/main/wildberries.png"
                                     alt="Wildberries"
                                 />
                             </div>
@@ -116,7 +116,7 @@ const Brands = () => {
                         <div className="brand-icon">
                             <div className="icon-in-circle">
                                 <img
-                                    src="/images/main/image54.png"
+                                    src="/images/main/zoon.png"
                                     alt="Zoon"
                                 />
                             </div>
@@ -126,7 +126,7 @@ const Brands = () => {
                         <div className="brand-icon">
                             <div className="icon-in-circle">
                                 <img
-                                    src="/images/main/image55.png"
+                                    src="/images/main/ozon.png"
                                     alt="OZON"
                                 />
                             </div>
@@ -138,7 +138,7 @@ const Brands = () => {
                         <div className="brand-icon">
                             <div className="icon-in-circle">
                                 <img
-                                    src="/images/main/image56.png"
+                                    src="/images/main/yell.png"
                                     alt="Yell"
                                 />
                             </div>
@@ -147,7 +147,7 @@ const Brands = () => {
                         </div>
                         <div className="brand-icon">
                             <div className="icon-in-circle">
-                                <img src="/images/main/image57.png"
+                                <img src="/images/main/flamp.png"
                                      alt="Flamp"
                                 />
                             </div>

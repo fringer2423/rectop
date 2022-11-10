@@ -96,12 +96,17 @@
 
 
 .button-log-in {
-    border-radius: 48%;
+    width: 55px;
+    height: 45px;
+    border-radius: 50%;
     color: #4584FF;
     background: white;
     border: 2px solid #4584FF;
     margin: 1%;
-    font-size: 30px
+    font-size: 28px;
+    padding-left: 6px;
+    padding-top: 2px
+
 }
 
 .button-log-in:hover {
