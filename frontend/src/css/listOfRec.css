@@ -1,4 +1,4 @@
-@media (min-width: 991px) {
+@media (min-width: 992px) {
     #block-of-recs {
         margin-top: 10%;
         margin-bottom: 10%;
@@ -41,7 +41,7 @@
     text-fill-color: transparent;
 }
 
-@media (max-width: 990px) {
+@media (max-width: 991px) {
     #block-of-recs {
         display: flex;
         flex-direction: column;

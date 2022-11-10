@@ -41,7 +41,7 @@
 }
 
 
-@media (max-width: 799px) and (min-width: 768px) {
+@media (max-width: 991px) and (min-width: 768px) {
     .purple-circle {
         margin-bottom: -35%;
         margin-top: -32%
@@ -78,7 +78,7 @@
 }
 
 
-@media (max-width: 799px ) {
+@media (max-width: 991px ) {
     .purple-circle {
         width: 200px;
         height: 200px;
@@ -156,12 +156,7 @@
 
 }
 
-
-@media (min-width: 800px) {
-
-    .purple-circle, .purple-arrow, .black-arrow {
-        margin-left: 20%
-    }
+@media (min-width: 992px) {
 
     .purple-circle {
         padding: 77px 61px 61px;
