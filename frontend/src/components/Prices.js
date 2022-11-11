@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "../css/prices.css"
 
 import {Carousel} from 'react-bootstrap';
@@ -8,11 +8,47 @@ import {faArrowRightLong} from '@fortawesome/free-solid-svg-icons';
 import {faArrowLeftLong} from '@fortawesome/free-solid-svg-icons';
 
 const Prices = () => {
+
+    const [activeIndex, setActiveIndex] = useState(0)
+
+
+    const [firstStyle, setFirstStyle] = useState(false);
+    const [secondStyle, setSecondStyle] = useState(false);
+    const [thirdStyle, setThirdStyle] = useState(false);
+
+    const handleClickFirstPrice = () => {
+        setFirstStyle(true);
+        setSecondStyle(false);
+        setThirdStyle(false);
+        setActiveIndex(0);
+    }
+
+    const handleClickSecondPrice = () => {
+        setSecondStyle(true);
+        setFirstStyle(false);
+        setThirdStyle(false);
+        setActiveIndex(1);
+    }
+
+    const handleClickThirdPrice = () => {
+        setThirdStyle(true);
+        setFirstStyle(false);
+        setSecondStyle(false);
+        setActiveIndex(2);
+    }
+
     return (
         <>
+            <div className="wrapper-for-buttons">
+                <div className="for-buttons">
+                    <button className={firstStyle ? 'button-for-rate active-button' : 'button-for-rate'} onClick={handleClickFirstPrice}>На неделю</button>
+                    <button className={secondStyle ? 'button-for-rate active-button' : 'button-for-rate'} onClick={handleClickSecondPrice}>На месяц</button>
+                    <button className={thirdStyle ? 'button-for-rate active-button' : 'button-for-rate'} onClick={handleClickThirdPrice}>На 1 год</button>
+                </div>
+            </div>
 
             <div id="list-of-prices">
-                <div className="table-for-price-first">
+                <div className={firstStyle ? 'table-for-price-first-click' : 'table-for-price-first'} onClick={handleClickFirstPrice}>
                     <h3><b>“Генератор отзывов”</b></h3>
                     <h5>1 филиал</h5>
                     <h4><b>1200 РУБ./МЕС.</b></h4>
@@ -40,7 +76,7 @@ const Prices = () => {
                     </div>
                     <button className="black-button"><b>Приобрести тариф</b></button>
                 </div>
-                <div className="table-for-price-second">
+                <div className={secondStyle ? 'table-for-price-second-click' : 'table-for-price-second'} onClick={handleClickSecondPrice}>
                     <h3><b>Какое-то название</b></h3>
                     <h5>1 филиал</h5>
                     <h4><b>1200 РУБ./МЕС.</b></h4>
@@ -67,7 +103,7 @@ const Prices = () => {
                     </div>
                     <button className="black-button"><b>Приобрести тариф</b></button>
                 </div>
-                <div className="table-for-price-third">
+                <div className={thirdStyle ? 'table-for-price-third-click' : 'table-for-price-third'} onClick={handleClickThirdPrice}>
                     <h3><b>Репутация под ключ</b></h3>
                     <h5>1 филиал</h5>
                     <h4><b>ОТ 4000 РУБ./МЕС.</b></h4>
@@ -94,11 +130,10 @@ const Prices = () => {
 
 
 
-            <div id="slider-for-prices" >
-                <Carousel className="carousel-for-prices" interval={null} >
+            <div id="slider-for-prices">
+                <Carousel className="carousel-for-prices" interval={null} activeIndex={activeIndex}>
                     <Carousel.Item >
-
-                        <div className="table-for-price-first">
+                        <div className={firstStyle ? 'table-for-price-first-click' : 'table-for-price-first'} >
                             <h3><b>“Генератор отзывов”</b></h3>
                             <h5>1 филиал</h5>
                             <h4><b>1200 РУБ./МЕС.</b></h4>
@@ -130,7 +165,7 @@ const Prices = () => {
                     </Carousel.Item>
                     <Carousel.Item >
 
-                        <div className="table-for-price-second">
+                        <div className={secondStyle ? 'table-for-price-second-click' : 'table-for-price-second'}>
                             <h3><b>Какое-то название</b></h3>
                             <h5>1 филиал</h5>
                             <h4><b>1200 РУБ./МЕС.</b></h4>
@@ -161,7 +196,7 @@ const Prices = () => {
                     </Carousel.Item>
                     <Carousel.Item >
 
-                        <div className="table-for-price-third">
+                        <div className={thirdStyle ? 'table-for-price-third-click' : 'table-for-price-third'}>
                             <h3><b>Репутация под ключ</b></h3>
                             <h5>1 филиал</h5>
                             <h4><b>ОТ 4000 РУБ./МЕС.</b></h4>
@@ -187,7 +222,7 @@ const Prices = () => {
                     </Carousel.Item>
                     </Carousel>
             </div>
-            
+
         </>
     )
 }
