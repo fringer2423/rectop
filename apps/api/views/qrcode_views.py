@@ -77,31 +77,59 @@ def create_qrcode_view(request):
             serializer = QRCodeSerializer(qr_code, many=False, context={"request": request})
             message = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED
+            )
         else:
             message = 'Это не ваш branch'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
+            return Response(
+                data={
+                    'detail': message
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
 
     except ObjectDoesNotExist as e:
         message = f'Такой branch не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_404_NOT_FOUND
+        )
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_422_UNPROCESSABLE_ENTITY
+        )
 
     except IntegrityError as e:
         message = f'QRCode уже создан для этого branch {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_406_NOT_ACCEPTABLE
+        )
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
 
 @swagger_auto_schema(
@@ -142,21 +170,39 @@ def read_qrcode_view(request, pk):
             serializer = QRCodeSerializer(qr_code, many=False, context={"request": request})
             message = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-            return Response(data=serializer.data, status=status.HTTP_200_OK)
+            return Response(
+                data=serializer.data,
+                status=status.HTTP_200_OK
+            )
         else:
             message = 'Это не ваш branch'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
+            return Response(
+                data={
+                    'detail': message
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
 
     except ObjectDoesNotExist as e:
         message = f'Такой QRCode не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_404_NOT_FOUND
+        )
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
 
 @swagger_auto_schema(
@@ -188,14 +234,27 @@ def read_all_qrcodes_view(request):
         serializer = AllQRCodesSerializer(qr_code_list, many=True, context={"request": request})
         message = 'Запрос выполнен успешно'
         logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
-        return Response(data=serializer.data, status=status.HTTP_200_OK)
+        return Response(
+            data=serializer.data,
+            status=status.HTTP_200_OK
+        )
 
     except ObjectDoesNotExist as e:
         message = 'QRCodes не найдены'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
-        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_404_NOT_FOUND
+        )
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
-        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_400_BAD_REQUEST
+        )

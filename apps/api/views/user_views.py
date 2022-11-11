@@ -67,7 +67,10 @@ class MyTokenObtainPairView(TokenObtainPairView):
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - Invalid token / {e.args[0]}')
             raise InvalidToken(e.args[0])
 
-        return Response(serializer.validated_data, status=status.HTTP_200_OK)
+        return Response(
+            data=serializer.validated_data,
+            status=status.HTTP_200_OK
+        )
 
 
 @swagger_auto_schema(
@@ -129,17 +132,30 @@ def register_user_view(request):
         serializer = UserSerializerWithToken(user, many=False)
         message = 'Запрос выполнен успешно'
         logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(
+            data=serializer.data,
+            status=status.HTTP_201_CREATED
+        )
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
-        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_422_UNPROCESSABLE_ENTITY
+        )
 
     except Exception as e:
-        message = {'detail': f'Пользователем с таким email уже существует {e}'}
+        message = f'Пользователем с таким email уже существует {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
-        return Response(message, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
 
 @swagger_auto_schema(
@@ -169,7 +185,9 @@ def read_user_profile_view(request):
     user = request.user
     serializer = UserSerializer(user, many=False)
     logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - Запрос выполнен успешно')
-    return Response(serializer.data)
+    return Response(
+        data=serializer.data
+    )
 
 
 @swagger_auto_schema(
@@ -258,14 +276,27 @@ def update_user_profile_view(request):
             serializer.save()
         message = 'Запрос выполнен успешно'
         logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(
+            data=serializer.data,
+            status=status.HTTP_200_OK
+        )
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_422_UNPROCESSABLE_ENTITY
+        )
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_400_BAD_REQUEST
+        )
