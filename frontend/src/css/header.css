@@ -38,6 +38,17 @@
     color: #4584FF;
 }
 
+@media (min-width: 992px) {
+    .logo-mobile {
+        display: none
+    }
+
+    .container-for-navbar {
+        border-bottom: 1px solid #D6D6D6CC;
+    }
+
+}
+
 
 @media (max-width: 991px) {
     .dot {
@@ -52,7 +63,7 @@
         align-items: center;
     }
 
-    .navbar-brand {
+    .brand-in-nav {
         position: relative;
         left: 50%
     }
@@ -60,5 +71,8 @@
     .collapsed {
         position: relative;
         right: 90%
+    }
+    .logo-computer {
+        display: none
     }
 }

@@ -6,11 +6,16 @@
 
 ### Добавлено
 
+- Hashlinks in Footer [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Added footer.css
 - Review list paginator [@fringer2423](https://github.com/fringer2423)
 - Branch list paginator
 
 ### Изменено
 
+- Header and Footer [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Changed CSS: whyBlocks.css, purpleBlock.css, refProg.CSS
+- Brands.js: changed pictures 
 - Swagger conf (added params page for paginator) [@fringer2423](https://github.com/fringer2423)
 - Refactor backend
 
@@ -30,7 +35,7 @@
 ### Изменено
 
 - Frontend refactor [@fringer2423](https://github.com/fringer2423)
-- Logger config 
+- Logger config
 - Celery config
 - Docker config
 

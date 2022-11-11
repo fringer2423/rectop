@@ -7,13 +7,25 @@
     font-family: Gilroy-Medium
 }
 
-@media (max-width: 991px) {
-    .text-contacts-computer {
+@media (max-width: 1199px) {
+    .first-image {
+        width: 48%
+    }
+
+    #first-block {
+        gap: 5%
+    }
+}
+
+@media (min-width: 2400px) {
+
+    .blue-ball {
         display: none;
     }
 }
 
 @media (min-width: 992px) {
+
     .text-contacts-mobile {
         display: none;
     }
@@ -27,26 +39,6 @@
         margin-top: 10%;
         margin-right: 5%;
     }
-}
-
-@media (max-width: 1000px) {
-    .first-image {
-        width: 60%
-    }
-
-    #first-block {
-        gap: 10%
-    }
-}
-
-@media (min-width: 2400px) {
-
-    .blue-ball {
-        display: none;
-    }
-}
-
-@media (min-width: 800px) {
 
     .cursive-text {
         font-style: italic;
@@ -143,7 +135,7 @@
 
 }
 
-@media (max-width: 799px) {
+@media (max-width: 991px) {
 
     #work {
         text-align: center;
@@ -157,6 +149,7 @@
     #first-block {
         margin-top: 200px;
         text-align: center;
+         box-shadow: 0px 15px 10px -15px rgba(0, 0, 0, 0.08);
 
     }
 
@@ -167,6 +160,10 @@
     .cursive-text {
         color: #0F0F0F;
         font-weight: bold;
+    }
+
+    .text-contacts-computer {
+        display: none;
     }
 
     .block-with-pic-one. .block-with-pic-two {
@@ -337,7 +334,7 @@
 
 .text-contacts li span {
     position: relative;
-    left: 24px
+    left: 20px
 }
 
 

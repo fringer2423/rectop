@@ -7,17 +7,21 @@ import {
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
+import {NavHashLink} from 'react-router-hash-link';
+
 import {
     faTelegram,
     faVk
 } from '@fortawesome/free-brands-svg-icons';
 
+import "../css/footer.css"
+
 function Footer() {
     return (
-        <Navbar bg="primary" variant="dark">
-            <Container>
-                <Nav className="d-flex flex-column text-white w-25 me-5 gap-5 mb-5">
-                    <Nav className="d-flex flex-column gap-3">
+        <Navbar variant="dark" className="navbar-footer">
+            <Container className="container-footer">
+                <div className="footer-first-nav">
+                    <div className="footer-navbar-logo">
                         <Navbar.Brand>
                             <img
                                 src="/images/logofooter.png"
@@ -27,26 +31,55 @@ function Footer() {
                         <Nav.Item>
                             Мы используем куки, это позволяет улучшить ваш пользовательский опыт
                         </Nav.Item>
-                    </Nav>
-                    <Nav className="d-flex flex-column gap-3">
+                    </div>
+                    <div className="footer-contacts-navs-mobile">
+                        <div className="nav-footer-mobile">
+                            <Nav.Item><b>Навигация</b></Nav.Item>
+                            <Nav.Item><NavHashLink to="/#top" className="link-footer">Главная</NavHashLink></Nav.Item>
+                            <Nav.Item><NavHashLink to="/#about" className="link-footer">О нас</NavHashLink></Nav.Item>
+                            <Nav.Item><NavHashLink to="/#work" className="link-footer">Как мы работаем</NavHashLink></Nav.Item>
+                            <Nav.Item><NavHashLink to="/#tariffs" className="link-footer">Тарифы</NavHashLink></Nav.Item>
+                            <Nav.Item><NavHashLink to="/#contacts" className="link-footer">Обратная связь</NavHashLink></Nav.Item>
+                            <Nav.Item><NavHashLink to="/#questions" className="link-footer">FAQ</NavHashLink></Nav.Item>
+                        </div>
+                        <div className="contacts-footer-mobile">
+                            <Nav.Item><b>Контакты</b></Nav.Item>
+                            <Nav.Item>business@rectop.ru</Nav.Item>
+                            <Nav.Item>+ 7 (999) 888-77-66</Nav.Item>
+                            <Nav.Item>Политика конфиденциальности</Nav.Item>
+                            <Nav.Item>Лицензионный договор</Nav.Item>
+                            <div className="icons-footer">
+                                <FontAwesomeIcon icon={faTelegram}/>
+                                <FontAwesomeIcon icon={faVk}/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="footer-reference">
                         <Nav.Item>
                             © 2018–2022 Rectop - агрегатор отзывов
                         </Nav.Item>
-                        <Nav.Item>
-                            Дизайнер - Чернев Максим (@maxim_235)
-                        </Nav.Item>
-                    </Nav>
-                </Nav>
-                <Nav className="me-auto d-flex flex-column mt-5  mb-5 text-white">
-                    <Nav.Item><b>Навигация</b></Nav.Item>
-                    <Nav.Link href="/">Главная</Nav.Link>
-                    <Nav.Link>О нас</Nav.Link>
-                    <Nav.Link>Как мы работаем</Nav.Link>
-                    <Nav.Link>Тарифы</Nav.Link>
-                    <Nav.Link>Обратная связь</Nav.Link>
-                    <Nav.Link>FAQ</Nav.Link>
-                </Nav>
-
+                    </div>
+                </div>
+                    <div className="nav-footer-computer">
+                        <Nav.Item><b>Навигация</b></Nav.Item>
+                        <Nav.Item><NavHashLink to="/#top" className="link-footer">Главная</NavHashLink></Nav.Item>
+                        <Nav.Item><NavHashLink to="/#about" className="link-footer">О нас</NavHashLink></Nav.Item>
+                        <Nav.Item><NavHashLink to="/#work" className="link-footer">Как мы работаем</NavHashLink></Nav.Item>
+                        <Nav.Item><NavHashLink to="/#tariffs" className="link-footer">Тарифы</NavHashLink></Nav.Item>
+                        <Nav.Item><NavHashLink to="/#contacts" className="link-footer">Обратная связь</NavHashLink></Nav.Item>
+                        <Nav.Item><NavHashLink to="/#questions" className="link-footer">FAQ</NavHashLink></Nav.Item>
+                    </div>
+                    <div className="contacts-footer-computer">
+                        <Nav.Item><b>Контакты</b></Nav.Item>
+                        <Nav.Item>business@rectop.ru</Nav.Item>
+                        <Nav.Item>+ 7 (999) 888-77-66</Nav.Item>
+                        <Nav.Item><u>Политика конфиденциальности</u></Nav.Item>
+                        <Nav.Item><u>Лицензионный договор</u></Nav.Item>
+                        <div className="icons-footer">
+                            <FontAwesomeIcon icon={faTelegram}/>
+                            <FontAwesomeIcon icon={faVk}/>
+                        </div>
+                    </div>
             </Container>
         </Navbar>
     )

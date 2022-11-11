@@ -38,12 +38,20 @@
 
 .megaphone {
     position: relative;
-    left: 85%;
-    bottom: 60px
+    left: 90%;
+    bottom: 100px
 
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1499px) and (min-width: 992px) {
+    .megaphone {
+        left: 83%;
+        bottom: 90px
+    }
+}
+
+
+@media (max-width: 1100px) {
     .ref-block p {
         font-size: 16px
     }
@@ -64,5 +72,30 @@
 
     .megaphone {
         bottom: 220px
+    }
+}
+
+@media (max-width: 610px){
+    .megaphone {
+        left: 80%
+    }
+}
+
+@media (width: 768px) {
+    .megaphone {
+        bottom: 270px;
+        left: 83%
+    }
+    .bell-ring {
+        top: 270px
+    }
+}
+
+@media (width: 425px) {
+    .megaphone {
+        bottom: 200px;
+    }
+    .bell-ring {
+        top: 190px
     }
 }
