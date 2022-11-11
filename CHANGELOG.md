@@ -6,11 +6,17 @@
 
 ### Добавлено
 
-- 
+- React-bootstrap Carousel [@AlexTrubkina](https://github.com/AlexTrubkina)
+- email validation
 
 ### Изменено
 
-- 
+- footer.css, prices.css [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Prices.js (added onClick events)
+
+### Удалено
+
+- Carousel.js, carousel.css [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.26] - 2022-11-10
 
@@ -25,7 +31,7 @@
 
 - Header and Footer [@AlexTrubkina](https://github.com/AlexTrubkina)
 - Changed CSS: whyBlocks.css, purpleBlock.css, refProg.CSS
-- Brands.js: changed pictures 
+- Brands.js: changed pictures
 - Swagger conf (added params page for paginator) [@fringer2423](https://github.com/fringer2423)
 - Refactor backend
 
