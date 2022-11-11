@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-    Modal,
     Button,
     InputGroup,
     Form
@@ -18,13 +17,12 @@ import {
 import "../css/registration.css"
 
 
-const Registration = ({show, handleClose}) => {
+const RegistrationPage = () => {
     return (
-        <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-                <Modal.Title><b>Регистрация</b></Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
+        <div className="registration-page">
+                <h1><b>Регистрация</b></h1>
+
+
                 <InputGroup className="mt-5 mb-4 w-75 ms-5">
                     <Form.Control
                         placeholder="Имя"
@@ -65,17 +63,17 @@ const Registration = ({show, handleClose}) => {
                     <FontAwesomeIcon icon={faVk} className="icon-vk"/>
                     <FontAwesomeIcon icon={faYandex} className="icon-yandex"/>
                 </div>
-            </Modal.Body>
-            <Modal.Footer>
-                <button className="white-button" onClick={handleClose}>
+
+
+                <button className="white-button">
                     Закрыть
                 </button>
-                <button className="blue-button" onClick={handleClose}>
+                <button className="blue-button">
                     Регистрация
                 </button>
-            </Modal.Footer>
-        </Modal>
+            </div>
+
     )
 }
 
-export default Registration;
+export default RegistrationPage;

@@ -18,13 +18,12 @@ import {
 import "../css/registration.css"
 
 
-const LogIn = ({show, handleClose}) => {
+const LogIn = () => {
     return (
-        <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-                <Modal.Title><b>Вход</b></Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
+        <div className="log-in-page">
+
+                <h1>Вход</h1>
+
                 <InputGroup className="mt-5 mb-3 w-75 ms-5">
                     <Form.Control
                         placeholder="Почта"
@@ -44,16 +43,15 @@ const LogIn = ({show, handleClose}) => {
                     <FontAwesomeIcon icon={faVk} className="icon-vk"/>
                     <FontAwesomeIcon icon={faYandex} className="icon-yandex"/>
                 </div>
-            </Modal.Body>
-            <Modal.Footer>
-                <button className="white-button" onClick={handleClose}>
+
+                <button className="white-button">
                     Закрыть
                 </button>
-                <button className="blue-button" onClick={handleClose}>
+                <button className="blue-button">
                     Войти
                 </button>
-            </Modal.Footer>
-        </Modal>
+        </div>
+
     )
 }
 
