@@ -49,14 +49,27 @@ def read_rate_info_view(request):
         serializer = RateInfoSerializer(rate_info, many=False)
         message = 'Запрос выполнен успешно'
         logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
-        return Response(data=serializer.data, status=status.HTTP_200_OK)
+        return Response(
+            data=serializer.data,
+            status=status.HTTP_200_OK
+        )
 
     except ObjectDoesNotExist as e:
         message = f'Нет информации о тарифах {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
-        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_404_NOT_FOUND
+        )
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
-        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_400_BAD_REQUEST
+        )

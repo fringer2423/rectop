@@ -10,6 +10,7 @@ from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from ..serializers import BranchSerializer
 
@@ -21,6 +22,15 @@ logger = logging.getLogger('django')
 
 @swagger_auto_schema(
     method="get",
+    manual_parameters=[
+        openapi.Parameter(
+            name='page',
+            in_=openapi.IN_QUERY,
+            type=openapi.TYPE_STRING,
+            required=False,
+            description='Страница'
+        )
+    ],
     responses={
         200: openapi.Response(
             description='Запрос выполнен успешно',
@@ -54,24 +64,64 @@ def read_branch_list_view(request, pk):
     try:
         company = get_company_by_id_service(user, pk)
         if company:
-            serializer = BranchSerializer(company.branchs, many=True)
+            branch_list = company.branchs.all()
+            query = request.query_params.get('keyword')
+            if query is None:
+                query = ''
+            page = request.query_params.get('page')
+            paginator = Paginator(branch_list, 10)
+
+            try:
+                branch_list = paginator.page(page)
+            except PageNotAnInteger:
+                branch_list = paginator.page(1)
+            except EmptyPage:
+                branch_list = paginator.page(paginator.num_pages)
+
+            if page is None:
+                page = 1
+
+            page = int(page)
+            serializer = BranchSerializer(branch_list, many=True)
             message = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-            return Response(data=serializer.data, status=status.HTTP_200_OK)
+            return Response(
+                data={
+                    'reviews': serializer.data,
+                    'page': page,
+                    'pages': paginator.num_pages
+                },
+                status=status.HTTP_200_OK
+            )
         else:
             message = 'Это не ваша company'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
+            return Response(
+                data={
+                    'detail': message
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
 
     except ObjectDoesNotExist as e:
         message = f'Такой company не найдено {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_404_NOT_FOUND
+        )
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
 
 @swagger_auto_schema(
@@ -112,21 +162,39 @@ def read_branch_view(request, pk):
             serializer = BranchSerializer(branch, many=False)
             message = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-            return Response(data=serializer.data, status=status.HTTP_200_OK)
+            return Response(
+                data=serializer.data,
+                status=status.HTTP_200_OK
+            )
         else:
             message = 'Это не ваш branch'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
+            return Response(
+                data={
+                    'detail': message
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
 
     except ObjectDoesNotExist as e:
         message = f'Такой branch не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_404_NOT_FOUND
+        )
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
 
 @swagger_auto_schema(
@@ -226,26 +294,49 @@ def create_branch_view(request):
             serializer.save()
             message = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED
+            )
         else:
             message = 'Это не ваш company'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
+            return Response(
+                data={
+                    'detail': message
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_422_UNPROCESSABLE_ENTITY
+        )
 
     except ObjectDoesNotExist as e:
         message = f'Такой company не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_404_NOT_FOUND
+        )
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
 
 @swagger_auto_schema(
@@ -337,23 +428,46 @@ def update_branch_view(request, pk):
                 serializer.save()
             message = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-            return Response(data=serializer.data, status=status.HTTP_200_OK)
+            return Response(
+                data=serializer.data,
+                status=status.HTTP_200_OK
+            )
         else:
             message = 'Это не ваш branch'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-            return Response(data={'detail': message}, status=status.HTTP_403_FORBIDDEN)
+            return Response(
+                data={
+                    'detail': message
+                },
+                status=status.HTTP_403_FORBIDDEN
+            )
 
     except ObjectDoesNotExist as e:
         message = f'Такой branch не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_404_NOT_FOUND)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_404_NOT_FOUND
+        )
 
     except KeyError as e:
         message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_422_UNPROCESSABLE_ENTITY
+        )
 
     except Exception as e:
         message = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
-        return Response(data={'detail': message}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            data={
+                'detail': message
+            },
+            status=status.HTTP_400_BAD_REQUEST
+        )
