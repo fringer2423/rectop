@@ -15,6 +15,7 @@ numbers = string.digits
 
 @shared_task
 def first_download_of_branch_information_task(branch_id):
+    """Загружает информацию при добавлении филиала на платформу"""
     branch = get_branch_service(branch_id=branch_id)
     branch.is_detected = True
     branch.save()
@@ -39,6 +40,7 @@ def first_download_of_branch_information_task(branch_id):
 
 @shared_task
 def uploading_branch_reviews_task(user_id, branch_id):
+    """Загружает отзывы на платформу"""
     user = get_user_service(user_id=user_id)
     connect = get_connect_by_id_branch_and_type(user=user, branch_id=branch_id, connect_type=0)
     if connect is None:

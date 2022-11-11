@@ -11,7 +11,7 @@ numbers = string.digits
 
 
 class Command(BaseCommand):
-    help = 'Implemented to Django application command'
+    help = 'Создает 1000 филиалов для 1 компании'
 
     def handle(self, *args, **kwargs):
         for _ in range(1000):

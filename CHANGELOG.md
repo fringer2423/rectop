@@ -6,11 +6,11 @@
 
 ### Добавлено
 
-- 
+- Docstrings [@fringer2423](https://github.com/fringer2423)
 
 ### Изменено
 
-- 
+- Minor bugfix [@fringer2423](https://github.com/fringer2423)
 
 ## [0.0.26] - 2022-11-10
 

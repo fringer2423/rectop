@@ -3,6 +3,7 @@ from ..models import TelebotSettings
 
 
 def send_message_to_admin_telegram_service(message):
+    """Функция отправки сообщения в telegram"""
     if TelebotSettings.objects.first():
         settings = TelebotSettings.objects.first()
         token = str(settings.tg_token)
