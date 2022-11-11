@@ -5,9 +5,10 @@
 }
 
 #slider-for-prices {
-    display: flex;
-    justify-content: center
+    width: 310px;
 }
+
+
 
 .table-for-price-first, .table-for-price-second, .table-for-price-third {
     border-radius: 30px;
@@ -72,6 +73,7 @@
     .table-for-price-first, .table-for-price-second, .table-for-price-third {
         width: 300px;
         height: 850px;
+        margin-bottom: 60px
     }
 
     .text-in-price {
@@ -102,6 +104,8 @@
 
     }
 }
+
+
 
 @media (min-width: 992px) {
     #slider-for-prices {
@@ -138,5 +142,65 @@
         height: 50px;
         width: 200px;
         font-size: 15px
+    }
+}
+
+.carousel-for-prices .carousel-control-prev-icon {
+    position: relative;
+    top: 47%;
+    left: 70%;
+    background-image: url(../../public/images/control-left.svg) !important;
+}
+
+.carousel-for-prices .carousel-control-next-icon {
+    position: relative;
+    top: 47%;
+    right: 70%;
+    background-image: url(../../public/images/control-right.svg) !important;
+}
+
+.carousel-for-prices .carousel-indicators {
+    gap: 20px
+}
+
+.carousel-for-prices .carousel-indicators [data-bs-target] {
+  width: 13px !important;
+  height: 13px !important;
+  border: 1px solid transparent !important;
+  border-radius: 50%;
+  background-color: #EEEEEE !important;
+}
+
+.carousel-for-prices .carousel-indicators .active{
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+}
+
+@media (min-width: 761px){
+    #slider-for-prices {
+        margin-left: 29%
+    }
+}
+
+@media (min-width: 520px) and (max-width: 760px){
+    #slider-for-prices {
+        margin-left: 23%
+    }
+}
+
+@media (min-width: 470px) and (max-width: 519px){
+    #slider-for-prices {
+        margin-left: 20%
+    }
+}
+
+@media (min-width: 410px) and (max-width: 469px){
+    #slider-for-prices {
+        margin-left: 15%
+    }
+}
+
+@media (min-width: 350px) and (max-width: 409px){
+    #slider-for-prices {
+        margin-left: 5%
     }
 }
