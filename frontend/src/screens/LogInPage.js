@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {
     Modal,
@@ -17,39 +17,64 @@ import {
 
 import "../css/registration.css"
 
+import {checkMail} from "../validator/validation.js"
+
+import {LinkContainer} from 'react-router-bootstrap'
+
 
 const LogIn = () => {
+
+    const [mail, setMail] = useState('');
+    const [mailError, setMailError] = useState(false);
+
+    const handleErrorMail = () => {
+        if (!checkMail.test(mail)){
+            setMailError(true);
+        }
+        else{
+            setMailError(false);
+        }
+    }
+
     return (
         <div className="log-in-page">
 
-                <h1>Вход</h1>
+            <h1>Вход</h1>
 
-                <InputGroup className="mt-5 mb-3 w-75 ms-5">
-                    <Form.Control
-                        placeholder="Почта"
-                        aria-label="Post"
-                        aria-describedby="basic-addon1"
-                    />
-                </InputGroup>
-                <InputGroup className=" mb-5 w-75 ms-5">
-                    <Form.Control
-                        placeholder="Пароль"
-                        aria-label="Password"
-                        aria-describedby="basic-addon1"
-                    />
-                </InputGroup>
-                <div className="icons-of-registration-brands">
-                    <FontAwesomeIcon icon={faGoogle} className="icon-google"/>
-                    <FontAwesomeIcon icon={faVk} className="icon-vk"/>
-                    <FontAwesomeIcon icon={faYandex} className="icon-yandex"/>
-                </div>
+            <Form.Label className="mt-5"><b>Email</b></Form.Label>
+            <InputGroup className=" mb-3 w-75 ">
+                <Form.Control
+                    placeholder="Email"
+                    aria-label="Post"
+                    aria-describedby="basic-addon1"
+                    value={mail}
+                    onChange = {(e) => setMail(e.target.value)}
+                />
+            </InputGroup>
+            <Form.Label><b>Пароль</b></Form.Label>
+            <InputGroup className=" mb-5 w-75 ">
+                <Form.Control
+                    placeholder="Пароль"
+                    aria-label="Password"
+                    aria-describedby="basic-addon1"
+                />
+            </InputGroup>
+            <div className="icons-of-registration-brands">
+                <FontAwesomeIcon icon={faGoogle} className="icon-google"/>
+                <FontAwesomeIcon icon={faVk} className="icon-vk"/>
+                <FontAwesomeIcon icon={faYandex} className="icon-yandex"/>
+            </div>
 
+            {mailError && <h1>Неверный почтовый адрес</h1>}
+
+            <LinkContainer to="/">
                 <button className="white-button">
-                    Закрыть
+                    Выйти
                 </button>
-                <button className="blue-button">
-                    Войти
-                </button>
+            </LinkContainer>
+            <button className="blue-button" onClick={handleErrorMail}>
+                Войти
+            </button>
         </div>
 
     )
