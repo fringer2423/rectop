@@ -2,11 +2,21 @@
 
 ## [Unreleased]
 
+## [0.0.27] - 2022-11-11
+
+### Добавлено
+
+- 
+
+### Изменено
+
+- 
+
 ## [0.0.26] - 2022-11-10
 
 ### Добавлено
 
-- Hashlinks in Footer [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Hash links in Footer [@AlexTrubkina](https://github.com/AlexTrubkina)
 - Added footer.css
 - Review list paginator [@fringer2423](https://github.com/fringer2423)
 - Branch list paginator
