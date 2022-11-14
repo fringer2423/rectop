@@ -34,16 +34,20 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     """Сериалайзер модели User"""
-    isAdmin = serializers.SerializerMethodField(read_only=True)
+    is_admin = serializers.SerializerMethodField(read_only=True)
     rate = serializers.SerializerMethodField(read_only=True)
+    is_verified = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = User
         fields = ['id', 'first_name', 'last_name', 'email', 'description', 'phone_number', 'rate', 'job_title',
-                  'isAdmin', 'rate']
+                  'is_admin', 'rate', 'is_verified']
 
-    def get_isAdmin(self, obj):
+    def get_is_admin(self, obj):
         return obj.is_staff
+
+    def get_is_verified(self, obj):
+        return obj.is_verified
 
     def get_rate(self, obj):
         try:
@@ -81,6 +85,7 @@ class CompanySerializer(serializers.ModelSerializer):
 
 class WorkDaySerializer(serializers.ModelSerializer):
     """Сериалайзер для модели WorkDay"""
+
     class Meta:
         model = WorkDay
         fields = '__all__'
@@ -125,6 +130,7 @@ class BranchSerializer(serializers.ModelSerializer):
 
 class TelebotSerializer(serializers.ModelSerializer):
     """Сериалайзер для модели Telebot"""
+
     class Meta:
         model = Telebot
         fields = '__all__'
@@ -205,6 +211,7 @@ class QRCodeSerializer(serializers.ModelSerializer):
 
 class AllQRCodesSerializer(serializers.ModelSerializer):
     """Сериалайзер для модели QRCode. Отдает только 2 поля"""
+
     class Meta:
         model = QRCode
         fields = ['slug_name', 'branch']
@@ -212,6 +219,7 @@ class AllQRCodesSerializer(serializers.ModelSerializer):
 
 class RateSerializer(serializers.ModelSerializer):
     """Сериалайзер для модели Rate"""
+
     class Meta:
         model = Rate
         fields = '__all__'
@@ -219,6 +227,7 @@ class RateSerializer(serializers.ModelSerializer):
 
 class RateInfoSerializer(serializers.ModelSerializer):
     """Сериалайзер для модели Rate info"""
+
     class Meta:
         model = RateInfo
         fields = '__all__'

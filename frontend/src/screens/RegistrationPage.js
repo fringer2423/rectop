@@ -17,7 +17,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 import "../css/registration.css"
-import {checkMail} from "../validator/validation.js"
+import {checkMail} from "../validators/validation.js"
 
 
 const RegistrationPage = () => {

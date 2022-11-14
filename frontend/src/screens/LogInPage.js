@@ -17,7 +17,7 @@ import {
 
 import "../css/registration.css"
 
-import {checkMail} from "../validator/validation.js"
+import {checkMail} from "../validators/validation.js"
 
 import {LinkContainer} from 'react-router-bootstrap'
 

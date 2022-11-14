@@ -52,6 +52,10 @@ class User(AbstractUser):
         blank=True,
         verbose_name='Должность'
     )
+    is_verified = models.BooleanField(
+        default=False,
+        verbose_name='Верифицированный аккаунт'
+    )
 
     class Meta:
         verbose_name = 'Пользователь'

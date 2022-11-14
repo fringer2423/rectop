@@ -11,6 +11,10 @@
 ### Изменено
 
 - Telegram logging level [@fringer2423](https://github.com/fringer2423)
+- Refactor frontend
+- User model (new field is_verified)
+- User serializer
+- Rename frontend/src/validator > validators (так же зависимости)
 
 ## [0.0.27] - 2022-11-11
 
@@ -126,8 +130,7 @@
 - Edited all views (replace 200 -> 201 status)
 - BranchSerializer fix
 - Google tasks
-- Изменены  CSS [@AlexTrubkina](https://github.com/AlexTrubkina)
-
+- Изменены CSS [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.21] - 2022-11-03
 
