@@ -59,3 +59,62 @@
     margin-bottom: 10%;
     text-align: center;
 }
+
+@media (max-width: 480px){
+    .carousel-for-brands .carousel-control-prev-icon {
+        left: 87%;
+
+    }
+
+    .carousel-for-brands .carousel-control-next-icon {
+        right: 87%;
+
+    }
+}
+
+@media (min-width: 481px){
+    .carousel-for-brands .carousel-control-prev-icon {
+        left: 150%;
+
+    }
+
+    .carousel-for-brands .carousel-control-next-icon {
+        right: 150%;
+
+    }
+}
+
+
+.carousel-for-brands .carousel-control-prev-icon {
+    position: relative;
+    top: 42%;
+
+    background-image: url(../../public/images/control-left.svg) !important;
+}
+
+.carousel-for-brands .carousel-control-next-icon {
+    position: relative;
+    top: 42%;
+
+    background-image: url(../../public/images/control-right.svg) !important;
+}
+
+.carousel-for-brands .carousel-indicators {
+    gap: 20px
+}
+
+.carousel-for-brands .carousel-indicators [data-bs-target] {
+  width: 13px !important;
+  height: 13px !important;
+  border: 1px solid transparent !important;
+  border-radius: 50%;
+  background-color: #EEEEEE !important;
+}
+
+.carousel-for-brands .carousel-indicators .active{
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+}
+
+.slide {
+    width: 100%
+}

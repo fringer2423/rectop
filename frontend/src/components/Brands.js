@@ -1,6 +1,6 @@
 import React from "react";
 
-import Carousel from './Carousel.js';
+import {Carousel} from "react-bootstrap";
 
 import "../css/brands.css";
 
@@ -67,7 +67,8 @@ const Brands = () => {
                 })}
             </div>
             <div id="slider-for-icons">
-                <Carousel>
+                <Carousel className="carousel-for-brands" interval={null}>
+                    <Carousel.Item >
                     <div className="slide">
                         <div className="brand-icon">
                             <div className="icon-in-circle">
@@ -90,6 +91,8 @@ const Brands = () => {
                             <p>30 млн чел./месяц</p>
                         </div>
                     </div>
+                    </Carousel.Item>
+                    <Carousel.Item >
                     <div className="slide">
                         <div className="brand-icon">
                             <div className="icon-in-circle">
@@ -112,6 +115,8 @@ const Brands = () => {
                             <p>92 млн чел./месяц</p>
                         </div>
                     </div>
+                    </Carousel.Item>
+                    <Carousel.Item >
                     <div className="slide">
                         <div className="brand-icon">
                             <div className="icon-in-circle">
@@ -134,6 +139,8 @@ const Brands = () => {
                             <p>80 млн чел./месяц</p>
                         </div>
                     </div>
+                    </Carousel.Item>
+                    <Carousel.Item >
                     <div className="slide">
                         <div className="brand-icon">
                             <div className="icon-in-circle">
@@ -155,6 +162,7 @@ const Brands = () => {
                             <p>50 млн чел./месяц</p>
                         </div>
                     </div>
+                    </Carousel.Item>
                 </Carousel>
             </div>
         </>

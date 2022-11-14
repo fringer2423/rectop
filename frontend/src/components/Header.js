@@ -6,28 +6,20 @@ import {
     Container
 } from 'react-bootstrap';
 
+import {LinkContainer} from 'react-router-bootstrap'
+
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {NavHashLink} from 'react-router-hash-link';
 import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 
 
-import Registration from "../components/Registration";
-import LogIn from "../components/LogIn";
+
 
 
 import "../css/header.css"
 
 function Header() {
-
-    const [show, setShow] = useState(false);
-    const [showlogin, setShowlogin] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    const handleCloseLogIn = () => setShowlogin(false);
-    const handleShowLogIn = () => setShowlogin(true);
 
     return (
         <>
@@ -92,14 +84,16 @@ function Header() {
                                 </NavHashLink>
                             </div>
                         </Nav>
-                        <button className="registration-button" onClick={handleShow}>Регистрация</button>
-                        <div className="button-log-in" onClick={handleShowLogIn}><FontAwesomeIcon
-                            icon={faCircleArrowRight} className="arrow-in-button"/></div>
+                         <LinkContainer to="/registration">
+                            <button className="registration-button">Регистрация</button>
+                         </LinkContainer>
+                         <LinkContainer to="/log-in">
+                            <div className="button-log-in"><FontAwesomeIcon
+                                icon={faCircleArrowRight} className="arrow-in-button"/></div>
+                         </LinkContainer>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <Registration show={show} handleClose={handleClose}/>
-            <LogIn show={showlogin} handleClose={handleCloseLogIn}/>
         </>
 
 

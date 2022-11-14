@@ -18,3 +18,13 @@
     color: darkorange;
     font-size: 30px
 }
+
+.registration-page {
+    margin-top: 15%;
+    margin-bottom: 15%
+}
+
+.log-in-page {
+    margin-top: 20%;
+    margin-bottom: 15%
+}
