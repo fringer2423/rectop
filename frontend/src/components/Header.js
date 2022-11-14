@@ -14,9 +14,6 @@ import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 
 
-
-
-
 import "../css/header.css"
 
 function Header() {
@@ -84,13 +81,13 @@ function Header() {
                                 </NavHashLink>
                             </div>
                         </Nav>
-                         <LinkContainer to="/registration">
+                        <LinkContainer to="/registration">
                             <button className="registration-button">Регистрация</button>
-                         </LinkContainer>
-                         <LinkContainer to="/log-in">
+                        </LinkContainer>
+                        <LinkContainer to="/log-in">
                             <div className="button-log-in"><FontAwesomeIcon
                                 icon={faCircleArrowRight} className="arrow-in-button"/></div>
-                         </LinkContainer>
+                        </LinkContainer>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

@@ -28,10 +28,9 @@ const LogIn = () => {
     const [mailError, setMailError] = useState(false);
 
     const handleErrorMail = () => {
-        if (!checkMail.test(mail)){
+        if (!checkMail.test(mail)) {
             setMailError(true);
-        }
-        else{
+        } else {
             setMailError(false);
         }
     }
@@ -48,7 +47,7 @@ const LogIn = () => {
                     aria-label="Post"
                     aria-describedby="basic-addon1"
                     value={mail}
-                    onChange = {(e) => setMail(e.target.value)}
+                    onChange={(e) => setMail(e.target.value)}
                 />
             </InputGroup>
             <Form.Label><b>Пароль</b></Form.Label>
