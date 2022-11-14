@@ -21,6 +21,7 @@ class PseudoFile:
 
 
 class TelegramHandler(logging.Handler):
+    """Handler для уведомлений в telegram для logger"""
     # noinspection PyUnusedLocal
     def __init__(self, *args, **kwargs):
         super().__init__()

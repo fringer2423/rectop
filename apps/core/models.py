@@ -19,9 +19,7 @@ def my_awesome_upload_function(instance, filename):
 
 
 class User(AbstractUser):
-    """
-    Модель пользователя платформы
-    """
+    """Модель пользователя платформы"""
 
     description = models.TextField(
         max_length=500,
@@ -64,9 +62,7 @@ class User(AbstractUser):
 
 
 class Rate(models.Model):
-    """
-    Модель тарифа
-    """
+    """Модель тарифа"""
 
     RATE_TYPE_CHOICES = [
         (0, 'Тестовый'),
@@ -102,9 +98,7 @@ class Rate(models.Model):
 
 
 class Company(models.Model):
-    """
-    Модель компании, которую создает пользователь
-    """
+    """Модель компании, которую создает пользователь"""
 
     owner = models.ForeignKey(
         User,
@@ -133,6 +127,7 @@ class Company(models.Model):
 
 class WorkDay(models.Model):
     """Модель рабочего дня"""
+
     DAYS_OF_WEEK_CHOICES = [
         (1, 'Понедельник'),
         (2, 'Вторник'),
@@ -173,9 +168,7 @@ class WorkDay(models.Model):
 
 
 class Schedule(models.Model):
-    """
-    Модель для хранения графика работы филиалов
-    """
+    """Модель для хранения графика работы филиалов"""
 
     monday = models.ForeignKey(
         WorkDay,
@@ -249,9 +242,7 @@ class Schedule(models.Model):
 
 
 class Branch(models.Model):
-    """
-    Модель филиала
-    """
+    """Модель филиала"""
 
     company = models.ForeignKey(
         Company,
@@ -321,9 +312,7 @@ class Branch(models.Model):
 
 
 class Telebot(models.Model):
-    """
-    Модель для хранения настроек telegram уведомлений
-    """
+    """Модель для хранения настроек telegram уведомлений"""
 
     branch = models.ForeignKey(
         Branch,
@@ -345,9 +334,7 @@ class Telebot(models.Model):
 
 
 class QRCode(models.Model):
-    """
-    Модель для хранения QRCodes
-    """
+    """Модель для хранения QRCodes"""
 
     branch = models.ForeignKey(
         Branch,
@@ -387,9 +374,7 @@ class QRCode(models.Model):
 
 
 class Connect(models.Model):
-    """
-    Модель для настроек соединения с платформами
-    """
+    """Модель для настроек соединения с платформами"""
 
     PLATFORMS_CHOICES = [
         (0, 'Yandex'),
@@ -424,9 +409,7 @@ class Connect(models.Model):
 
 
 class Review(models.Model):
-    """
-    Модель отзывов
-    """
+    """Модель отзывов"""
 
     RATINGS_CHOICES = [
         (0, 'Очень плохо'),
@@ -494,9 +477,7 @@ class Review(models.Model):
 
 
 class ReviewSettings(models.Model):
-    """
-    Модель для хранения и управления настройками автоответов на отзывы
-    """
+    """Модель для хранения и управления настройками автоответов на отзывы"""
 
     company = models.ForeignKey(
         Company,
@@ -523,9 +504,7 @@ class ReviewSettings(models.Model):
 
 
 class Answer(models.Model):
-    """
-    Модель для хранения ответов на отзывы
-    """
+    """Модель для хранения ответов на отзывы"""
 
     TYPE_CHOICES = [
         (0, 'Ответ создан автоматически'),
@@ -568,6 +547,7 @@ class Answer(models.Model):
 
 
 class RateInfo(models.Model):
+    """Модель информации о тарифах на сайте"""
     first_rate = models.IntegerField(
         verbose_name='Первый тариф'
     )

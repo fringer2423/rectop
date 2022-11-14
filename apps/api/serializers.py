@@ -8,6 +8,11 @@ from apps.core.models import User, Company, Branch, Schedule, WorkDay, Telebot, 
 
 
 def format_data(field):
+    """
+    Функция форматирует дату в нужный формат
+    :param field: поле Datetime field
+    :return: datetime format
+    """
     if field is None:
         return None
     else:
@@ -15,9 +20,7 @@ def format_data(field):
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-    """
-    Сериалайзер для авторизации
-    """
+    """Сериалайзер для авторизации"""
 
     def validate(self, attrs):
         data = super().validate(attrs)
@@ -30,9 +33,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    """
-    Сериалайзер модели User
-    """
+    """Сериалайзер модели User"""
     isAdmin = serializers.SerializerMethodField(read_only=True)
     rate = serializers.SerializerMethodField(read_only=True)
 
@@ -53,9 +54,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserSerializerWithToken(UserSerializer):
-    """
-    Сериалайзер модели User с Token
-    """
+    """Сериалайзер модели User с Token"""
     token = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
@@ -68,6 +67,7 @@ class UserSerializerWithToken(UserSerializer):
 
 
 class CompanySerializer(serializers.ModelSerializer):
+    """Сериалайзер для модели Company"""
     created_at = serializers.SerializerMethodField(read_only=True)
     owner = UserSerializer()
 
@@ -80,12 +80,14 @@ class CompanySerializer(serializers.ModelSerializer):
 
 
 class WorkDaySerializer(serializers.ModelSerializer):
+    """Сериалайзер для модели WorkDay"""
     class Meta:
         model = WorkDay
         fields = '__all__'
 
 
 class ScheduleSerializer(serializers.ModelSerializer):
+    """Сериалайзер для модели Schedule"""
     monday = WorkDaySerializer()
     tuesday = WorkDaySerializer()
     wednesday = WorkDaySerializer()
@@ -104,6 +106,7 @@ class ScheduleSerializer(serializers.ModelSerializer):
 
 
 class BranchSerializer(serializers.ModelSerializer):
+    """Сериалайзер для модели Branch"""
     schedule = ScheduleSerializer()
     created_at = serializers.SerializerMethodField(read_only=True)
     last_date_load_reviews = serializers.SerializerMethodField(read_only=True)
@@ -121,12 +124,14 @@ class BranchSerializer(serializers.ModelSerializer):
 
 
 class TelebotSerializer(serializers.ModelSerializer):
+    """Сериалайзер для модели Telebot"""
     class Meta:
         model = Telebot
         fields = '__all__'
 
 
 class ConnectSerializer(serializers.ModelSerializer):
+    """Сериалайзер для модели Connect"""
     created_at = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
@@ -138,6 +143,7 @@ class ConnectSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    """Сериалайзер для модели Review"""
     created_at = serializers.SerializerMethodField(read_only=True)
     answered_at = serializers.SerializerMethodField(read_only=True)
     answer = serializers.SerializerMethodField(read_only=True)
@@ -161,6 +167,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class ReviewSettingsSerializer(serializers.ModelSerializer):
+    """Сериалайзер для модели Review settings"""
     created_at = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
@@ -172,6 +179,7 @@ class ReviewSettingsSerializer(serializers.ModelSerializer):
 
 
 class AnswerSerializer(serializers.ModelSerializer):
+    """Сериалайзер для модели Answer"""
     created_at = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
@@ -183,6 +191,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
 
 class QRCodeSerializer(serializers.ModelSerializer):
+    """Сериалайзер для модели QRCode"""
     created_at = serializers.SerializerMethodField(read_only=True)
     branch = BranchSerializer()
 
@@ -195,24 +204,28 @@ class QRCodeSerializer(serializers.ModelSerializer):
 
 
 class AllQRCodesSerializer(serializers.ModelSerializer):
+    """Сериалайзер для модели QRCode. Отдает только 2 поля"""
     class Meta:
         model = QRCode
         fields = ['slug_name', 'branch']
 
 
 class RateSerializer(serializers.ModelSerializer):
+    """Сериалайзер для модели Rate"""
     class Meta:
         model = Rate
         fields = '__all__'
 
 
 class RateInfoSerializer(serializers.ModelSerializer):
+    """Сериалайзер для модели Rate info"""
     class Meta:
         model = RateInfo
         fields = '__all__'
 
 
 class TaskSerializer(serializers.Serializer):
+    """Сериалайзер для Task"""
     id = serializers.UUIDField()
     status = serializers.CharField()
     result = serializers.CharField()

@@ -8,11 +8,13 @@
 
 - React-bootstrap Carousel [@AlexTrubkina](https://github.com/AlexTrubkina)
 - email validation
+- Docstrings [@fringer2423](https://github.com/fringer2423)
 
 ### Изменено
 
 - footer.css, prices.css [@AlexTrubkina](https://github.com/AlexTrubkina)
 - Prices.js (added onClick events)
+- Minor bugfix [@fringer2423](https://github.com/fringer2423)
 
 ### Удалено
 

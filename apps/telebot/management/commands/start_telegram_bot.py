@@ -8,7 +8,8 @@ bot = TeleBot(settings.TELEGRAM_BOT_TOKEN, threaded=False)
 
 
 class Command(BaseCommand):
-    help = 'Implemented to Django application telegram bot setup command'
+    """Запуск telegram bot"""
+    help = 'Запускает telegram bot'
 
     @bot.message_handler(commands=["start"])
     def start(message, res=False):
@@ -20,8 +21,10 @@ class Command(BaseCommand):
     def handle_text(message):
         date = message.date + 10800
         print(f"{datetime.datetime.utcfromtimestamp(date)} send{message.from_user.first_name}")
-        bot.send_message(message.chat.id,
-                         'Я пока не работаю, но очень скоро начну буду помогать вам с отзывами, ' + message.from_user.first_name + '!')
+        bot.send_message(
+            message.chat.id,
+            'Я пока не работаю, но очень скоро начну помогать вам с отзывами, ' + message.from_user.first_name + '!'
+        )
 
     def handle(self, *args, **kwargs):
         bot.enable_save_next_step_handlers(delay=2)
