@@ -130,8 +130,7 @@
 - Edited all views (replace 200 -> 201 status)
 - BranchSerializer fix
 - Google tasks
-- Изменены  CSS [@AlexTrubkina](https://github.com/AlexTrubkina)
-
+- Изменены CSS [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.21] - 2022-11-03
 
