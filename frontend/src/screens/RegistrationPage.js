@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {
-    Modal,
     Button,
     InputGroup,
     Form
 } from 'react-bootstrap';
+
+import {LinkContainer} from 'react-router-bootstrap'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
@@ -16,44 +17,63 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 import "../css/registration.css"
+import {checkMail} from "../validator/validation.js"
 
 
-const Registration = ({show, handleClose}) => {
+const RegistrationPage = () => {
+    const [mail, setMail] = useState('');
+    const [mailError, setMailError] = useState(false);
+
+    const handleErrorMail = () => {
+        if (!checkMail.test(mail)){
+            setMailError(true);
+        }
+        else{
+            setMailError(false);
+        }
+    }
+
+
     return (
-        <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-                <Modal.Title><b>Регистрация</b></Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <InputGroup className="mt-5 mb-4 w-75 ms-5">
+        <div className="registration-page">
+                <h1><b>Регистрация</b></h1>
+
+                <Form.Label className="mt-5"><b>Имя</b></Form.Label>
+                <InputGroup className="mb-4 w-75">
                     <Form.Control
                         placeholder="Имя"
                         aria-label="Username"
                         aria-describedby="basic-addon1"
                     />
                 </InputGroup>
-                <InputGroup className="mb-4 w-75 ms-5">
+                <Form.Label><b>Фамилия</b></Form.Label>
+                <InputGroup className="mb-4 w-75">
                     <Form.Control
                         placeholder="Фамилия"
                         aria-label="Surname"
                         aria-describedby="basic-addon1"
                     />
                 </InputGroup>
-                <InputGroup className="mb-5 w-75 ms-5">
+                <Form.Label><b>Email</b></Form.Label>
+                <InputGroup className="mb-5 w-75">
                     <Form.Control
-                        placeholder="Почта"
+                        placeholder="Email"
                         aria-label="Post"
                         aria-describedby="basic-addon1"
+                        value={mail}
+                        onChange = {(e) => setMail(e.target.value)}
                     />
                 </InputGroup>
-                <InputGroup className=" mb-4 w-75 ms-5">
+                <Form.Label><b>Пароль</b></Form.Label>
+                <InputGroup className=" mb-4 w-75  ">
                     <Form.Control
                         placeholder="Пароль"
                         aria-label="Password"
                         aria-describedby="basic-addon1"
                     />
                 </InputGroup>
-                <InputGroup className="mb-5 w-75 ms-5">
+                <Form.Label><b>Повторите пароль</b></Form.Label>
+                <InputGroup className="mb-5 w-75">
                     <Form.Control
                         placeholder="Повторите пароль"
                         aria-label="PasswordAgain"
@@ -65,17 +85,20 @@ const Registration = ({show, handleClose}) => {
                     <FontAwesomeIcon icon={faVk} className="icon-vk"/>
                     <FontAwesomeIcon icon={faYandex} className="icon-yandex"/>
                 </div>
-            </Modal.Body>
-            <Modal.Footer>
-                <button className="white-button" onClick={handleClose}>
-                    Закрыть
-                </button>
-                <button className="blue-button" onClick={handleClose}>
+
+                {mailError && <h1>Неверный почтовый адрес</h1>}
+
+                <LinkContainer to="/">
+                    <button className="white-button">
+                        Выйти
+                    </button>
+                </LinkContainer>
+                <button className="blue-button" onClick={handleErrorMail}>
                     Регистрация
                 </button>
-            </Modal.Footer>
-        </Modal>
+            </div>
+
     )
 }
 
-export default Registration;
+export default RegistrationPage;

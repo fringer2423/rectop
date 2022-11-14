@@ -5,9 +5,10 @@
 }
 
 #slider-for-prices {
-    display: flex;
-    justify-content: center
+    width: 310px;
 }
+
+
 
 .table-for-price-first, .table-for-price-second, .table-for-price-third {
     border-radius: 30px;
@@ -26,11 +27,46 @@
     margin-right: 10%
 }
 
+.table-for-price-third-click > .text-in-price {
+    margin-left: 10%;
+    margin-right: 10%
+}
+
 .block-in-table {
     background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     color: white
+}
+
+.table-for-price-first-click > .block-in-table, .table-for-price-second-click > .block-in-table, .table-for-price-third-click > .block-in-table {
+    color: #232323;
+    background: white;
+}
+
+.table-for-price-first-click, .table-for-price-second-click, .table-for-price-third-click {
+    border-radius: 30px;
+    border: 1px solid #4584FF;
+    color: white;
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-for-price-first-click h4, .table-for-price-second-click h4, .table-for-price-third-click h4 {
+    background: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.table-for-price-first-click button, .table-for-price-second-click button, .table-for-price-third-click button {
+    background: #232323;
+    color: white;
 }
 
 .table-for-price-first:hover > .block-in-table, .table-for-price-second:hover > .block-in-table, .table-for-price-third:hover > .block-in-table {
@@ -72,6 +108,13 @@
     .table-for-price-first, .table-for-price-second, .table-for-price-third {
         width: 300px;
         height: 850px;
+        margin-bottom: 60px
+    }
+
+    .table-for-price-first-click, .table-for-price-second-click, .table-for-price-third-click {
+        width: 300px;
+        height: 850px;
+        margin-bottom: 60px
     }
 
     .text-in-price {
@@ -101,7 +144,24 @@
         font-size: 15px
 
     }
+
+    .table-for-price-first-click h3, .table-for-price-second-click h3, .table-for-price-third-click h3 {
+        font-size: 24px
+    }
+
+    .table-for-price-first-click h4, .table-for-price-second-click h4, .table-for-price-third-click h4 {
+        font-size: 20px
+    }
+
+    .table-for-price-first-click button, .table-for-price-second-click button, .table-for-price-third-click button {
+        height: 50px;
+        width: 200px;
+        font-size: 15px
+
+    }
 }
+
+
 
 @media (min-width: 992px) {
     #slider-for-prices {
@@ -109,6 +169,11 @@
     }
 
     .table-for-price-first, .table-for-price-second, .table-for-price-third {
+        width: 300px;
+        height: 800px;
+    }
+
+    .table-for-price-first-click, .table-for-price-second-click, .table-for-price-third-click {
         width: 300px;
         height: 800px;
     }
@@ -138,5 +203,79 @@
         height: 50px;
         width: 200px;
         font-size: 15px
+    }
+
+    .table-for-price-first-click h3, .table-for-price-second-click h3, .table-for-price-third-click h3 {
+        font-size: 24px
+    }
+
+    .table-for-price-first-click h4, .table-for-price-second-click h4, .table-for-price-third-click h4 {
+        font-size: 20px
+    }
+
+    .table-for-price-first-click button, .table-for-price-second-click button, .table-for-price-third-click button {
+        height: 50px;
+        width: 200px;
+        font-size: 15px
+    }
+}
+
+.carousel-for-prices .carousel-control-prev-icon {
+    position: relative;
+    top: 47%;
+    left: 70%;
+    background-image: url(../../public/images/control-left.svg) !important;
+}
+
+.carousel-for-prices .carousel-control-next-icon {
+    position: relative;
+    top: 47%;
+    right: 70%;
+    background-image: url(../../public/images/control-right.svg) !important;
+}
+
+.carousel-for-prices .carousel-indicators {
+    gap: 20px
+}
+
+.carousel-for-prices .carousel-indicators [data-bs-target] {
+  width: 13px !important;
+  height: 13px !important;
+  border: 1px solid transparent !important;
+  border-radius: 50%;
+  background-color: #EEEEEE !important;
+}
+
+.carousel-for-prices .carousel-indicators .active{
+    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+}
+
+@media (min-width: 761px){
+    #slider-for-prices {
+        margin-left: 29%
+    }
+}
+
+@media (min-width: 520px) and (max-width: 760px){
+    #slider-for-prices {
+        margin-left: 23%
+    }
+}
+
+@media (min-width: 470px) and (max-width: 519px){
+    #slider-for-prices {
+        margin-left: 20%
+    }
+}
+
+@media (min-width: 410px) and (max-width: 469px){
+    #slider-for-prices {
+        margin-left: 15%
+    }
+}
+
+@media (min-width: 350px) and (max-width: 409px){
+    #slider-for-prices {
+        margin-left: 5%
     }
 }
