@@ -68,100 +68,100 @@ const Brands = () => {
             </div>
             <div id="slider-for-icons">
                 <Carousel className="carousel-for-brands" interval={null}>
-                    <Carousel.Item >
-                    <div className="slide">
-                        <div className="brand-icon">
-                            <div className="icon-in-circle">
-                                <img
-                                    src="/images/main/yandex.png"
-                                    alt="Yandex"
-                                />
+                    <Carousel.Item>
+                        <div className="slide">
+                            <div className="brand-icon">
+                                <div className="icon-in-circle">
+                                    <img
+                                        src="/images/main/yandex.png"
+                                        alt="Yandex"
+                                    />
+                                </div>
+                                <h5>Яндекс.Карты</h5>
+                                <p>55 млн чел./месяц</p>
                             </div>
-                            <h5>Яндекс.Карты</h5>
-                            <p>55 млн чел./месяц</p>
-                        </div>
-                        <div className="brand-icon">
-                            <div className="icon-in-circle">
-                                <img
-                                    src="/images/main/google.png"
-                                    alt="Google"
-                                />
+                            <div className="brand-icon">
+                                <div className="icon-in-circle">
+                                    <img
+                                        src="/images/main/google.png"
+                                        alt="Google"
+                                    />
+                                </div>
+                                <h5>Google карты</h5>
+                                <p>30 млн чел./месяц</p>
                             </div>
-                            <h5>Google карты</h5>
-                            <p>30 млн чел./месяц</p>
                         </div>
-                    </div>
                     </Carousel.Item>
-                    <Carousel.Item >
-                    <div className="slide">
-                        <div className="brand-icon">
-                            <div className="icon-in-circle">
-                                <img
-                                    src="/images/main/2GIS.png"
-                                    alt="2ГИС"
-                                />
+                    <Carousel.Item>
+                        <div className="slide">
+                            <div className="brand-icon">
+                                <div className="icon-in-circle">
+                                    <img
+                                        src="/images/main/2GIS.png"
+                                        alt="2ГИС"
+                                    />
+                                </div>
+                                <h5>2ГИС</h5>
+                                <p>30 млн чел./месяц</p>
                             </div>
-                            <h5>2ГИС</h5>
-                            <p>30 млн чел./месяц</p>
-                        </div>
-                        <div className="brand-icon">
-                            <div className="icon-in-circle">
-                                <img
-                                    src="/images/main/wildberries.png"
-                                    alt="Wildberries"
-                                />
+                            <div className="brand-icon">
+                                <div className="icon-in-circle">
+                                    <img
+                                        src="/images/main/wildberries.png"
+                                        alt="Wildberries"
+                                    />
+                                </div>
+                                <h5>Wildberries</h5>
+                                <p>92 млн чел./месяц</p>
                             </div>
-                            <h5>Wildberries</h5>
-                            <p>92 млн чел./месяц</p>
                         </div>
-                    </div>
                     </Carousel.Item>
-                    <Carousel.Item >
-                    <div className="slide">
-                        <div className="brand-icon">
-                            <div className="icon-in-circle">
-                                <img
-                                    src="/images/main/zoon.png"
-                                    alt="Zoon"
-                                />
+                    <Carousel.Item>
+                        <div className="slide">
+                            <div className="brand-icon">
+                                <div className="icon-in-circle">
+                                    <img
+                                        src="/images/main/zoon.png"
+                                        alt="Zoon"
+                                    />
+                                </div>
+                                <h5>Zoon</h5>
+                                <p>24 млн чел./месяц</p>
                             </div>
-                            <h5>Zoon</h5>
-                            <p>24 млн чел./месяц</p>
-                        </div>
-                        <div className="brand-icon">
-                            <div className="icon-in-circle">
-                                <img
-                                    src="/images/main/ozon.png"
-                                    alt="OZON"
-                                />
+                            <div className="brand-icon">
+                                <div className="icon-in-circle">
+                                    <img
+                                        src="/images/main/ozon.png"
+                                        alt="OZON"
+                                    />
+                                </div>
+                                <h5>OZON</h5>
+                                <p>80 млн чел./месяц</p>
                             </div>
-                            <h5>OZON</h5>
-                            <p>80 млн чел./месяц</p>
                         </div>
-                    </div>
                     </Carousel.Item>
-                    <Carousel.Item >
-                    <div className="slide">
-                        <div className="brand-icon">
-                            <div className="icon-in-circle">
-                                <img
-                                    src="/images/main/yell.png"
-                                    alt="Yell"
-                                />
+                    <Carousel.Item>
+                        <div className="slide">
+                            <div className="brand-icon">
+                                <div className="icon-in-circle">
+                                    <img
+                                        src="/images/main/yell.png"
+                                        alt="Yell"
+                                    />
+                                </div>
+                                <h5>Yell</h5>
+                                <p>3 млн чел./месяц</p>
                             </div>
-                            <h5>Yell</h5>
-                            <p>3 млн чел./месяц</p>
-                        </div>
-                        <div className="brand-icon">
-                            <div className="icon-in-circle">
-                                <img src="/images/main/flamp.png"
-                                     alt="Flamp"
-                                />
+                            <div className="brand-icon">
+                                <div className="icon-in-circle">
+                                    <img src="/images/main/flamp.png"
+                                         alt="Flamp"
+                                    />
+                                </div>
+                                <h5>Flamp</h5>
+                                <p>50 млн чел./месяц</p>
                             </div>
-                            <h5>Flamp</h5>
-                            <p>50 млн чел./месяц</p>
                         </div>
-                    </div>
                     </Carousel.Item>
                 </Carousel>
             </div>

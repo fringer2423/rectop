@@ -17,9 +17,9 @@ function App() {
         <Router>
             <Header/>
             <Container>
-                <Route exact path='/' component={HomeScreen} />
-                <Route path='/registration' component={RegistrationPage} />
-                <Route path='/log-in' component={LogInPage} />
+                <Route exact path='/' component={HomeScreen}/>
+                <Route path='/registration' component={RegistrationPage}/>
+                <Route path='/log-in' component={LogInPage}/>
             </Container>
             <Footer/>
         </Router>

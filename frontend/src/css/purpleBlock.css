@@ -64,11 +64,11 @@
 }
 
 
-
 @media (max-width: 1399px) {
     .white-ellipse {
         bottom: 540px;
     }
+
     .img-in-purple-block {
         top: 40px
     }
@@ -79,6 +79,7 @@
         bottom: 450px;
         right: 17%;
     }
+
     .img-in-purple-block {
         top: 130px
     }
@@ -94,7 +95,7 @@
 .img-in-purple-block {
     position: relative;
     left: 65%;
-    height: 575.65px;
+    height: 576px;
     width: 266px;
     transform: rotate(8deg);
 }

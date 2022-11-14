@@ -75,7 +75,7 @@
     }
 }
 
-@media (max-width: 610px){
+@media (max-width: 610px) {
     .megaphone {
         left: 80%
     }
@@ -86,6 +86,7 @@
         bottom: 270px;
         left: 83%
     }
+
     .bell-ring {
         top: 270px
     }
@@ -95,6 +96,7 @@
     .megaphone {
         bottom: 200px;
     }
+
     .bell-ring {
         top: 190px
     }

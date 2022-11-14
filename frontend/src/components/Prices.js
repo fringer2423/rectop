@@ -41,14 +41,21 @@ const Prices = () => {
         <>
             <div className="wrapper-for-buttons">
                 <div className="for-buttons">
-                    <button className={firstStyle ? 'button-for-rate active-button' : 'button-for-rate'} onClick={handleClickFirstPrice}>На неделю</button>
-                    <button className={secondStyle ? 'button-for-rate active-button' : 'button-for-rate'} onClick={handleClickSecondPrice}>На месяц</button>
-                    <button className={thirdStyle ? 'button-for-rate active-button' : 'button-for-rate'} onClick={handleClickThirdPrice}>На 1 год</button>
+                    <button className={firstStyle ? 'button-for-rate active-button' : 'button-for-rate'}
+                            onClick={handleClickFirstPrice}>На неделю
+                    </button>
+                    <button className={secondStyle ? 'button-for-rate active-button' : 'button-for-rate'}
+                            onClick={handleClickSecondPrice}>На месяц
+                    </button>
+                    <button className={thirdStyle ? 'button-for-rate active-button' : 'button-for-rate'}
+                            onClick={handleClickThirdPrice}>На 1 год
+                    </button>
                 </div>
             </div>
 
             <div id="list-of-prices">
-                <div className={firstStyle ? 'table-for-price-first-click' : 'table-for-price-first'} onClick={handleClickFirstPrice}>
+                <div className={firstStyle ? 'table-for-price-first-click' : 'table-for-price-first'}
+                     onClick={handleClickFirstPrice}>
                     <h3><b>“Генератор отзывов”</b></h3>
                     <h5>1 филиал</h5>
                     <h4><b>1200 РУБ./МЕС.</b></h4>
@@ -76,7 +83,8 @@ const Prices = () => {
                     </div>
                     <button className="black-button"><b>Приобрести тариф</b></button>
                 </div>
-                <div className={secondStyle ? 'table-for-price-second-click' : 'table-for-price-second'} onClick={handleClickSecondPrice}>
+                <div className={secondStyle ? 'table-for-price-second-click' : 'table-for-price-second'}
+                     onClick={handleClickSecondPrice}>
                     <h3><b>Какое-то название</b></h3>
                     <h5>1 филиал</h5>
                     <h4><b>1200 РУБ./МЕС.</b></h4>
@@ -103,7 +111,8 @@ const Prices = () => {
                     </div>
                     <button className="black-button"><b>Приобрести тариф</b></button>
                 </div>
-                <div className={thirdStyle ? 'table-for-price-third-click' : 'table-for-price-third'} onClick={handleClickThirdPrice}>
+                <div className={thirdStyle ? 'table-for-price-third-click' : 'table-for-price-third'}
+                     onClick={handleClickThirdPrice}>
                     <h3><b>Репутация под ключ</b></h3>
                     <h5>1 филиал</h5>
                     <h4><b>ОТ 4000 РУБ./МЕС.</b></h4>
@@ -129,11 +138,10 @@ const Prices = () => {
             </div>
 
 
-
             <div id="slider-for-prices">
                 <Carousel className="carousel-for-prices" interval={null} activeIndex={activeIndex}>
-                    <Carousel.Item >
-                        <div className={firstStyle ? 'table-for-price-first-click' : 'table-for-price-first'} >
+                    <Carousel.Item>
+                        <div className={firstStyle ? 'table-for-price-first-click' : 'table-for-price-first'}>
                             <h3><b>“Генератор отзывов”</b></h3>
                             <h5>1 филиал</h5>
                             <h4><b>1200 РУБ./МЕС.</b></h4>
@@ -163,7 +171,7 @@ const Prices = () => {
                         </div>
 
                     </Carousel.Item>
-                    <Carousel.Item >
+                    <Carousel.Item>
 
                         <div className={secondStyle ? 'table-for-price-second-click' : 'table-for-price-second'}>
                             <h3><b>Какое-то название</b></h3>
@@ -194,7 +202,7 @@ const Prices = () => {
                         </div>
 
                     </Carousel.Item>
-                    <Carousel.Item >
+                    <Carousel.Item>
 
                         <div className={thirdStyle ? 'table-for-price-third-click' : 'table-for-price-third'}>
                             <h3><b>Репутация под ключ</b></h3>
@@ -214,13 +222,13 @@ const Prices = () => {
                                 <hr/>
                                 Подробная отчетность
                                 <hr/>
-                            Аналитика в реальном времени
+                                Аналитика в реальном времени
                             </div>
                             <button className="black-button"><b>Приобрести тариф</b></button>
-                            </div>
+                        </div>
 
                     </Carousel.Item>
-                    </Carousel>
+                </Carousel>
             </div>
 
         </>
