@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [0.0.28] - 2022-11-14
+
+### Добавлено
+
+- 
+
+### Изменено
+
+- Telegram logging level [@fringer2423](https://github.com/fringer2423)
+
 ## [0.0.27] - 2022-11-11
 
 ### Добавлено

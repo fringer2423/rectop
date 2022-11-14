@@ -266,7 +266,7 @@ LOGGING = {
             'formatter': 'default',
         },
         'telegram_log': {
-            'level': 'WARNING',
+            'level': 'ERROR',
             'class': 'apps.telebot.handler.TelegramHandler'
         },
     },

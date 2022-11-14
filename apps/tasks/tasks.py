@@ -11,5 +11,5 @@ from .services.periodic_tasks_service import discovery_of_new_branches_service
 def discovery_of_new_branches_task(*args):
     """Задача для поиска новых филиалов"""
     logger = logging.getLogger('celery')
-    logger.error('CELERY!!!!')
+    logger.warning('CELERY!!!!')
     return discovery_of_new_branches_service()
