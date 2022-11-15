@@ -320,6 +320,9 @@ def update_user_profile_view(request):
         401: openapi.Response(
             description='Пустой или неправильный токен'
         ),
+        404: openapi.Response(
+            description='Пользователь с таким slug не найден'
+        ),
         405: openapi.Response(
             description='Данный метод запроса запрещен'
         )

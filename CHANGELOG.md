@@ -14,6 +14,7 @@
 - New endpoint (verify user)
 - New service for user
 - Slug and verify code generations
+- Docstring for new defs
 
 ### Изменено
 
