@@ -7,10 +7,18 @@
 ### Добавлено
 
 - Email push config [@fringer2423](https://github.com/fringer2423)
+- Email push task
+- Email push Queue
+- Random generator service
+- Def save for User model
+- New endpoint (verify user)
+- New service for user
+- Slug and verify code generations
 
 ### Изменено
 
-- 
+- Docker-compose config [@fringer2423](https://github.com/fringer2423)
+- User model (Added slug field)
 
 ## [0.0.28] - 2022-11-14
 

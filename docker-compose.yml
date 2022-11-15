@@ -91,7 +91,7 @@ services:
 
   celery-fast:
     build: ./
-    command: celery -A config worker -Q periodic,telegram_push --loglevel=info -f logs/celery-periodic.log
+    command: celery -A config worker -Q periodic,telegram_push,email_push --loglevel=info -f logs/celery-periodic.log
     container_name: 'celery_fast_tasks'
     volumes:
       - ./:/usr/src/app/celery
