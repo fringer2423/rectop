@@ -25,7 +25,7 @@ function Header() {
                 <Container className="container-for-navbar">
                     <Navbar.Brand className="brand-in-nav" href="/">
                         <img
-                            src="/images/navbar_brand_computer.png"
+                            src="/images/navbar_brand_computer.svg"
                             className="logo-computer"
                             alt="logo"
                         />
