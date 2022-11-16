@@ -25,3 +25,24 @@ def get_user_service(user_id):
     :return: user
     """
     return User.objects.get(pk=user_id)
+
+
+def get_user_by_slug_service(slug):
+    """
+    Функция возвращает user по slug
+    :param slug: slug
+    :return: user
+    """
+    return User.objects.get(slug=slug)
+
+
+def verify_user_service(user):
+    """
+    Функция верифицирует пользователя
+    :param user: user
+    :return: user
+    """
+    user.is_verified = True
+    user.slug = None
+    user.save()
+    return user

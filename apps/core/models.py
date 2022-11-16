@@ -7,6 +7,8 @@ from datetime import datetime, timedelta
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+from .services.random_generate_service import generate_random_string_service, generate_random_number_service
+
 
 def my_awesome_upload_function(instance, filename):
     """
@@ -56,6 +58,14 @@ class User(AbstractUser):
         default=False,
         verbose_name='Верифицированный аккаунт'
     )
+    slug = models.SlugField(
+        null=True,
+        blank=True,
+        unique=True,
+        max_length=200,
+        db_index=True,
+        verbose_name='Slug для подтверждения'
+    )
 
     class Meta:
         verbose_name = 'Пользователь'
@@ -63,6 +73,20 @@ class User(AbstractUser):
 
     def __str__(self):
         return f'{self.get_full_name()} {self.id}'
+
+    def save(self, *args, **kwargs):
+        verify_code = generate_random_number_service(6)
+        verify_code_list = User.objects.values_list('verify_code', flat=True)
+        while verify_code in verify_code_list:
+            verify_code = generate_random_number_service(6)
+        self.verify_code = verify_code
+        slug = generate_random_string_service(10)
+        if not self.is_verified:
+            slug_list = User.objects.values_list('slug', flat=True)
+            while slug in slug_list:
+                verify_code = generate_random_string_service(10)
+            self.slug = slug
+        super().save(*args, **kwargs)
 
 
 class Rate(models.Model):

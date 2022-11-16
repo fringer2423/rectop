@@ -7,11 +7,21 @@
 ### Добавлено
 
 - Email push config [@fringer2423](https://github.com/fringer2423)
+- Email push task
+- Email push Queue
+- Random generator service
+- Def save for User model
+- New endpoint (verify user)
+- New service for user
+- Slug and verify code generations
+- Docstring for new defs
 - Added folder helper [@AlexTrubkina](https://github.com/AlexTrubkina)
 - Added function countPrices (for counting range prices in Prices.js) 
 
 ### Изменено
 
+- Docker-compose config [@fringer2423](https://github.com/fringer2423)
+- User model (Added slug field)
 - Changed Prices.js (added range for prices) [@AlexTrubkina](https://github.com/AlexTrubkina)
 - Changed buttons.css (fixed disabled buttons)
 - Changed prices.css (added styles for prices range)
