@@ -136,7 +136,10 @@ def register_user_view(request):
         serializer = UserSerializerWithToken(user, many=False)
         message = 'Запрос выполнен успешно'
         logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
-        send_email_task.delay('Администратор Rectop', 'Спасибо за регистрацию!', user.email.__str__())
+        subject = 'Администратор Rectop'
+        body = f'Для активации аккаунта перейдите по ссылке http://127.0.0.1:8000/api/user/verify/{user.slug} \n ' \
+               f'Спасибо за регистрацию!'
+        send_email_task.delay(subject, body, user.email.__str__())
         return Response(
             data=serializer.data,
             status=status.HTTP_201_CREATED

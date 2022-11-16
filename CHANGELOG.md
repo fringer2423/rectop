@@ -6,7 +6,7 @@
 
 ### Добавлено
 
-- 
+- Subject and body register email message [@fringer2423](https://github.com/fringer2423)
 
 ### Изменено
 
