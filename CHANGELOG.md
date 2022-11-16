@@ -15,11 +15,17 @@
 - New service for user
 - Slug and verify code generations
 - Docstring for new defs
+- Added folder helper [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Added function countPrices (for counting range prices in Prices.js) 
 
 ### Изменено
 
 - Docker-compose config [@fringer2423](https://github.com/fringer2423)
 - User model (Added slug field)
+- Changed Prices.js (added range for prices) [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Changed buttons.css (fixed disabled buttons)
+- Changed prices.css (added styles for prices range)
+- Changed pictures for better quality
 
 ## [0.0.28] - 2022-11-14
 

@@ -7,10 +7,11 @@
     font-family: Gilroy-Medium
 }
 
+.first-image{
+    width: 40%;
+}
+
 @media (max-width: 1199px) {
-    .first-image {
-        width: 48%
-    }
 
     #first-block {
         gap: 5%

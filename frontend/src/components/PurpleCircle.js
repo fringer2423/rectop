@@ -7,7 +7,7 @@ const PurpleCircle = () => {
         <div className="block-for-purple-circle">
             <div className="black-block">
                 <img
-                    src="/images/user.png"
+                    src="/images/user.svg"
                     className="pic-of-user"
                     alt="user"
                 />
@@ -33,7 +33,7 @@ const PurpleCircle = () => {
                 <h2>Бизнес</h2>
                 <p>Повышает репутацию</p>
                 <img
-                    src="/images/computer.png"
+                    src="/images/computer.svg"
                     className="pic-of-computer"
                     alt="computer"
                 />

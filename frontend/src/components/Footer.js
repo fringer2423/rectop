@@ -24,7 +24,7 @@ function Footer() {
                     <div className="footer-navbar-logo">
                         <Navbar.Brand>
                             <img
-                                src="/images/logofooter.png"
+                                src="/images/logofooter.svg"
                                 alt="Rectop Logo"
                             />
                         </Navbar.Brand>

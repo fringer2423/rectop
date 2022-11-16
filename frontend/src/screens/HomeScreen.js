@@ -77,7 +77,7 @@ const HomeScreen = () => {
                 <div className="why-blocks">
                     <div className="why-block">
                         <img
-                            src="/images/pic1.png"
+                            src="/images/pic1.svg"
                             alt="mobile"
                         />
                         <h2><b>Увеличим</b></h2>
@@ -85,7 +85,7 @@ const HomeScreen = () => {
                     </div>
                     <div className="why-block">
                         <img
-                            src="/images/pic2.png"
+                            src="/images/pic2.svg"
                             alt="mobile"
                         />
                         <h2><b>Освободим</b></h2>
@@ -93,7 +93,7 @@ const HomeScreen = () => {
                     </div>
                     <div className="why-block">
                         <img
-                            src="/images/pic3.png"
+                            src="/images/pic3.svg"
                             alt="mobile"
                         />
                         <h2><b>Мотивируем</b></h2>
@@ -101,7 +101,7 @@ const HomeScreen = () => {
                     </div>
                     <div className="why-block">
                         <img
-                            src="/images/pic4.png"
+                            src="/images/pic4.svg"
                             alt="mobile"
                         />
                         <h2><b>Регулируем</b></h2>

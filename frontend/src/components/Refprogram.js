@@ -6,7 +6,7 @@ const Refprogram = () => {
     return (
         <>
             <img
-                src="/images/main/bell_right.png"
+                src="/images/main/bell_right.svg"
                 className="bell-ring"
                 alt="bell ring"
             />
@@ -15,7 +15,7 @@ const Refprogram = () => {
                 <p>Каждый твой новый подключённый филиал/приведённый друг - это пожизненный кешбек</p>
             </div>
             <img
-                src="/images/main/megaphone_left.png"
+                src="/images/main/megaphone.svg"
                 className="megaphone"
                 alt="megaphone"
             />
