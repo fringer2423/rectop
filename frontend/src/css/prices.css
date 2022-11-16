@@ -8,6 +8,17 @@
     width: 310px;
 }
 
+.block-ranges-prices {
+    height: 20px;
+}
+
+.range-for-prices {
+    width: 50% !important;
+}
+
+.strike-text {
+    text-decoration: line-through;
+}
 
 .table-for-price-first, .table-for-price-second, .table-for-price-third {
     border-radius: 30px;
@@ -26,10 +37,6 @@
     margin-right: 10%
 }
 
-.table-for-price-third-click > .text-in-price {
-    margin-left: 10%;
-    margin-right: 10%
-}
 
 .block-in-table {
     background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
@@ -38,35 +45,6 @@
     color: white
 }
 
-.table-for-price-first-click > .block-in-table, .table-for-price-second-click > .block-in-table, .table-for-price-third-click > .block-in-table {
-    color: #232323;
-    background: white;
-}
-
-.table-for-price-first-click, .table-for-price-second-click, .table-for-price-third-click {
-    border-radius: 30px;
-    border: 1px solid #4584FF;
-    color: white;
-    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.table-for-price-first-click h4, .table-for-price-second-click h4, .table-for-price-third-click h4 {
-    background: white;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-}
-
-.table-for-price-first-click button, .table-for-price-second-click button, .table-for-price-third-click button {
-    background: #232323;
-    color: white;
-}
 
 .table-for-price-first:hover > .block-in-table, .table-for-price-second:hover > .block-in-table, .table-for-price-third:hover > .block-in-table {
     color: #232323;
@@ -77,8 +55,7 @@
     background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
+
 }
 
 .table-for-price-first:hover, .table-for-price-second:hover, .table-for-price-third:hover {
@@ -90,8 +67,7 @@
     background: white;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
+
 }
 
 .table-for-price-first:hover button, .table-for-price-second:hover button, .table-for-price-third:hover button {
@@ -105,12 +81,6 @@
     }
 
     .table-for-price-first, .table-for-price-second, .table-for-price-third {
-        width: 300px;
-        height: 850px;
-        margin-bottom: 60px
-    }
-
-    .table-for-price-first-click, .table-for-price-second-click, .table-for-price-third-click {
         width: 300px;
         height: 850px;
         margin-bottom: 60px
@@ -143,21 +113,6 @@
         font-size: 15px
 
     }
-
-    .table-for-price-first-click h3, .table-for-price-second-click h3, .table-for-price-third-click h3 {
-        font-size: 24px
-    }
-
-    .table-for-price-first-click h4, .table-for-price-second-click h4, .table-for-price-third-click h4 {
-        font-size: 20px
-    }
-
-    .table-for-price-first-click button, .table-for-price-second-click button, .table-for-price-third-click button {
-        height: 50px;
-        width: 200px;
-        font-size: 15px
-
-    }
 }
 
 
@@ -168,12 +123,7 @@
 
     .table-for-price-first, .table-for-price-second, .table-for-price-third {
         width: 300px;
-        height: 800px;
-    }
-
-    .table-for-price-first-click, .table-for-price-second-click, .table-for-price-third-click {
-        width: 300px;
-        height: 800px;
+        height: 850px;
     }
 
     .text-in-price {
@@ -203,19 +153,6 @@
         font-size: 15px
     }
 
-    .table-for-price-first-click h3, .table-for-price-second-click h3, .table-for-price-third-click h3 {
-        font-size: 24px
-    }
-
-    .table-for-price-first-click h4, .table-for-price-second-click h4, .table-for-price-third-click h4 {
-        font-size: 20px
-    }
-
-    .table-for-price-first-click button, .table-for-price-second-click button, .table-for-price-third-click button {
-        height: 50px;
-        width: 200px;
-        font-size: 15px
-    }
 }
 
 .carousel-for-prices .carousel-control-prev-icon {
