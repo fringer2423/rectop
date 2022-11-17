@@ -1,11 +1,11 @@
 .title-of-accordion {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
     font-size: 24px;
     cursor: pointer;
     user-select: none;
+    display: flex;
+    justify-content: space-between;
 }
+
 
 
 .symbol-for-accordion {
@@ -13,14 +13,14 @@
     background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
 }
 
 .body-of-accordion {
     font-size: 16px;
     overflow: hidden;
     transition: max-height 0.4s ease;
+
+
 }
 
 

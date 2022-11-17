@@ -17,9 +17,9 @@ const Accordion = (props) => {
         <div className="accordions">
             <div className="accordion-item">
                 <div className="title-of-accordion" onClick={openAccordion}>
-                    <div>
+                    <span className="text-title-accordion">
                         {props.title}
-                    </div>
+                    </span>
                     <span className="symbol-for-accordion">
                         {show ? "-" : "+"}
                     </span>
