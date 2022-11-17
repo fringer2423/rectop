@@ -216,3 +216,18 @@
     background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
     box-shadow: inset 0 6px 10px #2E4BB3;
 }
+
+.control-button-spinner {
+    width: 30px !important;
+    height: 25px !important;
+    border-radius: 50%;
+    border: 2px solid #4584FF;
+    color: #4584FF;
+    font-weight: bold;
+}
+
+.control-button-spinner:active {
+    background: #000000;
+    box-shadow: inset 0 6px 10px #565656;
+    color: white;
+}
