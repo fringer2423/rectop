@@ -2,6 +2,8 @@ from django.contrib.auth.hashers import make_password
 
 from apps.core.models import User
 
+from apps.core.services.random_generate_service import generate_random_number_service
+
 
 def create_user_by_data_service(data):
     """
@@ -46,3 +48,19 @@ def verify_user_service(user):
     user.slug = None
     user.save()
     return user
+
+
+def generate_new_verify_code_for_user_service(user_id):
+    user = get_user_service(user_id)
+    user.verify_code = generate_random_number_service(6)
+    user.save()
+    return user
+
+
+def verify_user_by_code_service(user, verify_code):
+    if user.verify_code == verify_code:
+        user.verify_code = None
+        user.save()
+        return True
+    else:
+        return False
