@@ -45,11 +45,11 @@ const Prices = () => {
 
     const handleClickThirdPrice = () => {
         setActiveIndex(2);
-        setPriceDurationFirst("14480 РУБ./НЕД.");
-        setPriceDurationSecond("14480 РУБ./МЕС.");
+        setPriceDurationFirst("14480 РУБ./ГОД.");
+        setPriceDurationSecond("14480 РУБ./ГОД.");
         setPriceDurationThird("48000 РУБ./ГОД.");
-        setPriceOldFirst("14480 РУБ./НЕД.");
-        setPriceOldSecond("14480 РУБ./МЕС.");
+        setPriceOldFirst("14480 РУБ./ГОД.");
+        setPriceOldSecond("14480 РУБ./ГОД.");
         setPriceOldThird("48000 РУБ./ГОД.");
     }
 
