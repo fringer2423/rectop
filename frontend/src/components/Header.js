@@ -20,7 +20,6 @@ function Header() {
 
     return (
         <>
-
             <Navbar bg="white" expand="lg" fixed="top">
                 <Container className="container-for-navbar">
                     <Navbar.Brand className="brand-in-nav" href="/">

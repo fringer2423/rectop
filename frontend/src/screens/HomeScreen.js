@@ -4,6 +4,7 @@ import "../css/main.css";
 import "../css/buttons.css";
 import "../css/whyBlocks.css";
 import "../css/purpleBlock.css";
+import "../css/blueBall.css"
 
 import Prices from "../components/Prices";
 import FormUser from "../components/FormUser";
@@ -26,13 +27,15 @@ const HomeScreen = () => {
                 <div className="first-block-text">
                     <h2> Негативные отзывы теперь в прошлом!</h2>
                     <h1><b> <span className="gradient-text">RecTOP</span> - инновационный сервис</b> <span
-                        className="cursive-text">взаимодействия с клиентами.</span></h1>
+                        className="cursive-text special">взаимодействия с клиентами.</span></h1>
                     <br/><br/>
-                    <div className="small-text">
-                        Отзывы собираются по QR-коду, когда клиент посещает заведение или сайт.
+                    <div className="right-text-buttons-first-block">
+                        <div className="small-text-first-block">
+                            Отзывы собираются по QR-коду, когда клиент посещает заведение или сайт.
+                        </div>
+                        <button className="blue-button">7 дней бесплатно</button>
+                        <button className="white-button">Запросить демо</button>
                     </div>
-                    <button className="blue-button">7 дней бесплатно</button>
-                    <button className="white-button">Запросить демо</button>
                 </div>
                 <img
                     src="/images/main/mainCard1Img.png"
@@ -45,13 +48,11 @@ const HomeScreen = () => {
                     alt="first for mobile"
                 />
             </div>
-            {/*
-   <img
-      src='/images/main/afterMainCard1Img.png'
-      width="425px"
-      className="blue-ball"
-    />
-    */}
+           <img
+              src='/images/main/blue_ball.png'
+              className="blue-ball"
+            />
+
             <div id="about">
                 <div className="about-comp-text">
                     <h1><b>О компании <span className="gradient-text">Rectop</span></b></h1>
@@ -204,7 +205,14 @@ const HomeScreen = () => {
                 <ListOfRec/>
             </div>
             <div id='tariffs'>
-                <h1><b>Выбирайте то, что удобно Вам для управления репутацией</b></h1>
+            <img
+                src="/images/main/purple_spire.png"
+                alt="Blue Spire"
+                className="blue-spire"
+            />
+                <span className="header-tariffs">
+                    <h1><b>Выбирайте то, что удобно Вам для управления репутацией</b></h1>
+                </span>
                 <Prices/>
             </div>
 
