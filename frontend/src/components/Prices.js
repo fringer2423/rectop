@@ -11,9 +11,9 @@ import {faArrowLeftLong} from '@fortawesome/free-solid-svg-icons';
 const Prices = () => {
 
     const [activeIndex, setActiveIndex] = useState(0);
-    const [numFilialFirst, setNumFilialFirst] = useState(1);
-    const [numFilialSecond, setNumFilialSecond] = useState(1);
-    const [numFilialThird, setNumFilialThird] = useState(1);
+    const [numBranchsFirst, setNumBranchsFirst] = useState(1);
+    const [numBranchsSecond, setNumBranchsSecond] = useState(1);
+    const [numBranchsThird, setNumBranchsThird] = useState(1);
 
     const [priceDurationFirst, setPriceDurationFirst] = useState('300 РУБ./НЕД.');
     const [priceDurationSecond, setPriceDurationSecond] = useState('300 РУБ./НЕД.');
@@ -54,53 +54,52 @@ const Prices = () => {
     }
 
     const setPriceRangeFirst = (e) => {
-        setNumFilialFirst(e.target.value);
-        if(activeIndex === 0){
-            setPriceDurationFirst(countPrices(numFilialFirst, 300).resultPrice + ' РУБ./НЕД.');
-            setPriceOldFirst(countPrices(numFilialFirst, 300).oldPrice + ' РУБ./НЕД.');
+        setNumBranchsFirst(e.target.value);
+        if (activeIndex === 0) {
+            setPriceDurationFirst(countPrices(numBranchsFirst, 300).resultPrice + ' РУБ./НЕД.');
+            setPriceOldFirst(countPrices(numBranchsFirst, 300).oldPrice + ' РУБ./НЕД.');
         }
-        if(activeIndex === 1){
-            setPriceDurationFirst(countPrices(numFilialFirst, 1200).resultPrice + ' РУБ./МЕС.');
-            setPriceOldFirst(countPrices(numFilialFirst, 1200).oldPrice + ' РУБ./МЕС.');
+        if (activeIndex === 1) {
+            setPriceDurationFirst(countPrices(numBranchsFirst, 1200).resultPrice + ' РУБ./МЕС.');
+            setPriceOldFirst(countPrices(numBranchsFirst, 1200).oldPrice + ' РУБ./МЕС.');
         }
-        if(activeIndex === 2){
-            setPriceDurationFirst(countPrices(numFilialFirst, 14480).resultPrice + ' РУБ./ГОД.');
-            setPriceOldFirst(countPrices(numFilialFirst, 14480).oldPrice + ' РУБ./ГОД.');
+        if (activeIndex === 2) {
+            setPriceDurationFirst(countPrices(numBranchsFirst, 14480).resultPrice + ' РУБ./ГОД.');
+            setPriceOldFirst(countPrices(numBranchsFirst, 14480).oldPrice + ' РУБ./ГОД.');
         }
     }
 
     const setPriceRangeSecond = (e) => {
-        setNumFilialSecond(e.target.value);
-        if(activeIndex === 0){
-            setPriceDurationSecond(countPrices(numFilialSecond, 300).resultPrice + ' РУБ./НЕД.');
-            setPriceOldSecond(countPrices(numFilialSecond, 300).oldPrice + ' РУБ./НЕД.');
+        setNumBranchsSecond(e.target.value);
+        if (activeIndex === 0) {
+            setPriceDurationSecond(countPrices(numBranchsSecond, 300).resultPrice + ' РУБ./НЕД.');
+            setPriceOldSecond(countPrices(numBranchsSecond, 300).oldPrice + ' РУБ./НЕД.');
         }
-        if(activeIndex === 1){
-            setPriceDurationSecond(countPrices(numFilialSecond, 1200).resultPrice + ' РУБ./МЕС.');
-            setPriceOldSecond(countPrices(numFilialSecond, 1200).oldPrice + ' РУБ./МЕС.');
+        if (activeIndex === 1) {
+            setPriceDurationSecond(countPrices(numBranchsSecond, 1200).resultPrice + ' РУБ./МЕС.');
+            setPriceOldSecond(countPrices(numBranchsSecond, 1200).oldPrice + ' РУБ./МЕС.');
         }
-        if(activeIndex === 2){
-            setPriceDurationSecond(countPrices(numFilialSecond, 14480).resultPrice + ' РУБ./ГОД.');
-            setPriceOldSecond(countPrices(numFilialSecond, 14480).oldPrice + ' РУБ./ГОД.');
+        if (activeIndex === 2) {
+            setPriceDurationSecond(countPrices(numBranchsSecond, 14480).resultPrice + ' РУБ./ГОД.');
+            setPriceOldSecond(countPrices(numBranchsSecond, 14480).oldPrice + ' РУБ./ГОД.');
         }
     }
 
     const setPriceRangeThird = (e) => {
-        setNumFilialThird(e.target.value);
-        if(activeIndex === 0){
-            setPriceDurationThird(countPrices(numFilialThird, 1000).resultPrice + ' РУБ./НЕД.');
-            setPriceOldThird(countPrices(numFilialThird, 1000).oldPrice + ' РУБ./НЕД.');
+        setNumBranchsThird(e.target.value);
+        if (activeIndex === 0) {
+            setPriceDurationThird(countPrices(numBranchsThird, 1000).resultPrice + ' РУБ./НЕД.');
+            setPriceOldThird(countPrices(numBranchsThird, 1000).oldPrice + ' РУБ./НЕД.');
         }
-        if(activeIndex === 1){
-            setPriceDurationThird(countPrices(numFilialThird, 4000).resultPrice + ' РУБ./МЕС.');
-            setPriceOldThird(countPrices(numFilialThird, 4000).oldPrice + ' РУБ./МЕС.');
+        if (activeIndex === 1) {
+            setPriceDurationThird(countPrices(numBranchsThird, 4000).resultPrice + ' РУБ./МЕС.');
+            setPriceOldThird(countPrices(numBranchsThird, 4000).oldPrice + ' РУБ./МЕС.');
         }
-        if(activeIndex === 2){
-            setPriceDurationThird(countPrices(numFilialThird, 14480).resultPrice + ' РУБ./ГОД.');
-            setPriceOldThird(countPrices(numFilialThird, 14480).oldPrice + ' РУБ./ГОД.');
+        if (activeIndex === 2) {
+            setPriceDurationThird(countPrices(numBranchsThird, 14480).resultPrice + ' РУБ./ГОД.');
+            setPriceOldThird(countPrices(numBranchsThird, 14480).oldPrice + ' РУБ./ГОД.');
         }
     }
-
 
 
     return (
@@ -120,17 +119,17 @@ const Prices = () => {
             </div>
 
             <div id="list-of-prices">
-                <div className= 'table-for-price-first'>
+                <div className='table-for-price-first'>
                     <h3><b>“Генератор отзывов”</b></h3>
-                    <h5>{numFilialFirst} филиал</h5>
+                    <h5>{numBranchsFirst} филиал</h5>
                     <Form.Range className="range-for-prices"
-                        value={numFilialFirst}
-                        max={150}
-                        min={1}
-                        onChange={setPriceRangeFirst}/>
+                                value={numBranchsFirst}
+                                max={150}
+                                min={1}
+                                onChange={setPriceRangeFirst}/>
                     <h4><b>{priceDurationFirst}</b></h4>
                     <div className="block-ranges-prices">
-                        {priceDurationFirst != priceOldFirst && <h6 className="strike-text">{priceOldFirst}</h6>}
+                        {priceDurationFirst !== priceOldFirst && <h6 className="strike-text">{priceOldFirst}</h6>}
                     </div>
                     <div className="block-in-table">
                         <b>
@@ -156,17 +155,17 @@ const Prices = () => {
                     </div>
                     <button className="black-button"><b>Приобрести тариф</b></button>
                 </div>
-                <div className= 'table-for-price-second'>
+                <div className='table-for-price-second'>
                     <h3><b>Какое-то название</b></h3>
-                    <h5>{numFilialSecond} филиал</h5>
+                    <h5>{numBranchsSecond} филиал</h5>
                     <Form.Range className="range-for-prices"
-                        value={numFilialSecond}
-                        max={150}
-                        min={1}
-                        onChange={setPriceRangeSecond}/>
+                                value={numBranchsSecond}
+                                max={150}
+                                min={1}
+                                onChange={setPriceRangeSecond}/>
                     <h4><b>{priceDurationSecond}</b></h4>
                     <div className="block-ranges-prices">
-                        {priceDurationSecond != priceOldSecond && <h6 className="strike-text">{priceOldSecond}</h6>}
+                        {priceDurationSecond !== priceOldSecond && <h6 className="strike-text">{priceOldSecond}</h6>}
                     </div>
                     <div className="block-in-table">
                         <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
@@ -193,15 +192,15 @@ const Prices = () => {
                 </div>
                 <div className='table-for-price-third'>
                     <h3><b>Репутация под ключ</b></h3>
-                    <h5>{numFilialThird} филиал</h5>
+                    <h5>{numBranchsThird} филиал</h5>
                     <Form.Range className="range-for-prices"
-                        value={numFilialThird}
-                        max={150}
-                        min={1}
-                        onChange={setPriceRangeThird}/>
+                                value={numBranchsThird}
+                                max={150}
+                                min={1}
+                                onChange={setPriceRangeThird}/>
                     <h4><b>{priceDurationThird}</b></h4>
                     <div className="block-ranges-prices">
-                        {priceDurationThird != priceOldThird && <h6 className="strike-text">{priceOldThird}</h6>}
+                        {priceDurationThird !== priceOldThird && <h6 className="strike-text">{priceOldThird}</h6>}
                     </div>
                     <div className="block-in-table">
                         <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
@@ -230,15 +229,16 @@ const Prices = () => {
                     <Carousel.Item>
                         <div className='table-for-price-first'>
                             <h3><b>“Генератор отзывов”</b></h3>
-                            <h5>{numFilialFirst} филиал</h5>
+                            <h5>{numBranchsFirst} филиал</h5>
                             <Form.Range className="range-for-prices"
-                                value={numFilialFirst}
-                                max={150}
-                                min={1}
-                                onChange={setPriceRangeFirst}/>
+                                        value={numBranchsFirst}
+                                        max={150}
+                                        min={1}
+                                        onChange={setPriceRangeFirst}/>
                             <h4><b>{priceDurationFirst}</b></h4>
                             <div className="block-ranges-prices">
-                                {priceDurationFirst != priceOldFirst && <h6 className="strike-text">{priceOldFirst}</h6>}
+                                {priceDurationFirst !== priceOldFirst &&
+                                    <h6 className="strike-text">{priceOldFirst}</h6>}
                             </div>
                             <div className="block-in-table">
                                 <b>
@@ -268,14 +268,14 @@ const Prices = () => {
                     </Carousel.Item>
                     <Carousel.Item>
 
-                        <div className= 'table-for-price-second'>
+                        <div className='table-for-price-second'>
                             <h3><b>Какое-то название</b></h3>
-                            <h5>{numFilialSecond} филиал</h5>
+                            <h5>{numBranchsSecond} филиал</h5>
                             <Form.Range className="range-for-prices"
-                                value={numFilialSecond}
-                                max={150}
-                                min={1}
-                                onChange={setPriceRangeSecond}/>
+                                        value={numBranchsSecond}
+                                        max={150}
+                                        min={1}
+                                        onChange={setPriceRangeSecond}/>
                             <h4><b>{priceDurationSecond}</b></h4>
                             <div className="block-in-table">
                                 <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
@@ -304,17 +304,18 @@ const Prices = () => {
                     </Carousel.Item>
                     <Carousel.Item>
 
-                        <div className= 'table-for-price-third'>
+                        <div className='table-for-price-third'>
                             <h3><b>Репутация под ключ</b></h3>
-                            <h5>{numFilialThird} филиал</h5>
+                            <h5>{numBranchsThird} филиал</h5>
                             <Form.Range className="range-for-prices"
-                                value={numFilialThird}
-                                max={150}
-                                min={1}
-                                onChange={setPriceRangeThird}/>
+                                        value={numBranchsThird}
+                                        max={150}
+                                        min={1}
+                                        onChange={setPriceRangeThird}/>
                             <h4><b>{priceDurationThird}</b></h4>
                             <div className="block-ranges-prices">
-                                {priceDurationThird != priceOldThird && <h6 className="strike-text">{priceOldThird}</h6>}
+                                {priceDurationThird !== priceOldThird &&
+                                    <h6 className="strike-text">{priceOldThird}</h6>}
                             </div>
                             <div className="block-in-table">
                                 <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
