@@ -6,11 +6,17 @@
 
 ### Добавлено
 
-- 
+- added functions countWeekDefaultPrice, countYearDefaultPrice [@AlexTrubkina](https://github.com/AlexTrubkina)
+- added blueBall.css
 
 ### Изменено
 
-- 
+- Centered titles of accordion [@AlexTrubkina](https://github.com/AlexTrubkina)
+- changed year in Footer
+- fixed whyBlocks
+- fixed prices
+- fixed login and registration buttons
+- changed countPrices
 
 ## [0.0.30] - 2022-11-16
 
@@ -21,7 +27,7 @@
 ### Изменено
 
 - Bump pillow from 9.2.0 to 9.3.0 [@fringer2423](https://github.com/fringer2423)
-- Bump loader-utils from 3.2.0 to 3.2.1 in /frontend 
+- Bump loader-utils from 3.2.0 to 3.2.1 in /frontend
 - Refactor frontend
 
 ## [0.0.29] - 2022-11-15
@@ -38,7 +44,7 @@
 - Slug and verify code generations
 - Docstring for new defs
 - Added folder helper [@AlexTrubkina](https://github.com/AlexTrubkina)
-- Added function countPrices (for counting range prices in Prices.js) 
+- Added function countPrices (for counting range prices in Prices.js)
 
 ### Изменено
 
