@@ -6,12 +6,13 @@
 
 ### Добавлено
 
-- 
+- Subject and body register email message [@fringer2423](https://github.com/fringer2423)
 
 ### Изменено
 
 - Bump pillow from 9.2.0 to 9.3.0 [@fringer2423](https://github.com/fringer2423)
 - Bump loader-utils from 3.2.0 to 3.2.1 in /frontend 
+- Refactor frontend
 
 ## [0.0.29] - 2022-11-15
 
