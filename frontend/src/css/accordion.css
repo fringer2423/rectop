@@ -4,9 +4,8 @@
     user-select: none;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
-
-
 
 .symbol-for-accordion {
     font-size: 40px;
@@ -19,10 +18,7 @@
     font-size: 16px;
     overflow: hidden;
     transition: max-height 0.4s ease;
-
-
 }
-
 
 .accordions {
     border-bottom: 2px solid #F9F9F9;

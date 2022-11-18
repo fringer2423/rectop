@@ -8,13 +8,21 @@
     width: 310px;
 }
 
-.block-ranges-prices {
-    height: 20px;
+.discount{
+    color: #2da956;
 }
 
-.range-for-prices {
-    width: 50% !important;
+.block-ranges-prices {
+    height: 30px;
+    display: flex;
+    flex-direction: column;
 }
+
+.wraper-spiner {
+    display: flex;
+    gap: 10px;
+}
+
 
 .strike-text {
     text-decoration: line-through;
@@ -73,6 +81,7 @@
 .table-for-price-first:hover button, .table-for-price-second:hover button, .table-for-price-third:hover button {
     background: #232323;
     color: white;
+    border: 1px solid #232323;
 }
 
 @media (max-width: 991px) {

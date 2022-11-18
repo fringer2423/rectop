@@ -17,6 +17,9 @@ import {
 import "../css/footer.css"
 
 function Footer() {
+
+    const currentYear = new Date().getFullYear();
+
     return (
         <Navbar variant="dark" className="navbar-footer">
             <Container className="container-footer">
@@ -58,7 +61,7 @@ function Footer() {
                     </div>
                     <div className="footer-reference">
                         <Nav.Item>
-                            © 2018–2022 Rectop - агрегатор отзывов
+                            © 2018–{currentYear} Rectop - агрегатор отзывов
                         </Nav.Item>
                     </div>
                 </div>

@@ -14,23 +14,22 @@
     }
 
     .why-block img {
-        bottom: 20%
+        bottom: 20%;
     }
 }
 
 @media (max-width: 1024px) {
     .why-blocks {
-        display: flex;
+        display: grid;
         margin-top: 20%;
-        margin-bottom: 10%;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 85px
+        margin-bottom: 20%;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 80px;
+        justify-items: center;
     }
 
     .why-block p {
-        font-size: 14px
+        font-size: 14px;
     }
 
     .why-block {
@@ -38,7 +37,7 @@
         width: 300px;
         height: 200px;
         padding-left: 58px;
-        padding-right: 59px
+        padding-right: 59px;
     }
 
     .why-block img {
@@ -48,16 +47,26 @@
     }
 }
 
+@media (max-width: 850px) {
+    .why-blocks {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+}
+
 @media (max-width: 500px) {
     .why-block img {
         position: relative;
         top: -37px;
         margin-bottom: -30px;
-        width: 35%
+        width: 35%;
     }
 
     .why-block b {
-        font-size: 18px
+        font-size: 18px;
     }
 
 }
@@ -78,7 +87,7 @@
 .why-block:hover {
     background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
     color: white;
-    transition: 0.3s
+    transition: 0.3s;
 }
 
 
