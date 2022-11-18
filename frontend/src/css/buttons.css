@@ -110,9 +110,8 @@
     width: 45px;
     height: 45px;
     font-size: 30px;
-    padding-left: 5px;
-    padding-top: 2px
-
+    padding-left: 0.34rem;
+    padding-top: 0.08rem;
 }
 
 .button-log-in:hover {
