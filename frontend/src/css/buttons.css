@@ -79,6 +79,8 @@
 
 .registration-button {
     border-radius: 40px;
+    height: 45px;
+    width: 136px;
     background: white;
     padding: 1% 2%;
     border: 2px solid #4584FF;
@@ -100,17 +102,16 @@
 
 
 .button-log-in {
-    width: 55px;
-    height: 45px;
     border-radius: 50%;
     color: #4584FF;
     background: white;
     border: 2px solid #4584FF;
-    margin: 1%;
-    font-size: 28px;
-    padding-left: 6px;
-    padding-top: 2px;
     transition: background 0.3s ease;
+    width: 45px;
+    height: 45px;
+    font-size: 30px;
+    padding-left: 5px;
+    padding-top: 2px
 
 }
 
@@ -151,6 +152,26 @@
     }
 }
 
+@media (min-width: 992px) {
+    .wrapper-buttons-header {
+        width: 250px;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 991px) {
+    .wrapper-buttons-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
 
 @media (max-width: 799px) {
     .blue-button {
@@ -170,8 +191,9 @@
     }
 
     .button-log-in {
-        font-size: 20px;
+        width: 45px
     }
+
 }
 
 
@@ -193,4 +215,19 @@
 .button-for-rate:active {
     background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
     box-shadow: inset 0 6px 10px #2E4BB3;
+}
+
+.control-button-spinner {
+    width: 30px !important;
+    height: 25px !important;
+    border-radius: 50%;
+    border: 2px solid #4584FF;
+    color: #4584FF;
+    font-weight: bold;
+}
+
+.control-button-spinner:active {
+    background: #000000;
+    box-shadow: inset 0 6px 10px #565656;
+    color: white;
 }

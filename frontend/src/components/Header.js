@@ -20,7 +20,6 @@ function Header() {
 
     return (
         <>
-
             <Navbar bg="white" expand="lg" fixed="top">
                 <Container className="container-for-navbar">
                     <Navbar.Brand className="brand-in-nav" href="/">
@@ -81,13 +80,15 @@ function Header() {
                                 </NavHashLink>
                             </div>
                         </Nav>
-                        <LinkContainer to="/registration">
-                            <button className="registration-button">Регистрация</button>
-                        </LinkContainer>
-                        <LinkContainer to="/log-in">
-                            <div className="button-log-in"><FontAwesomeIcon
-                                icon={faCircleArrowRight} className="arrow-in-button"/></div>
-                        </LinkContainer>
+                        <div className="wrapper-buttons-header">
+                            <LinkContainer to="/registration">
+                                <button className="registration-button">Регистрация</button>
+                            </LinkContainer>
+                            <LinkContainer to="/log-in">
+                                <div className="button-log-in"><FontAwesomeIcon
+                                    icon={faCircleArrowRight} className="arrow-in-button"/></div>
+                            </LinkContainer>
+                        </div>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
