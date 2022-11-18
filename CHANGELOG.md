@@ -6,17 +6,24 @@
 
 ### Добавлено
 
+- Login confirmation (sending a confirmation code to the user's email) [@fringer2423](https://github.com/fringer2423)
+- New user service (generate_new_verify_code_for_user_service)
+- New view controller (verify_code_user_view)
+- New view controller (send_verify_code_user_view)
+- New user service (verify_user_by_code_service)
 - added functions countWeekDefaultPrice, countYearDefaultPrice [@AlexTrubkina](https://github.com/AlexTrubkina)
 - added blueBall.css
 
 ### Изменено
 
+- MyTokenObtainPairView (Added new func for post request) [@fringer2423](https://github.com/fringer2423)
 - Centered titles of accordion [@AlexTrubkina](https://github.com/AlexTrubkina)
 - changed year in Footer
 - fixed whyBlocks
 - fixed prices
 - fixed login and registration buttons
 - changed countPrices
+
 
 ## [0.0.30] - 2022-11-16
 
