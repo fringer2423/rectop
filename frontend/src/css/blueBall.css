@@ -7,40 +7,69 @@
 
 /* position relative */
 
-@media (min-width: 2400px) {
-
-    .blue-ball {
-        display: none;
-    }
-
+@media (min-width: 1600px){
     .blue-spire {
         display: none;
     }
 }
 
-@media (height: 1386px)  {
-    .blue-ball{
-        top: 38%
+@media (min-width: 2400px) {
+
+    .blue-ball {
+        display: none;
     }
 }
 
-@media (height: 832px) and (min-width: 1400px) {
-    .blue-ball{
-        top: 65%
+@media (max-width: 2399px) and (min-width: 2200px) {
+    .blue-ball {
+        left: 7%;
+        width: 40%;
+        height: 40%;
+        bottom: 470px;
     }
 }
 
-@media (height: 832px) and (max-width: 1400px) {
-    .blue-ball{
-        top: 59%;
-        width: 25%;
+@media (max-width: 2199px) and (min-width: 1818px) {
+    .blue-ball {
+        left: 15%;
+        width: 40%;
+        height: 40%;
+        bottom: 470px;
     }
 }
 
+@media (max-width: 1817px) {
+    .blue-ball {
+        left: 30%;
+        width: 30%;
+        height: 30%;
+        bottom: 400px
+    }
+}
+
+@media (max-width: 1440px) {
+    .blue-ball {
+        left: 43%;
+        width: 30%;
+        height: 30%;
+        bottom: 380px;
+    }
+}
+
+@media (max-width: 1399px) {
+    .blue-ball {
+        left: 37%;
+        width: 30%;
+        height: 30%;
+        bottom: 300px
+    }
+}
 
 .blue-ball {
-    position: absolute;
-    left: 0;
+    position: relative;
+
+    margin-left: -50%;
+
 }
 
 .blue-spire {

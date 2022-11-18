@@ -47,13 +47,13 @@ const HomeScreen = () => {
                     className="first-img-for-mobile"
                     alt="first for mobile"
                 />
-            </div>
-           <img
-              src='/images/main/blue_ball.png'
-              className="blue-ball"
-            />
 
+            </div>
             <div id="about">
+                <img
+                   src='/images/main/blue_ball.png'
+                   className="blue-ball"
+                 />
                 <div className="about-comp-text">
                     <h1><b>О компании <span className="gradient-text">Rectop</span></b></h1>
 
