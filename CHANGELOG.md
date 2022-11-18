@@ -6,7 +6,7 @@
 
 ### Добавлено
 
-- 
+- Docstrings for new func in user service [@fringer2423](https://github.com/fringer2423)
 
 ### Изменено
 

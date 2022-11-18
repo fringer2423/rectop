@@ -51,6 +51,11 @@ def verify_user_service(user):
 
 
 def generate_new_verify_code_for_user_service(user_id):
+    """
+    Функция генерирует новый код подтверждения для user
+    :param user_id: user id
+    :return: user
+    """
     user = get_user_service(user_id)
     user.verify_code = generate_random_number_service(6)
     user.save()
@@ -58,6 +63,12 @@ def generate_new_verify_code_for_user_service(user_id):
 
 
 def verify_user_by_code_service(user, verify_code):
+    """
+    Функция проверяет код и возвращает результат проверки True или False соответственно
+    :param user: user
+    :param verify_code: verify code
+    :return: True или False
+    """
     if user.verify_code == verify_code:
         user.verify_code = None
         user.save()
