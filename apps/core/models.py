@@ -576,14 +576,29 @@ class Answer(models.Model):
 
 class RateInfo(models.Model):
     """Модель информации о тарифах на сайте"""
-    first_rate = models.IntegerField(
-        verbose_name='Первый тариф'
+    first_rate = models.PositiveIntegerField(
+        verbose_name='Первый тариф',
+        default=None
     )
-    second_rate = models.IntegerField(
-        verbose_name='Второй тариф'
+    second_rate = models.PositiveIntegerField(
+        verbose_name='Второй тариф',
+        default=None
     )
-    third_rate = models.IntegerField(
-        verbose_name='Третий тариф'
+    third_rate = models.PositiveIntegerField(
+        verbose_name='Третий тариф',
+        default=None
+    )
+    sale_info = models.JSONField(
+        verbose_name='Информация по скидкам',
+        default=None
+    )
+    coefficient_for_calculating_the_week = models.PositiveIntegerField(
+        verbose_name='Коэффициент для рассчета тарифа на неделю',
+        default=None
+    )
+    coefficient_for_calculating_the_year = models.PositiveIntegerField(
+        verbose_name='Коэффициент для рассчета тарифа на неделю',
+        default=None
     )
 
     class Meta:
