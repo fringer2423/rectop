@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Container} from "react-bootstrap"
+
 import "../css/main.css";
 import "../css/buttons.css";
 import "../css/whyBlocks.css";
@@ -10,6 +12,8 @@ import Prices from "../components/Prices";
 import FormUser from "../components/FormUser";
 import Refprogram from "../components/Refprogram";
 import Accordion from "../components/Accordion";
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 import PurpleCircle from "../components/PurpleCircle";
 import Brands from "../components/Brands";
@@ -23,6 +27,9 @@ const HomeScreen = () => {
 
     return (
         <div id="body">
+
+        <Header/>
+        <Container>
             <div id="first-block">
                 <div className="first-block-text">
                     <h2> Негативные отзывы теперь в прошлом!</h2>
@@ -248,8 +255,9 @@ const HomeScreen = () => {
                     }
                 </div>
             </div>
+        </Container>
+        <Footer/>
         </div>
-
     )
 
 }

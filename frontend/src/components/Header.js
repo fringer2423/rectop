@@ -81,10 +81,10 @@ function Header() {
                             </div>
                         </Nav>
                         <div className="wrapper-buttons-header">
-                            <LinkContainer to="/registration">
+                            <LinkContainer to="/auth/signup">
                                 <button className="registration-button">Регистрация</button>
                             </LinkContainer>
-                            <LinkContainer to="/log-in">
+                            <LinkContainer to="/auth/signin">
                                 <div className="button-log-in"><FontAwesomeIcon
                                     icon={faCircleArrowRight} className="arrow-in-button"/></div>
                             </LinkContainer>
