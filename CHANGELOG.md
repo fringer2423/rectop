@@ -11,6 +11,7 @@
 
 ### Изменено
 
+- User service [@fringer2423](https://github.com/fringer2423)
 - log-in button [@AlexTrubkina](https://github.com/AlexTrubkina)
 - blueBall.css
 
