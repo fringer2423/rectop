@@ -5,13 +5,13 @@ from apps.core.models import User
 from apps.core.services.random_generate_service import generate_random_number_service
 
 
-def create_user_by_data_service(data):
+def create_user_by_data_service(data: object) -> object:
     """
     Функция создает нового пользователя по данным из request
     :param data: request.data
     :return: user
     """
-    user = User.objects.create(
+    user: object = User.objects.create(
         first_name=data['first_name'],
         last_name=data['last_name'],
         email=data['email'],
@@ -20,7 +20,7 @@ def create_user_by_data_service(data):
     return user
 
 
-def get_user_service(user_id):
+def get_user_service(user_id: int) -> object:
     """
     Функция возвращает user по id
     :param user_id: user id
@@ -29,7 +29,7 @@ def get_user_service(user_id):
     return User.objects.get(pk=user_id)
 
 
-def get_user_by_slug_service(slug):
+def get_user_by_slug_service(slug: str) -> object:
     """
     Функция возвращает user по slug
     :param slug: slug
@@ -38,7 +38,7 @@ def get_user_by_slug_service(slug):
     return User.objects.get(slug=slug)
 
 
-def verify_user_service(user):
+def verify_user_service(user: object) -> object:
     """
     Функция верифицирует пользователя
     :param user: user
@@ -50,19 +50,19 @@ def verify_user_service(user):
     return user
 
 
-def generate_new_verify_code_for_user_service(user_id):
+def generate_new_verify_code_for_user_service(user_id: int) -> object:
     """
     Функция генерирует новый код подтверждения для user
     :param user_id: user id
     :return: user
     """
-    user = get_user_service(user_id)
+    user: object = get_user_service(user_id)
     user.verify_code = generate_random_number_service(6)
     user.save()
     return user
 
 
-def verify_user_by_code_service(user, verify_code):
+def verify_user_by_code_service(user: object, verify_code: str) -> bool:
     """
     Функция проверяет код и возвращает результат проверки True или False соответственно
     :param user: user

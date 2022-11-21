@@ -10,74 +10,86 @@ from apps.core.models import QRCode
 from .branch_service import verification_owner_branch_service
 
 
-def generate_qc_code_service(slug):
+def generate_qc_code_service(slug: str) -> object:
     """
     Функция генерирует QRCode и сохраняет его
     :param slug: ссылка
     :return: qr_image_name
     """
-    qr_url = f'https://www.rectop.ru/qrcoderates/{slug}'
+    qr_url: str = f'https://www.rectop.ru/qrcoderates/{slug}'
 
-    qr = qrcode.QRCode(
+    qr: object = qrcode.QRCode(
         error_correction=qrcode.constants.ERROR_CORRECT_H)
     qr.add_data(qr_url)
     qr.make()
-    qr_image = qr.make_image(fill_color="black", back_color="white").convert('RGB')
-    logo = Image.open(str(settings.BASE_DIR) + "/static/images/qr_code_favicon.jpg")
-    pos = ((qr_image.size[0] - logo.size[0]) // 2, (qr_image.size[1] - logo.size[1]) // 2)
+    qr_image: object = qr.make_image(fill_color="black", back_color="white").convert('RGB')
+    logo: object = Image.open(str(settings.BASE_DIR) + "/static/images/qr_code_favicon.jpg")
+    pos: object = ((qr_image.size[0] - logo.size[0]) // 2, (qr_image.size[1] - logo.size[1]) // 2)
     qr_image.paste(logo, pos)
 
-    fs = FileSystemStorage(
+    fs: object = FileSystemStorage(
         location=str(settings.BASE_DIR) + "/media/branch/qrcode",
         base_url="branch/qrcode",
     )
 
-    qr_name_image = fs.get_available_name("QRcode.png")
-    qr_image_url = f'{settings.BASE_DIR}/media/branch/qrcode/{qr_name_image}'
+    qr_name_image: object = fs.get_available_name("QRcode.png")
+    qr_image_url: object = f'{settings.BASE_DIR}/media/branch/qrcode/{qr_name_image}'
 
     qr_image.save(qr_image_url, format="png")
+
     return qr_name_image
 
 
-def create_qrcode_by_branch_id_service(user, branch_id):
+def create_qrcode_by_branch_id_service(user: object, branch_id: int) -> object | None:
     """
-    Функция создает QRCode по branch id и возвращает его, если есть доступ. Иначе вернет False
+    Функция создает QRCode по branch id и возвращает его, если есть доступ. Иначе вернет None
     :param user: Текущий пользователь
     :param branch_id: id филиала
-    :return: QRCode или False
+    :return: optional: QRCode
     """
-    if verification_owner_branch_service(user, branch_id):
-        new_qrcode = QRCode.objects.create(branch_id=branch_id)
+    result: object | None = (
+        None,
+        _create_qrcode_by_branch_id_service(branch_id=branch_id)
+    )[verification_owner_branch_service(user, branch_id)]
 
-        qr_name_image = generate_qc_code_service(new_qrcode.slug_name)
-
-        new_qrcode.image = f'/media/branch/qrcode/{qr_name_image}'
-
-        new_qrcode.save()
-
-        return new_qrcode
-    else:
-        return False
+    return result
 
 
-def get_qrcode_by_id_service(user, qrcode_id):
+def _create_qrcode_by_branch_id_service(branch_id: int) -> object:
     """
-    Функция возвращает QRCode по id, если есть доступ, иначе вернется False
+    Функция создает QRCode по branch id
+    :param branch_id: branch id
+    :return: branch
+    """
+    new_qrcode: object = QRCode.objects.create(branch_id=branch_id)
+
+    qr_name_image: object = generate_qc_code_service(new_qrcode.slug_name)
+
+    new_qrcode.image = f'/media/branch/qrcode/{qr_name_image}'
+
+    new_qrcode.save()
+
+    return new_qrcode
+
+
+def get_qrcode_by_id_service(user: object, qrcode_id: int) -> object | None:
+    """
+    Функция возвращает QRCode по id, если есть доступ, иначе вернется None
     :param user: Текущий пользователь
     :param qrcode_id: id QRCode
-    :return: QRCode или False
+    :return: optional: QRCode
     """
-    qr_code = QRCode.objects.get(pk=qrcode_id)
-    if verification_owner_branch_service(user=user, branch_id=qr_code.branch_id):
-        return qr_code
-    else:
-        return False
+    qr_code: object = QRCode.objects.get(pk=qrcode_id)
+
+    result: object | None = (None, qr_code)[verification_owner_branch_service(user=user, branch_id=qr_code.branch_id)]
+
+    return result
 
 
-def get_all_qrcode_service():
+def get_all_qrcode_service() -> object:
     """
     Функция возвращает все QRCode
     :return: Все QRCode
     """
-    qrcodes_list = QRCode.objects.all()
+    qrcodes_list: object = QRCode.objects.all()
     return qrcodes_list

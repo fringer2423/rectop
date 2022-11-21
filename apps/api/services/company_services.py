@@ -8,7 +8,7 @@ def verification_owner_company_service(user: object, company_id: int) -> bool:
     :param company_id: id компании
     :return: True или False
     """
-    company = Company.objects.get(pk=company_id)
+    company: object = Company.objects.get(pk=company_id)
     return company.owner == user
 
 
@@ -32,5 +32,5 @@ def create_company_by_company_name_service(owner: object, company_name: str) -> 
     :param company_name: Название компании
     :return: Company
     """
-    company = Company.objects.create(owner=owner, name=company_name)
+    company: object = Company.objects.create(owner=owner, name=company_name)
     return company

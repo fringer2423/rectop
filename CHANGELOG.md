@@ -9,6 +9,16 @@
 - Coefficient calculating for RateInfo model [@fringer2423](https://github.com/fringer2423)
 - Docker ignore config
 - Typed company service
+- Typed answer service
+- Typed branch service
+- Typed connect service
+- Typed QRCode service
+- Typed rate info service
+- Typed rate service
+- Typed review service
+- Typed review settings service
+- Typed telebot service
+- Typed user service
 
 ### Изменено
 
