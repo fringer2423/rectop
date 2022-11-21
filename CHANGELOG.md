@@ -7,6 +7,8 @@
 ### Добавлено
 
 - Coefficient calculating for RateInfo model [@fringer2423](https://github.com/fringer2423)
+- Docker ignore config
+- Typed company service
 
 ### Изменено
 
