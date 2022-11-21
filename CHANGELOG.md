@@ -11,6 +11,7 @@
 ### Изменено
 
 - Refactor frontend [@fringer2423](https://github.com/fringer2423)
+- Frontend import paths
 
 ## [0.0.32] - 2022-11-18
 

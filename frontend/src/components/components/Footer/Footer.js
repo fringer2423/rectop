@@ -47,7 +47,7 @@ export default function Footer(props) {
                     href="https://www.simmmple.com"
                     target="_blank"
                 >
-                    Simmmple
+                    Simple
                 </Link>
                 for a better web
             </Text>
@@ -69,7 +69,7 @@ export default function Footer(props) {
                     }}
                 >
                     <Link color="gray.400" href="https://www.simmmple.com">
-                        Simmmple
+                        Simple
                     </Link>
                 </ListItem>
                 <ListItem
@@ -81,7 +81,7 @@ export default function Footer(props) {
                     <Link
                         color="gray.400"
                         href="#blog"
-                        href="https://creative-tim.com/blog"
+
                     >
                         Blog
                     </Link>
@@ -90,7 +90,7 @@ export default function Footer(props) {
                     <Link
                         color="gray.400"
                         href="#license"
-                        href="https://www.creative-tim.com/license"
+
                     >
                         License
                     </Link>

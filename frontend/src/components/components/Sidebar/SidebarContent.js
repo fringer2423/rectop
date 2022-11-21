@@ -11,7 +11,7 @@ import {
 import IconBox from "../Icons/IconBox";
 import {CreativeTimLogo} from "../Icons/Icons";
 import {Separator} from "../Separator/Separator";
-import {SidebarHelp} from "../Sidebar/SidebarHelp";
+import {SidebarHelp} from "./SidebarHelp";
 import React from "react";
 import {NavLink, useLocation} from "react-router-dom";
 
