@@ -1,12 +1,12 @@
 const CardHeader = {
-  baseStyle: {
-    display: "flex",
-    width: "100%"
-  },
+    baseStyle: {
+        display: "flex",
+        width: "100%"
+    },
 };
 
 export const CardHeaderComponent = {
-  components: {
-    CardHeader,
-  },
+    components: {
+        CardHeader,
+    },
 };

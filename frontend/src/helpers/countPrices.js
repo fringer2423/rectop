@@ -8,7 +8,7 @@ const countPrice = (numOfBranchs, duration, sale) => {
 export const countPrices = (numOfBranchs, duration) => {
     let resultPrice = 0;
     let oldPrice = 0;
-    switch(true) {
+    switch (true) {
         case (numOfBranchs < 10):
             return {oldPrice: duration, resultPrice: duration, sale: 0};
             break;
@@ -72,7 +72,7 @@ export const countPrices = (numOfBranchs, duration) => {
             // скидка 75%
             return countPrice(numOfBranchs, duration, 75);
             break;
-        }
+    }
 }
 
 export const countWeekDefaultPrice = (priceMonth) => {

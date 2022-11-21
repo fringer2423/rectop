@@ -8,7 +8,7 @@
     width: 310px;
 }
 
-.discount{
+.discount {
     color: #2da956;
 }
 
@@ -18,7 +18,7 @@
     flex-direction: column;
 }
 
-.wraper-spiner {
+.wrapper-spinner {
     display: flex;
     gap: 10px;
 }

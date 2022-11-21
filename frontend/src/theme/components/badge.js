@@ -1,4 +1,4 @@
-import { baseStyle } from "@chakra-ui/react";
+import {baseStyle} from "@chakra-ui/react";
 
 export const badgeStyles = {
     components: {

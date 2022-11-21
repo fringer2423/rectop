@@ -12,7 +12,6 @@
 }
 
 
-
 .header-tariffs {
     display: flex;
     justify-content: center;
@@ -30,10 +29,9 @@
 }
 
 
-
 @media (min-width: 992px) {
 
-    .header-tariffs h1{
+    .header-tariffs h1 {
         width: 50%
     }
 
@@ -246,9 +244,6 @@
         padding-right: 5%;
     }
 }
-
-
-
 
 
 .first-img-for-mobile {

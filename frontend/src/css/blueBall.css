@@ -7,7 +7,7 @@
 
 /* position relative */
 
-@media (min-width: 1600px){
+@media (min-width: 1600px) {
     .blue-spire {
         display: none;
     }
@@ -77,14 +77,14 @@
     margin-top: -50%;
 }
 
-@media (min-width: 992px){
+@media (min-width: 992px) {
     .blue-spire {
         bottom: -300px;
         left: -150px
     }
 }
 
-@media (max-width: 991px){
+@media (max-width: 991px) {
     .blue-spire {
         bottom: -100px;
         left: -150px;
