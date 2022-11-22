@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {validateEmail} from '../helpers/registerValidator.js'
 
 import {
     Box,
@@ -16,26 +18,22 @@ import {
 
 import signInImage from "../assets/img/signInImage.png";
 
-import {checkMail} from "../validators/validation.js"
 
 import {LinkContainer} from 'react-router-bootstrap'
 
 
 const LogIn = () => {
 
-    const titleColor = useColorModeValue("teal.300", "teal.200");
+    const titleColor = useColorModeValue("maincolor");
     const textColor = useColorModeValue("gray.400", "white");
 
     const [mail, setMail] = useState('');
+    const [password, setPassword] = useState('');
     const [mailError, setMailError] = useState(false);
 
-    const handleErrorMail = () => {
-        if (!checkMail.test(mail)) {
-            setMailError(true);
-        } else {
-            setMailError(false);
-        }
-    }
+
+
+
 
     return (
         <Flex position='relative' mb='40px'>
@@ -59,7 +57,7 @@ const LogIn = () => {
                         p='48px'
                         mt={{md: "150px", lg: "80px"}}>
                         <Heading color={titleColor} fontSize='32px' mb='10px'>
-                            Welcome Back
+                            Добро пожаловать
                         </Heading>
                         <Text
                             mb='36px'
@@ -67,7 +65,7 @@ const LogIn = () => {
                             color={textColor}
                             fontWeight='bold'
                             fontSize='14px'>
-                            Enter your email and password to sign in
+                            Введите свой пароль и электронную почту, чтобы войти
                         </Text>
                         <FormControl>
                             <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
@@ -78,19 +76,23 @@ const LogIn = () => {
                                 mb='24px'
                                 fontSize='sm'
                                 type='text'
-                                placeholder='Your email adress'
+                                placeholder='Ваш email'
                                 size='lg'
+                                value ={mail}
+                                onChange={(e) => setMail(e.target.value)}
                             />
                             <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
-                                Password
+                                Пароль
                             </FormLabel>
                             <Input
                                 borderRadius='15px'
                                 mb='36px'
                                 fontSize='sm'
                                 type='password'
-                                placeholder='Your password'
+                                placeholder='Ваш пароль'
                                 size='lg'
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             <FormControl display='flex' alignItems='center'>
                                 <Switch id='remember-login' colorScheme='teal' me='10px'/>
@@ -99,13 +101,13 @@ const LogIn = () => {
                                     mb='0'
                                     ms='1'
                                     fontWeight='normal'>
-                                    Remember me
+                                    Запомнить меня
                                 </FormLabel>
                             </FormControl>
                             <Button
                                 fontSize='10px'
                                 type='submit'
-                                bg='teal.300'
+                                bg='maincolor'
                                 w='100%'
                                 h='45'
                                 mb='20px'
@@ -117,7 +119,7 @@ const LogIn = () => {
                                 _active={{
                                     bg: "teal.400",
                                 }}>
-                                SIGN IN
+                                ВОЙТИ
                             </Button>
                         </FormControl>
                         <Flex
@@ -127,9 +129,9 @@ const LogIn = () => {
                             maxW='100%'
                             mt='0px'>
                             <Text color={textColor} fontWeight='medium'>
-                                Don't have an account?
-                                <Link color={titleColor} as='span' ms='5px' fontWeight='bold'>
-                                    Sign Up
+                                У Вас ещё нет акаунта?
+                                <Link href="/signup" color={titleColor} as='span' ms='5px' fontWeight='bold'>
+                                    Регистрация
                                 </Link>
                             </Text>
                         </Flex>

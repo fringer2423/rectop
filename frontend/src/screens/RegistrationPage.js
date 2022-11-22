@@ -33,7 +33,7 @@ const RegistrationPage = () => {
         }
     }
 
-    const titleColor = useColorModeValue("teal.300", "teal.200");
+    const titleColor = useColorModeValue("maincolor");
     const textColor = useColorModeValue("gray.700", "white");
     const bgColor = useColorModeValue("white", "gray.700");
     const bgIcons = useColorModeValue("teal.200", "rgba(255, 255, 255, 0.5)");
@@ -67,7 +67,7 @@ const RegistrationPage = () => {
                 mt='6.5rem'
                 mb='30px'>
                 <Text fontSize='4xl' color='white' fontWeight='bold'>
-                    Welcome!
+                    ДОБРО ПОЖАЛОВАТЬ!
                 </Text>
                 <Text
                     fontSize='md'
@@ -76,8 +76,7 @@ const RegistrationPage = () => {
                     mt='10px'
                     mb='26px'
                     w={{base: "90%", sm: "60%", lg: "40%", xl: "30%"}}>
-                    Use these awesome forms to login or create new account in your project
-                    for free.
+                    Если у Вас еще нет аккаунта, пожалуйста, заполните форму
                 </Text>
             </Flex>
             <Flex alignItems='center' justifyContent='center' mb='60px' mt='20px'>
@@ -96,7 +95,7 @@ const RegistrationPage = () => {
                         fontWeight='bold'
                         textAlign='center'
                         mb='22px'>
-                        Register With
+                        Регистрация с
                     </Text>
                     <HStack spacing='15px' justify='center' mb='22px'>
                         <Flex
@@ -163,18 +162,30 @@ const RegistrationPage = () => {
                         fontWeight='bold'
                         textAlign='center'
                         mb='22px'>
-                        or
+                        ИЛИ
                     </Text>
                     <FormControl>
                         <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
-                            Name
+                            Имя
                         </FormLabel>
                         <Input
                             fontSize='sm'
                             ms='4px'
                             borderRadius='15px'
                             type='text'
-                            placeholder='Your full name'
+                            placeholder='Ваше полное имя'
+                            mb='24px'
+                            size='lg'
+                        />
+                        <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+                            Фамилия
+                        </FormLabel>
+                        <Input
+                            fontSize='sm'
+                            ms='4px'
+                            borderRadius='15px'
+                            type='text'
+                            placeholder='Ваша фамилия'
                             mb='24px'
                             size='lg'
                         />
@@ -186,31 +197,43 @@ const RegistrationPage = () => {
                             ms='4px'
                             borderRadius='15px'
                             type='email'
-                            placeholder='Your email address'
+                            placeholder='Ваш email'
                             mb='24px'
                             size='lg'
                         />
                         <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
-                            Password
+                            Пароль
                         </FormLabel>
                         <Input
                             fontSize='sm'
                             ms='4px'
                             borderRadius='15px'
                             type='password'
-                            placeholder='Your password'
+                            placeholder='Ваш пароль'
+                            mb='24px'
+                            size='lg'
+                        />
+                        <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+                            Повторите пароль
+                        </FormLabel>
+                        <Input
+                            fontSize='sm'
+                            ms='4px'
+                            borderRadius='15px'
+                            type='password'
+                            placeholder='Повторите Ваш пароль'
                             mb='24px'
                             size='lg'
                         />
                         <FormControl display='flex' alignItems='center' mb='24px'>
                             <Switch id='remember-login' colorScheme='teal' me='10px'/>
                             <FormLabel htmlFor='remember-login' mb='0' fontWeight='normal'>
-                                Remember me
+                                Запомнить меня
                             </FormLabel>
                         </FormControl>
                         <Button
                             type='submit'
-                            bg='teal.300'
+                            bg='maincolor'
                             fontSize='10px'
                             color='white'
                             fontWeight='bold'
@@ -223,7 +246,7 @@ const RegistrationPage = () => {
                             _active={{
                                 bg: "teal.400",
                             }}>
-                            SIGN UP
+                            ЗАРЕГИСТРИРОВАТЬСЯ
                         </Button>
                     </FormControl>
                     <Flex
@@ -233,14 +256,14 @@ const RegistrationPage = () => {
                         maxW='100%'
                         mt='0px'>
                         <Text color={textColor} fontWeight='medium'>
-                            Already have an account?
+                            У Вас уже есть аккаунт?
                             <Link
                                 color={titleColor}
                                 as='span'
                                 ms='5px'
                                 href='#'
                                 fontWeight='bold'>
-                                Sign In
+                                Войти
                             </Link>
                         </Text>
                     </Flex>
