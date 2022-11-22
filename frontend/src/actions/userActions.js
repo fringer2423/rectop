@@ -45,14 +45,31 @@ export const login = (email, password) => async (dispatch) => {
         })
 
         localStorage.setItem('userInfo', JSON.stringify(data))
-
     } catch (error) {
-        dispatch({
-            type: USER_LOGIN_FAIL,
-            payload: error.response && error.response.data.detail
-                ? error.response.data.detail
-                : error.message,
-        })
+        switch (error.response.status) {
+            case 401:
+                dispatch({
+                    type: USER_LOGIN_FAIL,
+                    payload: 'Вы не зарегистрированы',
+                })
+                break;
+            case 400:
+                dispatch({
+                    type: USER_LOGIN_FAIL,
+                    payload: 'Ошибка авторизации. Попробуйте еще раз',
+                })
+                break;
+            default:
+                console.log(error.response && error.response.data.detail
+                        ? error.response.data.detail
+                        : error.message);
+                dispatch({
+                    type: USER_LOGIN_FAIL,
+                    payload: "Ошибка авторизации. Попробуйте еще раз"
+                })
+
+        }
+
     }
 }
 

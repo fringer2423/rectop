@@ -6,6 +6,7 @@ export const globalStyles = {
             700: '#1f2733'
         },
         maincolor: '#4584FF',
+        secondary: '#4333A6', 
     },
     styles: {
         global: (props) => ({

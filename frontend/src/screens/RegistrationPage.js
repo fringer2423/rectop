@@ -241,10 +241,10 @@ const RegistrationPage = () => {
                             h='45'
                             mb='24px'
                             _hover={{
-                                bg: "teal.200",
+                                bg: "secondary",
                             }}
                             _active={{
-                                bg: "teal.400",
+                                bg: "secondary",
                             }}>
                             ЗАРЕГИСТРИРОВАТЬСЯ
                         </Button>
