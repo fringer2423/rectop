@@ -112,12 +112,28 @@ export const register = (first_name, last_name, email, password) => async (dispa
         localStorage.setItem('userInfo', JSON.stringify(data))
 
     } catch (error) {
-        dispatch({
-            type: USER_REGISTER_FAIL,
-            payload: error.response && error.response.data.detail
-                ? error.response.data.detail
-                : error.message,
-        })
+        switch (error.response.status) {
+            case 400:
+                dispatch({
+                    type: USER_REGISTER_FAIL,
+                    payload: 'Ошибка при регистрации. Попробуйте позже',
+                });
+                break;
+            case 422:
+                dispatch({
+                    type: USER_REGISTER_FAIL,
+                    payload: 'Вы не заполнили одно из полей',
+                });
+                break;
+
+            default:
+                dispatch({
+                    type: USER_REGISTER_FAIL,
+                    payload: error.response && error.response.data.detail
+                        ? error.response.data.detail
+                        : error.message,
+                });
+        }
     }
 }
 

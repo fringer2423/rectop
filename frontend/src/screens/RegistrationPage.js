@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
 
+import {useDispatch} from 'react-redux';
+
+import {register} from '../actions/userActions.js'
+
 import {
     Box,
     Button,
@@ -18,25 +22,30 @@ import {
 import bgSignUp from "../assets/img/bgSignUp.png";
 import {FaApple, FaFacebook, FaGoogle} from "react-icons/fa";
 
-import {checkMail} from "../validators/validation.js"
+import {validateEmail, validatePassword} from "../helpers/registerValidator.js"
 
 
 const RegistrationPage = () => {
     const [mail, setMail] = useState('');
-    const [mailError, setMailError] = useState(false);
-
-    const handleErrorMail = () => {
-        if (!checkMail.test(mail)) {
-            setMailError(true);
-        } else {
-            setMailError(false);
-        }
-    }
+    const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordRepeat, setPasswordRepeat] = useState('');
+    const dispatch = useDispatch();
 
     const titleColor = useColorModeValue("maincolor");
     const textColor = useColorModeValue("gray.700", "white");
     const bgColor = useColorModeValue("white", "gray.700");
     const bgIcons = useColorModeValue("maincolor", "rgba(255, 255, 255, 0.5)");
+
+    const handleRegistration = () => {
+        if (validateEmail(mail) && validatePassword(password, passwordRepeat) && name != '' && surname != '') {
+            dispatch(register(name, surname, mail, password));
+            console.log('success')
+        }
+    }
+
+
 
     return (
         <Flex
@@ -176,6 +185,8 @@ const RegistrationPage = () => {
                             placeholder='Ваше полное имя'
                             mb='24px'
                             size='lg'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                         />
                         <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                             Фамилия
@@ -188,6 +199,8 @@ const RegistrationPage = () => {
                             placeholder='Ваша фамилия'
                             mb='24px'
                             size='lg'
+                            value={surname}
+                            onChange={(e) => setSurname(e.target.value)}
                         />
                         <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                             Email
@@ -200,6 +213,8 @@ const RegistrationPage = () => {
                             placeholder='Ваш email'
                             mb='24px'
                             size='lg'
+                            value={mail}
+                            onChange={(e) => setMail(e.target.value)}
                         />
                         <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                             Пароль
@@ -212,6 +227,8 @@ const RegistrationPage = () => {
                             placeholder='Ваш пароль'
                             mb='24px'
                             size='lg'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                         <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                             Повторите пароль
@@ -224,6 +241,8 @@ const RegistrationPage = () => {
                             placeholder='Повторите Ваш пароль'
                             mb='24px'
                             size='lg'
+                            value={passwordRepeat}
+                            onChange={(e) => setPasswordRepeat(e.target.value)}
                         />
                         <FormControl display='flex' alignItems='center' mb='24px'>
                             <Switch id='remember-login' colorScheme='teal' me='10px'/>
@@ -240,6 +259,7 @@ const RegistrationPage = () => {
                             w='100%'
                             h='45'
                             mb='24px'
+                            onClick={handleRegistration}
                             _hover={{
                                 bg: "secondary",
                             }}
