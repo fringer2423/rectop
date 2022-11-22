@@ -4,7 +4,8 @@ export const globalStyles = {
     colors: {
         gray: {
             700: '#1f2733'
-        }
+        },
+        maincolor: '#4584FF',
     },
     styles: {
         global: (props) => ({
