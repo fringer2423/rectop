@@ -36,7 +36,7 @@ const RegistrationPage = () => {
     const titleColor = useColorModeValue("maincolor");
     const textColor = useColorModeValue("gray.700", "white");
     const bgColor = useColorModeValue("white", "gray.700");
-    const bgIcons = useColorModeValue("teal.200", "rgba(255, 255, 255, 0.5)");
+    const bgIcons = useColorModeValue("maincolor", "rgba(255, 255, 255, 0.5)");
 
     return (
         <Flex

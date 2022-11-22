@@ -2,7 +2,7 @@ import {checkMail} from "../validators/validation.js"
 
 
 export const validateEmail = (email) => {
-    if (!checkMail.test(email)) {
+    if (checkMail.test(email)) {
         return true;
     }
     else {

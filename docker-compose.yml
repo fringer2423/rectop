@@ -45,6 +45,8 @@ services:
     container_name: frontend
     stdin_open: true
     tty: true
+    depends_on:
+      - backend
     volumes:
       - ./frontend:/usr/src/app/frontend
       - /usr/src/app/frontend/node_modules

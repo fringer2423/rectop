@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {validateEmail} from '../helpers/registerValidator.js'
+import {validateEmail} from '../helpers/registerValidator.js';
+import {login} from "../actions/userActions.js"
 
 import {
     Box,
@@ -26,12 +27,18 @@ const LogIn = () => {
 
     const titleColor = useColorModeValue("maincolor");
     const textColor = useColorModeValue("gray.400", "white");
+    const dispatch = useDispatch();
 
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
     const [mailError, setMailError] = useState(false);
 
-
+    const loginButton = () => {
+        if(validateEmail(mail) === true && password != '') {
+            dispatch(login(mail, password));
+            console.log(password)
+        }
+    }
 
 
 
@@ -95,7 +102,7 @@ const LogIn = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                             <FormControl display='flex' alignItems='center'>
-                                <Switch id='remember-login' colorScheme='teal' me='10px'/>
+                                <Switch id='remember-login'  me='10px'/>
                                 <FormLabel
                                     htmlFor='remember-login'
                                     mb='0'
@@ -105,6 +112,7 @@ const LogIn = () => {
                                 </FormLabel>
                             </FormControl>
                             <Button
+                                onClick={loginButton}
                                 fontSize='10px'
                                 type='submit'
                                 bg='maincolor'
@@ -130,7 +138,7 @@ const LogIn = () => {
                             mt='0px'>
                             <Text color={textColor} fontWeight='medium'>
                                 У Вас ещё нет акаунта?
-                                <Link href="/signup" color={titleColor} as='span' ms='5px' fontWeight='bold'>
+                                <Link color={titleColor} as='span' ms='5px' fontWeight='bold'>
                                     Регистрация
                                 </Link>
                             </Text>
