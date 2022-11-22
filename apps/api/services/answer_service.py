@@ -1,11 +1,18 @@
 from datetime import datetime
 
-from apps.core.models import Answer
+from django.db.models import QuerySet
+
+from apps.core.models import Answer, User, Review
 
 from .review_service import get_review_by_id_service, verification_owner_review_service
 
 
-def create_answer_by_review_id_service(user: object, review_id: int, body: str, type: int) -> object | None:
+def create_answer_by_review_id_service(
+        user: QuerySet[User],
+        review_id: int,
+        body: str,
+        type: int
+) -> QuerySet[Answer] | None:
     """
     Функция создает новый answer по id review. Если отказано в доступе, вернется None
     :param user: Текущий пользователь
@@ -14,8 +21,8 @@ def create_answer_by_review_id_service(user: object, review_id: int, body: str, 
     :param type: Тип answer
     :return: optional: answer
     """
-    review: object | None = get_review_by_id_service(user=user, review_id=review_id)
-    answer: object | None = None
+    review: QuerySet[Review] | None = get_review_by_id_service(user=user, review_id=review_id)
+    answer: QuerySet[Answer] | None = None
     if review:
         review.status = 2
         review.answered_at = datetime.now()
@@ -29,7 +36,7 @@ def create_answer_by_review_id_service(user: object, review_id: int, body: str, 
     return answer
 
 
-def _create_answer_service(review_id: int, body: str, type: int, user_id) -> object:
+def _create_answer_service(review_id: int, body: str, type: int, user_id: int) -> QuerySet[Answer]:
     """
     Функция создает answer
     :param review_id: review id
@@ -38,7 +45,7 @@ def _create_answer_service(review_id: int, body: str, type: int, user_id) -> obj
     :param user_id: user id
     :return: answer
     """
-    answer: object = Answer.objects.create(
+    answer: QuerySet[Answer] = Answer.objects.create(
         review_id=review_id,
         body=body,
         type=type,
@@ -47,13 +54,13 @@ def _create_answer_service(review_id: int, body: str, type: int, user_id) -> obj
     return answer
 
 
-def get_answer_by_id_service(user: object, answer_id: int) -> object | None:
+def get_answer_by_id_service(user: QuerySet[User], answer_id: int) -> QuerySet[Answer] | None:
     """
     Функция вернет answer по id answer, если у пользователя есть доступ, иначе вернется False
     :param user: Текущий пользователь
     :param answer_id: id answer
     :return: optional: answer
     """
-    answer: object = Answer.objects.get(pk=answer_id)
-    result: object | None = (None, answer)[verification_owner_review_service(user, answer.review_id)]
+    answer: QuerySet[Answer] = Answer.objects.get(pk=answer_id)
+    result: QuerySet[Answer] | None = (None, answer)[verification_owner_review_service(user, answer.review_id)]
     return result

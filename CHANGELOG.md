@@ -6,11 +6,12 @@
 
 ### Добавлено
 
-- 
+- QuerySet type on all api services [@fringer2423](https://github.com/fringer2423)
+- Typed answer views
 
 ### Изменено
 
-- 
+- Refactor all services [@fringer2423](https://github.com/fringer2423)
 
 ## [0.0.33] - 2022-11-21
 

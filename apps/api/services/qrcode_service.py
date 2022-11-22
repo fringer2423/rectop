@@ -4,8 +4,9 @@ from PIL import Image
 
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
+from django.db.models import QuerySet
 
-from apps.core.models import QRCode
+from apps.core.models import QRCode, User
 
 from .branch_service import verification_owner_branch_service
 
@@ -40,14 +41,14 @@ def generate_qc_code_service(slug: str) -> object:
     return qr_name_image
 
 
-def create_qrcode_by_branch_id_service(user: object, branch_id: int) -> object | None:
+def create_qrcode_by_branch_id_service(user: QuerySet[User], branch_id: int) -> QuerySet[QRCode] | None:
     """
     Функция создает QRCode по branch id и возвращает его, если есть доступ. Иначе вернет None
     :param user: Текущий пользователь
     :param branch_id: id филиала
     :return: optional: QRCode
     """
-    result: object | None = (
+    result: QuerySet[QRCode] | None = (
         None,
         _create_qrcode_by_branch_id_service(branch_id=branch_id)
     )[verification_owner_branch_service(user, branch_id)]
@@ -55,13 +56,13 @@ def create_qrcode_by_branch_id_service(user: object, branch_id: int) -> object |
     return result
 
 
-def _create_qrcode_by_branch_id_service(branch_id: int) -> object:
+def _create_qrcode_by_branch_id_service(branch_id: int) -> QuerySet[QRCode]:
     """
     Функция создает QRCode по branch id
     :param branch_id: branch id
     :return: branch
     """
-    new_qrcode: object = QRCode.objects.create(branch_id=branch_id)
+    new_qrcode: QuerySet[QRCode] = QRCode.objects.create(branch_id=branch_id)
 
     qr_name_image: object = generate_qc_code_service(new_qrcode.slug_name)
 
@@ -72,24 +73,32 @@ def _create_qrcode_by_branch_id_service(branch_id: int) -> object:
     return new_qrcode
 
 
-def get_qrcode_by_id_service(user: object, qrcode_id: int) -> object | None:
+def get_qrcode_by_id_service(user: QuerySet[User], qrcode_id: int) -> QuerySet[QRCode] | None:
     """
     Функция возвращает QRCode по id, если есть доступ, иначе вернется None
     :param user: Текущий пользователь
     :param qrcode_id: id QRCode
     :return: optional: QRCode
     """
-    qr_code: object = QRCode.objects.get(pk=qrcode_id)
+    qr_code: QuerySet[QRCode] = QRCode.objects.get(pk=qrcode_id)
 
-    result: object | None = (None, qr_code)[verification_owner_branch_service(user=user, branch_id=qr_code.branch_id)]
+    result: QuerySet[QRCode] | None = (
+        None,
+        qr_code
+    )[
+        verification_owner_branch_service(
+            user=user,
+            branch_id=qr_code.branch_id
+        )
+    ]
 
     return result
 
 
-def get_all_qrcode_service() -> object:
+def get_all_qrcode_service() -> QuerySet[QRCode]:
     """
     Функция возвращает все QRCode
     :return: Все QRCode
     """
-    qrcodes_list: object = QRCode.objects.all()
+    qrcodes_list: QuerySet[QRCode] = QRCode.objects.all()
     return qrcodes_list
