@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {validateEmail} from '../helpers/registerValidator.js';
-import {login} from "../actions/userActions.js"
+import {login} from "../actions/userActions.js";
+
+import {Spinner} from 'react-bootstrap';
 
 import {
     Box,
@@ -29,14 +31,17 @@ const LogIn = () => {
     const textColor = useColorModeValue("gray.400", "white");
     const dispatch = useDispatch();
 
+    const userLogin = useSelector(state => state.userLogin);
+
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
-    const [mailError, setMailError] = useState(false);
+    const {error, loading} = userLogin;
+    const [mailError, setMailError] = useState('');
+
 
     const loginButton = () => {
         if(validateEmail(mail) === true && password != '') {
             dispatch(login(mail, password));
-            console.log(password)
         }
     }
 
@@ -111,6 +116,19 @@ const LogIn = () => {
                                     Запомнить меня
                                 </FormLabel>
                             </FormControl>
+                            {loading &&
+                            <Spinner animation="border" variant='primary'/>}
+                            {error &&
+                                <FormControl display='flex' alignItems='center'>
+                                    <FormLabel
+                                        htmlFor='remember-login'
+                                        mb='0'
+                                        ms='1'
+                                        fontWeight='normal'>
+                                        {error}
+                                    </FormLabel>
+                                </FormControl>
+                            }
                             <Button
                                 onClick={loginButton}
                                 fontSize='10px'
@@ -122,10 +140,10 @@ const LogIn = () => {
                                 color='white'
                                 mt='20px'
                                 _hover={{
-                                    bg: "teal.200",
+                                    bg: "secondary",
                                 }}
                                 _active={{
-                                    bg: "teal.400",
+                                    bg: "secondary",
                                 }}>
                                 ВОЙТИ
                             </Button>

@@ -6,11 +6,12 @@
 
 ### Добавлено
 
-- 
+- registerValidator to validate password and email [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 
-- 
+- Login page and registration page [@AlexTrubkina](https://github.com/AlexTrubkina)
+
 
 ## [0.0.33] - 2022-11-21
 

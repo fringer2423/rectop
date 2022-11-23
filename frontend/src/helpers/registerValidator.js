@@ -12,9 +12,9 @@ export const validateEmail = (email) => {
 
 export const validatePassword = (password, passwordRepeat) => {
     if (password === passwordRepeat) {
-        return false;
+        return true;
     }
     else {
-        return true;
+        return false;
     }
 }
