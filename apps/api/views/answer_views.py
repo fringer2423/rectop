@@ -16,7 +16,7 @@ from ..serializers import AnswerSerializer
 
 from ..services.answer_service import get_answer_by_id_service, create_answer_by_review_id_service
 
-logger = logging.getLogger('django')
+logger: logging.Logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
@@ -76,27 +76,27 @@ logger = logging.getLogger('django')
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_answer_view(request):
+def create_answer_view(request: object) -> Response:
     """Контроллер для создания answer"""
-    user = request.user
+    user: object = request.user
 
     try:
-        answer = create_answer_by_review_id_service(
+        answer: object = create_answer_by_review_id_service(
             user=user,
             review_id=request.data['review_id'],
             body=request.data['body'],
             type=request.data['type'],
         )
         if answer:
-            serializer = AnswerSerializer(answer, many=False)
-            message = 'Запрос выполнен успешно'
+            serializer: object = AnswerSerializer(answer, many=False)
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
             )
         else:
-            message = 'Это не ваш review'
+            message: str = 'Это не ваш review'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -106,7 +106,7 @@ def create_answer_view(request):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой review не найден {e}'
+        message: str = f'Такой review не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -116,7 +116,7 @@ def create_answer_view(request):
         )
 
     except KeyError as e:
-        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        message: str = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -127,7 +127,7 @@ def create_answer_view(request):
         )
 
     except IntegrityError as e:
-        message = f'Answer уже создан для этого review {e}'
+        message: str = f'Answer уже создан для этого review {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -137,7 +137,7 @@ def create_answer_view(request):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -175,22 +175,22 @@ def create_answer_view(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_answer_view(request, pk):
+def read_answer_view(request: object, pk: int) -> Response:
     """Контроллер для отдачи информации о answer"""
-    user = request.user
+    user: object = request.user
 
     try:
-        answer = get_answer_by_id_service(user=user, answer_id=pk)
+        answer: object = get_answer_by_id_service(user=user, answer_id=pk)
         if answer:
-            serializer = AnswerSerializer(answer, many=False)
-            message = 'Запрос выполнен успешно'
+            serializer: object = AnswerSerializer(answer, many=False)
+            message: str = 'Запрос выполнен успешно'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data=serializer.data,
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваш answer'
+            message: str = 'Это не ваш answer'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -200,7 +200,7 @@ def read_answer_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой answer не найден {e}'
+        message: str = f'Такой answer не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -210,7 +210,7 @@ def read_answer_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -268,25 +268,25 @@ def read_answer_view(request, pk):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_answer_view(request, pk):
+def update_answer_view(request: object, pk: int) -> Response:
     """Контроллер для обновления информации answer"""
-    user = request.user
-    data = request.data
+    user: object = request.user
+    data: object = request.data
 
     try:
-        answer = get_answer_by_id_service(user=user, answer_id=pk)
+        answer: object = get_answer_by_id_service(user=user, answer_id=pk)
         if answer:
-            serializer = AnswerSerializer(answer, many=False, partial=True, data=data)
+            serializer: object = AnswerSerializer(answer, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
-            message = 'Запрос выполнен успешно'
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data=serializer.data,
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваш answer'
+            message: str = 'Это не ваш answer'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -296,7 +296,7 @@ def update_answer_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой answer не найден {e}'
+        message: str = f'Такой answer не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -306,7 +306,7 @@ def update_answer_view(request, pk):
         )
 
     except KeyError as e:
-        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        message: str = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -316,7 +316,7 @@ def update_answer_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -354,15 +354,15 @@ def update_answer_view(request, pk):
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_answer_view(request, pk):
+def delete_answer_view(request: object, pk: int):
     """Контроллер для удаления информации answer"""
-    user = request.user
+    user: object = request.user
 
     try:
-        answer = get_answer_by_id_service(user=user, answer_id=pk)
+        answer: object = get_answer_by_id_service(user=user, answer_id=pk)
         if answer:
             answer.delete()
-            message = 'Удаление выполнен успешно'
+            message: str = 'Удаление выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -371,7 +371,7 @@ def delete_answer_view(request, pk):
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваш answer'
+            message: str = 'Это не ваш answer'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -381,7 +381,7 @@ def delete_answer_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой answer не найден {e}'
+        message: str = f'Такой answer не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -391,7 +391,7 @@ def delete_answer_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={

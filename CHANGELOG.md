@@ -6,12 +6,14 @@
 
 ### Добавлено
 
+- QuerySet type on all api services [@fringer2423](https://github.com/fringer2423)
+- Typed answer views
 - registerValidator to validate password and email [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 
+- Refactor all services [@fringer2423](https://github.com/fringer2423)
 - Login page and registration page [@AlexTrubkina](https://github.com/AlexTrubkina)
-
 
 ## [0.0.33] - 2022-11-21
 
