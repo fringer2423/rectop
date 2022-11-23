@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
 
+import {useDispatch} from 'react-redux';
+
+import {register} from '../actions/userActions.js'
+
 import {
     Box,
     Button,
@@ -18,25 +22,30 @@ import {
 import bgSignUp from "../assets/img/bgSignUp.png";
 import {FaApple, FaFacebook, FaGoogle} from "react-icons/fa";
 
-import {checkMail} from "../validators/validation.js"
+import {validateEmail, validatePassword} from "../helpers/registerValidator.js"
 
 
 const RegistrationPage = () => {
     const [mail, setMail] = useState('');
-    const [mailError, setMailError] = useState(false);
+    const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordRepeat, setPasswordRepeat] = useState('');
+    const dispatch = useDispatch();
 
-    const handleErrorMail = () => {
-        if (!checkMail.test(mail)) {
-            setMailError(true);
-        } else {
-            setMailError(false);
+    const titleColor = useColorModeValue("maincolor");
+    const textColor = useColorModeValue("gray.700", "white");
+    const bgColor = useColorModeValue("white", "gray.700");
+    const bgIcons = useColorModeValue("maincolor", "rgba(255, 255, 255, 0.5)");
+
+    const handleRegistration = () => {
+        if (validateEmail(mail) && validatePassword(password, passwordRepeat) && name != '' && surname != '') {
+            dispatch(register(name, surname, mail, password));
+            console.log('success')
         }
     }
 
-    const titleColor = useColorModeValue("teal.300", "teal.200");
-    const textColor = useColorModeValue("gray.700", "white");
-    const bgColor = useColorModeValue("white", "gray.700");
-    const bgIcons = useColorModeValue("teal.200", "rgba(255, 255, 255, 0.5)");
+
 
     return (
         <Flex
@@ -67,7 +76,7 @@ const RegistrationPage = () => {
                 mt='6.5rem'
                 mb='30px'>
                 <Text fontSize='4xl' color='white' fontWeight='bold'>
-                    Welcome!
+                    ДОБРО ПОЖАЛОВАТЬ!
                 </Text>
                 <Text
                     fontSize='md'
@@ -76,8 +85,7 @@ const RegistrationPage = () => {
                     mt='10px'
                     mb='26px'
                     w={{base: "90%", sm: "60%", lg: "40%", xl: "30%"}}>
-                    Use these awesome forms to login or create new account in your project
-                    for free.
+                    Если у Вас еще нет аккаунта, пожалуйста, заполните форму
                 </Text>
             </Flex>
             <Flex alignItems='center' justifyContent='center' mb='60px' mt='20px'>
@@ -96,7 +104,7 @@ const RegistrationPage = () => {
                         fontWeight='bold'
                         textAlign='center'
                         mb='22px'>
-                        Register With
+                        Регистрация с
                     </Text>
                     <HStack spacing='15px' justify='center' mb='22px'>
                         <Flex
@@ -163,20 +171,36 @@ const RegistrationPage = () => {
                         fontWeight='bold'
                         textAlign='center'
                         mb='22px'>
-                        or
+                        ИЛИ
                     </Text>
                     <FormControl>
                         <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
-                            Name
+                            Имя
                         </FormLabel>
                         <Input
                             fontSize='sm'
                             ms='4px'
                             borderRadius='15px'
                             type='text'
-                            placeholder='Your full name'
+                            placeholder='Ваше полное имя'
                             mb='24px'
                             size='lg'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+                            Фамилия
+                        </FormLabel>
+                        <Input
+                            fontSize='sm'
+                            ms='4px'
+                            borderRadius='15px'
+                            type='text'
+                            placeholder='Ваша фамилия'
+                            mb='24px'
+                            size='lg'
+                            value={surname}
+                            onChange={(e) => setSurname(e.target.value)}
                         />
                         <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                             Email
@@ -186,44 +210,63 @@ const RegistrationPage = () => {
                             ms='4px'
                             borderRadius='15px'
                             type='email'
-                            placeholder='Your email address'
+                            placeholder='Ваш email'
                             mb='24px'
                             size='lg'
+                            value={mail}
+                            onChange={(e) => setMail(e.target.value)}
                         />
                         <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
-                            Password
+                            Пароль
                         </FormLabel>
                         <Input
                             fontSize='sm'
                             ms='4px'
                             borderRadius='15px'
                             type='password'
-                            placeholder='Your password'
+                            placeholder='Ваш пароль'
                             mb='24px'
                             size='lg'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+                            Повторите пароль
+                        </FormLabel>
+                        <Input
+                            fontSize='sm'
+                            ms='4px'
+                            borderRadius='15px'
+                            type='password'
+                            placeholder='Повторите Ваш пароль'
+                            mb='24px'
+                            size='lg'
+                            value={passwordRepeat}
+                            onChange={(e) => setPasswordRepeat(e.target.value)}
                         />
                         <FormControl display='flex' alignItems='center' mb='24px'>
                             <Switch id='remember-login' colorScheme='teal' me='10px'/>
                             <FormLabel htmlFor='remember-login' mb='0' fontWeight='normal'>
-                                Remember me
+                                Запомнить меня
                             </FormLabel>
                         </FormControl>
                         <Button
                             type='submit'
-                            bg='teal.300'
+                            bg='maincolor'
                             fontSize='10px'
                             color='white'
                             fontWeight='bold'
                             w='100%'
                             h='45'
                             mb='24px'
+                            onClick={handleRegistration}
                             _hover={{
-                                bg: "teal.200",
+                                bg: "secondary",
                             }}
                             _active={{
-                                bg: "teal.400",
+                                bg: "secondary",
                             }}>
-                            SIGN UP
+                            ЗАРЕГИСТРИРОВАТЬСЯ
                         </Button>
                     </FormControl>
                     <Flex
@@ -233,14 +276,14 @@ const RegistrationPage = () => {
                         maxW='100%'
                         mt='0px'>
                         <Text color={textColor} fontWeight='medium'>
-                            Already have an account?
+                            У Вас уже есть аккаунт?
                             <Link
                                 color={titleColor}
                                 as='span'
                                 ms='5px'
                                 href='#'
                                 fontWeight='bold'>
-                                Sign In
+                                Войти
                             </Link>
                         </Text>
                     </Flex>
