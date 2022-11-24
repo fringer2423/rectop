@@ -133,10 +133,66 @@ export const register = (first_name, last_name, email, password) => async (dispa
                         ? error.response.data.detail
                         : error.message,
                 });
+                break;
         }
     }
 }
 
+export const verify = (code) => async (dispatch) => {
+    try {
+
+        const config = {
+            headers: {
+                'Content-type': 'application/json'
+            }
+        }
+
+        const {data} = await axios.get(
+            `/api/user/verify/${code}`,
+            config
+        )
+
+        dispatch({
+            type: USER_REGISTER_SUCCESS,
+            payload: data
+        });
+
+        dispatch({
+            type: USER_LOGIN_SUCCESS,
+            payload: data
+        });
+
+    } catch (error) {
+        switch (error.status) {
+            case 400:
+                dispatch({
+                    type: USER_REGISTER_FAIL,
+                    payload: 'Ошибка при регистрации. Попробуйте позже',
+                });
+                break;
+            case 401:
+                dispatch({
+                    type: USER_REGISTER_FAIL,
+                    payload: 'Пустой или неправильный токен',
+                });
+                break;
+            case 404:
+                dispatch({
+                    type: USER_REGISTER_FAIL,
+                    payload: 'Пользователь не найден',
+                });
+                break;
+            default:
+                dispatch({
+                    type: USER_REGISTER_FAIL,
+                    payload: error.response && error.response.data.detail
+                        ? error.response.data.detail
+                        : error.message,
+                });
+                break;
+        }
+    }
+}
 
 export const getUserDetails = () => async (dispatch, getState) => {
     try {
