@@ -9,9 +9,7 @@ import {
     useColorModeValue
 } from "@chakra-ui/react";
 import IconBox from "../Icons/IconBox";
-import {CreativeTimLogo} from "../Icons/Icons";
 import {Separator} from "../Separator/Separator";
-import {SidebarHelp} from "./SidebarHelp";
 import React from "react";
 import {NavLink, useLocation} from "react-router-dom";
 
@@ -100,7 +98,7 @@ const SidebarContent = ({logoText, routes}) => {
                                     <Icon>{prop.icon}</Icon>
                                 ) : (
                                     <IconBox
-                                        bg="teal.300"
+                                        bg="maincolor"
                                         color="white"
                                         h="30px"
                                         w="30px"
@@ -149,7 +147,7 @@ const SidebarContent = ({logoText, routes}) => {
                                 ) : (
                                     <IconBox
                                         bg={inactiveBg}
-                                        color="teal.300"
+                                        color="maincolor"
                                         h="30px"
                                         w="30px"
                                         me="12px"
@@ -184,17 +182,14 @@ const SidebarContent = ({logoText, routes}) => {
                     alignItems="center"
                     fontSize="11px"
                 >
-                    <CreativeTimLogo w="32px" h="32px" me="10px"/>
-                    <Text fontSize="sm" mt="3px">
-                        {logoText}
-                    </Text>
+                    <img src="/images/navbar_brand_computer.svg" alt="RecTop"/>
+
                 </Link>
                 <Separator></Separator>
             </Box>
             <Stack direction="column" mb="40px">
                 <Box>{links}</Box>
             </Stack>
-            <SidebarHelp/>
         </>
     )
 }
