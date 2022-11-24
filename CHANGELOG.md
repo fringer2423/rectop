@@ -2,15 +2,25 @@
 
 ## [Unreleased]
 
+## [0.0.36] - 2022-11-24
+
+### Добавлено
+
+- VerificationScreen.js, verificationScreen.css [@AlexTrubkina](https://github.com/AlexTrubkina)
+
+### Изменено
+
+- email verification [@AlexTrubkina](https://github.com/AlexTrubkina)
+
 ## [0.0.35] - 2022-11-23
 
 ### Добавлено
 
-- 
+-
 
 ### Изменено
 
-- 
+-
 
 ## [0.0.34] - 2022-11-22
 

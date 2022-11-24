@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import '../css/verificationScreen.css'
 
 import {verify} from '../actions/userActions.js'
 
-const VerificationScreen = (props) => {
+const VerificationScreen = (props, {history}) => {
 
     const code = props.match.params.code;
 
