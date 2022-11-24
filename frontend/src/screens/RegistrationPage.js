@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {register} from '../actions/userActions.js'
 
@@ -37,11 +37,14 @@ const RegistrationPage = () => {
     const textColor = useColorModeValue("gray.700", "white");
     const bgColor = useColorModeValue("white", "gray.700");
     const bgIcons = useColorModeValue("maincolor", "rgba(255, 255, 255, 0.5)");
+    const userRegister = useSelector(state => state.userRegister);
+    const {error} = userRegister;
+    const [message, setMessage] = useState('');
 
     const handleRegistration = () => {
         if (validateEmail(mail) && validatePassword(password, passwordRepeat) && name !== '' && surname !== '') {
             dispatch(register(name, surname, mail, password));
-            console.log('success')
+            setMessage('Спасибо за регистрацию! Далее вам нужно активировать аккаунт. Вся информация у вас на почте.');
         }
     }
 
@@ -267,6 +270,25 @@ const RegistrationPage = () => {
                             }}>
                             ЗАРЕГИСТРИРОВАТЬСЯ
                         </Button>
+                        {error ? <FormControl display='flex' alignItems='center'>
+                            <FormLabel
+                                htmlFor='remember-login'
+                                mb='0'
+                                ms='1'
+                                fontWeight='normal'>
+                                {error}
+                            </FormLabel>
+                        </FormControl> :
+                        <FormControl display='flex' alignItems='center'>
+                        <FormLabel
+                            htmlFor='remember-login'
+                            mb='0'
+                            ms='1'
+                            fontWeight='normal'>
+                            {message}
+                        </FormLabel>
+                    </FormControl>
+                    }
                     </FormControl>
                     <Flex
                         flexDirection='column'
