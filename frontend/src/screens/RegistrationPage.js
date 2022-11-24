@@ -39,12 +39,11 @@ const RegistrationPage = () => {
     const bgIcons = useColorModeValue("maincolor", "rgba(255, 255, 255, 0.5)");
 
     const handleRegistration = () => {
-        if (validateEmail(mail) && validatePassword(password, passwordRepeat) && name != '' && surname != '') {
+        if (validateEmail(mail) && validatePassword(password, passwordRepeat) && name !== '' && surname !== '') {
             dispatch(register(name, surname, mail, password));
             console.log('success')
         }
     }
-
 
 
     return (

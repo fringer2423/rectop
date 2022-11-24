@@ -40,11 +40,10 @@ const LogIn = () => {
 
 
     const loginButton = () => {
-        if(validateEmail(mail) === true && password != '') {
+        if (validateEmail(mail) === true && password !== '') {
             dispatch(login(mail, password));
         }
     }
-
 
 
     return (
@@ -90,7 +89,7 @@ const LogIn = () => {
                                 type='text'
                                 placeholder='Ваш email'
                                 size='lg'
-                                value ={mail}
+                                value={mail}
                                 onChange={(e) => setMail(e.target.value)}
                             />
                             <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
@@ -107,7 +106,7 @@ const LogIn = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                             <FormControl display='flex' alignItems='center'>
-                                <Switch id='remember-login'  me='10px'/>
+                                <Switch id='remember-login' me='10px'/>
                                 <FormLabel
                                     htmlFor='remember-login'
                                     mb='0'
@@ -117,7 +116,7 @@ const LogIn = () => {
                                 </FormLabel>
                             </FormControl>
                             {loading &&
-                            <Spinner animation="border" variant='primary'/>}
+                                <Spinner animation="border" variant='primary'/>}
                             {error &&
                                 <FormControl display='flex' alignItems='center'>
                                     <FormLabel

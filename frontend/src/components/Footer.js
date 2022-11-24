@@ -61,7 +61,7 @@ function Footer() {
                     </div>
                     <div className="footer-reference">
                         <Nav.Item>
-                            © 2018–{currentYear} Rectop - агрегатор отзывов
+                            © 2018–{currentYear} RecTop - агрегатор отзывов
                         </Nav.Item>
                     </div>
                 </div>
