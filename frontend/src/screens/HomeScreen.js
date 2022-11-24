@@ -33,7 +33,7 @@ const HomeScreen = () => {
                 <div id="first-block">
                     <div className="first-block-text">
                         <h2> Негативные отзывы теперь в прошлом!</h2>
-                        <h1><b> <span className="gradient-text">RecTOP</span> - инновационный сервис</b> <span
+                        <h1><b> <span className="gradient-text">RecTop</span> - инновационный сервис</b> <span
                             className="cursive-text special">взаимодействия с клиентами.</span></h1>
                         <br/><br/>
                         <div className="right-text-buttons-first-block">
@@ -62,7 +62,7 @@ const HomeScreen = () => {
                         className="blue-ball"
                     />
                     <div className="about-comp-text">
-                        <h1><b>О компании <span className="gradient-text">Rectop</span></b></h1>
+                        <h1><b>О компании <span className="gradient-text">RecTop</span></b></h1>
 
                         <h2>Качественно повышаем вашу репутацию</h2>
                         <div className="small-text">
@@ -245,7 +245,7 @@ const HomeScreen = () => {
                                 <span>Узнать откуда берутся негативные отзывы и как удалить негативный отзыв без бюджета.</span>
                             </li>
                         </ul>
-                        <span className="text-contacts-computer"><p><b>Rectop - Ваша репутация!</b></p></span>
+                        <span className="text-contacts-computer"><p><b>RecTop - Ваша репутация!</b></p></span>
                     </div>
                     <div className="text-contacts-mobile"><b>Подарим доступ к сервису “Электронная книга отзывов и
                         предложений” навсегда!</b></div>

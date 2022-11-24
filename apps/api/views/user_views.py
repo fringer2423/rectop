@@ -137,7 +137,7 @@ def register_user_view(request):
         message = 'Запрос выполнен успешно'
         logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
         subject = 'Администратор Rectop'
-        body = f'Для активации аккаунта перейдите по ссылке http://127.0.0.1:8000/api/user/verify/{user.slug} \n ' \
+        body = f'Для активации аккаунта перейдите по ссылке http://127.0.0.1:3000/auth/verify/{user.slug} \n ' \
                f'Спасибо за регистрацию!'
         send_email_task.delay(subject, body, user.email.__str__())
         return Response(
