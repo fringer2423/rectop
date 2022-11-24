@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {validateEmail} from '../helpers/registerValidator.js';
 import {login} from "../actions/userActions.js";
@@ -35,9 +35,8 @@ const LogIn = () => {
 
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
-    const {error, loading} = userLogin;
+    const {error, loading, userInfo} = userLogin;
     const [mailError, setMailError] = useState('');
-
 
     const loginButton = () => {
         if(validateEmail(mail) === true && password != '') {
