@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {validateEmail} from '../helpers/registerValidator.js';
 import {login} from "../actions/userActions.js";
+import {useHistory, Route, Redirect} from "react-router";
 
 import {Spinner} from 'react-bootstrap';
 
@@ -31,6 +32,7 @@ const LogIn = () => {
     const titleColor = useColorModeValue("maincolor");
     const textColor = useColorModeValue("gray.400", "white");
     const dispatch = useDispatch();
+    let history = useHistory();
 
     const userLogin = useSelector(state => state.userLogin);
 
@@ -40,13 +42,12 @@ const LogIn = () => {
     const {error, loading, userInfo} = userLogin;
     const [mailError, setMailError] = useState('');
 
-
-
-
     const loginButton = () => {
         if (validateEmail(mail) === true && password !== '') {
             dispatch(login(mail, password));
-
+            if(!error) {
+                history.push('/admin');
+            }
         }
     }
 

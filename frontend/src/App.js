@@ -21,7 +21,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 function App() {
 
-    const user = useSelector(state => state.userLogin.userInfo.is_verified);
+    const user = localStorage.getItem('userInfo');
 
     return (
         <Router>

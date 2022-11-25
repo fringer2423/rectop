@@ -26,11 +26,15 @@ import {ItemContent} from "../Menu/ItemContent";
 import SidebarResponsive from "../Sidebar/SidebarResponsive";
 import PropTypes from "prop-types";
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
+import {useDispatch} from "react-redux";
 import routes from "../../../routes.js";
+import {logout} from '../../../actions/userActions.js'
 
 export default function HeaderLinks(props) {
     const {variant, children, fixed, secondary, onOpen, ...rest} = props;
+    const dispatch = useDispatch();
+    let history = useHistory();
 
     // Chakra Color Mode
     let mainTeal = useColorModeValue("teal.300", "teal.300");
@@ -92,10 +96,11 @@ export default function HeaderLinks(props) {
                     placeholder="Type here..."
                     borderRadius="inherit"
                 />
-            </InputGroup>            
+            </InputGroup>
             <Button
                 ms="0px"
                 px="0px"
+                onClick={() => {localStorage.removeItem('userInfo'); history.push('/')}}
                 me={{sm: "2px", md: "16px"}}
                 color={navbarIcon}
                 variant="transparent-with-icon"

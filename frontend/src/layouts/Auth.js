@@ -14,19 +14,13 @@ import theme from '../theme/theme.js';
 
 export default function Pages(props) {
     const {...rest} = props;
-    const is_verified = useSelector(state => state.userLogin.userInfo.is_verified);
-    let history = useHistory();
+    
     // ref for the wrapper div
 
     const wrapper = React.createRef();
     useEffect(() => {
-        if(is_verified){
-            history.push("/admin");
-        }
         document.body.style.overflow = 'unset';
         // Specify how to clean up after this effect:
-        return function cleanup() {
-        };
     }, [history]);
     const getActiveRoute = (routes) => {
         let activeRoute = 'Default Brand Text';
