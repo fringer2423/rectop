@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 
 import {useDispatch, useSelector} from 'react-redux';
 
+import {Alert} from 'react-bootstrap';
+
 import {register} from '../actions/userActions.js'
 
 import {
@@ -40,14 +42,14 @@ const RegistrationPage = () => {
     const bgIcons = useColorModeValue("maincolor", "rgba(255, 255, 255, 0.5)");
     const userRegister = useSelector(state => state.userRegister);
     const {error} = userRegister;
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState(false);
 
-    
+
 
     const handleRegistration = () => {
         if (validateEmail(mail) && validatePassword(password, passwordRepeat) && name !== '' && surname !== '') {
             dispatch(register(name, surname, mail, password));
-            setMessage('Спасибо за регистрацию! Далее вам нужно активировать аккаунт. Вся информация у вас на почте.');
+            setMessage(true);
         }
     }
 
@@ -178,6 +180,23 @@ const RegistrationPage = () => {
                         mb='22px'>
                         ИЛИ
                     </Text>
+                    {error ? <FormControl display='flex' alignItems='center'>
+                        <FormLabel
+                            htmlFor='remember-login'
+                            color='red'
+                            mb='0'
+                            ms='1'
+                            fontWeight='normal'>
+                            {error}
+                        </FormLabel>
+                        </FormControl> :
+                        message &&
+                            <Alert variant="primary" className="d-flex justify-content-center">
+                                Спасибо за регистрацию! Далее вам нужно активировать аккаунт. Вся информация у вас на почте. 
+                            </Alert>
+
+                    }
+
                     <FormControl>
                         <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                             Имя
@@ -273,25 +292,7 @@ const RegistrationPage = () => {
                             }}>
                             ЗАРЕГИСТРИРОВАТЬСЯ
                         </Button>
-                        {error ? <FormControl display='flex' alignItems='center'>
-                            <FormLabel
-                                htmlFor='remember-login'
-                                mb='0'
-                                ms='1'
-                                fontWeight='normal'>
-                                {error}
-                            </FormLabel>
-                        </FormControl> :
-                        <FormControl display='flex' alignItems='center'>
-                        <FormLabel
-                            htmlFor='remember-login'
-                            mb='0'
-                            ms='1'
-                            fontWeight='normal'>
-                            {message}
-                        </FormLabel>
-                    </FormControl>
-                    }
+
                     </FormControl>
                     <Flex
                         flexDirection='column'
