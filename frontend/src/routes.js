@@ -18,7 +18,7 @@ import {
     SupportIcon,
 } from "./components/components/Icons/Icons";
 
-var dashRoutes = [
+export const dashRoutes = [
     {
         path: "/dashboard",
         name: "Dashboard",
@@ -45,20 +45,21 @@ var dashRoutes = [
     },
 
     {
+        path: "/profile",
+        name: "Profile",
+
+        icon: <PersonIcon color="inherit"/>,
+        secondaryNavbar: true,
+        component: Profile,
+        layout: "/admin",
+    },
+
+    {
         name: "ACCOUNT PAGES",
         category: "account",
 
         state: "pageCollapse",
         views: [
-            {
-                path: "/profile",
-                name: "Profile",
-
-                icon: <PersonIcon color="inherit"/>,
-                secondaryNavbar: true,
-                component: Profile,
-                layout: "/admin",
-            },
             {
                 path: "/signin",
                 name: "Sign In",

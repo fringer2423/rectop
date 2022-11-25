@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -33,6 +33,7 @@ const RegistrationPage = () => {
     const [passwordRepeat, setPasswordRepeat] = useState('');
     const dispatch = useDispatch();
 
+
     const titleColor = useColorModeValue("maincolor");
     const textColor = useColorModeValue("gray.700", "white");
     const bgColor = useColorModeValue("white", "gray.700");
@@ -40,6 +41,8 @@ const RegistrationPage = () => {
     const userRegister = useSelector(state => state.userRegister);
     const {error} = userRegister;
     const [message, setMessage] = useState('');
+
+    
 
     const handleRegistration = () => {
         if (validateEmail(mail) && validatePassword(password, passwordRepeat) && name !== '' && surname !== '') {

@@ -5,6 +5,7 @@ import {login} from "../actions/userActions.js";
 
 import {Spinner} from 'react-bootstrap';
 
+
 import {
     Box,
     Flex,
@@ -32,16 +33,20 @@ const LogIn = () => {
     const dispatch = useDispatch();
 
     const userLogin = useSelector(state => state.userLogin);
-    
+
 
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
     const {error, loading, userInfo} = userLogin;
     const [mailError, setMailError] = useState('');
 
+
+
+
     const loginButton = () => {
         if (validateEmail(mail) === true && password !== '') {
             dispatch(login(mail, password));
+
         }
     }
 

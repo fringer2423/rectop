@@ -3,8 +3,9 @@ import {Box, ChakraProvider, Portal} from '@chakra-ui/react';
 import Footer from '../components/components/Footer/Footer.js';
 // core components
 import AuthNavbar from '../components/components/Navbars/AuthNavbar.js';
-import React from 'react';
-import {Redirect, Route, Switch} from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {Redirect, Route, Switch, useHistory} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 import routes from '../routes.js';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -13,14 +14,20 @@ import theme from '../theme/theme.js';
 
 export default function Pages(props) {
     const {...rest} = props;
+    const is_verified = useSelector(state => state.userLogin.userInfo.is_verified);
+    let history = useHistory();
     // ref for the wrapper div
+
     const wrapper = React.createRef();
-    React.useEffect(() => {
+    useEffect(() => {
+        if(is_verified){
+            history.push("/admin");
+        }
         document.body.style.overflow = 'unset';
         // Specify how to clean up after this effect:
         return function cleanup() {
         };
-    });
+    }, [history]);
     const getActiveRoute = (routes) => {
         let activeRoute = 'Default Brand Text';
         for (let i = 0; i < routes.length; i++) {

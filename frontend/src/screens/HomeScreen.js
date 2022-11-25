@@ -26,7 +26,7 @@ import dataForAccordion from "../helpers/dataForAccordion";
 
 const HomeScreen = () => {
 
-    const user = useSelector(state => state.userInfo);
+    const user = useSelector(state => state.userLogin.userInfo.is_verified);
 
     return (
         <div id="body">
