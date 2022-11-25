@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {Container} from "react-bootstrap"
+import {Container} from "react-bootstrap";
+import {useSelector} from "react-redux";
 
 import "../css/main.css";
 import "../css/buttons.css";
@@ -12,8 +13,8 @@ import Prices from "../components/Prices";
 import FormUser from "../components/FormUser";
 import Refprogram from "../components/Refprogram";
 import Accordion from "../components/Accordion";
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 import PurpleCircle from "../components/PurpleCircle";
 import Brands from "../components/Brands";
@@ -24,7 +25,6 @@ import dataForAccordion from "../helpers/dataForAccordion";
 
 
 const HomeScreen = () => {
-
     return (
         <div id="body">
 

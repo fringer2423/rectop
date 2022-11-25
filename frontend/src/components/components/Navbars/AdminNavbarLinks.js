@@ -26,11 +26,15 @@ import {ItemContent} from "../Menu/ItemContent";
 import SidebarResponsive from "../Sidebar/SidebarResponsive";
 import PropTypes from "prop-types";
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
+import {useDispatch} from "react-redux";
 import routes from "../../../routes.js";
+import {logout} from '../../../actions/userActions.js'
 
 export default function HeaderLinks(props) {
     const {variant, children, fixed, secondary, onOpen, ...rest} = props;
+    const dispatch = useDispatch();
+    let history = useHistory();
 
     // Chakra Color Mode
     let mainTeal = useColorModeValue("teal.300", "teal.300");
@@ -93,35 +97,34 @@ export default function HeaderLinks(props) {
                     borderRadius="inherit"
                 />
             </InputGroup>
-            <NavLink to="/auth/signin">
-                <Button
-                    ms="0px"
-                    px="0px"
-                    me={{sm: "2px", md: "16px"}}
-                    color={navbarIcon}
-                    variant="transparent-with-icon"
-                    rightIcon={
-                        document.documentElement.dir ? (
-                            ""
-                        ) : (
-                            <ProfileIcon color={navbarIcon} w="22px" h="22px" me="0px"/>
-                        )
-                    }
-                    leftIcon={
-                        document.documentElement.dir ? (
-                            <ProfileIcon color={navbarIcon} w="22px" h="22px" me="0px"/>
-                        ) : (
-                            ""
-                        )
-                    }
-                >
-                    <Text display={{sm: "none", md: "flex"}}>Sign In</Text>
-                </Button>
-            </NavLink>
+            <Button
+                ms="0px"
+                px="0px"
+                onClick={() => {localStorage.removeItem('userInfo'); history.push('/')}}
+                me={{sm: "2px", md: "16px"}}
+                color={navbarIcon}
+                variant="transparent-with-icon"
+                rightIcon={
+                    document.documentElement.dir ? (
+                        ""
+                    ) : (
+                        <ProfileIcon color={navbarIcon} w="22px" h="22px" me="0px"/>
+                    )
+                }
+                leftIcon={
+                    document.documentElement.dir ? (
+                        <ProfileIcon color={navbarIcon} w="22px" h="22px" me="0px"/>
+                    ) : (
+                        ""
+                    )
+                }
+            >
+                <Text display={{sm: "none", md: "flex"}}>Выйти</Text>
+            </Button>
             <SidebarResponsive
                 logoText={props.logoText}
                 secondary={props.secondary}
-                routes={routes}
+                routes={routes.slice(0,4)}
                 // logo={logo}
                 {...rest}
             />

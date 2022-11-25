@@ -14,6 +14,7 @@ function Sidebar(props) {
     let variantChange = "0.2s linear";
 
     const {logoText, routes, sidebarVariant} = props;
+    const dashRoutes = routes.slice(0, 4);
 
     //  BRAND
     //  Chakra Color Mode
@@ -47,7 +48,7 @@ function Sidebar(props) {
                     m={sidebarMargins}
                     borderRadius={sidebarRadius}
                 >
-                    <SidebarContent routes={routes}
+                    <SidebarContent routes={dashRoutes}
                                     logoText={"PURITY UI DASHBOARD"}
                                     display="none"
                                     sidebarVariant={sidebarVariant}

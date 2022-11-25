@@ -4,8 +4,9 @@ import Tables from "./screens/Dashboard/Tables";
 import Billing from "./screens/Dashboard/Billing";
 
 import Profile from "./screens/Dashboard/Profile";
-import SignIn from "./screens/LogInPage.js";
-import SignUp from "./screens/RegistrationPage.js";
+import LogInPage from "./screens/LogInPage.js";
+import RegistrationPage from "./screens/RegistrationPage.js";
+import VerificationScreen from "./screens/VerificationScreen.js"
 
 import {
     HomeIcon,
@@ -17,7 +18,7 @@ import {
     SupportIcon,
 } from "./components/components/Icons/Icons";
 
-var dashRoutes = [
+export const dashRoutes = [
     {
         path: "/dashboard",
         name: "Dashboard",
@@ -44,26 +45,27 @@ var dashRoutes = [
     },
 
     {
+        path: "/profile",
+        name: "Profile",
+
+        icon: <PersonIcon color="inherit"/>,
+        secondaryNavbar: true,
+        component: Profile,
+        layout: "/admin",
+    },
+
+    {
         name: "ACCOUNT PAGES",
         category: "account",
 
         state: "pageCollapse",
         views: [
             {
-                path: "/profile",
-                name: "Profile",
-
-                icon: <PersonIcon color="inherit"/>,
-                secondaryNavbar: true,
-                component: Profile,
-                layout: "/admin",
-            },
-            {
                 path: "/signin",
                 name: "Sign In",
 
                 icon: <DocumentIcon color="inherit"/>,
-                component: SignIn,
+                component: LogInPage,
                 layout: "/auth",
             },
             {
@@ -72,7 +74,16 @@ var dashRoutes = [
 
                 icon: <RocketIcon color="inherit"/>,
                 secondaryNavbar: true,
-                component: SignUp,
+                component: RegistrationPage,
+                layout: "/auth",
+            },
+            {
+                path: "/verify/:code",
+                name: "Verify email",
+
+                icon: <RocketIcon color="inherit"/>,
+                secondaryNavbar: false,
+                component: VerificationScreen,
                 layout: "/auth",
             },
         ],

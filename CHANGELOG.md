@@ -2,6 +2,19 @@
 
 ## [Unreleased]
 
+
+## [0.0.37] - 2022-11-25
+
+### Добавлено
+
+- PrivateRoute [@AlexTrubkina](https://github.com/AlexTrubkina)
+
+### Изменено
+
+- dashboard navbar [@AlexTrubkina](https://github.com/AlexTrubkina)
+- message after registration
+- исправлено поведение при верификации пользователя 
+
 ## [0.0.36] - 2022-11-24
 
 ### Добавлено
