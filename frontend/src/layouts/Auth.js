@@ -14,7 +14,7 @@ import theme from '../theme/theme.js';
 
 export default function Pages(props) {
     const {...rest} = props;
-    
+
     // ref for the wrapper div
 
     const wrapper = React.createRef();

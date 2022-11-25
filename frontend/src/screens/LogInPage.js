@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {validateEmail} from '../helpers/registerValidator.js';
-import {login} from "../actions/userActions.js";
+import {login, verify} from "../actions/userActions.js";
 import {useHistory, Route, Redirect} from "react-router";
 
-import {Spinner} from 'react-bootstrap';
+import {Spinner, Modal, InputGroup, Form} from 'react-bootstrap';
 
 
 import {
@@ -41,18 +41,53 @@ const LogIn = () => {
     const [password, setPassword] = useState('');
     const {error, loading, userInfo} = userLogin;
     const [mailError, setMailError] = useState('');
+    const [modal, setModal] = useState(false);
+    const [code, setCode] = useState('');
 
     const loginButton = () => {
         if (validateEmail(mail) === true && password !== '') {
             dispatch(login(mail, password));
-            if(!error) {
-                history.push('/admin');
+            if (!error && userInfo.is_verified === true) {
+                setModal(true);
             }
         }
     }
 
+    /*
+
+    const handleCheckCode = () => {
+        dispatch(verify(code));
+        if(userInfo.detail === "Запрос выполнен успешно") {
+            history.push('/admin')
+        }
+    }
+
+    */
+
 
     return (
+        <>
+        <Modal show={modal} animation={false}>
+            <Modal.Header>
+                <Modal.Title>Введите код подтверждения, отправленный вам на почту</Modal.Title>
+            </Modal.Header>
+                <Modal.Body>
+                    <InputGroup>
+                        <Form.Control
+                            placeholder="Введите код"
+                            aria-label="Code"
+                            aria-describedby="basic-addon1"
+                            value={code}
+                            onChange={(e) => setCode(e.target.value)}
+                        />
+                    </InputGroup>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button colorScheme="blue" variant="outline">
+                    Отправить код
+                  </Button>
+                </Modal.Footer>
+        </Modal>
         <Flex position='relative' mb='40px'>
             <Flex
                 h={{sm: "initial", md: "75vh", lg: "85vh"}}
@@ -186,7 +221,7 @@ const LogIn = () => {
                 </Box>
             </Flex>
         </Flex>
-
+        </>
     );
 }
 

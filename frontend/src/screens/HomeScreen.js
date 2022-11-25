@@ -25,9 +25,6 @@ import dataForAccordion from "../helpers/dataForAccordion";
 
 
 const HomeScreen = () => {
-
-
-
     return (
         <div id="body">
 

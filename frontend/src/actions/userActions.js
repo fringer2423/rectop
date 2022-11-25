@@ -44,7 +44,7 @@ export const login = (email, password) => async (dispatch) => {
             payload: data
         })
 
-        localStorage.setItem('userInfo', JSON.stringify(data))
+        //localStorage.setItem('userInfo', JSON.stringify(data))
     } catch (error) {
         switch (error.response.status) {
             case 401:
@@ -109,8 +109,6 @@ export const register = (first_name, last_name, email, password) => async (dispa
             payload: data
         })
 
-        localStorage.setItem('userInfo', JSON.stringify(data))
-
     } catch (error) {
         switch (error.response.status) {
             case 400:
@@ -138,6 +136,7 @@ export const register = (first_name, last_name, email, password) => async (dispa
     }
 }
 
+
 export const verify = (code) => async (dispatch) => {
     try {
 
@@ -161,6 +160,8 @@ export const verify = (code) => async (dispatch) => {
             type: USER_LOGIN_SUCCESS,
             payload: data
         });
+
+        localStorage.setItem('userInfo', JSON.stringify(data))
 
     } catch (error) {
         switch (error.status) {
