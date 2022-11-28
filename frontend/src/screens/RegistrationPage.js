@@ -42,14 +42,15 @@ const RegistrationPage = () => {
     const bgIcons = useColorModeValue("maincolor", "rgba(255, 255, 255, 0.5)");
     const userRegister = useSelector(state => state.userRegister);
     const {error} = userRegister;
-    const [message, setMessage] = useState(false);
-
+    const [message, setMessage] = useState(true);
 
 
     const handleRegistration = () => {
         if (validateEmail(mail) && validatePassword(password, passwordRepeat) && name !== '' && surname !== '') {
             dispatch(register(name, surname, mail, password));
-            setMessage(true);
+            if(error) {
+                setMessage(false);
+            }
         }
     }
 
@@ -189,14 +190,12 @@ const RegistrationPage = () => {
                             fontWeight='normal'>
                             {error}
                         </FormLabel>
-                        </FormControl> :
-                        message &&
-                            <Alert variant="primary" className="d-flex justify-content-center">
-                                Спасибо за регистрацию! Далее вам нужно активировать аккаунт. Вся информация у вас на почте. 
-                            </Alert>
-
+                        </FormControl>:
+                        !message &&
+                        <Alert variant="primary" className="d-flex justify-content-center">
+                            Спасибо за регистрацию! Далее вам нужно активировать аккаунт. Вся информация у вас на почте.
+                        </Alert>
                     }
-
                     <FormControl>
                         <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                             Имя
