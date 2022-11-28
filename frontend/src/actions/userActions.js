@@ -14,6 +14,10 @@ import {
     USER_VERIFY_SUCCESS,
     USER_VERIFY_FAIL,
 
+    USER_VERIFY_LOGIN_REQUEST,
+    USER_VERIFY_LOGIN_SUCCESS,
+    USER_VERIFY_LOGIN_FAIL,
+
     USER_LOGIN_CHECK_REQUEST,
     USER_LOGIN_CHECK_SUCCESS,
     USER_LOGIN_CHECK_FAIL,
@@ -104,11 +108,53 @@ export const checkLogin = () => async (dispatch, getState) => {
 
         dispatch({
             type: USER_LOGIN_CHECK_SUCCESS,
+            payload: data,
         })
 
     } catch (error) {
         dispatch({
-            type: USER_UPDATE_FAIL,
+            type: USER_LOGIN_CHECK_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
+
+
+export const verifyLogin = (code) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: USER_VERIFY_LOGIN_REQUEST
+        })
+
+        const {
+            userLogin: {userInfo},
+        } = getState()
+
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const {data} = await axios.post(
+            `/api/user/verify_code/`,
+            {'verify_code': code},
+            config
+        )
+
+        dispatch({
+            type: USER_VERIFY_LOGIN_SUCCESS,
+            payload: data,
+        })
+
+        localStorage.setItem('userInfo', JSON.stringify(data))
+
+    } catch (error) {
+        dispatch({
+            type: USER_VERIFY_LOGIN_FAIL,
             payload: error.response && error.response.data.detail
                 ? error.response.data.detail
                 : error.message,

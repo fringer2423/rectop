@@ -10,6 +10,7 @@ import {
     userUpdateReducer,
     userVerifyReducer,
     userLoginCheckReducer,
+    userVerifyLoginReducer
 } from './reducers/userReducers'
 
 
@@ -20,6 +21,7 @@ const reducer = combineReducers({
     userUpdate: userUpdateReducer,
     userVerify: userVerifyReducer,
     userLoginCheck: userLoginCheckReducer,
+    userVerifyLogin: userVerifyLoginReducer,
 })
 
 
