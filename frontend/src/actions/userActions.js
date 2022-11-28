@@ -72,8 +72,8 @@ export const login = (email, password) => async (dispatch) => {
                 break;
             default:
                 console.log(error.response && error.response.data.detail
-                        ? error.response.data.detail
-                        : error.message);
+                    ? error.response.data.detail
+                    : error.message);
                 dispatch({
                     type: USER_LOGIN_FAIL,
                     payload: "Ошибка авторизации. Попробуйте еще раз"

@@ -24,21 +24,22 @@ const VerificationScreen = (props) => {
     useEffect(() => {
         async function verify_user() {
             await dispatch(verify(code));
-            if(user){
+            if (user) {
                 history.push('/');
                 window.location.reload();
             }
             console.log(user);
         }
+
         verify_user();
     }, [history, user]);
 
-    return(
+    return (
         <div className="body-verify">
             <Alert>
-            {error ? error : "Подтверждение через почту"}                
+                {error ? error : "Подтверждение через почту"}
                 {loading &&
-                <Spinner animation="border"/> }
+                    <Spinner animation="border"/>}
             </Alert>
         </div>
     )

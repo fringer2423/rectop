@@ -45,12 +45,10 @@ const RegistrationPage = () => {
     const [errorColor, setErrorColor] = useState('');
 
 
-
     const handleRegistration = () => {
         if (validateEmail(mail) && validatePassword(password, passwordRepeat) && name !== '' && surname !== '') {
             dispatch(register(name, surname, mail, password));
-        }
-        else{
+        } else {
             setErrorColor('red.100');
         }
     }
@@ -183,15 +181,15 @@ const RegistrationPage = () => {
                         ИЛИ
                     </Text>
                     {error ? <FormControl display='flex' alignItems='center'>
-                        <FormLabel
-                            htmlFor='remember-login'
-                            color='red'
-                            mb='0'
-                            ms='1'
-                            fontWeight='normal'>
-                            {error}
-                        </FormLabel>
-                        </FormControl>:
+                            <FormLabel
+                                htmlFor='remember-login'
+                                color='red'
+                                mb='0'
+                                ms='1'
+                                fontWeight='normal'>
+                                {error}
+                            </FormLabel>
+                        </FormControl> :
                         userInfo &&
                         <Alert variant="primary" className="d-flex justify-content-center">
                             Спасибо за регистрацию! Далее вам нужно активировать аккаунт. Вся информация у вас на почте.

@@ -14,7 +14,6 @@ import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 
 
-
 import "../css/header.css";
 
 function Header() {
@@ -85,20 +84,20 @@ function Header() {
                         </Nav>
                         {
                             user ?
-                            <div className="wrapper-buttons-header">
-                                <LinkContainer to="/admin">
-                                    <button className="registration-button">Личный кабинет</button>
-                                </LinkContainer>
-                            </div>:
-                            <div className="wrapper-buttons-header">
-                                <LinkContainer to="/auth/signup">
-                                    <button className="registration-button">Регистрация</button>
-                                </LinkContainer>
-                                <LinkContainer to="/auth/signin">
-                                    <div className="button-log-in"><FontAwesomeIcon
-                                        icon={faCircleArrowRight} className="arrow-in-button"/></div>
-                                </LinkContainer>
-                            </div>
+                                <div className="wrapper-buttons-header">
+                                    <LinkContainer to="/admin">
+                                        <button className="registration-button">Личный кабинет</button>
+                                    </LinkContainer>
+                                </div> :
+                                <div className="wrapper-buttons-header">
+                                    <LinkContainer to="/auth/signup">
+                                        <button className="registration-button">Регистрация</button>
+                                    </LinkContainer>
+                                    <LinkContainer to="/auth/signin">
+                                        <div className="button-log-in"><FontAwesomeIcon
+                                            icon={faCircleArrowRight} className="arrow-in-button"/></div>
+                                    </LinkContainer>
+                                </div>
                         }
                     </Navbar.Collapse>
                 </Container>
