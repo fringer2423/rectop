@@ -21,7 +21,7 @@ export default function Pages(props) {
     useEffect(() => {
         document.body.style.overflow = 'unset';
         // Specify how to clean up after this effect:
-    }, [history]);
+    }, []);
     const getActiveRoute = (routes) => {
         let activeRoute = 'Default Brand Text';
         for (let i = 0; i < routes.length; i++) {

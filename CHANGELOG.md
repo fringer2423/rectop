@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+## [0.0.38] - 2022-11-28
+
+### Добавлено
+
+- userLoginVerifu reducer [@AlexTrubkina](https://github.com/AlexTrubkina)
+
+### Изменено
+
+- input change color mail validation [@AlexTrubkina](https://github.com/AlexTrubkina)
+- bug fixed
+- авторизация с помощью кода
 
 ## [0.0.37] - 2022-11-25
 
@@ -13,7 +24,7 @@
 
 - dashboard navbar [@AlexTrubkina](https://github.com/AlexTrubkina)
 - message after registration
-- исправлено поведение при верификации пользователя 
+- исправлено поведение при верификации пользователя
 
 ## [0.0.36] - 2022-11-24
 

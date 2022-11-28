@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {validateEmail} from '../helpers/registerValidator.js';
-import {login, verify} from "../actions/userActions.js";
+import {login, verify, checkLogin, verifyLogin} from "../actions/userActions.js";
 import {useHistory, Route, Redirect} from "react-router";
 
-import {Spinner, Modal, InputGroup, Form} from 'react-bootstrap';
+import {Spinner, Modal, InputGroup, Form, Alert} from 'react-bootstrap';
 
 
 import {
@@ -31,39 +31,42 @@ const LogIn = () => {
 
     const titleColor = useColorModeValue("maincolor");
     const textColor = useColorModeValue("gray.400", "white");
+
     const dispatch = useDispatch();
     let history = useHistory();
 
     const userLogin = useSelector(state => state.userLogin);
-
+    const verify_error = useSelector(state => state.userVerifyLogin.error);
+    const {error, loading, userInfo} = userLogin;
 
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
-    const {error, loading, userInfo} = userLogin;
+
     const [mailError, setMailError] = useState('');
     const [modal, setModal] = useState(false);
     const [code, setCode] = useState('');
+    const [message, setMessage] = useState('');
 
-    const loginButton = () => {
+    async function loginButton() {
         if (validateEmail(mail) === true && password !== '') {
-            dispatch(login(mail, password));
-            if (!error && userInfo.is_verified === true) {
+            await dispatch(login(mail, password));
+            if(userInfo.is_verified){
                 setModal(true);
+                dispatch(checkLogin());
+            }
+            else {
+                setMessage('Пожалуйста, активируйте ваш аккаунт, вся информация у вас на почте.')
             }
         }
     }
 
-    /*
-
-    const handleCheckCode = () => {
-        dispatch(verify(code));
-        if(userInfo.detail === "Запрос выполнен успешно") {
-            history.push('/admin')
+    async function handleCheckCode() {
+        await dispatch(verifyLogin(code));
+        if(verify_error === undefined) {
+            history.push('/');
+            window.location.reload();
         }
     }
-
-    */
-
 
     return (
         <>
@@ -83,7 +86,7 @@ const LogIn = () => {
                     </InputGroup>
                 </Modal.Body>
                 <Modal.Footer>
-                  <Button colorScheme="blue" variant="outline">
+                  <Button colorScheme="blue" variant="outline" onClick={handleCheckCode}>
                     Отправить код
                   </Button>
                 </Modal.Footer>
@@ -164,10 +167,28 @@ const LogIn = () => {
                                         htmlFor='remember-login'
                                         mb='0'
                                         ms='1'
+                                        color='red'
                                         fontWeight='normal'>
                                         {error}
                                     </FormLabel>
                                 </FormControl>
+                            }
+                            {verify_error &&
+                                <FormControl display='flex' alignItems='center'>
+                                    <FormLabel
+                                        htmlFor='remember-login'
+                                        mb='0'
+                                        ms='1'
+                                        color='red'
+                                        fontWeight='normal'>
+                                        {verify_error}
+                                    </FormLabel>
+                                </FormControl>
+                            }
+                            {message != '' &&
+                                <Alert variant="primary" className="d-flex justify-content-center">
+                                    {message}
+                                </Alert>
                             }
                             <Button
                                 onClick={loginButton}

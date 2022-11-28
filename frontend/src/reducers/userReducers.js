@@ -9,6 +9,18 @@ import {
     USER_REGISTER_SUCCESS,
     USER_REGISTER_FAIL,
 
+    USER_VERIFY_REQUEST,
+    USER_VERIFY_SUCCESS,
+    USER_VERIFY_FAIL,
+
+    USER_LOGIN_CHECK_REQUEST,
+    USER_LOGIN_CHECK_SUCCESS,
+    USER_LOGIN_CHECK_FAIL,
+
+    USER_VERIFY_LOGIN_REQUEST,
+    USER_VERIFY_LOGIN_SUCCESS,
+    USER_VERIFY_LOGIN_FAIL,
+
     USER_DETAILS_REQUEST,
     USER_DETAILS_SUCCESS,
     USER_DETAILS_FAIL,
@@ -55,6 +67,54 @@ export const userRegisterReducer = (state = {}, action) => {
 
         case USER_LOGOUT:
             return {}
+
+        default:
+            return state
+    }
+}
+
+export const userVerifyReducer = (state = {}, action) => {
+    switch (action.type) {
+        case USER_VERIFY_REQUEST:
+            return {loading: true}
+
+        case USER_VERIFY_SUCCESS:
+            return {loading: false, userInfo: action.payload}
+
+        case USER_VERIFY_FAIL:
+            return {loading: false, error: action.payload}
+
+        default:
+            return state
+    }
+}
+
+export const userVerifyLoginReducer = (state = {}, action) => {
+    switch (action.type) {
+        case USER_VERIFY_LOGIN_REQUEST:
+            return {loading: true}
+
+        case USER_VERIFY_LOGIN_SUCCESS:
+            return {loading: false, userInfo: action.payload}
+
+        case USER_VERIFY_LOGIN_FAIL:
+            return {loading: false, error: action.payload}
+
+        default:
+            return state
+    }
+}
+
+export const userLoginCheckReducer = (state = {}, action) => {
+    switch (action.type) {
+        case USER_LOGIN_CHECK_REQUEST:
+            return {loading: true}
+
+        case USER_LOGIN_CHECK_SUCCESS:
+            return {loading: false, userInfo: action.payload}
+
+        case USER_LOGIN_CHECK_FAIL:
+            return {loading: false, error: action.payload}
 
         default:
             return state

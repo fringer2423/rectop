@@ -41,15 +41,17 @@ const RegistrationPage = () => {
     const bgColor = useColorModeValue("white", "gray.700");
     const bgIcons = useColorModeValue("maincolor", "rgba(255, 255, 255, 0.5)");
     const userRegister = useSelector(state => state.userRegister);
-    const {error} = userRegister;
-    const [message, setMessage] = useState(false);
+    const {error, userInfo} = userRegister;
+    const [errorColor, setErrorColor] = useState('');
 
 
 
     const handleRegistration = () => {
         if (validateEmail(mail) && validatePassword(password, passwordRepeat) && name !== '' && surname !== '') {
             dispatch(register(name, surname, mail, password));
-            setMessage(true);
+        }
+        else{
+            setErrorColor('red.100');
         }
     }
 
@@ -189,19 +191,18 @@ const RegistrationPage = () => {
                             fontWeight='normal'>
                             {error}
                         </FormLabel>
-                        </FormControl> :
-                        message &&
-                            <Alert variant="primary" className="d-flex justify-content-center">
-                                Спасибо за регистрацию! Далее вам нужно активировать аккаунт. Вся информация у вас на почте. 
-                            </Alert>
-
+                        </FormControl>:
+                        userInfo &&
+                        <Alert variant="primary" className="d-flex justify-content-center">
+                            Спасибо за регистрацию! Далее вам нужно активировать аккаунт. Вся информация у вас на почте.
+                        </Alert>
                     }
-
                     <FormControl>
                         <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                             Имя
                         </FormLabel>
                         <Input
+                            bg={errorColor}
                             fontSize='sm'
                             ms='4px'
                             borderRadius='15px'
@@ -210,12 +211,14 @@ const RegistrationPage = () => {
                             mb='24px'
                             size='lg'
                             value={name}
+
                             onChange={(e) => setName(e.target.value)}
                         />
                         <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                             Фамилия
                         </FormLabel>
                         <Input
+                            bg={errorColor}
                             fontSize='sm'
                             ms='4px'
                             borderRadius='15px'
@@ -223,6 +226,7 @@ const RegistrationPage = () => {
                             placeholder='Ваша фамилия'
                             mb='24px'
                             size='lg'
+
                             value={surname}
                             onChange={(e) => setSurname(e.target.value)}
                         />
@@ -230,6 +234,7 @@ const RegistrationPage = () => {
                             Email
                         </FormLabel>
                         <Input
+                            bg={errorColor}
                             fontSize='sm'
                             ms='4px'
                             borderRadius='15px'
@@ -238,12 +243,14 @@ const RegistrationPage = () => {
                             mb='24px'
                             size='lg'
                             value={mail}
+
                             onChange={(e) => setMail(e.target.value)}
                         />
                         <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                             Пароль
                         </FormLabel>
                         <Input
+                            bg={errorColor}
                             fontSize='sm'
                             ms='4px'
                             borderRadius='15px'
@@ -258,6 +265,7 @@ const RegistrationPage = () => {
                             Повторите пароль
                         </FormLabel>
                         <Input
+                            bg={errorColor}
                             fontSize='sm'
                             ms='4px'
                             borderRadius='15px'
@@ -265,6 +273,7 @@ const RegistrationPage = () => {
                             placeholder='Повторите Ваш пароль'
                             mb='24px'
                             size='lg'
+
                             value={passwordRepeat}
                             onChange={(e) => setPasswordRepeat(e.target.value)}
                         />

@@ -25,13 +25,16 @@ import dataForAccordion from "../helpers/dataForAccordion";
 
 
 const HomeScreen = () => {
+
+    const user = localStorage.getItem('userInfo');
+
     return (
         <div id="body">
 
             <Header/>
             <Container>
                 <div id="first-block">
-                    <div className="first-block-text">
+                    <div className="first-block-text" onClick={() => console.log(user)}>
                         <h2> Негативные отзывы теперь в прошлом!</h2>
                         <h1><b> <span className="gradient-text">RecTop</span> - инновационный сервис</b> <span
                             className="cursive-text special">взаимодействия с клиентами.</span></h1>
