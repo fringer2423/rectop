@@ -14,9 +14,12 @@ import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 
 
-import "../css/header.css"
+
+import "../css/header.css";
 
 function Header() {
+
+    const user = localStorage.getItem('userInfo');
 
     return (
         <>
@@ -80,15 +83,23 @@ function Header() {
                                 </NavHashLink>
                             </div>
                         </Nav>
-                        <div className="wrapper-buttons-header">
-                            <LinkContainer to="/auth/signup">
-                                <button className="registration-button">Регистрация</button>
-                            </LinkContainer>
-                            <LinkContainer to="/auth/signin">
-                                <div className="button-log-in"><FontAwesomeIcon
-                                    icon={faCircleArrowRight} className="arrow-in-button"/></div>
-                            </LinkContainer>
-                        </div>
+                        {
+                            user ?
+                            <div className="wrapper-buttons-header">
+                                <LinkContainer to="/admin">
+                                    <button className="registration-button">Личный кабинет</button>
+                                </LinkContainer>
+                            </div>:
+                            <div className="wrapper-buttons-header">
+                                <LinkContainer to="/auth/signup">
+                                    <button className="registration-button">Регистрация</button>
+                                </LinkContainer>
+                                <LinkContainer to="/auth/signin">
+                                    <div className="button-log-in"><FontAwesomeIcon
+                                        icon={faCircleArrowRight} className="arrow-in-button"/></div>
+                                </LinkContainer>
+                            </div>
+                        }
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

@@ -10,6 +10,14 @@ import {
     USER_REGISTER_SUCCESS,
     USER_REGISTER_FAIL,
 
+    USER_VERIFY_REQUEST,
+    USER_VERIFY_SUCCESS,
+    USER_VERIFY_FAIL,
+
+    USER_LOGIN_CHECK_REQUEST,
+    USER_LOGIN_CHECK_SUCCESS,
+    USER_LOGIN_CHECK_FAIL,
+
     USER_DETAILS_REQUEST,
     USER_DETAILS_SUCCESS,
     USER_DETAILS_FAIL,
@@ -44,7 +52,7 @@ export const login = (email, password) => async (dispatch) => {
             payload: data
         })
 
-        //localStorage.setItem('userInfo', JSON.stringify(data))
+        localStorage.setItem('userInfo', JSON.stringify(data))
     } catch (error) {
         switch (error.response.status) {
             case 401:
@@ -104,11 +112,6 @@ export const register = (first_name, last_name, email, password) => async (dispa
             payload: data
         })
 
-        dispatch({
-            type: USER_LOGIN_SUCCESS,
-            payload: data
-        })
-
     } catch (error) {
         switch (error.response.status) {
             case 400:
@@ -140,6 +143,10 @@ export const register = (first_name, last_name, email, password) => async (dispa
 export const verify = (code) => async (dispatch) => {
     try {
 
+        dispatch({
+            type: USER_VERIFY_REQUEST
+        })
+
         const config = {
             headers: {
                 'Content-type': 'application/json'
@@ -152,7 +159,7 @@ export const verify = (code) => async (dispatch) => {
         )
 
         dispatch({
-            type: USER_REGISTER_SUCCESS,
+            type: USER_VERIFY_SUCCESS,
             payload: data
         });
 
@@ -167,25 +174,25 @@ export const verify = (code) => async (dispatch) => {
         switch (error.status) {
             case 400:
                 dispatch({
-                    type: USER_REGISTER_FAIL,
+                    type: USER_VERIFY_FAIL,
                     payload: 'Ошибка при регистрации. Попробуйте позже',
                 });
                 break;
             case 401:
                 dispatch({
-                    type: USER_REGISTER_FAIL,
+                    type: USER_VERIFY_FAIL,
                     payload: 'Пустой или неправильный токен',
                 });
                 break;
             case 404:
                 dispatch({
-                    type: USER_REGISTER_FAIL,
+                    type: USER_VERIFY_FAIL,
                     payload: 'Пользователь не найден',
                 });
                 break;
             default:
                 dispatch({
-                    type: USER_REGISTER_FAIL,
+                    type: USER_VERIFY_FAIL,
                     payload: error.response && error.response.data.detail
                         ? error.response.data.detail
                         : error.message,

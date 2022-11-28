@@ -15,17 +15,21 @@ const VerificationScreen = (props) => {
     const code = props.match.params.code;
 
     const dispatch = useDispatch();
-    const userRegister = useSelector(state => state.userRegister);
-    const {error} = userRegister;
+    const userVerify = useSelector(state => state.userVerify);
+    const {error, userInfo} = userVerify;
     let history = useHistory();
 
 
     useEffect(() => {
-        dispatch(verify(code));
-        if(!error){
-            history.push("/admin");
+        async function verify_user() {
+            await dispatch(verify(code));
+            if(localStorage.getItem('userInfo')){
+                history.push('/');
+            }
+            console.log(localStorage.getItem('userInfo'));
         }
-    }, [history]);
+        verify_user();
+    }, [history, userInfo]);
 
     return(
         <div className="body-verify">
