@@ -41,16 +41,12 @@ const RegistrationPage = () => {
     const bgColor = useColorModeValue("white", "gray.700");
     const bgIcons = useColorModeValue("maincolor", "rgba(255, 255, 255, 0.5)");
     const userRegister = useSelector(state => state.userRegister);
-    const {error} = userRegister;
-    const [message, setMessage] = useState(true);
+    const {error, userInfo} = userRegister;
 
 
     const handleRegistration = () => {
         if (validateEmail(mail) && validatePassword(password, passwordRepeat) && name !== '' && surname !== '') {
             dispatch(register(name, surname, mail, password));
-            if(error) {
-                setMessage(false);
-            }
         }
     }
 
@@ -191,7 +187,7 @@ const RegistrationPage = () => {
                             {error}
                         </FormLabel>
                         </FormControl>:
-                        !message &&
+                        userInfo &&
                         <Alert variant="primary" className="d-flex justify-content-center">
                             Спасибо за регистрацию! Далее вам нужно активировать аккаунт. Вся информация у вас на почте.
                         </Alert>
