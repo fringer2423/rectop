@@ -52,7 +52,6 @@ export const login = (email, password) => async (dispatch) => {
             payload: data
         })
 
-        localStorage.setItem('userInfo', JSON.stringify(data))
     } catch (error) {
         switch (error.response.status) {
             case 401:
@@ -78,6 +77,42 @@ export const login = (email, password) => async (dispatch) => {
 
         }
 
+    }
+}
+
+export const checkLogin = () => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: USER_LOGIN_CHECK_REQUEST
+        })
+
+        const {
+            userLogin: {userInfo},
+        } = getState()
+
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const {data} = await axios.get(
+            `/api/user/send_code/`,
+            config
+        )
+
+        dispatch({
+            type: USER_LOGIN_CHECK_SUCCESS,
+        })
+
+    } catch (error) {
+        dispatch({
+            type: USER_UPDATE_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
     }
 }
 
@@ -193,9 +228,7 @@ export const verify = (code) => async (dispatch) => {
             default:
                 dispatch({
                     type: USER_VERIFY_FAIL,
-                    payload: error.response && error.response.data.detail
-                        ? error.response.data.detail
-                        : error.message,
+                    payload: "Произошла ошибка",
                 });
                 break;
         }

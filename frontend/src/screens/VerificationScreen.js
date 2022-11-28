@@ -16,27 +16,29 @@ const VerificationScreen = (props) => {
 
     const dispatch = useDispatch();
     const userVerify = useSelector(state => state.userVerify);
-    const {error, userInfo} = userVerify;
+    const {error, userInfo, loading} = userVerify;
     let history = useHistory();
+    const user = localStorage.getItem('userInfo');
 
 
     useEffect(() => {
         async function verify_user() {
             await dispatch(verify(code));
-            if(localStorage.getItem('userInfo')){
+            if(user){
                 history.push('/');
+                window.location.reload();
             }
-            console.log(localStorage.getItem('userInfo'));
+            console.log(user);
         }
         verify_user();
-    }, [history, userInfo]);
+    }, [history, user]);
 
     return(
         <div className="body-verify">
             <Alert>
-                Подтверждение через почту
-                <Spinner animation="border"/>
-                {error}
+            {error ? error : "Подтверждение через почту"}                
+                {loading &&
+                <Spinner animation="border"/> }
             </Alert>
         </div>
     )

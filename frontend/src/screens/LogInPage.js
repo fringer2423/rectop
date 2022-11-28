@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {validateEmail} from '../helpers/registerValidator.js';
-import {login, verify} from "../actions/userActions.js";
+import {login, verify, checkLogin} from "../actions/userActions.js";
 import {useHistory, Route, Redirect} from "react-router";
 
 import {Spinner, Modal, InputGroup, Form} from 'react-bootstrap';
@@ -36,7 +36,6 @@ const LogIn = () => {
 
     const userLogin = useSelector(state => state.userLogin);
 
-
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
     const {error, loading, userInfo} = userLogin;
@@ -49,20 +48,22 @@ const LogIn = () => {
             dispatch(login(mail, password));
             if (!error && userInfo.is_verified === true) {
                 setModal(true);
+                dispatch(checkLogin);
+                console.log(dispatch(checkLogin));
             }
         }
     }
 
-    /*
+
 
     const handleCheckCode = () => {
         dispatch(verify(code));
-        if(userInfo.detail === "Запрос выполнен успешно") {
+        if(!error) {
             history.push('/admin')
         }
     }
 
-    */
+
 
 
     return (
@@ -83,7 +84,7 @@ const LogIn = () => {
                     </InputGroup>
                 </Modal.Body>
                 <Modal.Footer>
-                  <Button colorScheme="blue" variant="outline">
+                  <Button colorScheme="blue" variant="outline" onClick={handleCheckCode}>
                     Отправить код
                   </Button>
                 </Modal.Footer>
