@@ -84,8 +84,8 @@ function Header() {
                         </Nav>
                         {
                             user ?
-                                <div className="wrapper-buttons-header">
-                                    <LinkContainer to="/admin">
+                                <div className="wrapper-buttons-header-lk">
+                                    <LinkContainer to="/dashboard">
                                         <button className="registration-button">Личный кабинет</button>
                                     </LinkContainer>
                                 </div> :

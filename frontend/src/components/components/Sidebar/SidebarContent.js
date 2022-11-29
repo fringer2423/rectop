@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import IconBox from "../Icons/IconBox";
 import {Separator} from "../Separator/Separator";
-import React from "react";
+import React, {useState} from "react";
 import {NavLink, useLocation} from "react-router-dom";
 
 // this function creates the links and collapses that appear in the sidebar (left menu)
@@ -21,7 +21,7 @@ const SidebarContent = ({logoText, routes}) => {
     // to check for active links and opened collapses
     let location = useLocation();
     // this is for the rest of the collapses
-    const [state, setState] = React.useState({});
+    const [state, setState] = useState({});
 
     // verifies if routeName is the one active (in browser input)
     const activeRoute = (routeName) => {
@@ -62,6 +62,111 @@ const SidebarContent = ({logoText, routes}) => {
                     </div>
                 );
             }
+            /*
+            if (prop.layout === '/dashboard' && prop.path === '/dashboard') {
+                return (
+                    <NavLink path={prop.path} component={prop.component} key={key}>
+                    {activeRoute(prop.path) === "active" ? (
+                        <Button
+                            boxSize="initial"
+                            justifyContent="flex-start"
+                            alignItems="center"
+                            bg={activeBg}
+                            mb={{
+                                xl: "12px",
+                            }}
+                            mx={{
+                                xl: "auto",
+                            }}
+                            ps={{
+                                sm: "10px",
+                                xl: "16px",
+                            }}
+                            py="12px"
+                            borderRadius="15px"
+                            _hover="none"
+                            w="100%"
+                            _active={{
+                                bg: "inherit",
+                                transform: "none",
+                                borderColor: "transparent",
+                            }}
+                            _focus={{
+                                boxShadow: "none",
+                            }}
+                        >
+                            <Flex>
+                                {typeof prop.icon === "string" ? (
+                                    <Icon>{prop.icon}</Icon>
+                                ) : (
+                                    <IconBox
+                                        bg="maincolor"
+                                        color="white"
+                                        h="30px"
+                                        w="30px"
+                                        me="12px"
+                                    >
+                                        {prop.icon}
+                                    </IconBox>
+                                )}
+                                <Text color={activeColor} my="auto" fontSize="sm">
+                                    {prop.name}
+                                </Text>
+                            </Flex>
+                        </Button>
+                    ) : (
+                        <Button
+                            boxSize="initial"
+                            justifyContent="flex-start"
+                            alignItems="center"
+                            bg="transparent"
+                            mb={{
+                                xl: "12px",
+                            }}
+                            mx={{
+                                xl: "auto",
+                            }}
+                            py="12px"
+                            ps={{
+                                sm: "10px",
+                                xl: "16px",
+                            }}
+                            borderRadius="15px"
+                            _hover="none"
+                            w="100%"
+                            _active={{
+                                bg: "inherit",
+                                transform: "none",
+                                borderColor: "transparent",
+                            }}
+                            _focus={{
+                                boxShadow: "none",
+                            }}
+                        >
+                            <Flex>
+                                {typeof prop.icon === "string" ? (
+                                    <Icon>{prop.icon}</Icon>
+                                ) : (
+                                    <IconBox
+                                        bg={inactiveBg}
+                                        color="maincolor"
+                                        h="30px"
+                                        w="30px"
+                                        me="12px"
+                                    >
+                                        {prop.icon}
+                                    </IconBox>
+                                )}
+                                <Text color={inactiveColor} my="auto" fontSize="sm">
+                                    {prop.name}
+                                </Text>
+                            </Flex>
+                        </Button>
+                    )}
+                    </NavLink>
+                );
+            }
+            */
             return (
                 <NavLink to={prop.layout + prop.path} key={prop.name}>
                     {activeRoute(prop.layout + prop.path) === "active" ? (

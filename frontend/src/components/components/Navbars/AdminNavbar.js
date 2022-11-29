@@ -117,7 +117,7 @@ export default function AdminNavbar(props) {
                 <Box mb={{sm: "8px", md: "0px"}}>
                     <Breadcrumb>
                         <BreadcrumbItem color={mainText}>
-                            <BreadcrumbLink href="#" color={secondaryText}>
+                            <BreadcrumbLink href="/dashboard/" color={secondaryText}>
                                 Pages
                             </BreadcrumbLink>
                         </BreadcrumbItem>

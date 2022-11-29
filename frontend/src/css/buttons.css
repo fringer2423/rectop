@@ -152,7 +152,7 @@
 }
 
 @media (min-width: 992px) {
-    .wrapper-buttons-header {
+    .wrapper-buttons-header, .wrapper-buttons-header-lk {
         width: 250px;
         height: 100px;
         display: flex;
@@ -168,6 +168,10 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+    }
+
+    .registration-button {
+        font-size: 13px
     }
 }
 

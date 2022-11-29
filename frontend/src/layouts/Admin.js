@@ -26,11 +26,11 @@ export default function Dashboard(props) {
     const [fixed, setFixed] = useState(false);
     // functions for changing the states from components
     const getRoute = () => {
-        return window.location.pathname !== '/admin/full-screen-maps';
+        return window.location.pathname !== '/dashboard/full-screen-maps';
     };
     const getActiveRoute = (routes) => {
-        let activeRoute = 'Default Brand Text';
-        for (let i = 0; i < routes.length; i++) {
+        let activeRoute = 'Dashboard';
+        for (let i = 1; i < routes.length; i++) {
             if (routes[i].collapse) {
                 let collapseActiveRoute = getActiveRoute(routes[i].views);
                 if (collapseActiveRoute !== activeRoute) {
@@ -43,6 +43,9 @@ export default function Dashboard(props) {
                 }
             } else {
                 if (window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1) {
+                    console.log(routes[i].name);
+                    console.log(window.location.href);
+                    console.log(routes[i]);
                     return routes[i].name;
                 }
             }
@@ -76,8 +79,12 @@ export default function Dashboard(props) {
             if (prop.category === 'account') {
                 return getRoutes(prop.views);
             }
-            if (prop.layout === '/admin') {
+            if (prop.layout === '/dashboard' && prop.path != '/') {
                 return <Route path={prop.layout + prop.path} component={prop.component} key={key}/>;
+                }
+            if (prop.path === '/') {
+                return <Route exact path={prop.layout + prop.path} component={prop.component} key={key}/>;
+
             } else {
                 return null;
             }
@@ -90,7 +97,7 @@ export default function Dashboard(props) {
         <ChakraProvider theme={theme} resetCss={false}>
             <Sidebar
                 routes={routes}
-                logoText={'PURITY UI DASHBOARD'}
+                logoText={'RecTop'}
                 display='none'
                 sidebarVariant={sidebarVariant}
                 {...rest}
@@ -103,7 +110,7 @@ export default function Dashboard(props) {
                 <Portal>
                     <AdminNavbar
                         onOpen={onOpen}
-                        logoText={'PURITY UI DASHBOARD'}
+                        logoText={'RecTop'}
                         brandText={getActiveRoute(routes)}
                         secondary={getActiveNavbar(routes)}
                         fixed={fixed}
@@ -115,7 +122,7 @@ export default function Dashboard(props) {
                         <PanelContainer>
                             <Switch>
                                 {getRoutes(routes)}
-                                <Redirect from='/admin' to='/admin/dashboard'/>
+                                <Redirect exact to="/dashboard/"/>
                             </Switch>
                         </PanelContainer>
                     </PanelContent>

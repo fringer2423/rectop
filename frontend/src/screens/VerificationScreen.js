@@ -25,7 +25,7 @@ const VerificationScreen = (props) => {
         async function verify_user() {
             await dispatch(verify(code));
             if (user) {
-                history.push('/');
+                history.push('/dashboard/');
                 window.location.reload();
             }
             console.log(user);
