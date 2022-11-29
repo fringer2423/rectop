@@ -27,7 +27,7 @@ function App() {
         <Router>
             <Route exact path='/' component={HomeScreen}/>
             <Route path='/auth' component={AuthLayout}/>
-            <PrivateRoute path='/admin' user={user} component={() => (<AdminLayout/>)}/>
+            <PrivateRoute path='/dashboard' user={user} component={() => (<AdminLayout/>)}/>
         </Router>
     );
 }

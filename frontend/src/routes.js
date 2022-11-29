@@ -20,12 +20,12 @@ import {
 
 export const dashRoutes = [
     {
-        path: "/dashboard",
+        path: "/",
         name: "Dashboard",
 
         icon: <HomeIcon color="inherit"/>,
         component: Dashboard,
-        layout: "/admin",
+        layout: "/dashboard",
     },
     {
         path: "/tables",
@@ -33,7 +33,7 @@ export const dashRoutes = [
 
         icon: <StatsIcon color="inherit"/>,
         component: Tables,
-        layout: "/admin",
+        layout: "/dashboard",
     },
     {
         path: "/billing",
@@ -41,7 +41,7 @@ export const dashRoutes = [
 
         icon: <CreditIcon color="inherit"/>,
         component: Billing,
-        layout: "/admin",
+        layout: "/dashboard",
     },
 
     {
@@ -51,7 +51,7 @@ export const dashRoutes = [
         icon: <PersonIcon color="inherit"/>,
         secondaryNavbar: true,
         component: Profile,
-        layout: "/admin",
+        layout: "/dashboard",
     },
 
     {

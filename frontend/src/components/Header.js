@@ -85,7 +85,7 @@ function Header() {
                         {
                             user ?
                                 <div className="wrapper-buttons-header">
-                                    <LinkContainer to="/admin">
+                                    <LinkContainer to="/dashboard">
                                         <button className="registration-button">Личный кабинет</button>
                                     </LinkContainer>
                                 </div> :
