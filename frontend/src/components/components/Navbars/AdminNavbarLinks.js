@@ -25,7 +25,7 @@ import {ProfileIcon, SettingsIcon} from "../Icons/Icons";
 import {ItemContent} from "../Menu/ItemContent";
 import SidebarResponsive from "../Sidebar/SidebarResponsive";
 import PropTypes from "prop-types";
-import React, {useRef} from "react";
+import React from "react";
 import {NavLink, useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import routes from "../../../routes.js";
@@ -43,15 +43,11 @@ export default function HeaderLinks(props) {
     let navbarIcon = useColorModeValue("gray.500", "gray.200");
     let searchIcon = useColorModeValue("gray.700", "gray.200");
 
-    const handleExit = () => {
-        dispatch(logout);
-    }
-
     if (secondary) {
         navbarIcon = "white";
         mainText = "white";
     }
-    const settingsRef = useRef();
+    const settingsRef = React.useRef();
     return (
         <Flex
             pe={{sm: "0px", md: "16px"}}
@@ -104,7 +100,7 @@ export default function HeaderLinks(props) {
             <Button
                 ms="0px"
                 px="0px"
-                onClick={handleExit}
+                onClick={() => {localStorage.removeItem('userInfo'); history.push('/')}}
                 me={{sm: "2px", md: "16px"}}
                 color={navbarIcon}
                 variant="transparent-with-icon"

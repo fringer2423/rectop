@@ -62,7 +62,7 @@ const LogIn = () => {
     async function handleCheckCode() {
         await dispatch(verifyLogin(code));
         if (verify_error === undefined) {
-            history.push('/');
+            history.push('/dashboard/');
             window.location.reload();
         }
     }
