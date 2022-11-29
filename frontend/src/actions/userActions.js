@@ -76,7 +76,7 @@ export const login = (email, password) => async (dispatch) => {
                     : error.message);
                 dispatch({
                     type: USER_LOGIN_FAIL,
-                    payload: "Ошибка авторизации. Попробуйте еще раз"
+                    payload: "Ошибка авторизации. ПоCommit a588cd00пробуйте еще раз"
                 })
 
         }
@@ -151,6 +151,7 @@ export const verifyLogin = (code) => async (dispatch, getState) => {
         })
 
         localStorage.setItem('userInfo', JSON.stringify(data))
+        console.log(localStorage.getItem('usrInfo'))
 
     } catch (error) {
         dispatch({
@@ -164,9 +165,10 @@ export const verifyLogin = (code) => async (dispatch, getState) => {
 
 
 export const logout = () => (dispatch) => {
-    localStorage.removeItem('userInfo')
-    dispatch({type: USER_LOGOUT})
-    dispatch({type: USER_DETAILS_RESET})
+    localStorage.removeItem('userInfo');
+    console.log('hi');
+    dispatch({type: USER_LOGOUT});
+    dispatch({type: USER_DETAILS_RESET});
 }
 
 

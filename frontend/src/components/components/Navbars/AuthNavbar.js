@@ -17,12 +17,12 @@ import {
 } from "../Icons/Icons";
 import SidebarResponsive from "../Sidebar/SidebarResponsive";
 import PropTypes from "prop-types";
-import React from "react";
+import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 import routes from "../../../routes.js";
 
 export default function AuthNavbar(props) {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleDrawerToggle = () => {
         setOpen(!open);
     };
