@@ -69,7 +69,7 @@ const LogIn = () => {
 
     function handleCheckCode() {
         dispatch(verifyLogin(code));
-        if (verify_error === undefined) {
+        if (!verify_error) {
             history.push('/dashboard/');
             window.location.reload();
         }
