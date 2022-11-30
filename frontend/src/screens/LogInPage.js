@@ -24,7 +24,6 @@ import {
 
 import signInImage from "../assets/img/signInImage.png";
 
-
 import {LinkContainer} from 'react-router-bootstrap';
 
 
@@ -37,7 +36,7 @@ const LogIn = () => {
     let history = useHistory();
 
     const userLogin = useSelector(state => state.userLogin);
-    const verify_error = useSelector(state => state.userVerifyLogin.error);
+    const verify_error = useSelector(state => state.userVerifyLogin.verify_error);
     const {error, loading, userInfo} = userLogin;
 
     const [mail, setMail] = useState('');
@@ -47,6 +46,8 @@ const LogIn = () => {
     const [modal, setModal] = useState(false);
     const [code, setCode] = useState('');
     const [message, setMessage] = useState('');
+
+    const user = localStorage.getItem('userInfo');
 
 
     useEffect(() => {
@@ -69,10 +70,8 @@ const LogIn = () => {
 
     function handleCheckCode() {
         dispatch(verifyLogin(code));
-        if (!verify_error) {
-            history.push('/dashboard/');
-            window.location.reload();
-        }
+        history.push('/dashboard/');
+        window.location.reload();
     }
 
     return (

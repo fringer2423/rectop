@@ -145,13 +145,14 @@ export const verifyLogin = (code) => async (dispatch, getState) => {
             config
         )
 
+
         dispatch({
             type: USER_VERIFY_LOGIN_SUCCESS,
             payload: data,
         })
 
-        localStorage.setItem('userInfo', JSON.stringify(data))
-        console.log(localStorage.getItem('usrInfo'))
+
+        localStorage.setItem('userInfo', JSON.stringify(userInfo))
 
     } catch (error) {
         dispatch({
@@ -165,8 +166,8 @@ export const verifyLogin = (code) => async (dispatch, getState) => {
 
 
 export const logout = () => (dispatch) => {
+
     localStorage.removeItem('userInfo');
-    console.log('hi');
     dispatch({type: USER_LOGOUT});
     dispatch({type: USER_DETAILS_RESET});
 }

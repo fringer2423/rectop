@@ -1,7 +1,9 @@
 import React from 'react';
 
 import {Container} from "react-bootstrap";
-import {useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+
+import {useHistory} from "react-router";
 
 import "../css/main.css";
 import "../css/buttons.css";
@@ -22,6 +24,8 @@ import ListOfRec from "../components/ListOfRec";
 
 
 import dataForAccordion from "../helpers/dataForAccordion";
+
+import {logout} from '../actions/userActions.js'
 
 
 const HomeScreen = () => {

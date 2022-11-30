@@ -1,3 +1,4 @@
+import React, {useRef} from "react";
 // Chakra Icons
 import {BellIcon, SearchIcon} from "@chakra-ui/icons";
 // Chakra Imports
@@ -25,7 +26,7 @@ import {ProfileIcon, SettingsIcon} from "../Icons/Icons";
 import {ItemContent} from "../Menu/ItemContent";
 import SidebarResponsive from "../Sidebar/SidebarResponsive";
 import PropTypes from "prop-types";
-import React from "react";
+
 import {NavLink, useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import routes from "../../../routes.js";
@@ -47,7 +48,7 @@ export default function HeaderLinks(props) {
         navbarIcon = "white";
         mainText = "white";
     }
-    const settingsRef = React.useRef();
+    const settingsRef = useRef();
     return (
         <Flex
             pe={{sm: "0px", md: "16px"}}
@@ -100,7 +101,7 @@ export default function HeaderLinks(props) {
             <Button
                 ms="0px"
                 px="0px"
-                onClick={() => {localStorage.removeItem('userInfo'); history.push('/')}}
+                onClick={() => {dispatch(logout); localStorage.removeItem('userInfo'); history.push('/'); window.location.reload()}}
                 me={{sm: "2px", md: "16px"}}
                 color={navbarIcon}
                 variant="transparent-with-icon"
