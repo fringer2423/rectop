@@ -7,6 +7,11 @@
 ### Изменено
 
 - Refactor frontend [@fringer2423](https://github.com/fringer2423)
+- Удалены лишние ссылки из навигационной панель при авторизации и регистрации [@AlexTrubkina](https://github.com/AlexTrubkina)
+- Fix verification email after registration
+- Fix userInfo after authorization
+- Fix login button
+- Fix logout
 
 ## [0.0.39] - 2022-11-29
 

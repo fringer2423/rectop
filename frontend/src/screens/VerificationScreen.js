@@ -25,23 +25,37 @@ const VerificationScreen = (props) => {
     useEffect(() => {
         async function verify_user() {
             await dispatch(verify(code));
-            if (user) {
+        }
+
+        verify_user();
+    }, [history]);
+
+    useEffect(() => {
+        async function toVerify() {
+            if (userInfo) {
                 setMessage('Ваша почта успешно подтверждена. Сейчас вы перейдете в личный кабинет');
                 await new Promise((resolve, reject) => setTimeout(resolve, 3000));
                 history.push('/dashboard/');
                 window.location.reload();
             }
-
+            else {
+                setMessage(error);
+            }
         }
+        toVerify()
+    }, [userInfo])
 
-        verify_user();
-    }, [history, user]);
+    useEffect(() => {
+        if (error) {
+            setMessage(error);
+        }
+    }, [error])
 
 
     return (
         <div className="body-verify">
             <Alert>
-                {error ? error : message}
+                {message}
                 {loading &&
                     <Spinner animation="border"/>}
             </Alert>

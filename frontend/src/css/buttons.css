@@ -154,12 +154,13 @@
 @media (min-width: 992px) {
     .wrapper-buttons-header, .wrapper-buttons-header-lk {
         width: 250px;
-        height: 100px;
+        height: 80px;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         margin-left: 20px;
+        margin-bottom: 8px;
     }
 }
 
