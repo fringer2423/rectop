@@ -53,40 +53,31 @@ export const dashRoutes = [
         component: Profile,
         layout: "/dashboard",
     },
-
     {
-        name: "ACCOUNT PAGES",
-        category: "account",
+        path: "/signin",
+        name: "Sign In",
 
-        state: "pageCollapse",
-        views: [
-            {
-                path: "/signin",
-                name: "Sign In",
+        icon: <DocumentIcon color="inherit"/>,
+        component: LogInPage,
+        layout: "/auth",
+    },
+    {
+        path: "/signup",
+        name: "Sign Up",
 
-                icon: <DocumentIcon color="inherit"/>,
-                component: LogInPage,
-                layout: "/auth",
-            },
-            {
-                path: "/signup",
-                name: "Sign Up",
+        icon: <RocketIcon color="inherit"/>,
+        secondaryNavbar: true,
+        component: RegistrationPage,
+        layout: "/auth",
+    },
+    {
+        path: "/verify/:code",
+        name: "Verify email",
 
-                icon: <RocketIcon color="inherit"/>,
-                secondaryNavbar: true,
-                component: RegistrationPage,
-                layout: "/auth",
-            },
-            {
-                path: "/verify/:code",
-                name: "Verify email",
-
-                icon: <RocketIcon color="inherit"/>,
-                secondaryNavbar: false,
-                component: VerificationScreen,
-                layout: "/auth",
-            },
-        ],
+        icon: <RocketIcon color="inherit"/>,
+        secondaryNavbar: false,
+        component: VerificationScreen,
+        layout: "/auth",
     },
 ];
 export default dashRoutes;

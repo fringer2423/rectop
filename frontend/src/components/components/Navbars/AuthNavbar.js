@@ -161,7 +161,7 @@ export default function AuthNavbar(props) {
                     <SidebarResponsive
                         logoText={props.logoText}
                         secondary={props.secondary}
-                        routes={routes}
+                        routes={routes.slice(4,6)}
                         // logo={logo}
                         {...rest}
                     />
