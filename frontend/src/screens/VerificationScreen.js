@@ -26,7 +26,7 @@ const VerificationScreen = (props) => {
         async function verify_user() {
             await dispatch(verify(code));
             if (user) {
-                setMessage('Ваша почта успечно подтверждена. Сейчас вы перейдете в личный кабинет');
+                setMessage('Ваша почта успешно подтверждена. Сейчас вы перейдете в личный кабинет');
                 await new Promise((resolve, reject) => setTimeout(resolve, 3000));
                 history.push('/dashboard/');
                 window.location.reload();
@@ -36,7 +36,6 @@ const VerificationScreen = (props) => {
 
         verify_user();
     }, [history, user]);
-
 
 
     return (

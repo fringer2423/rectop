@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.0.40] - 2022-11-30
+
+### Изменено
+
+- Refactor frontend [@fringer2423](https://github.com/fringer2423)
+
 ## [0.0.39] - 2022-11-29
 
 ### Изменено

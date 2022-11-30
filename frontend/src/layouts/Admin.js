@@ -81,7 +81,7 @@ export default function Dashboard(props) {
             }
             if (prop.layout === '/dashboard' && prop.path != '/') {
                 return <Route path={prop.layout + prop.path} component={prop.component} key={key}/>;
-                }
+            }
             if (prop.path === '/') {
                 return <Route exact path={prop.layout + prop.path} component={prop.component} key={key}/>;
 

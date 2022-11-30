@@ -58,7 +58,7 @@ const LogIn = () => {
                 setMessage('Пожалуйста, активируйте ваш аккаунт, вся информация у вас на почте.')
             }
         }
-    },[userInfo])
+    }, [userInfo])
 
 
     function loginButton() {
