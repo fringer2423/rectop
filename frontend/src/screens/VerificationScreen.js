@@ -37,11 +37,11 @@ const VerificationScreen = (props) => {
                 await new Promise((resolve, reject) => setTimeout(resolve, 3000));
                 history.push('/dashboard/');
                 window.location.reload();
-            }
-            else {
+            } else {
                 setMessage(error);
             }
         }
+
         toVerify()
     }, [userInfo])
 
