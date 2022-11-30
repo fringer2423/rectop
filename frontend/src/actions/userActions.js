@@ -33,7 +33,7 @@ import {
 
 } from '../constants/userConstants'
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (email, password) => async (dispatch, getState) => {
     try {
         dispatch({
             type: USER_LOGIN_REQUEST
@@ -254,7 +254,7 @@ export const verify = (code) => async (dispatch) => {
         localStorage.setItem('userInfo', JSON.stringify(data))
 
     } catch (error) {
-        switch (error.status) {
+        switch (error.response.status) {
             case 400:
                 dispatch({
                     type: USER_VERIFY_FAIL,
@@ -273,10 +273,18 @@ export const verify = (code) => async (dispatch) => {
                     payload: 'Пользователь не найден',
                 });
                 break;
-            default:
+            case 500:
                 dispatch({
                     type: USER_VERIFY_FAIL,
-                    payload: "Произошла ошибка",
+                    payload: 'Произошла ошибка. Повторите позже',
+                });
+                break;
+            default:
+                dispatch({
+                    type: USER_REGISTER_FAIL,
+                    payload: error.response && error.response.data.detail
+                        ? error.response.data.detail
+                        : error.message,
                 });
                 break;
         }

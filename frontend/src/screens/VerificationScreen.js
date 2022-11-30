@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {useDispatch, useSelector} from "react-redux";
 
@@ -19,25 +19,30 @@ const VerificationScreen = (props) => {
     const {error, userInfo, loading} = userVerify;
     let history = useHistory();
     const user = localStorage.getItem('userInfo');
+    const [message, setMessage] = useState('Подождите, пожалуйста...')
 
 
     useEffect(() => {
         async function verify_user() {
             await dispatch(verify(code));
             if (user) {
+                setMessage('Ваша почта успечно подтверждена. Сейчас вы перейдете в личный кабинет');
+                await new Promise((resolve, reject) => setTimeout(resolve, 3000));
                 history.push('/dashboard/');
                 window.location.reload();
             }
-            console.log(user);
+
         }
 
         verify_user();
     }, [history, user]);
 
+
+
     return (
         <div className="body-verify">
             <Alert>
-                {error ? error : "Подтверждение через почту"}
+                {error ? error : message}
                 {loading &&
                     <Spinner animation="border"/>}
             </Alert>

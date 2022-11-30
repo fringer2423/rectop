@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [0.0.39] - 2022-11-29
+
+### Изменено
+
+- fixed Authorization [@AlexTrubkina](https://github.com/AlexTrubkina)
+- fixed redirect
+- fixed profile button on main page
+- routes fixed
+- Refactor frontend [@fringer2423](https://github.com/fringer2423)
+
 ## [0.0.38] - 2022-11-28
 
 ### Добавлено

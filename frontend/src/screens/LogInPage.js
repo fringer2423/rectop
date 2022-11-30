@@ -6,6 +6,7 @@ import {useHistory, Route, Redirect} from "react-router";
 
 import {Spinner, Modal, InputGroup, Form, Alert} from 'react-bootstrap';
 
+import store from '../store';
 
 import {
     Box,
@@ -24,7 +25,7 @@ import {
 import signInImage from "../assets/img/signInImage.png";
 
 
-import {LinkContainer} from 'react-router-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap';
 
 
 const LogIn = () => {
@@ -47,9 +48,9 @@ const LogIn = () => {
     const [code, setCode] = useState('');
     const [message, setMessage] = useState('');
 
-    async function loginButton() {
-        if (validateEmail(mail) === true && password !== '') {
-            await dispatch(login(mail, password));
+
+    useEffect(() => {
+        if (userInfo !== null && userInfo !== undefined) {
             if (userInfo.is_verified) {
                 setModal(true);
                 dispatch(checkLogin());
@@ -57,11 +58,18 @@ const LogIn = () => {
                 setMessage('Пожалуйста, активируйте ваш аккаунт, вся информация у вас на почте.')
             }
         }
+    },[userInfo])
+
+
+    function loginButton() {
+        if (validateEmail(mail) === true && password !== '') {
+            dispatch(login(mail, password));
+        }
     }
 
-    async function handleCheckCode() {
-        await dispatch(verifyLogin(code));
-        if (verify_error === undefined) {
+    function handleCheckCode() {
+        dispatch(verifyLogin(code));
+        if (!verify_error) {
             history.push('/dashboard/');
             window.location.reload();
         }
