@@ -44,6 +44,12 @@ export default function HeaderLinks(props) {
     let navbarIcon = useColorModeValue("gray.500", "gray.200");
     let searchIcon = useColorModeValue("gray.700", "gray.200");
 
+    const handleExit = () => {
+        dispatch(logout());
+        history.push('/');
+        //window.location.reload();
+    }
+
     if (secondary) {
         navbarIcon = "white";
         mainText = "white";
@@ -101,7 +107,7 @@ export default function HeaderLinks(props) {
             <Button
                 ms="0px"
                 px="0px"
-                onClick={() => {dispatch(logout); localStorage.removeItem('userInfo'); history.push('/'); window.location.reload()}}
+                onClick={handleExit}
                 me={{sm: "2px", md: "16px"}}
                 color={navbarIcon}
                 variant="transparent-with-icon"
