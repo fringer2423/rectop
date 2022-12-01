@@ -38,6 +38,7 @@ const LogIn = () => {
     const userLogin = useSelector(state => state.userLogin);
     const userVerifyLogin = useSelector(state => state.userVerifyLogin);
     const {error, loading, userInfo} = userLogin;
+    const {error: errorVerify, loading: loadingVerify, userInfo: userVerify} = userVerifyLogin;
 
 
     const [mail, setMail] = useState('');
@@ -47,7 +48,8 @@ const LogIn = () => {
     const [modal, setModal] = useState(false);
     const [code, setCode] = useState('');
     const [message, setMessage] = useState('');
-    
+    const [errorColor, setErrorColor] = useState('');
+
 
     const user = localStorage.getItem('userInfo');
 
@@ -63,22 +65,30 @@ const LogIn = () => {
         }
     }, [userInfo]);
 
+
+
     function loginButton() {
         if (validateEmail(mail) === true && password !== '') {
             dispatch(login(mail, password));
         }
+        else {
+            setErrorColor('red.100');
+        }
     }
 
-    async function handleCheckCode() {
-        await dispatch(verifyLogin(code));
+    function handleCheckCode() {
+        dispatch(verifyLogin(code));
         setModal(false);
-        if (!userVerifyLogin.error) {
+        
+        if (!errorVerify) {
             history.push('/dashboard/');
-            window.location.reload();
+            //window.location.reload();
         }
         else {
             setMessage("Вы ввели не тот код");
         }
+
+
         //window.location.reload();
     }
 
@@ -98,7 +108,8 @@ const LogIn = () => {
                             onChange={(e) => setCode(e.target.value)}
                         />
                     </InputGroup>
-
+                    {loadingVerify &&
+                        <Spinner animation="border" variant='primary'/>}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button colorScheme="blue" variant="outline" onClick={handleCheckCode}>
@@ -148,6 +159,7 @@ const LogIn = () => {
                                     type='text'
                                     placeholder='Ваш email'
                                     size='lg'
+                                    bg={errorColor}
                                     value={mail}
                                     onChange={(e) => setMail(e.target.value)}
                                 />
@@ -161,6 +173,7 @@ const LogIn = () => {
                                     type='password'
                                     placeholder='Ваш пароль'
                                     size='lg'
+                                    bg={errorColor}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
