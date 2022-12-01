@@ -82,12 +82,12 @@ const RegistrationPage = () => {
                 align='center'
                 mt='6.5rem'
                 mb='30px'>
-                <Text fontSize='4xl' color='white' fontWeight='bold'>
+                <Text fontSize='4xl' color={textColor} fontWeight='bold'>
                     ДОБРО ПОЖАЛОВАТЬ!
                 </Text>
                 <Text
                     fontSize='md'
-                    color='white'
+                    color={textColor}
                     fontWeight='normal'
                     mt='10px'
                     mb='26px'

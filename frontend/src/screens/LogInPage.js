@@ -36,8 +36,9 @@ const LogIn = () => {
     let history = useHistory();
 
     const userLogin = useSelector(state => state.userLogin);
-    const verify_error = useSelector(state => state.userVerifyLogin.verify_error);
+    const userVerifyLogin = useSelector(state => state.userVerifyLogin);
     const {error, loading, userInfo} = userLogin;
+
 
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
@@ -46,6 +47,7 @@ const LogIn = () => {
     const [modal, setModal] = useState(false);
     const [code, setCode] = useState('');
     const [message, setMessage] = useState('');
+    
 
     const user = localStorage.getItem('userInfo');
 
@@ -59,8 +61,7 @@ const LogIn = () => {
                 setMessage('Пожалуйста, активируйте ваш аккаунт, вся информация у вас на почте.')
             }
         }
-    }, [userInfo])
-
+    }, [userInfo]);
 
     function loginButton() {
         if (validateEmail(mail) === true && password !== '') {
@@ -68,10 +69,17 @@ const LogIn = () => {
         }
     }
 
-    function handleCheckCode() {
-        dispatch(verifyLogin(code));
-        history.push('/dashboard/');
-        window.location.reload();
+    async function handleCheckCode() {
+        await dispatch(verifyLogin(code));
+        setModal(false);
+        if (!userVerifyLogin.error) {
+            history.push('/dashboard/');
+            window.location.reload();
+        }
+        else {
+            setMessage("Вы ввели не тот код");
+        }
+        //window.location.reload();
     }
 
     return (
@@ -90,6 +98,7 @@ const LogIn = () => {
                             onChange={(e) => setCode(e.target.value)}
                         />
                     </InputGroup>
+
                 </Modal.Body>
                 <Modal.Footer>
                     <Button colorScheme="blue" variant="outline" onClick={handleCheckCode}>
@@ -176,18 +185,6 @@ const LogIn = () => {
                                             color='red'
                                             fontWeight='normal'>
                                             {error}
-                                        </FormLabel>
-                                    </FormControl>
-                                }
-                                {verify_error &&
-                                    <FormControl display='flex' alignItems='center'>
-                                        <FormLabel
-                                            htmlFor='remember-login'
-                                            mb='0'
-                                            ms='1'
-                                            color='red'
-                                            fontWeight='normal'>
-                                            {verify_error}
                                         </FormLabel>
                                     </FormControl>
                                 }
