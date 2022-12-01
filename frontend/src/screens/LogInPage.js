@@ -79,7 +79,7 @@ const LogIn = () => {
     function handleCheckCode() {
         dispatch(verifyLogin(code));
         setModal(false);
-        
+
         if (!errorVerify) {
             history.push('/dashboard/');
             //window.location.reload();
