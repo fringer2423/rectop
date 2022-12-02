@@ -20,7 +20,7 @@ const PurpleCircle = () => {
                 alt="purple circle arrow"
             />
             <div className="purple-circle">
-                <h1><b>Rectop</b></h1>
+                <h1><b>RecTop</b></h1>
                 <hr/>
                 <p>Мы сводим клиентов и компании вместе!</p>
             </div>

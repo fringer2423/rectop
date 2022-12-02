@@ -38,7 +38,7 @@ const LogIn = () => {
     const userLogin = useSelector(state => state.userLogin);
     const userVerifyLogin = useSelector(state => state.userVerifyLogin);
     const {error, loading, userInfo} = userLogin;
-    const {error: errorVerify, loading: loadingVerify, userInfo: userVerify} = userVerifyLogin;
+    const {error: errorVerify, loading: loadingVerify} = userVerifyLogin;
 
 
     const [mail, setMail] = useState('');
@@ -79,8 +79,7 @@ const LogIn = () => {
     function handleCheckCode() {
         dispatch(verifyLogin(code));
         setModal(false);
-
-        if (!errorVerify) {
+        if (!user && !errorVerify) {
             history.push('/dashboard/');
             window.location.reload();
         }
@@ -198,6 +197,18 @@ const LogIn = () => {
                                             color='red'
                                             fontWeight='normal'>
                                             {error}
+                                        </FormLabel>
+                                    </FormControl>
+                                }
+                                {errorVerify &&
+                                    <FormControl display='flex' alignItems='center'>
+                                        <FormLabel
+                                            htmlFor='remember-login'
+                                            mb='0'
+                                            ms='1'
+                                            color='red'
+                                            fontWeight='normal'>
+                                            {errorVerify}
                                         </FormLabel>
                                     </FormControl>
                                 }
