@@ -55,7 +55,7 @@ const LogIn = () => {
 
 
     useEffect(() => {
-        if (userInfo !== null && userInfo !== undefined) {
+        if (userInfo !== null && userInfo !== undefined && !user) {
             if (userInfo.is_verified) {
                 setModal(true);
                 dispatch(checkLogin());
@@ -82,7 +82,7 @@ const LogIn = () => {
 
         if (!errorVerify) {
             history.push('/dashboard/');
-            //window.location.reload();
+            window.location.reload();
         }
         else {
             setMessage("Вы ввели не тот код");
