@@ -37,8 +37,11 @@ const LogIn = () => {
 
     const userLogin = useSelector(state => state.userLogin);
     const userVerifyLogin = useSelector(state => state.userVerifyLogin);
+    const userLoginCheck = useSelector(state => state.userLoginCheck);
     const {error, loading, userInfo} = userLogin;
-    const {error: errorVerify, loading: loadingVerify} = userVerifyLogin;
+    const {error: errorVerify, loading: loadingVerify, detail: detailVerify} = userVerifyLogin;
+    const {error: errorCheck, detail: detailCheck} = userLoginCheck;
+
 
 
     const [mail, setMail] = useState('');
@@ -50,12 +53,10 @@ const LogIn = () => {
     const [message, setMessage] = useState('');
     const [errorColor, setErrorColor] = useState('');
 
-
     const user = localStorage.getItem('userInfo');
 
-
     useEffect(() => {
-        if (userInfo !== null && userInfo !== undefined && !user) {
+        if (userInfo && !user && !detailCheck) {
             if (userInfo.is_verified) {
                 setModal(true);
                 dispatch(checkLogin());
@@ -64,6 +65,18 @@ const LogIn = () => {
             }
         }
     }, [userInfo]);
+
+    useEffect(() => {
+        if (errorCheck || errorVerify) {
+            setModal(true);
+        }
+    }, [errorCheck, errorVerify]);
+
+    useEffect(() => {
+        if (!errorVerify && detailVerify) {
+            history.push('/dashboard/');
+        }
+    }, [detailVerify])
 
 
 
@@ -78,16 +91,6 @@ const LogIn = () => {
 
     function handleCheckCode() {
         dispatch(verifyLogin(code));
-        setModal(false);
-        if (!user && !errorVerify) {
-            history.push('/dashboard/');
-            window.location.reload();
-        }
-        else {
-            setMessage("Вы ввели не тот код");
-        }
-
-
         //window.location.reload();
     }
 
@@ -107,6 +110,18 @@ const LogIn = () => {
                             onChange={(e) => setCode(e.target.value)}
                         />
                     </InputGroup>
+                    {errorVerify &&
+                        <FormControl display='flex' alignItems='center'>
+                            <FormLabel
+                                htmlFor='remember-login'
+                                mb='0'
+                                ms='1'
+                                color='red'
+                                fontWeight='normal'>
+                                {errorVerify}. Проверьте почту.
+                            </FormLabel>
+                        </FormControl>
+                    }
                     {loadingVerify &&
                         <Spinner animation="border" variant='primary'/>}
                 </Modal.Body>
@@ -197,18 +212,6 @@ const LogIn = () => {
                                             color='red'
                                             fontWeight='normal'>
                                             {error}
-                                        </FormLabel>
-                                    </FormControl>
-                                }
-                                {errorVerify &&
-                                    <FormControl display='flex' alignItems='center'>
-                                        <FormLabel
-                                            htmlFor='remember-login'
-                                            mb='0'
-                                            ms='1'
-                                            color='red'
-                                            fontWeight='normal'>
-                                            {errorVerify}
                                         </FormLabel>
                                     </FormControl>
                                 }
