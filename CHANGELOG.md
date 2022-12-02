@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.0.40] - 2022-12-01
+
+### Изменено
+
+- assets changed [@AlexTrubkina](https://github.com/AlexTrubkina)
+
 ## [0.0.40] - 2022-11-30
 
 ### Изменено

@@ -36,8 +36,10 @@ const LogIn = () => {
     let history = useHistory();
 
     const userLogin = useSelector(state => state.userLogin);
-    const verify_error = useSelector(state => state.userVerifyLogin.verify_error);
+    const userVerifyLogin = useSelector(state => state.userVerifyLogin);
     const {error, loading, userInfo} = userLogin;
+    const {error: errorVerify, loading: loadingVerify, userInfo: userVerify} = userVerifyLogin;
+
 
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
@@ -46,6 +48,8 @@ const LogIn = () => {
     const [modal, setModal] = useState(false);
     const [code, setCode] = useState('');
     const [message, setMessage] = useState('');
+    const [errorColor, setErrorColor] = useState('');
+
 
     const user = localStorage.getItem('userInfo');
 
@@ -59,19 +63,33 @@ const LogIn = () => {
                 setMessage('Пожалуйста, активируйте ваш аккаунт, вся информация у вас на почте.')
             }
         }
-    }, [userInfo])
+    }, [userInfo]);
+
 
 
     function loginButton() {
         if (validateEmail(mail) === true && password !== '') {
             dispatch(login(mail, password));
         }
+        else {
+            setErrorColor('red.100');
+        }
     }
 
     function handleCheckCode() {
         dispatch(verifyLogin(code));
-        history.push('/dashboard/');
-        window.location.reload();
+        setModal(false);
+
+        if (!errorVerify) {
+            history.push('/dashboard/');
+            //window.location.reload();
+        }
+        else {
+            setMessage("Вы ввели не тот код");
+        }
+
+
+        //window.location.reload();
     }
 
     return (
@@ -90,6 +108,8 @@ const LogIn = () => {
                             onChange={(e) => setCode(e.target.value)}
                         />
                     </InputGroup>
+                    {loadingVerify &&
+                        <Spinner animation="border" variant='primary'/>}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button colorScheme="blue" variant="outline" onClick={handleCheckCode}>
@@ -139,6 +159,7 @@ const LogIn = () => {
                                     type='text'
                                     placeholder='Ваш email'
                                     size='lg'
+                                    bg={errorColor}
                                     value={mail}
                                     onChange={(e) => setMail(e.target.value)}
                                 />
@@ -152,6 +173,7 @@ const LogIn = () => {
                                     type='password'
                                     placeholder='Ваш пароль'
                                     size='lg'
+                                    bg={errorColor}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
@@ -176,18 +198,6 @@ const LogIn = () => {
                                             color='red'
                                             fontWeight='normal'>
                                             {error}
-                                        </FormLabel>
-                                    </FormControl>
-                                }
-                                {verify_error &&
-                                    <FormControl display='flex' alignItems='center'>
-                                        <FormLabel
-                                            htmlFor='remember-login'
-                                            mb='0'
-                                            ms='1'
-                                            color='red'
-                                            fontWeight='normal'>
-                                            {verify_error}
                                         </FormLabel>
                                     </FormControl>
                                 }

@@ -47,7 +47,7 @@ export default function HeaderLinks(props) {
     const handleExit = () => {
         dispatch(logout());
         history.push('/');
-        window.location.reload();
+        //window.location.reload();
     }
 
     if (secondary) {

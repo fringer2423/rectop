@@ -58,15 +58,15 @@ export default function AuthNavbar(props) {
     let navbarPosition = "fixed";
     let colorButton = "white";
     if (props.secondary === true) {
-        navbarIcon = "white";
+        navbarIcon = "gray.700";
         navbarBg = "none";
         navbarBorder = "none";
         navbarShadow = "initial";
         navbarFilter = "initial";
         navbarBackdrop = "none";
-        bgButton = "white";
-        colorButton = "gray.700";
-        mainText = "white";
+        bgButton = "gray.700";
+        colorButton = "white";
+        mainText = "gray.700";
         navbarPosition = "absolute";
     }
     var brand = (
