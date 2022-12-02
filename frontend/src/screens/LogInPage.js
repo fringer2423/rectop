@@ -52,12 +52,9 @@ const LogIn = () => {
     const [code, setCode] = useState('');
     const [message, setMessage] = useState('');
     const [errorColor, setErrorColor] = useState('');
+    let [count, setCount] = useState(60);
 
     const user = localStorage.getItem('userInfo');
-
-
-
-    let counter = 60;
 
     useEffect(() => {
         if (userInfo && !user && !detailCheck) {
@@ -73,6 +70,12 @@ const LogIn = () => {
     useEffect(() => {
         if ((errorCheck || errorVerify) && !user) {
             setModal(true);
+            let timer = setInterval(() => {
+                setCount(count--);
+                if(count === 0){
+                    clearInterval(timer);
+                }
+            }, 600)
         }
     }, [errorCheck, errorVerify]);
 
@@ -96,7 +99,6 @@ const LogIn = () => {
 
     function handleCheckCode() {
         dispatch(verifyLogin(code));
-
     }
 
     return (
@@ -135,10 +137,11 @@ const LogIn = () => {
                                 ms='1'
                                 color='red'
                                 fontWeight='normal'>
-                                Вы сможете отправить код повторно через {counter} секунд
+                                Вы сможете отправить код повторно через {count} сек.
                             </FormLabel>
                         </FormControl>
                     }
+                    
                     {loadingVerify &&
                         <Spinner animation="border" variant='primary'/>}
                 </Modal.Body>
