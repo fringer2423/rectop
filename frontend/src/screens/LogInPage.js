@@ -76,7 +76,7 @@ const LogIn = () => {
         if (!errorVerify && detailVerify) {
             history.push('/dashboard/');
         }
-    }, [detailVerify])
+    }, [detailVerify, history])
 
 
 
@@ -91,7 +91,7 @@ const LogIn = () => {
 
     function handleCheckCode() {
         dispatch(verifyLogin(code));
-        //window.location.reload();
+
     }
 
     return (
