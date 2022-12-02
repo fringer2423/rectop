@@ -55,6 +55,10 @@ const LogIn = () => {
 
     const user = localStorage.getItem('userInfo');
 
+
+
+    let counter = 60;
+
     useEffect(() => {
         if (userInfo && !user && !detailCheck) {
             if (userInfo.is_verified) {
@@ -67,16 +71,17 @@ const LogIn = () => {
     }, [userInfo]);
 
     useEffect(() => {
-        if (errorCheck || errorVerify) {
+        if ((errorCheck || errorVerify) && !user) {
             setModal(true);
         }
     }, [errorCheck, errorVerify]);
 
     useEffect(() => {
-        if (!errorVerify && detailVerify) {
+        if (user) {
             history.push('/dashboard/');
+            window.location.reload();
         }
-    }, [detailVerify, history])
+    }, [user, history])
 
 
 
@@ -118,7 +123,19 @@ const LogIn = () => {
                                 ms='1'
                                 color='red'
                                 fontWeight='normal'>
-                                {errorVerify}. Проверьте почту.
+                                {errorVerify}.
+                            </FormLabel>
+                        </FormControl>
+                    }
+                    {errorVerify &&
+                        <FormControl display='flex' alignItems='center'>
+                            <FormLabel
+                                htmlFor='remember-login'
+                                mb='0'
+                                ms='1'
+                                color='red'
+                                fontWeight='normal'>
+                                Вы сможете отправить код повторно через {counter} секунд
                             </FormLabel>
                         </FormControl>
                     }
@@ -127,7 +144,7 @@ const LogIn = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button colorScheme="blue" variant="outline" onClick={handleCheckCode}>
-                        Отправить код
+                        Войти в аккаунт
                     </Button>
                 </Modal.Footer>
             </Modal>
