@@ -37,8 +37,11 @@ const LogIn = () => {
 
     const userLogin = useSelector(state => state.userLogin);
     const userVerifyLogin = useSelector(state => state.userVerifyLogin);
+    const userLoginCheck = useSelector(state => state.userLoginCheck);
     const {error, loading, userInfo} = userLogin;
-    const {error: errorVerify, loading: loadingVerify, userInfo: userVerify} = userVerifyLogin;
+    const {error: errorVerify, loading: loadingVerify, detail: detailVerify} = userVerifyLogin;
+    const {error: errorCheck, detail: detailCheck} = userLoginCheck;
+
 
 
     const [mail, setMail] = useState('');
@@ -49,13 +52,12 @@ const LogIn = () => {
     const [code, setCode] = useState('');
     const [message, setMessage] = useState('');
     const [errorColor, setErrorColor] = useState('');
-
+    let [count, setCount] = useState(60);
 
     const user = localStorage.getItem('userInfo');
 
-
     useEffect(() => {
-        if (userInfo !== null && userInfo !== undefined) {
+        if (userInfo && !user && !detailCheck) {
             if (userInfo.is_verified) {
                 setModal(true);
                 dispatch(checkLogin());
@@ -64,6 +66,25 @@ const LogIn = () => {
             }
         }
     }, [userInfo]);
+
+    useEffect(() => {
+        if ((errorCheck || errorVerify) && !user) {
+            setModal(true);
+            let timer = setInterval(() => {
+                setCount(count--);
+                if(count === 0){
+                    clearInterval(timer);
+                }
+            }, 600)
+        }
+    }, [errorCheck, errorVerify]);
+
+    useEffect(() => {
+        if (user) {
+            history.push('/dashboard/');
+            window.location.reload();
+        }
+    }, [user, history])
 
 
 
@@ -78,18 +99,6 @@ const LogIn = () => {
 
     function handleCheckCode() {
         dispatch(verifyLogin(code));
-        setModal(false);
-
-        if (!errorVerify) {
-            history.push('/dashboard/');
-            //window.location.reload();
-        }
-        else {
-            setMessage("Вы ввели не тот код");
-        }
-
-
-        //window.location.reload();
     }
 
     return (
@@ -108,12 +117,37 @@ const LogIn = () => {
                             onChange={(e) => setCode(e.target.value)}
                         />
                     </InputGroup>
+                    {errorVerify &&
+                        <FormControl display='flex' alignItems='center'>
+                            <FormLabel
+                                htmlFor='remember-login'
+                                mb='0'
+                                ms='1'
+                                color='red'
+                                fontWeight='normal'>
+                                {errorVerify}.
+                            </FormLabel>
+                        </FormControl>
+                    }
+                    {errorVerify &&
+                        <FormControl display='flex' alignItems='center'>
+                            <FormLabel
+                                htmlFor='remember-login'
+                                mb='0'
+                                ms='1'
+                                color='red'
+                                fontWeight='normal'>
+                                Вы сможете отправить код повторно через {count} сек.
+                            </FormLabel>
+                        </FormControl>
+                    }
+                    
                     {loadingVerify &&
                         <Spinner animation="border" variant='primary'/>}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button colorScheme="blue" variant="outline" onClick={handleCheckCode}>
-                        Отправить код
+                        Войти в аккаунт
                     </Button>
                 </Modal.Footer>
             </Modal>

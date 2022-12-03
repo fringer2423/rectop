@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [0.0.41] - 2022-12-02
+
+### Изменено
+
+- added counter in login page [@AlexTrubkina](https://github.com/AlexTrubkina)
+- fixed email verifiation
+- changed assets
+- fixed login code verification
+- исправлены стейты
+
 ## [0.0.40] - 2022-12-01
 
 ### Изменено
