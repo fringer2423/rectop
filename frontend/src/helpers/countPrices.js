@@ -75,10 +75,10 @@ export const countPrices = (numOfBranchs, duration) => {
     }
 }
 
-export const countWeekDefaultPrice = (priceMonth) => {
-    return Math.floor(priceMonth / 4)
+export const countWeekDefaultPrice = (priceMonth, weekRatio) => {
+    return Math.floor(priceMonth * weekRatio)
 }
 
-export const countYearDefaultPrice = (priceMonth) => {
-    return priceMonth * 12
+export const countYearDefaultPrice = (priceMonth, yearRatio) => {
+    return Math.floor(priceMonth * yearRatio)
 }
