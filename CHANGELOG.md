@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.0.42] - 2022-12-13
+
+### Изменено
+
+- Edited model rate_info [@fringer2423](https://github.com/fringer2423)
+
 ## [0.0.41] - 2022-12-02
 
 ### Изменено

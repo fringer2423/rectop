@@ -592,12 +592,12 @@ class RateInfo(models.Model):
         verbose_name='Информация по скидкам',
         default=None
     )
-    coefficient_for_calculating_the_week = models.PositiveIntegerField(
+    coefficient_for_calculating_the_week = models.FloatField(
         verbose_name='Коэффициент для рассчета тарифа на неделю',
         default=None
     )
-    coefficient_for_calculating_the_year = models.PositiveIntegerField(
-        verbose_name='Коэффициент для рассчета тарифа на неделю',
+    coefficient_for_calculating_the_year = models.FloatField(
+        verbose_name='Коэффициент для рассчета тарифа на год',
         default=None
     )
 
