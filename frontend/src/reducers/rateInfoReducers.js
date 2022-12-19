@@ -4,13 +4,12 @@ import {
     RATE_INFO_DATA_FAIL,
 }  from '../constants/rateInfoConstants';
 
-export const rateInfoDataReducer = (state = {}, action) => {
+export const rateInfoDataReducer = (state = {rateInfo: []}, action) => {
     switch (action.type) {
         case RATE_INFO_DATA_REQUEST:
-            return {loading: true}
+            return {loading: true, rateInfo: []}
 
         case RATE_INFO_DATA_SUCCESS:
-            console.log(action.payload, " action.payload in reducers");
             return {loading: false, rateInfo: action.payload}
 
         case RATE_INFO_DATA_FAIL:

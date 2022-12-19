@@ -38,16 +38,10 @@ const reducer = combineReducers({
 const userInfoFromStorage = localStorage.getItem('userInfo') ?
     JSON.parse(localStorage.getItem('userInfo')) : null
 
-// const rateInfoFromStorage = localStorage.getItem('rateInfo') ?
-//     JSON.parse(localStorage.getItem('rateInfo')) : null
-
 const initialState = {
     userLogin: {
         userInfo: userInfoFromStorage
     },
-    // rateInfoData: {
-    //     rateInfo: rateInfoFromStorage
-    // },
 }
 
 const middleware = [thunk]

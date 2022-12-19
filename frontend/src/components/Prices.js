@@ -21,7 +21,8 @@ import {
 import {
     Carousel,
     Form,
-    Button
+    Button,
+    Spinner
 } from 'react-bootstrap';
 
 import {
@@ -46,26 +47,23 @@ const Prices = () => {
             loading
         } = rateInfoData;
 
-        console.log(rateInfo, loading, rateInfoData, "before use effect");
-
         useEffect(() => {
-            if (!rateInfo && !loading) {
-                dispatch(dataRate())
-                console.log(rateInfo, loading, rateInfoData, "rateInfo in Prices");
-            }
-        }, [rateInfo, loading])
 
+            dispatch(dataRate());
+            console.log(loading);
+
+        }, []);
+
+        
+
+        const weekRatio = rateInfo.coefficient_for_calculating_the_week;
+        const yearRatio = rateInfo.coefficient_for_calculating_the_year;
         const priceMonth = {
-            first: 1000, //rateInfo.first_rate
-            second: 3000, //rateInfo.second_rate
-            third: 4000 //rateInfo.third_rate
-        }
+            first: rateInfo.first_rate,
+            second: rateInfo.second_rate,
+            third: rateInfo.third_rate,
+        };
 
-        const weekRatio = 0.9;
-        const yearRatio = 1.1;
-
-        //const weekRatio = rateInfo.coefficient_for_calculating_the_week;
-        //const yearRatio = rateInfo.coefficient_for_calculating_the_year;
 
         const priceWeek = {
             first: countWeekDefaultPrice(priceMonth.first, weekRatio),
@@ -248,538 +246,295 @@ const Prices = () => {
         }
 
 
-        return ( <
-                >
-                <
-                div className = "wrapper-for-buttons" >
-                <
-                div className = "for-buttons" >
-                <
-                button className = {
-                    activeIndex === 0 ? 'button-for-rate active-button' : 'button-for-rate'
-                }
-                onClick = {
-                    handleClickFirstPrice
-                } > На неделю <
-                /button> <
-                button className = {
-                    activeIndex === 1 ? 'button-for-rate active-button' : 'button-for-rate'
-                }
-                onClick = {
-                    handleClickSecondPrice
-                } > На месяц <
-                /button> <
-                button className = {
-                    activeIndex === 2 ? 'button-for-rate active-button' : 'button-for-rate'
-                }
-                onClick = {
-                    handleClickThirdPrice
-                } > На 1 год <
-                /button> < /
-                div > <
-                /div>
+        return ( <>
+            <div className="wrapper-for-buttons">
+                <div className="for-buttons">
+                    <button className={activeIndex === 0 ? 'button-for-rate active-button' : 'button-for-rate'}
+                            onClick={handleClickFirstPrice}>На неделю
+                    </button>
+                    <button className={activeIndex === 1 ? 'button-for-rate active-button' : 'button-for-rate'}
+                            onClick={handleClickSecondPrice}>На месяц
+                    </button>
+                    <button className={activeIndex === 2 ? 'button-for-rate active-button' : 'button-for-rate'}
+                            onClick={handleClickThirdPrice}>На 1 год
+                    </button>
+                </div>
+            </div>
 
-                <
-                div id = "list-of-prices" >
-                <
-                div className = 'table-for-price-first'
-                onClick = {
-                    () => {
-                        console.log(rateInfo);
-                        console.log(weekRatio);
-                    }
-                } >
-                <
-                h3 > < b > “Генератор отзывов” < /b></h3 >
-                <
-                h5 > {
-                    numBranchsFirst
-                }
-                филиал < /h5> <
-                div className = "wrapper-spinner" >
-                <
-                button className = "control-button-spinner"
-                onClick = {
-                    handleFirstLeftClick
-                } > - < /button> <
-                Form.Range className = "range-for-prices"
-                ref = {
-                    refFirst
-                }
-                value = {
-                    numBranchsFirst
-                }
-                max = {
-                    150
-                }
-                min = {
-                    1
-                }
-                onChange = {
-                    setPriceRangeFirst
-                }
-                /> <
-                button className = "control-button-spinner"
-                onClick = {
-                    handleFirstRightClick
-                } > + < /button> < /
-                div > <
-                h4 > < b > {
-                    priceDurationFirst
-                } < /b></h4 >
-                <
-                div className = "block-ranges-prices" > {
-                    priceDurationFirst !== priceOldFirst &&
-                    <
-                    span className = "strike-text" > {
-                        priceOldFirst
-                    } < /span>} {
-                    priceDurationFirst !== priceOldFirst &&
-                    <
-                    span className = "discount" > {
-                        saleFirst
-                    } < /span>} < /
-                    div > <
-                    div className = "block-in-table" >
-                    <
-                    b >
-                    Производите сбор отзывов < /b> от ваших клиентов при помощи QR-кодов на точках продаж < /
-                    div > <
-                    div className = "text-in-price" >
-                    Сбор отзывов <
-                    hr / >
-                    Оповещения в Телеграме <
-                    hr / >
-                    Отчетность в Телеграме <
-                    hr / >
-                    Система кэшбека <
-                    hr / >
-                    Статистика <
-                    hr / >
-                    Обратная связь <
-                    hr / >
-                    Поддержка 24 / 7 <
-                    hr / >
-                    Формирование qr - кода <
-                    hr / >
-                    <
-                    /div> <
-                    button className = "black-button" > < b > Приобрести тариф < /b></button >
-                    <
-                    /div> <
-                    div className = 'table-for-price-second' >
-                    <
-                    h3 > < b > Какое - то название < /b></h3 >
-                    <
-                    h5 > {
-                        numBranchsSecond
-                    }
-                    филиал < /h5> <
-                    div className = "wrapper-spinner" >
-                    <
-                    button className = "control-button-spinner"
-                    onClick = {
-                        handleSecondLeftClick
-                    } > - < /button> <
-                    Form.Range className = "range-for-prices"
-                    value = {
-                        numBranchsSecond
-                    }
-                    ref = {
-                        refSecond
-                    }
-                    max = {
-                        150
-                    }
-                    min = {
-                        1
-                    }
-                    onChange = {
-                        setPriceRangeSecond
-                    }
-                    /> <
-                    button className = "control-button-spinner"
-                    onClick = {
-                        handleSecondRightClick
-                    } > + < /button> < /
-                    div > <
-                    h4 > < b > {
-                        priceDurationSecond
-                    } < /b></h4 >
-                    <
-                    div className = "block-ranges-prices" > {
-                        priceDurationSecond !== priceOldSecond &&
-                        <
-                        span className = "strike-text" > {
-                            priceOldSecond
-                        } < /span>
-                    } {
-                        priceDurationSecond !== priceOldSecond &&
-                            <
-                            span className = "discount" > {
-                                saleSecond
-                            } < /span>} < /
-                        div > <
-                            div className = "block-in-table" >
-                            <
-                            b > Работа с отзывами < /b> на крупнейших интернет-площадках и сервисах < /
-                        div > <
-                            div className = "text-in-price" >
-                            Аналитика по филиалу <
-                            hr / >
-                            Постоянная актуализация <
-                            hr / >
-                            Система кэшбека <
-                            hr / >
-                            Скидки от партнеров <
-                            hr / >
-                            Поддержка 24 / 7 <
-                            hr / >
-                            Ответы на отзывы в одном месте <
-                            hr / >
-                            Обратная связь <
-                            hr / >
-                            Подробная статистика <
-                            hr / >
-                            <
-                            /div> <
-                        button className = "black-button" > < b > Приобрести тариф < /b></button >
-                            <
-                            /div> <
-                        div className = 'table-for-price-third' >
-                            <
-                            h3 > < b > Репутация под ключ < /b></h3 >
-                            <
-                            h5 > {
-                                numBranchsThird
-                            }
-                        филиал < /h5> <
-                        div className = "wrapper-spinner" >
-                            <
-                            button className = "control-button-spinner"
-                        onClick = {
-                            handleThirdLeftClick
-                        } > - < /button> <
-                        Form.Range className = "range-for-prices"
-                        value = {
-                            numBranchsThird
+            <div id="list-of-prices">
+                <div className='table-for-price-first'>
+                    <h3><b>“Генератор отзывов”</b></h3>
+                    <h5>{numBranchsFirst} филиал</h5>
+                    <div className="wrapper-spinner">
+                        <button className="control-button-spinner" onClick={handleFirstLeftClick}>-</button>
+                        <Form.Range className="range-for-prices"
+                                    ref={refFirst}
+                                    value={numBranchsFirst}
+                                    max={150}
+                                    min={1}
+                                    onChange={setPriceRangeFirst}/>
+                        <button className="control-button-spinner" onClick={handleFirstRightClick}>+</button>
+                    </div>
+                    <h4><b>{priceDurationFirst}</b></h4>
+
+                    <div className="block-ranges-prices">
+                        {priceDurationFirst !== priceOldFirst &&
+                            <span className="strike-text">{priceOldFirst}</span>}
+                        {priceDurationFirst !== priceOldFirst &&
+                            <span className="discount">{saleFirst}</span>}
+                    </div>
+                    <div className="block-in-table">
+                        <b>
+                            Производите сбор отзывов </b> от ваших клиентов при помощи QR-кодов на точках продаж
+                    </div>
+                    <div className="text-in-price">
+                        Сбор отзывов
+                        <hr/>
+                        Оповещения в Телеграме
+                        <hr/>
+                        Отчетность в Телеграме
+                        <hr/>
+                        Система кэшбека
+                        <hr/>
+                        Статистика
+                        <hr/>
+                        Обратная связь
+                        <hr/>
+                        Поддержка 24/7
+                        <hr/>
+                        Формирование qr-кода
+                        <hr/>
+                    </div>
+                    <button className="black-button"><b>Приобрести тариф</b></button>
+                </div>
+                <div className='table-for-price-second'>
+                    <h3><b>Какое-то название</b></h3>
+                    <h5>{numBranchsSecond} филиал</h5>
+                    <div className="wrapper-spinner">
+                        <button className="control-button-spinner" onClick={handleSecondLeftClick}>-</button>
+                        <Form.Range className="range-for-prices"
+                                    value={numBranchsSecond}
+                                    ref={refSecond}
+                                    max={150}
+                                    min={1}
+                                    onChange={setPriceRangeSecond}/>
+                        <button className="control-button-spinner" onClick={handleSecondRightClick}>+</button>
+                    </div>
+                    <h4><b>{priceDurationSecond}</b></h4>
+                    <div className="block-ranges-prices">
+                        {priceDurationSecond !== priceOldSecond &&
+                            <span className="strike-text">{priceOldSecond}</span>
                         }
-                        ref = {
-                            refThird
-                        }
-                        max = {
-                            150
-                        }
-                        min = {
-                            1
-                        }
-                        onChange = {
-                            setPriceRangeThird
-                        }
-                        /> <
-                        button className = "control-button-spinner"
-                        onClick = {
-                            handleThirdRightClick
-                        } > + < /button> < /
-                        div > <
-                            h4 > < b > {
-                                priceDurationThird
-                            } < /b></h4 >
-                            <
-                            div className = "block-ranges-prices" > {
-                                priceDurationThird !== priceOldThird &&
-                                <
-                                span className = "strike-text" > {
-                                    priceOldThird
-                                } < /span>} {
-                                priceDurationThird !== priceOldThird &&
-                                <
-                                span className = "discount" > {
-                                    saleThird
-                                } < /span>} < /
-                                div > <
-                                div className = "block-in-table" >
-                                <
-                                b > Работа с отзывами < /b> на крупнейших интернет-площадках и сервисах < /
-                                div > <
-                                div className = "text-in-price" >
-                                Генератор и агрегатор отзывов <
-                                hr / >
-                                Ответы на отзывы нашими специалистами <
-                                hr / >
-                                Проверка выставленных отзывов <
-                                hr / > “Спровоцируем” выставление отзывов <
-                                hr / >
-                                Подробная отчетность <
-                                hr / >
-                                Аналитика в реальном времени <
-                                hr / >
-                                <
-                                /div> <
-                                button className = "black-button" > < b > Приобрести тариф < /b></button >
-                                <
-                                /div> < /
-                                div >
+                        {priceDurationSecond !== priceOldSecond &&
+                            <span className="discount">{saleSecond}</span>}
+                    </div>
+                    <div className="block-in-table">
+                        <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
+                    </div>
+                    <div className="text-in-price">
+                        Аналитика по филиалу
+                        <hr/>
+                        Постоянная актуализация
+                        <hr/>
+                        Система кэшбека
+                        <hr/>
+                        Скидки от партнеров
+                        <hr/>
+                        Поддержка 24/7
+                        <hr/>
+                        Ответы на отзывы в одном месте
+                        <hr/>
+                        Обратная связь
+                        <hr/>
+                        Подробная статистика
+                        <hr/>
+                    </div>
+                    <button className="black-button"><b>Приобрести тариф</b></button>
+                </div>
+                <div className='table-for-price-third'>
+                    <h3><b>Репутация под ключ</b></h3>
+                    <h5>{numBranchsThird} филиал</h5>
+                    <div className="wrapper-spinner">
+                        <button className="control-button-spinner" onClick={handleThirdLeftClick}>-</button>
+                        <Form.Range className="range-for-prices"
+                                    value={numBranchsThird}
+                                    ref={refThird}
+                                    max={150}
+                                    min={1}
+                                    onChange={setPriceRangeThird}/>
+                        <button className="control-button-spinner" onClick={handleThirdRightClick}>+</button>
+                    </div>
+                    <h4><b>{priceDurationThird}</b></h4>
+                    <div className="block-ranges-prices">
+                        {priceDurationThird !== priceOldThird &&
+                            <span className="strike-text">{priceOldThird}</span>}
+                        {priceDurationThird !== priceOldThird &&
+                            <span className="discount">{saleThird}</span>}
+                    </div>
+                    <div className="block-in-table">
+                        <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
+                    </div>
+                    <div className="text-in-price">
+                        Генератор и агрегатор отзывов
+                        <hr/>
+                        Ответы на отзывы нашими специалистами
+                        <hr/>
+                        Проверка выставленных отзывов
+                        <hr/>
+                        “Спровоцируем” выставление отзывов
+                        <hr/>
+                        Подробная отчетность
+                        <hr/>
+                        Аналитика в реальном времени
+                        <hr/>
+                    </div>
+                    <button className="black-button"><b>Приобрести тариф</b></button>
+                </div>
+            </div>
 
 
-                                <
-                                div id = "slider-for-prices" >
-                                <
-                                Carousel className = "carousel-for-prices"
-                                interval = {
-                                    null
-                                } >
-                                <
-                                Carousel.Item >
-                                <
-                                div className = 'table-for-price-first' >
-                                <
-                                h3 > < b > “Генератор отзывов” < /b></h3 >
-                                <
-                                h5 > {
-                                    numBranchsFirst
-                                }
-                                филиал < /h5> <
-                                div className = "wrapper-spinner" >
-                                <
-                                button className = "control-button-spinner"
-                                onClick = {
-                                    handleFirstLeftClick
-                                } > - < /button> <
-                                Form.Range className = "range-for-prices"
-                                value = {
-                                    numBranchsFirst
-                                }
-                                ref = {
-                                    refFirst
-                                }
-                                max = {
-                                    150
-                                }
-                                min = {
-                                    1
-                                }
-                                onChange = {
-                                    setPriceRangeFirst
-                                }
-                                /> <
-                                button className = "control-button-spinner"
-                                onClick = {
-                                    handleFirstRightClick
-                                } > + < /button> < /
-                                div > <
-                                h4 > < b > {
-                                    priceDurationFirst
-                                } < /b></h4 >
-                                <
-                                div className = "block-ranges-prices" > {
-                                    priceDurationFirst !== priceOldFirst &&
-                                    <
-                                    span className = "strike-text" > {
-                                        priceOldFirst
-                                    } < /span>} {
-                                    priceDurationFirst !== priceOldFirst &&
-                                    <
-                                    span className = "discount" > {
-                                        saleFirst
-                                    } < /span>} < /
-                                    div > <
-                                    div className = "block-in-table" >
-                                    <
-                                    b >
-                                    Производите сбор отзывов < /b> от ваших клиентов при помощи QR-кодов на точках продаж < /
-                                    div > <
-                                    div className = "text-in-price" >
-                                    Сбор отзывов <
-                                    hr / >
-                                    Оповещения в Телеграме <
-                                    hr / >
-                                    Отчетность в Телеграме <
-                                    hr / >
-                                    Система кэшбека <
-                                    hr / >
-                                    Статистика <
-                                    hr / >
-                                    Обратная связь <
-                                    hr / >
-                                    Поддержка 24 / 7 <
-                                    hr / >
-                                    Формирование qr - кода <
-                                    hr / >
-                                    <
-                                    /div> <
-                                    button className = "black-button" > < b > Приобрести тариф < /b></button >
-                                    <
-                                    /div>
+            <div id="slider-for-prices">
+                <Carousel className="carousel-for-prices" interval={null}>
+                    <Carousel.Item>
+                        <div className='table-for-price-first'>
+                            <h3><b>“Генератор отзывов”</b></h3>
+                            <h5>{numBranchsFirst} филиал</h5>
+                            <div className="wrapper-spinner">
+                                <button className="control-button-spinner" onClick={handleFirstLeftClick}>-</button>
+                                <Form.Range className="range-for-prices"
+                                            value={numBranchsFirst}
+                                            ref={refFirst}
+                                            max={150}
+                                            min={1}
+                                            onChange={setPriceRangeFirst}/>
+                                <button className="control-button-spinner" onClick={handleFirstRightClick}>+</button>
+                            </div>
+                            <h4><b>{priceDurationFirst}</b></h4>
+                            <div className="block-ranges-prices">
+                                {priceDurationFirst !== priceOldFirst &&
+                                    <span className="strike-text">{priceOldFirst}</span>}
+                                {priceDurationFirst !== priceOldFirst &&
+                                    <span className="discount">{saleFirst}</span>}
+                            </div>
+                            <div className="block-in-table">
+                                <b>
+                                    Производите сбор отзывов </b> от ваших клиентов при помощи QR-кодов на точках продаж
+                            </div>
+                            <div className="text-in-price">
+                                Сбор отзывов
+                                <hr/>
+                                Оповещения в Телеграме
+                                <hr/>
+                                Отчетность в Телеграме
+                                <hr/>
+                                Система кэшбека
+                                <hr/>
+                                Статистика
+                                <hr/>
+                                Обратная связь
+                                <hr/>
+                                Поддержка 24/7
+                                <hr/>
+                                Формирование qr-кода
+                                <hr/>
+                            </div>
+                            <button className="black-button"><b>Приобрести тариф</b></button>
+                        </div>
 
-                                    <
-                                    /Carousel.Item> <
-                                    Carousel.Item >
+                    </Carousel.Item>
+                    <Carousel.Item>
 
-                                    <
-                                    div className = 'table-for-price-second' >
-                                    <
-                                    h3 > < b > Какое - то название < /b></h3 >
-                                    <
-                                    h5 > {
-                                        numBranchsSecond
-                                    }
-                                    филиал < /h5> <
-                                    div className = "wrapper-spinner" >
-                                    <
-                                    button className = "control-button-spinner"
-                                    onClick = {
-                                        handleSecondLeftClick
-                                    } > - < /button> <
-                                    Form.Range className = "range-for-prices"
-                                    value = {
-                                        numBranchsSecond
-                                    }
-                                    ref = {
-                                        refSecond
-                                    }
-                                    max = {
-                                        150
-                                    }
-                                    min = {
-                                        1
-                                    }
-                                    onChange = {
-                                        setPriceRangeSecond
-                                    }
-                                    /> <
-                                    button className = "control-button-spinner"
-                                    onClick = {
-                                        handleSecondRightClick
-                                    } > + < /button> < /
-                                    div > <
-                                    h4 > < b > {
-                                        priceDurationSecond
-                                    } < /b></h4 >
-                                    <
-                                    div className = "block-ranges-prices" > {
-                                        priceDurationSecond !== priceOldSecond &&
-                                        <
-                                        span className = "strike-text" > {
-                                            priceOldSecond
-                                        } < /span>} {
-                                        priceDurationSecond !== priceOldSecond &&
-                                        <
-                                        span className = "discount" > {
-                                            saleSecond
-                                        } < /span>} < /
-                                        div > <
-                                        div className = "block-in-table" >
-                                        <
-                                        b > Работа с отзывами < /b> на крупнейших интернет-площадках и сервисах < /
-                                        div > <
-                                        div className = "text-in-price" >
-                                        Аналитика по филиалу <
-                                        hr / >
-                                        Постоянная актуализация <
-                                        hr / >
-                                        Система кэшбека <
-                                        hr / >
-                                        Скидки от партнеров <
-                                        hr / >
-                                        Поддержка 24 / 7 <
-                                        hr / >
-                                        Ответы на отзывы в одном месте <
-                                        hr / >
-                                        Обратная связь <
-                                        hr / >
-                                        Подробная статистика <
-                                        hr / >
-                                        <
-                                        /div> <
-                                        button className = "black-button" > < b > Приобрести тариф < /b></button >
-                                        <
-                                        /div>
+                        <div className='table-for-price-second'>
+                            <h3><b>Какое-то название</b></h3>
+                            <h5>{numBranchsSecond} филиал</h5>
+                            <div className="wrapper-spinner">
+                                <button className="control-button-spinner" onClick={handleSecondLeftClick}>-</button>
+                                <Form.Range className="range-for-prices"
+                                            value={numBranchsSecond}
+                                            ref={refSecond}
+                                            max={150}
+                                            min={1}
+                                            onChange={setPriceRangeSecond}/>
+                                <button className="control-button-spinner" onClick={handleSecondRightClick}>+</button>
+                            </div>
+                            <h4><b>{priceDurationSecond}</b></h4>
+                            <div className="block-ranges-prices">
+                                {priceDurationSecond !== priceOldSecond &&
+                                    <span className="strike-text">{priceOldSecond}</span>}
+                                {priceDurationSecond !== priceOldSecond &&
+                                    <span className="discount">{saleSecond}</span>}
+                            </div>
+                            <div className="block-in-table">
+                                <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
+                            </div>
+                            <div className="text-in-price">
+                                Аналитика по филиалу
+                                <hr/>
+                                Постоянная актуализация
+                                <hr/>
+                                Система кэшбека
+                                <hr/>
+                                Скидки от партнеров
+                                <hr/>
+                                Поддержка 24/7
+                                <hr/>
+                                Ответы на отзывы в одном месте
+                                <hr/>
+                                Обратная связь
+                                <hr/>
+                                Подробная статистика
+                                <hr/>
+                            </div>
+                            <button className="black-button"><b>Приобрести тариф</b></button>
+                        </div>
 
-                                        <
-                                        /Carousel.Item> <
-                                        Carousel.Item >
+                    </Carousel.Item>
+                    <Carousel.Item>
 
-                                        <
-                                        div className = 'table-for-price-third' >
-                                        <
-                                        h3 > < b > Репутация под ключ < /b></h3 >
-                                        <
-                                        h5 > {
-                                            numBranchsThird
-                                        }
-                                        филиал < /h5> <
-                                        div className = "wrapper-spinner" >
-                                        <
-                                        button className = "control-button-spinner"
-                                        onClick = {
-                                            handleThirdLeftClick
-                                        } > - < /button> <
-                                        Form.Range className = "range-for-prices"
-                                        value = {
-                                            numBranchsThird
-                                        }
-                                        ref = {
-                                            refThird
-                                        }
-                                        max = {
-                                            150
-                                        }
-                                        min = {
-                                            1
-                                        }
-                                        onChange = {
-                                            setPriceRangeThird
-                                        }
-                                        /> <
-                                        button className = "control-button-spinner"
-                                        onClick = {
-                                            handleThirdRightClick
-                                        } > + < /button> < /
-                                        div > <
-                                        h4 > < b > {
-                                            priceDurationThird
-                                        } < /b></h4 >
-                                        <
-                                        div className = "block-ranges-prices" > {
-                                            priceDurationThird !== priceOldThird &&
-                                            <
-                                            span className = "strike-text" > {
-                                                priceOldThird
-                                            } < /span>} {
-                                            priceDurationThird !== priceOldThird &&
-                                            <
-                                            span className = "discount" > {
-                                                saleThird
-                                            } < /span>} < /
-                                            div > <
-                                            div className = "block-in-table" >
-                                            <
-                                            b > Работа с отзывами < /b> на крупнейших интернет-площадках и сервисах < /
-                                            div > <
-                                            div className = "text-in-price" >
-                                            Генератор и агрегатор отзывов <
-                                            hr / >
-                                            Ответы на отзывы нашими специалистами <
-                                            hr / >
-                                            Проверка выставленных отзывов <
-                                            hr / > “Спровоцируем” выставление отзывов <
-                                            hr / >
-                                            Подробная отчетность <
-                                            hr / >
-                                            Аналитика в реальном времени <
-                                            /div> <
-                                            button className = "black-button" > < b > Приобрести тариф < /b></button >
-                                            <
-                                            /div>
+                        <div className='table-for-price-third'>
+                            <h3><b>Репутация под ключ</b></h3>
+                            <h5>{numBranchsThird} филиал</h5>
+                            <div className="wrapper-spinner">
+                                <button className="control-button-spinner" onClick={handleThirdLeftClick}>-</button>
+                                <Form.Range className="range-for-prices"
+                                            value={numBranchsThird}
+                                            ref={refThird}
+                                            max={150}
+                                            min={1}
+                                            onChange={setPriceRangeThird}/>
+                                <button className="control-button-spinner" onClick={handleThirdRightClick}>+</button>
+                            </div>
+                            <h4><b>{priceDurationThird}</b></h4>
+                            <div className="block-ranges-prices">
+                                {priceDurationThird !== priceOldThird &&
+                                    <span className="strike-text">{priceOldThird}</span>}
+                                {priceDurationThird !== priceOldThird &&
+                                    <span className="discount">{saleThird}</span>}
+                            </div>
+                            <div className="block-in-table">
+                                <b>Работа с отзывами</b> на крупнейших интернет-площадках и сервисах
+                            </div>
+                            <div className="text-in-price">
+                                Генератор и агрегатор отзывов
+                                <hr/>
+                                Ответы на отзывы нашими специалистами
+                                <hr/>
+                                Проверка выставленных отзывов
+                                <hr/>
+                                “Спровоцируем” выставление отзывов
+                                <hr/>
+                                Подробная отчетность
+                                <hr/>
+                                Аналитика в реальном времени
+                            </div>
+                            <button className="black-button"><b>Приобрести тариф</b></button>
+                        </div>
 
-                                            <
-                                            /Carousel.Item> < /
-                                            Carousel > <
-                                            /div>
+                    </Carousel.Item>
+                </Carousel>
+            </div>
 
-                                            <
-                                            />
+        </>
                                         )
                                     }
 

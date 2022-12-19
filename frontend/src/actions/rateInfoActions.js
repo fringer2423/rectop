@@ -30,7 +30,7 @@ export const dataRate = () => async (dispatch) => {
                 });
                 console.log(response.data, " response.data");
                 localStorage.setItem('rateInfo ', JSON.stringify(response.data));
-                console.log(localStorage.getItem('rateInfo'), " localstorage after set");
+                
             })
 
     } catch (e) {
