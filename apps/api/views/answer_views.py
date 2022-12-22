@@ -85,7 +85,7 @@ def create_answer_view(request: object) -> Response:
             user=user,
             review_id=request.data['review_id'],
             body=request.data['body'],
-            type=request.data['type'],
+            type_answer=request.data['type'],
         )
         if answer:
             serializer: object = AnswerSerializer(answer, many=False)

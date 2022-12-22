@@ -4,16 +4,17 @@
 
 ## [0.0.43] - 2022-12-22
 
-### Изменено
-
-- Upgrade certifi to version 2022.12.07 or later to fix [@fringer2423](https://github.com/fringer2423)
-
-## [0.0.42] - 2022-12-13
-
 ### Добавлено
 
 - Added django-silk [@fringer2423](https://github.com/fringer2423)
 - Configured silk
+
+### Изменено
+
+- Upgrade certifi to version 2022.12.07 or later to fix [@fringer2423](https://github.com/fringer2423)
+- Rename type (type_answer) in answer service
+
+## [0.0.42] - 2022-12-13
 
 ### Изменено
 
