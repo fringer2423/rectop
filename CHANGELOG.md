@@ -8,6 +8,7 @@
 
 - Added django-silk [@fringer2423](https://github.com/fringer2423)
 - Configured silk
+- Typed answer views
 
 ### Изменено
 
