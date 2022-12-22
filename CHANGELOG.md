@@ -6,7 +6,7 @@
 
 ### Изменено
 
-- 
+- Upgrade certifi to version 2022.12.07 or later to fix [@fringer2423](https://github.com/fringer2423)
 
 ## [0.0.42] - 2022-12-13
 
