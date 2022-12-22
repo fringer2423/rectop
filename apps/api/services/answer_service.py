@@ -30,7 +30,7 @@ def create_answer_by_review_id_service(
         answer = _create_answer_service(
             review_id=review_id,
             body=body,
-            type=type_answer,
+            type_answer=type_answer,
             user_id=user.id
         )
     return answer
