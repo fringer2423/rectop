@@ -11,6 +11,7 @@
 - Typed answer views
 - Typed branch views
 - Typed company views
+- Refactor random generate service
 
 ### Изменено
 
