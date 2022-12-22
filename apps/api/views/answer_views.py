@@ -1,6 +1,8 @@
 import logging
 import sys
 
+from logging import Logger
+
 from django.core.handlers.wsgi import WSGIRequest
 from django.db.models import QuerySet
 from django.http import QueryDict
@@ -21,7 +23,7 @@ from ..serializers import AnswerSerializer
 from ..services.answer_service import get_answer_by_id_service, create_answer_by_review_id_service
 from ...core.models import Answer, User
 
-logger: logging.Logger = logging.getLogger('django')
+logger: Logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
