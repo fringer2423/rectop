@@ -10,6 +10,11 @@
 
 ## [0.0.42] - 2022-12-13
 
+### Добавлено
+
+- Added django-silk [@fringer2423](https://github.com/fringer2423)
+- Configured silk
+
 ### Изменено
 
 - Edited model rate_info [@fringer2423](https://github.com/fringer2423)
@@ -19,7 +24,7 @@
 ### Изменено
 
 - added counter in login page [@AlexTrubkina](https://github.com/AlexTrubkina)
-- fixed email verifiation
+- fixed email verification
 - changed assets
 - fixed login code verification
 - исправлены стейты

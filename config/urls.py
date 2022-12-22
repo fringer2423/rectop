@@ -23,6 +23,8 @@ urlpatterns = [
     path('api/task/', include('apps.api.urls.task_urls', namespace='task_endpoints')),
 
     path('test/ping/', apps.core.views.ping, name='ping'),
+
+    path('silk/', include('silk.urls', namespace='silk')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
