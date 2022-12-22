@@ -10,6 +10,7 @@
 - Configured silk
 - Typed answer views
 - Typed branch views
+- Typed company views
 
 ### Изменено
 
