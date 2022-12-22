@@ -1,9 +1,15 @@
 import logging
 import sys
 
+from logging import Logger
+
+from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import QuerySet
+from django.http import QueryDict
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.serializers import Serializer
 from rest_framework import status
 
 from drf_yasg import openapi
@@ -15,8 +21,9 @@ from django.db import IntegrityError
 from ..serializers import AnswerSerializer
 
 from ..services.answer_service import get_answer_by_id_service, create_answer_by_review_id_service
+from ...core.models import Answer, User
 
-logger: logging.Logger = logging.getLogger('django')
+logger: Logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
@@ -76,19 +83,20 @@ logger: logging.Logger = logging.getLogger('django')
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_answer_view(request: object) -> Response:
+def create_answer_view(request: WSGIRequest) -> Response:
     """Контроллер для создания answer"""
-    user: object = request.user
+    user: QuerySet[User] = request.user
+    data: QueryDict = request.data
 
     try:
-        answer: object = create_answer_by_review_id_service(
+        answer: QuerySet[Answer] | None = create_answer_by_review_id_service(
             user=user,
-            review_id=request.data['review_id'],
-            body=request.data['body'],
-            type=request.data['type'],
+            review_id=data['review_id'],
+            body=data['body'],
+            type_answer=data['type'],
         )
-        if answer:
-            serializer: object = AnswerSerializer(answer, many=False)
+        if not(answer is None):
+            serializer: Serializer[AnswerSerializer] = AnswerSerializer(answer, many=False)
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
@@ -175,14 +183,14 @@ def create_answer_view(request: object) -> Response:
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_answer_view(request: object, pk: int) -> Response:
+def read_answer_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для отдачи информации о answer"""
-    user: object = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        answer: object = get_answer_by_id_service(user=user, answer_id=pk)
-        if answer:
-            serializer: object = AnswerSerializer(answer, many=False)
+        answer: QuerySet[Answer] | None = get_answer_by_id_service(user=user, answer_id=pk)
+        if not(answer is None):
+            serializer: Serializer[AnswerSerializer] = AnswerSerializer(answer, many=False)
             message: str = 'Запрос выполнен успешно'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
@@ -268,15 +276,15 @@ def read_answer_view(request: object, pk: int) -> Response:
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_answer_view(request: object, pk: int) -> Response:
+def update_answer_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для обновления информации answer"""
-    user: object = request.user
-    data: object = request.data
+    user: QuerySet[User] = request.user
+    data: QueryDict = request.data
 
     try:
-        answer: object = get_answer_by_id_service(user=user, answer_id=pk)
-        if answer:
-            serializer: object = AnswerSerializer(answer, many=False, partial=True, data=data)
+        answer: QuerySet[Answer] | None = get_answer_by_id_service(user=user, answer_id=pk)
+        if not(answer is None):
+            serializer: Serializer[AnswerSerializer] = AnswerSerializer(answer, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
             message: str = 'Запрос выполнен успешно'
@@ -354,13 +362,13 @@ def update_answer_view(request: object, pk: int) -> Response:
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_answer_view(request: object, pk: int):
+def delete_answer_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для удаления информации answer"""
-    user: object = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        answer: object = get_answer_by_id_service(user=user, answer_id=pk)
-        if answer:
+        answer: QuerySet[Answer] | None = get_answer_by_id_service(user=user, answer_id=pk)
+        if not(answer is None):
             answer.delete()
             message: str = 'Удаление выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')

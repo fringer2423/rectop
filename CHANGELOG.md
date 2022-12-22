@@ -2,6 +2,21 @@
 
 ## [Unreleased]
 
+## [0.0.43] - 2022-12-22
+
+### Добавлено
+
+- Added django-silk [@fringer2423](https://github.com/fringer2423)
+- Configured silk
+- Typed answer views
+- Typed branch views
+- Typed company views
+
+### Изменено
+
+- Upgrade certifi to version 2022.12.07 or later to fix [@fringer2423](https://github.com/fringer2423)
+- Rename type (type_answer) in answer service
+
 ## [0.0.42] - 2022-12-13
 
 ### Изменено
@@ -13,7 +28,7 @@
 ### Изменено
 
 - added counter in login page [@AlexTrubkina](https://github.com/AlexTrubkina)
-- fixed email verifiation
+- fixed email verification
 - changed assets
 - fixed login code verification
 - исправлены стейты

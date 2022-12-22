@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'django_celery_beat',
+    'silk',
 
     'apps.core.apps.CoreConfig',
     'apps.api.apps.ApiConfig',
@@ -104,6 +105,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'django.contrib.admindocs.middleware.XViewMiddleware',
+    'silk.middleware.SilkyMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'

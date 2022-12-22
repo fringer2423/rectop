@@ -1,9 +1,15 @@
 import logging
 import sys
 
+from logging import Logger
+
+from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import QuerySet
+from django.http import QueryDict
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.serializers import Serializer
 from rest_framework import status
 
 from drf_yasg import openapi
@@ -14,8 +20,9 @@ from django.core.exceptions import ObjectDoesNotExist
 from ..serializers import CompanySerializer
 
 from ..services.company_services import get_company_by_id_service, create_company_by_company_name_service
+from ...core.models import Company, User
 
-logger = logging.getLogger('django')
+logger: Logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
@@ -53,14 +60,14 @@ logger = logging.getLogger('django')
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_company_view(request):
+def create_company_view(request: WSGIRequest) -> Response:
     """Контроллер для создания company"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        company = create_company_by_company_name_service(user, request.data['name'])
-        serializer = CompanySerializer(company, many=False)
-        message = 'Запрос выполнен успешно'
+        company: QuerySet[Company] | None = create_company_by_company_name_service(user, request.data['name'])
+        serializer: Serializer[CompanySerializer] = CompanySerializer(company, many=False)
+        message: str = 'Запрос выполнен успешно'
         logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             serializer.data,
@@ -68,7 +75,7 @@ def create_company_view(request):
         )
 
     except KeyError as e:
-        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        message: str = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -78,7 +85,7 @@ def create_company_view(request):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -117,22 +124,22 @@ def create_company_view(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_company_view(request, pk):
+def read_company_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для отдачи информации о company"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        company = get_company_by_id_service(user, pk)
-        if company:
-            serializer = CompanySerializer(company, many=False)
-            message = 'Запрос выполнен успешно'
+        company: QuerySet[Company] | None = get_company_by_id_service(user, pk)
+        if not(company is None):
+            serializer: Serializer[CompanySerializer] = CompanySerializer(company, many=False)
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data=serializer.data,
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваша company'
+            message: str = 'Это не ваша company'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -142,7 +149,7 @@ def read_company_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой company не найдено {e}'
+        message: str = f'Такой company не найдено {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -152,7 +159,7 @@ def read_company_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -203,25 +210,25 @@ def read_company_view(request, pk):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_company_view(request, pk):
+def update_company_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для обновления информации company"""
-    user = request.user
-    data = request.data
+    user: QuerySet[User] = request.user
+    data: QueryDict = request.data
 
     try:
-        company = get_company_by_id_service(user, pk)
-        if company:
-            serializer = CompanySerializer(company, many=False, partial=True, data=data)
+        company: QuerySet[Company] | None = get_company_by_id_service(user, pk)
+        if not(company is None):
+            serializer: Serializer[CompanySerializer] = CompanySerializer(company, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
-                message = 'Запрос выполнен успешно'
+                message: str = 'Запрос выполнен успешно'
                 logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data=serializer.data,
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваша company'
+            message: str = 'Это не ваша company'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -231,7 +238,7 @@ def update_company_view(request, pk):
             )
 
     except ObjectDoesNotExist:
-        message = 'Такой company не найдено'
+        message: str = 'Такой company не найдено'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -241,7 +248,7 @@ def update_company_view(request, pk):
         )
 
     except KeyError as e:
-        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        message: str = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -251,7 +258,7 @@ def update_company_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -290,15 +297,15 @@ def update_company_view(request, pk):
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_company_view(request, pk):
+def delete_company_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для удаления информации company"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        company = get_company_by_id_service(user, pk)
-        if company:
+        company: QuerySet[Company] | None= get_company_by_id_service(user, pk)
+        if not(company is None):
             company.delete()
-            message = 'Запрос выполнен успешно'
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -307,7 +314,7 @@ def delete_company_view(request, pk):
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваша company'
+            message: str = 'Это не ваша company'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -317,7 +324,7 @@ def delete_company_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой company не найдено {e}'
+        message: str = f'Такой company не найдено {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -327,7 +334,7 @@ def delete_company_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={

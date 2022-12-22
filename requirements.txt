@@ -1,12 +1,13 @@
 asgiref==3.5.2
 attrs==22.1.0
-certifi==2022.9.24
+certifi>=2022.12.07
 charset-normalizer==2.1.1
 coreapi==2.3.3
 coreschema==0.0.4
 Django==4.1.2
 django-celery-beat==2.4.0
 django-cors-headers==3.13.0
+django-silk==5.0.2
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.2.2
 docutils==0.19
