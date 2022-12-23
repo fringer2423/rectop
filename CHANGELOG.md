@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [0.0.44] - 2022-12-23
+
+### Добавлено
+
+- Typed connect views [@fringer2423](https://github.com/fringer2423)
+
+### Изменено
+
+- 
+
 ## [0.0.43] - 2022-12-22
 
 ### Добавлено
