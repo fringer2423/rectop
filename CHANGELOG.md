@@ -15,6 +15,7 @@
 - Typed task views
 - Typed telebot views
 - Typed user views
+- Typed some code
 
 ### Изменено
 

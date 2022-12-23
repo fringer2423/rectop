@@ -7,10 +7,10 @@ def _generate_random(length, letters):
 
 
 def generate_random_string_service(length):
-    letters = string.ascii_letters
+    letters: str = string.ascii_letters
     return _generate_random(length, letters)
 
 
 def generate_random_number_service(length):
-    letters = string.digits
+    letters: str = string.digits
     return _generate_random(length, letters)
