@@ -11,6 +11,7 @@
 - Typed rate info views
 - Typed rate views
 - Typed review settings views
+- Typed review views
 
 ### Изменено
 

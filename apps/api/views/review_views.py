@@ -1,9 +1,15 @@
 import logging
 import sys
 
+from logging import Logger
+
+from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import QuerySet
+from django.http import QueryDict
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.serializers import Serializer
 from rest_framework import status
 
 from drf_yasg import openapi
@@ -14,11 +20,13 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from ..serializers import ReviewSerializer
 
+from ...core.models import User, Review, Branch
+
 from ..services.branch_service import get_branch_by_id_service
 from ..services.review_service import create_review_by_branch_id_service, get_review_by_id_service, \
     get_all_review_by_company_id_service
 
-logger = logging.getLogger('django')
+logger: Logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
@@ -90,34 +98,35 @@ logger = logging.getLogger('django')
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_review_view(request):
+def create_review_view(request: WSGIRequest) -> Response:
     """Контроллер для создания review"""
-    user = request.user
+    user: QuerySet[User] = request.user
+    data: QueryDict = request.data
 
     try:
         try:
-            connect_id = request.data['connect_id']
+            connect_id: int | None = data['connect_id']
         except Exception as e:
             print(e)
             connect_id = None
-        review = create_review_by_branch_id_service(
+        review: QuerySet[Review] | None = create_review_by_branch_id_service(
             user=user,
-            branch_id=request.data['branch_id'],
-            full_name=request.data['full_name'],
-            link=request.data['link'],
-            rating=request.data['rating'],
+            branch_id=data['branch_id'],
+            full_name=data['full_name'],
+            link=data['link'],
+            rating=data['rating'],
             connect_id=connect_id
         )
-        if review:
-            serializer = ReviewSerializer(review, many=False)
-            message = 'Запрос выполнен успешно'
+        if not(review is None):
+            serializer: Serializer[ReviewSerializer] = ReviewSerializer(review, many=False)
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
             )
         else:
-            message = 'Это не ваш branch'
+            message: str = 'Это не ваш branch'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -127,7 +136,7 @@ def create_review_view(request):
             )
 
     except KeyError as e:
-        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        message: str = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -137,7 +146,7 @@ def create_review_view(request):
         )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой branch не найден {e}'
+        message: str = f'Такой branch не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -147,7 +156,7 @@ def create_review_view(request):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -185,22 +194,22 @@ def create_review_view(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_review_view(request, pk):
+def read_review_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для отдачи информации о review"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        review = get_review_by_id_service(user=user, review_id=pk)
-        if review:
-            serializer = ReviewSerializer(review, many=False)
-            message = 'Запрос выполнен успешно'
+        review: QuerySet[Review] | None = get_review_by_id_service(user=user, review_id=pk)
+        if not(review is None):
+            serializer: Serializer[ReviewSerializer] = ReviewSerializer(review, many=False)
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data=serializer.data,
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваш branch'
+            message: str = 'Это не ваш branch'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -210,7 +219,7 @@ def read_review_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой review не найден {e}'
+        message: str = f'Такой review не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -220,7 +229,7 @@ def read_review_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -267,20 +276,19 @@ def read_review_view(request, pk):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_review_list_view(request, pk):
+def read_review_list_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для отдачи информации о всех review branch"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        branch = get_branch_by_id_service(user=user, branch_id=pk)
-        if branch:
-
-            query = request.query_params.get('keyword')
+        branch: QuerySet[Branch] | None = get_branch_by_id_service(user=user, branch_id=pk)
+        if not(branch is None):
+            query: str = request.query_params.get('keyword')
             if query is None:
                 query = ''
-            review_list = branch.review_set.all()
-            page = request.query_params.get('page')
-            paginator = Paginator(review_list, 10)
+            review_list: QuerySet[Review] = branch.review_set.all()
+            page: int = request.query_params.get('page')
+            paginator: Paginator = Paginator(review_list, 10)
 
             try:
                 review_list = paginator.page(page)
@@ -294,8 +302,8 @@ def read_review_list_view(request, pk):
 
             page = int(page)
 
-            serializer = ReviewSerializer(review_list, many=True)
-            message = 'Запрос выполнен успешно'
+            serializer: Serializer[ReviewSerializer] = ReviewSerializer(review_list, many=True)
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -306,7 +314,7 @@ def read_review_list_view(request, pk):
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваш branch'
+            message: str = 'Это не ваш branch'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -316,7 +324,7 @@ def read_review_list_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой branch не найден {e}'
+        message: str = f'Такой branch не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -326,7 +334,7 @@ def read_review_list_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -398,25 +406,25 @@ def read_review_list_view(request, pk):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_review_view(request, pk):
+def update_review_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для обновления информации review"""
-    user = request.user
-    data = request.data
+    user: QuerySet[User] = request.user
+    data: QueryDict = request.data
 
     try:
-        review = get_review_by_id_service(user=user, review_id=pk)
-        if review:
-            serializer = ReviewSerializer(review, many=False, partial=True, data=data)
+        review: QuerySet[Review] | None = get_review_by_id_service(user=user, review_id=pk)
+        if not(review is None):
+            serializer: Serializer[ReviewSerializer] = ReviewSerializer(review, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
-            message = 'Запрос выполнен успешно'
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data=serializer.data,
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваш branch'
+            message: str = 'Это не ваш branch'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -426,7 +434,7 @@ def update_review_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой review не найден {e}'
+        message: str = f'Такой review не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -436,7 +444,7 @@ def update_review_view(request, pk):
         )
 
     except KeyError as e:
-        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        message: str = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -446,7 +454,7 @@ def update_review_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -484,15 +492,15 @@ def update_review_view(request, pk):
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_review_view(request, pk):
+def delete_review_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для удаления информации review"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        review = get_review_by_id_service(user=user, review_id=pk)
-        if review:
+        review: QuerySet[Review] | None = get_review_by_id_service(user=user, review_id=pk)
+        if not(review is None):
             review.delete()
-            message = 'Запрос выполнен успешно'
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -501,7 +509,7 @@ def delete_review_view(request, pk):
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваша company'
+            message: str = 'Это не ваша company'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -511,7 +519,7 @@ def delete_review_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой review не найден {e}'
+        message: str = f'Такой review не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -521,7 +529,7 @@ def delete_review_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -568,19 +576,19 @@ def delete_review_view(request, pk):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_review_list_all_view(request, pk):
+def read_review_list_all_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для отдачи информации о всех review компании"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        review_list = get_all_review_by_company_id_service(user=user, company_id=pk)
-        if review_list:
+        review_list: QuerySet[Review] | None = get_all_review_by_company_id_service(user=user, company_id=pk)
+        if not(review_list is None):
 
-            query = request.query_params.get('keyword')
+            query: str = request.query_params.get('keyword')
             if query is None:
                 query = ''
-            page = request.query_params.get('page')
-            paginator = Paginator(review_list, 10)
+            page: int = request.query_params.get('page')
+            paginator: Paginator = Paginator(review_list, 10)
 
             try:
                 review_list = paginator.page(page)
@@ -594,8 +602,8 @@ def read_review_list_all_view(request, pk):
 
             page = int(page)
 
-            serializer = ReviewSerializer(review_list, many=True)
-            message = 'Запрос выполнен успешно'
+            serializer: Serializer[ReviewSerializer] = ReviewSerializer(review_list, many=True)
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -606,7 +614,7 @@ def read_review_list_all_view(request, pk):
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваш review'
+            message: str = 'Это не ваш review'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -616,7 +624,7 @@ def read_review_list_all_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой review не найден {e}'
+        message: str = f'Такой review не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -626,7 +634,7 @@ def read_review_list_all_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
