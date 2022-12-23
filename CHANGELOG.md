@@ -14,6 +14,7 @@
 - Typed review views
 - Typed task views
 - Typed telebot views
+- Typed user views
 
 ### Изменено
 
