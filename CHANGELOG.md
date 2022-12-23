@@ -13,6 +13,7 @@
 - Typed review settings views
 - Typed review views
 - Typed task views
+- Typed telebot views
 
 ### Изменено
 

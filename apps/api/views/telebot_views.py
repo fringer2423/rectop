@@ -1,9 +1,15 @@
 import logging
 import sys
 
+from logging import Logger
+
+from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import QuerySet
+from django.http import QueryDict
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.serializers import Serializer
 from rest_framework import status
 
 from drf_yasg import openapi
@@ -13,9 +19,11 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from ..serializers import TelebotSerializer
 
+from ...core.models import Telebot, User
+
 from ..services.telebot_service import create_telebot_by_branch_id_service, get_telebot_by_id_service
 
-logger = logging.getLogger('django')
+logger: Logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
@@ -65,26 +73,26 @@ logger = logging.getLogger('django')
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_telebot_view(request):
+def create_telebot_view(request: WSGIRequest) -> Response:
     """Контроллер для создания telebot"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        telebot = create_telebot_by_branch_id_service(
+        telebot: QuerySet[Telebot] | None = create_telebot_by_branch_id_service(
             user=user,
             tg_id=request.data['tg_id'],
             branch_id=request.data['branch_id']
         )
-        if telebot:
-            serializer = TelebotSerializer(telebot, many=False)
-            message = 'Запрос выполнен успешно'
+        if not(telebot is None):
+            serializer: Serializer[TelebotSerializer] = TelebotSerializer(telebot, many=False)
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
             )
         else:
-            message = 'Это не ваш branch'
+            message: str = 'Это не ваш branch'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -94,7 +102,7 @@ def create_telebot_view(request):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такого branch не найдено {e}'
+        message: str = f'Такого branch не найдено {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -104,7 +112,7 @@ def create_telebot_view(request):
         )
 
     except KeyError as e:
-        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        message: str = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -114,7 +122,7 @@ def create_telebot_view(request):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -152,22 +160,22 @@ def create_telebot_view(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_telebot_view(request, pk):
+def read_telebot_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для отдачи информации о telebot"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        telebot = get_telebot_by_id_service(user, pk)
-        if telebot:
-            serializer = TelebotSerializer(telebot, many=False)
-            message = 'Запрос выполнен успешно'
+        telebot: QuerySet[Telebot] | None = get_telebot_by_id_service(user, pk)
+        if not(telebot is None):
+            serializer: Serializer[TelebotSerializer] = TelebotSerializer(telebot, many=False)
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data=serializer.data,
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваш branch'
+            message: str = 'Это не ваш branch'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -177,7 +185,7 @@ def read_telebot_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой telebot не найден {e}'
+        message: str = f'Такой telebot не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -187,7 +195,7 @@ def read_telebot_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -238,25 +246,25 @@ def read_telebot_view(request, pk):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_telebot_view(request, pk):
+def update_telebot_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для обновления информации telebot"""
-    user = request.user
-    data = request.data
+    user: QuerySet[User] = request.user
+    data: QueryDict = request.data
 
     try:
-        telebot = get_telebot_by_id_service(user, pk)
-        if telebot:
-            serializer = TelebotSerializer(telebot, many=False, partial=True, data=data)
+        telebot: QuerySet[Telebot] | None = get_telebot_by_id_service(user, pk)
+        if not(telebot is None):
+            serializer: Serializer[TelebotSerializer] = TelebotSerializer(telebot, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
-            message = 'Запрос выполнен успешно'
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data=serializer.data,
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваш branch'
+            message: str = 'Это не ваш branch'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -266,7 +274,7 @@ def update_telebot_view(request, pk):
             )
 
     except ObjectDoesNotExist:
-        message = 'Такой telebot не найден'
+        message: str = 'Такой telebot не найден'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -276,7 +284,7 @@ def update_telebot_view(request, pk):
         )
 
     except KeyError as e:
-        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        message: str = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -286,7 +294,7 @@ def update_telebot_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -324,15 +332,15 @@ def update_telebot_view(request, pk):
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_telebot_view(request, pk):
+def delete_telebot_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для удаления информации telebot"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        telebot = get_telebot_by_id_service(user, pk)
-        if telebot:
+        telebot: QuerySet[Telebot] | None = get_telebot_by_id_service(user, pk)
+        if not(telebot is None):
             telebot.delete()
-            message = 'Запрос выполнен успешно'
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -341,7 +349,7 @@ def delete_telebot_view(request, pk):
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваша company'
+            message: str = 'Это не ваша company'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -351,7 +359,7 @@ def delete_telebot_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой telebot не найден {e}'
+        message: str = f'Такой telebot не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -361,7 +369,7 @@ def delete_telebot_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
