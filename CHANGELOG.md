@@ -7,6 +7,7 @@
 ### Добавлено
 
 - Typed connect views [@fringer2423](https://github.com/fringer2423)
+- Typed QRCode views
 
 ### Изменено
 

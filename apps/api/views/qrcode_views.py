@@ -1,9 +1,14 @@
 import logging
 import sys
 
+from logging import Logger
+
+from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import QuerySet
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.serializers import Serializer
 from rest_framework import status
 
 from drf_yasg import openapi
@@ -14,10 +19,12 @@ from django.db import IntegrityError
 
 from ..serializers import QRCodeSerializer, AllQRCodesSerializer
 
+from ...core.models import User, QRCode
+
 from ..services.qrcode_service import create_qrcode_by_branch_id_service, get_qrcode_by_id_service, \
     get_all_qrcode_service
 
-logger = logging.getLogger('django')
+logger: Logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
@@ -63,26 +70,30 @@ logger = logging.getLogger('django')
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_qrcode_view(request):
+def create_qrcode_view(request: WSGIRequest) -> Response:
     """Контроллер для создания qrcode"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        branch_id = request.data['branch_id']
-        qr_code = create_qrcode_by_branch_id_service(
+        branch_id: int = request.data['branch_id']
+        qr_code: QuerySet[QRCode] | None = create_qrcode_by_branch_id_service(
             user=user,
             branch_id=branch_id
         )
-        if qr_code:
-            serializer = QRCodeSerializer(qr_code, many=False, context={"request": request})
-            message = 'Запрос выполнен успешно'
+        if not (qr_code is None):
+            serializer: Serializer[QRCodeSerializer] = QRCodeSerializer(
+                qr_code,
+                many=False,
+                context={"request": request}
+            )
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
             )
         else:
-            message = 'Это не ваш branch'
+            message: str = 'Это не ваш branch'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -92,7 +103,7 @@ def create_qrcode_view(request):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой branch не найден {e}'
+        message: str = f'Такой branch не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -102,7 +113,7 @@ def create_qrcode_view(request):
         )
 
     except KeyError as e:
-        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        message: str = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -112,7 +123,7 @@ def create_qrcode_view(request):
         )
 
     except IntegrityError as e:
-        message = f'QRCode уже создан для этого branch {e}'
+        message: str = f'QRCode уже создан для этого branch {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -122,7 +133,7 @@ def create_qrcode_view(request):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -160,22 +171,26 @@ def create_qrcode_view(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_qrcode_view(request, pk):
+def read_qrcode_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для отдачи информации о QRCode"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        qr_code = get_qrcode_by_id_service(user=user, qrcode_id=pk)
-        if qr_code:
-            serializer = QRCodeSerializer(qr_code, many=False, context={"request": request})
-            message = 'Запрос выполнен успешно'
+        qr_code: QuerySet[QRCode] | None = get_qrcode_by_id_service(user=user, qrcode_id=pk)
+        if not(qr_code is None):
+            serializer: Serializer[QRCodeSerializer] = QRCodeSerializer(
+                qr_code,
+                many=False,
+                context={"request": request}
+            )
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data=serializer.data,
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваш branch'
+            message: str = 'Это не ваш branch'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -185,7 +200,7 @@ def read_qrcode_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой QRCode не найден {e}'
+        message: str = f'Такой QRCode не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -195,7 +210,7 @@ def read_qrcode_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -226,13 +241,17 @@ def read_qrcode_view(request, pk):
     operation_summary='Получить все QRCode'
 )
 @api_view(['GET'])
-def read_all_qrcodes_view(request):
+def read_all_qrcodes_view(request: WSGIRequest) -> Response:
     """Контроллер для отдачи информации о всех QRCode"""
 
     try:
-        qr_code_list = get_all_qrcode_service()
-        serializer = AllQRCodesSerializer(qr_code_list, many=True, context={"request": request})
-        message = 'Запрос выполнен успешно'
+        qr_code_list: QuerySet[QRCode] = get_all_qrcode_service()
+        serializer: Serializer[AllQRCodesSerializer] = AllQRCodesSerializer(
+            qr_code_list,
+            many=True,
+            context={"request": request}
+        )
+        message: str = 'Запрос выполнен успешно'
         logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
         return Response(
             data=serializer.data,
@@ -240,7 +259,7 @@ def read_all_qrcodes_view(request):
         )
 
     except ObjectDoesNotExist as e:
-        message = 'QRCodes не найдены'
+        message: str = 'QRCodes не найдены'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
         return Response(
             data={
@@ -250,7 +269,7 @@ def read_all_qrcodes_view(request):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
         return Response(
             data={
