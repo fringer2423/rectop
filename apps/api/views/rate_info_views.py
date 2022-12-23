@@ -1,9 +1,14 @@
 import logging
 import sys
 
+from logging import Logger
+
+from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import QuerySet
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.serializers import Serializer
 
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
@@ -12,9 +17,11 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from ..serializers import RateInfoSerializer
 
+from ...core.models import User, RateInfo
+
 from ..services.rate_info_service import get_rate_info_service
 
-logger = logging.getLogger('django')
+logger: Logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
@@ -41,13 +48,13 @@ logger = logging.getLogger('django')
     operation_summary='Получить rate info'
 )
 @api_view(['GET'])
-def read_rate_info_view(request):
+def read_rate_info_view(request: WSGIRequest) -> Response:
     """Контроллер для отдачи информации о rate_info"""
 
     try:
-        rate_info = get_rate_info_service()
-        serializer = RateInfoSerializer(rate_info, many=False)
-        message = 'Запрос выполнен успешно'
+        rate_info: QuerySet[RateInfo] = get_rate_info_service()
+        serializer: Serializer[RateInfoSerializer] = RateInfoSerializer(rate_info, many=False)
+        message: str = 'Запрос выполнен успешно'
         logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
         return Response(
             data=serializer.data,
@@ -55,7 +62,7 @@ def read_rate_info_view(request):
         )
 
     except ObjectDoesNotExist as e:
-        message = f'Нет информации о тарифах {e}'
+        message: str = f'Нет информации о тарифах {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
         return Response(
             data={
@@ -65,7 +72,7 @@ def read_rate_info_view(request):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
         return Response(
             data={
