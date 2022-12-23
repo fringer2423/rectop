@@ -1,10 +1,16 @@
 import logging
 import sys
 
+from logging import Logger
+
+from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import QuerySet
+from django.http import QueryDict
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.serializers import Serializer
 
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
@@ -13,10 +19,12 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from ..serializers import ReviewSettingsSerializer
 
+from ...core.models import User, ReviewSettings
+
 from ..services.review_settings_service import get_review_settings_by_id_service, \
     create_review_settings_by_company_id_service
 
-logger = logging.getLogger('django')
+logger: Logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
@@ -67,27 +75,27 @@ logger = logging.getLogger('django')
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_review_settings_view(request):
+def create_review_settings_view(request: WSGIRequest) -> Response:
     """Контроллер для создания review settings """
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        company_id = request.data['company_id']
-        review_settings = create_review_settings_by_company_id_service(
+        company_id: int = request.data['company_id']
+        review_settings: QuerySet[ReviewSettings] | None = create_review_settings_by_company_id_service(
             user=user,
             mask=request.data['mask'],
             company_id=company_id
         )
-        if review_settings:
-            serializer = ReviewSettingsSerializer(review_settings, many=False)
-            message = 'Запрос выполнен успешно'
+        if not(review_settings is None):
+            serializer: Serializer[ReviewSettingsSerializer] = ReviewSettingsSerializer(review_settings, many=False)
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
             )
         else:
-            message = 'Это не ваша company'
+            message: str = 'Это не ваша company'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -97,7 +105,7 @@ def create_review_settings_view(request):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой company не найдено {e}'
+        message: str = f'Такой company не найдено {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -107,7 +115,7 @@ def create_review_settings_view(request):
         )
 
     except KeyError as e:
-        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        message: str = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -117,7 +125,7 @@ def create_review_settings_view(request):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -155,22 +163,25 @@ def create_review_settings_view(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_review_settings_view(request, pk):
+def read_review_settings_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для отдачи информации о review settings"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        review_settings = get_review_settings_by_id_service(user=user, review_settings_id=pk)
-        if review_settings:
-            serializer = ReviewSettingsSerializer(review_settings, many=False)
-            message = 'Запрос выполнен успешно'
+        review_settings: QuerySet[ReviewSettings] | None = get_review_settings_by_id_service(
+            user=user,
+            review_settings_id=pk
+        )
+        if not(review_settings is None):
+            serializer: Serializer[ReviewSettingsSerializer] = ReviewSettingsSerializer(review_settings, many=False)
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data=serializer.data,
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваша company'
+            message: str = 'Это не ваша company'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -180,7 +191,7 @@ def read_review_settings_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой review settings не найден {e}'
+        message: str = f'Такой review settings не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -190,7 +201,7 @@ def read_review_settings_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -242,25 +253,30 @@ def read_review_settings_view(request, pk):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_review_settings_view(request, pk):
+def update_review_settings_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для обновления информации review settings"""
-    user = request.user
-    data = request.data
+    user: QuerySet[User] = request.user
+    data: QueryDict = request.data
 
     try:
-        review_settings = get_review_settings_by_id_service(user, pk)
-        if review_settings:
-            serializer = ReviewSettingsSerializer(review_settings, many=False, partial=True, data=data)
+        review_settings: QuerySet[ReviewSettings] | None = get_review_settings_by_id_service(user, pk)
+        if not(review_settings is None):
+            serializer: Serializer[ReviewSettingsSerializer] = ReviewSettingsSerializer(
+                review_settings,
+                many=False,
+                partial=True,
+                data=data
+            )
             if serializer.is_valid():
                 serializer.save()
-            message = 'Запрос выполнен успешно'
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data=serializer.data,
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваша company'
+            message: str = 'Это не ваша company'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -270,7 +286,7 @@ def update_review_settings_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой review settings не найден {e}'
+        message: str = f'Такой review settings не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -280,7 +296,7 @@ def update_review_settings_view(request, pk):
         )
 
     except KeyError as e:
-        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        message: str = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -290,7 +306,7 @@ def update_review_settings_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -328,15 +344,15 @@ def update_review_settings_view(request, pk):
 )
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_review_settings_view(request, pk):
+def delete_review_settings_view(request: WSGIRequest, pk: int) -> Response:
     """Контроллер для удаления информации review settings"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        review_settings = get_review_settings_by_id_service(user, pk)
-        if review_settings:
+        review_settings: QuerySet[ReviewSettings] | None = get_review_settings_by_id_service(user, pk)
+        if not(review_settings is None):
             review_settings.delete()
-            message = 'Запрос выполнен успешно'
+            message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -345,7 +361,7 @@ def delete_review_settings_view(request, pk):
                 status=status.HTTP_200_OK
             )
         else:
-            message = 'Это не ваша company'
+            message: str = 'Это не ваша company'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
             return Response(
                 data={
@@ -355,7 +371,7 @@ def delete_review_settings_view(request, pk):
             )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой review settings не найден {e}'
+        message: str = f'Такой review settings не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -365,7 +381,7 @@ def delete_review_settings_view(request, pk):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
