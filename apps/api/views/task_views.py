@@ -1,9 +1,14 @@
 import logging
 import sys
 
+from logging import Logger
+
+from django.core.handlers.wsgi import WSGIRequest
+from django.http import QueryDict
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.serializers import Serializer
 from rest_framework import status
 
 from celery.result import AsyncResult
@@ -13,7 +18,7 @@ from drf_yasg.utils import swagger_auto_schema
 
 from ..serializers import TaskSerializer
 
-logger = logging.getLogger('django')
+logger: Logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
@@ -41,10 +46,10 @@ logger = logging.getLogger('django')
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_status_task_view(request, task_id):
-    task_result = AsyncResult(task_id)
-    serializer = TaskSerializer(task_result)
-    message = 'Запрос выполнен успешно'
+def read_status_task_view(request: WSGIRequest, task_id: int) -> Response:
+    task_result: QueryDict = AsyncResult(task_id)
+    serializer: Serializer[TaskSerializer] = TaskSerializer(task_result)
+    message: str = 'Запрос выполнен успешно'
     logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
     return Response(
         serializer.data,

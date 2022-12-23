@@ -12,6 +12,7 @@
 - Typed rate views
 - Typed review settings views
 - Typed review views
+- Typed task views
 
 ### Изменено
 
