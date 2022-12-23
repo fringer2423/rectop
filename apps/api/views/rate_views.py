@@ -1,9 +1,15 @@
 import logging
 import sys
 
+from logging import Logger
+
+from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import QuerySet
+from django.http import QueryDict
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.serializers import Serializer
 from rest_framework import status
 
 from drf_yasg import openapi
@@ -14,9 +20,11 @@ from django.db import IntegrityError
 
 from ..serializers import RateSerializer
 
+from ...core.models import User, Rate
+
 from ..services.rate_service import get_rate_by_user_service, create_rate_by_user_service
 
-logger = logging.getLogger('django')
+logger: Logger = logging.getLogger('django')
 
 
 @swagger_auto_schema(
@@ -59,16 +67,16 @@ logger = logging.getLogger('django')
 )
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_rate_view(request):
+def create_rate_view(request: WSGIRequest) -> Response:
     """Контроллер для создания rate"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        rate = create_rate_by_user_service(
+        rate: QuerySet[Rate] | None = create_rate_by_user_service(
             user=user,
         )
-        serializer = RateSerializer(rate, many=False)
-        message = 'Запрос выполнен успешно'
+        serializer: Serializer[RateSerializer] = RateSerializer(rate, many=False)
+        message: str = 'Запрос выполнен успешно'
         logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             serializer.data,
@@ -76,7 +84,7 @@ def create_rate_view(request):
         )
 
     except KeyError as e:
-        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        message: str = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -86,7 +94,7 @@ def create_rate_view(request):
         )
 
     except IntegrityError as e:
-        message = f'Rate уже создан для этого user {e}'
+        message: str = f'Rate уже создан для этого user {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -96,7 +104,7 @@ def create_rate_view(request):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -134,14 +142,14 @@ def create_rate_view(request):
 )
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def read_rate_view(request):
+def read_rate_view(request: WSGIRequest) -> Response:
     """Контроллер для отдачи информации о rate"""
-    user = request.user
+    user: QuerySet[User] = request.user
 
     try:
-        rate = get_rate_by_user_service(user=user)
-        serializer = RateSerializer(rate, many=False)
-        message = 'Запрос выполнен успешно'
+        rate: QuerySet[Rate] | None = get_rate_by_user_service(user=user)
+        serializer: Serializer[RateSerializer] = RateSerializer(rate, many=False)
+        message: str = 'Запрос выполнен успешно'
         logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data=serializer.data,
@@ -149,7 +157,7 @@ def read_rate_view(request):
         )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой rate не найден {e}'
+        message: str = f'Такой rate не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -159,7 +167,7 @@ def read_rate_view(request):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -209,16 +217,16 @@ def read_rate_view(request):
 )
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def update_rate_view(request):
+def update_rate_view(request: WSGIRequest) -> Response:
     """Контроллер для обновления информации rate"""
-    user = request.user
-    data = request.data
+    user: QuerySet[User] = request.user
+    data: QueryDict = request.data
     try:
-        rate = get_rate_by_user_service(user=user)
-        serializer = RateSerializer(rate, many=False, partial=True, data=data)
+        rate: QuerySet[Rate] | None = get_rate_by_user_service(user=user)
+        serializer: Serializer[RateSerializer] = RateSerializer(rate, many=False, partial=True, data=data)
         if serializer.is_valid():
             serializer.save()
-        message = 'Запрос выполнен успешно'
+        message: str = 'Запрос выполнен успешно'
         logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data=serializer.data,
@@ -226,7 +234,7 @@ def update_rate_view(request):
         )
 
     except ObjectDoesNotExist as e:
-        message = f'Такой rate не найден {e}'
+        message: str = f'Такой rate не найден {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -236,7 +244,7 @@ def update_rate_view(request):
         )
 
     except KeyError as e:
-        message = f'Ошибка при обработке запроса. Отсутствует поле {e}'
+        message: str = f'Ошибка при обработке запроса. Отсутствует поле {e}'
         logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
@@ -246,7 +254,7 @@ def update_rate_view(request):
         )
 
     except Exception as e:
-        message = f'Ошибка при обработке запроса {e}'
+        message: str = f'Ошибка при обработке запроса {e}'
         logger.critical(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(
             data={
