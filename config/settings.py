@@ -16,11 +16,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # APPS SETTINGS
 # ==============================================================================
 
-SECRET_KEY = os.environ.get("SECRET_KEY", default='django-insecure-v6$@j@0-xcje+wg-)g*!0dm!tfdghf^&%3dfg%+f&5nn^fi0')
+SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-v6$@j@0-xcje+wg-)g*!0dm!tfdghf^&%3dfg%+f&5nn^fi0')
 
-DEBUG = int(os.environ.get("DEBUG", default=1))
+DEBUG = int(os.environ.get('DEBUG', default=1))
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default='localhost 127.0.0.1 [::1]').split(" ")
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', default='localhost 127.0.0.1 [::1]').split(' ')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -133,13 +133,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # ==============================================================================
 
 DATABASES = {
-    "default": {
-        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
-        "USER": os.environ.get("SQL_USER", "user"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
-        "HOST": os.environ.get("SQL_HOST", "localhost"),
-        "PORT": os.environ.get("SQL_PORT", "5432"),
+    'default': {
+        'ENGINE': os.environ.get('SQL_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': os.environ.get('SQL_DATABASE', os.path.join(BASE_DIR, 'db.sqlite3')),
+        'USER': os.environ.get('SQL_USER', 'user'),
+        'PASSWORD': os.environ.get('SQL_PASSWORD', 'password'),
+        'HOST': os.environ.get('SQL_HOST', 'localhost'),
+        'PORT': os.environ.get('SQL_PORT', '5432'),
     }
 }
 
@@ -186,8 +186,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 # CELERY SETTINGS
 # ==============================================================================
 
-CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
-CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER', 'redis://redis:6379/0')
+CELERY_RESULT_BACKEND = os.environ.get('CELERY_BROKER', 'redis://redis:6379/0')
 CELERYD_HIJACK_ROOT_LOGGER = False
 
 CELERYBEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
@@ -196,15 +196,15 @@ CELERYBEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 # TELEGRAM LOGGER SETTINGS
 # ==============================================================================
 
-TELEGRAM_LOGGING_TOKEN = os.environ.get("TELEGRAM_TOKEN", local_settings.TELEGRAM_TOKEN)
-TELEGRAM_LOGGING_CHAT = os.environ.get("TELEGRAM_GROUP_ID", local_settings.TELEGRAM_GROUP_ID)
+TELEGRAM_LOGGING_TOKEN = os.environ.get('TELEGRAM_TOKEN', local_settings.TELEGRAM_TOKEN)
+TELEGRAM_LOGGING_CHAT = os.environ.get('TELEGRAM_GROUP_ID', local_settings.TELEGRAM_GROUP_ID)
 TELEGRAM_LOGGING_EMIT_ON_DEBUG = True
 
 # ==============================================================================
 # TELEGRAM LOGGER SETTINGS
 # ==============================================================================
 
-TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", local_settings.TELEGRAM_BOT_TOKEN)
+TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN', local_settings.TELEGRAM_BOT_TOKEN)
 
 # ==============================================================================
 # LOGGER SETTINGS
@@ -298,9 +298,9 @@ LOGGING = {
 # EMAIL SETTINGS
 # ==============================================================================
 
-EMAIL_HOST = os.environ.get("EMAIL_HOST", local_settings.EMAIL_HOST)
-EMAIL_PORT = os.environ.get("EMAIL_PORT", local_settings.EMAIL_PORT)
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", local_settings.EMAIL_HOST_USER)
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", local_settings.EMAIL_HOST_PASSWORD)
-# EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", local_settings.EMAIL_USE_TLS)
-EMAIL_USE_SSL = os.environ.get("EMAIL_USE_SSL", local_settings.EMAIL_USE_SSL)
+EMAIL_HOST = os.environ.get('EMAIL_HOST', local_settings.EMAIL_HOST)
+EMAIL_PORT = os.environ.get('EMAIL_PORT', local_settings.EMAIL_PORT)
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', local_settings.EMAIL_HOST_USER)
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', local_settings.EMAIL_HOST_PASSWORD)
+# EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', local_settings.EMAIL_USE_TLS)
+EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', local_settings.EMAIL_USE_SSL)
