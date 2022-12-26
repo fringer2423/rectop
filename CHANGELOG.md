@@ -6,17 +6,18 @@
 
 ### Добавлено
 
-- Typed all urls [@fringer2423](https://github.com/fringer2423
+- Typed all urls [@fringer2423](https://github.com/fringer2423)
 - Typed serializers
-- 
+- error handling rate info [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Изменено
 
-- Some fix [@fringer2423](https://github.com/fringer2423
+- Some fix [@fringer2423](https://github.com/fringer2423)
 
 ### Исправлено
 
-- Rate info endpoint fix (404 status code) [@fringer2423](https://github.com/fringer2423
+- Rate info endpoint fix (404 status code) [@fringer2423](https://github.com/fringer2423)
+- rate info prices [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.44] - 2022-12-23
 
@@ -35,7 +36,7 @@
 
 ### Изменено
 
-- 
+-
 
 ## [0.0.43] - 2022-12-22
 
