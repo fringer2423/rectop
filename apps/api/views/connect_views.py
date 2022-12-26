@@ -3,25 +3,26 @@ import sys
 
 from logging import Logger
 
-from django.core.handlers.wsgi import WSGIRequest
-from django.db.models import QuerySet
-from django.http import QueryDict
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.serializers import Serializer
 from rest_framework import status
 
-from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import QuerySet
 from django.db import IntegrityError
+from django.http import QueryDict
 
 from ..serializers import ConnectSerializer
 
 from ..services.connect_service import create_connect_by_branch_id_service, get_connect_by_id_service
 from ..services.branch_service import get_branch_by_id_service
+
 from ...core.models import Connect, User, Branch
 
 logger: Logger = logging.getLogger('django')
@@ -96,7 +97,7 @@ def create_connect_view(request: WSGIRequest) -> Response:
             key=request.data['key'],
             branch_id=branch_id
         )
-        if not(connect is None):
+        if not (connect is None):
             serializer: Serializer[ConnectSerializer] = ConnectSerializer(connect, many=False)
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
@@ -189,7 +190,7 @@ def read_connect_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         connect: QuerySet[Connect] | None = get_connect_by_id_service(user=user, connect_id=pk)
-        if not(connect is None):
+        if not (connect is None):
             serializer: Serializer[ConnectSerializer] = ConnectSerializer(connect, many=False)
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
@@ -262,7 +263,7 @@ def read_connect_list_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         branch: QuerySet[Branch] | None = get_branch_by_id_service(user=user, branch_id=pk)
-        if not(branch is None):
+        if not (branch is None):
             serializer: Serializer[ConnectSerializer] = ConnectSerializer(branch.connect_set, many=True)
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
@@ -356,7 +357,7 @@ def update_connect_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         connect: QuerySet[Connect] | None = get_connect_by_id_service(user, pk)
-        if not(connect is None):
+        if not (connect is None):
             serializer: Serializer[ConnectSerializer] = ConnectSerializer(connect, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
@@ -441,7 +442,7 @@ def delete_connect_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         connect: QuerySet[Connect] | None = get_connect_by_id_service(user, pk)
-        if not(connect is None):
+        if not (connect is None):
             connect.delete()
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')

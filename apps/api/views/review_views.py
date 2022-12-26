@@ -3,20 +3,20 @@ import sys
 
 from logging import Logger
 
-from django.core.handlers.wsgi import WSGIRequest
-from django.db.models import QuerySet
-from django.http import QueryDict
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.serializers import Serializer
 from rest_framework import status
 
-from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import QuerySet
+from django.http import QueryDict
 
 from ..serializers import ReviewSerializer
 
@@ -117,7 +117,7 @@ def create_review_view(request: WSGIRequest) -> Response:
             rating=data['rating'],
             connect_id=connect_id
         )
-        if not(review is None):
+        if not (review is None):
             serializer: Serializer[ReviewSerializer] = ReviewSerializer(review, many=False)
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
@@ -200,7 +200,7 @@ def read_review_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         review: QuerySet[Review] | None = get_review_by_id_service(user=user, review_id=pk)
-        if not(review is None):
+        if not (review is None):
             serializer: Serializer[ReviewSerializer] = ReviewSerializer(review, many=False)
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
@@ -282,7 +282,7 @@ def read_review_list_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         branch: QuerySet[Branch] | None = get_branch_by_id_service(user=user, branch_id=pk)
-        if not(branch is None):
+        if not (branch is None):
             query: str = request.query_params.get('keyword')
             if query is None:
                 query = ''
@@ -413,7 +413,7 @@ def update_review_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         review: QuerySet[Review] | None = get_review_by_id_service(user=user, review_id=pk)
-        if not(review is None):
+        if not (review is None):
             serializer: Serializer[ReviewSerializer] = ReviewSerializer(review, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
@@ -498,7 +498,7 @@ def delete_review_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         review: QuerySet[Review] | None = get_review_by_id_service(user=user, review_id=pk)
-        if not(review is None):
+        if not (review is None):
             review.delete()
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
@@ -582,7 +582,7 @@ def read_review_list_all_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         review_list: QuerySet[Review] | None = get_all_review_by_company_id_service(user=user, company_id=pk)
-        if not(review_list is None):
+        if not (review_list is None):
 
             query: str = request.query_params.get('keyword')
             if query is None:

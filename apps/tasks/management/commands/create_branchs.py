@@ -1,9 +1,7 @@
 import random
 import string
-import time
 
 from django.core.management.base import BaseCommand
-from django.conf import settings
 from apps.core.models import Branch, Connect
 
 letters = string.ascii_letters
@@ -24,4 +22,3 @@ class Command(BaseCommand):
                 type=2,
                 key='1231',
             )
-

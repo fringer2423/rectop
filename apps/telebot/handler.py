@@ -6,9 +6,9 @@ from django.utils.module_loading import import_string
 
 from apps.tasks.services.telegram_tasks_service import send_message_task
 
-token = settings.TELEGRAM_LOGGING_TOKEN
-chat = settings.TELEGRAM_LOGGING_CHAT
-emit_on_debug = getattr(settings, 'TELEGRAM_LOGGING_EMIT_ON_DEBUG', False)
+token: str = settings.TELEGRAM_LOGGING_TOKEN
+chat: str = settings.TELEGRAM_LOGGING_CHAT
+emit_on_debug: bool = getattr(settings, 'TELEGRAM_LOGGING_EMIT_ON_DEBUG', False)
 
 
 class PseudoFile:
@@ -52,5 +52,5 @@ class TelegramHandler(logging.Handler):
         self.send_message(message)
 
     def send_message(self, message):
-        message = f'{datetime.now().strftime("%Y%m%d%H%M%S")}.{logging.getLevelName(self.level)} - {message}'
+        message = f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}.{logging.getLevelName(self.level)} - {message}'
         send_message_task.delay(chat_id=chat, token=token, message=message)

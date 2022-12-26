@@ -3,24 +3,25 @@ import sys
 
 from logging import Logger
 
-from django.core.handlers.wsgi import WSGIRequest
-from django.db.models import QuerySet
-from django.http import QueryDict
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.serializers import Serializer
 from rest_framework import status
 
-from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
+from django.core.handlers.wsgi import WSGIRequest
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import QuerySet
 from django.db import IntegrityError
+from django.http import QueryDict
 
 from ..serializers import AnswerSerializer
 
 from ..services.answer_service import get_answer_by_id_service, create_answer_by_review_id_service
+
 from ...core.models import Answer, User
 
 logger: Logger = logging.getLogger('django')
@@ -95,7 +96,8 @@ def create_answer_view(request: WSGIRequest) -> Response:
             body=data['body'],
             type_answer=data['type'],
         )
-        if not(answer is None):
+
+        if not (answer is None):
             serializer: Serializer[AnswerSerializer] = AnswerSerializer(answer, many=False)
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
@@ -189,7 +191,7 @@ def read_answer_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         answer: QuerySet[Answer] | None = get_answer_by_id_service(user=user, answer_id=pk)
-        if not(answer is None):
+        if not (answer is None):
             serializer: Serializer[AnswerSerializer] = AnswerSerializer(answer, many=False)
             message: str = 'Запрос выполнен успешно'
             logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
@@ -283,7 +285,7 @@ def update_answer_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         answer: QuerySet[Answer] | None = get_answer_by_id_service(user=user, answer_id=pk)
-        if not(answer is None):
+        if not (answer is None):
             serializer: Serializer[AnswerSerializer] = AnswerSerializer(answer, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
@@ -368,7 +370,7 @@ def delete_answer_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         answer: QuerySet[Answer] | None = get_answer_by_id_service(user=user, answer_id=pk)
-        if not(answer is None):
+        if not (answer is None):
             answer.delete()
             message: str = 'Удаление выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')

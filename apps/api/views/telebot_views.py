@@ -3,19 +3,19 @@ import sys
 
 from logging import Logger
 
-from django.core.handlers.wsgi import WSGIRequest
-from django.db.models import QuerySet
-from django.http import QueryDict
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.serializers import Serializer
 from rest_framework import status
 
-from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import QuerySet
+from django.http import QueryDict
 
 from ..serializers import TelebotSerializer
 
@@ -83,7 +83,7 @@ def create_telebot_view(request: WSGIRequest) -> Response:
             tg_id=request.data['tg_id'],
             branch_id=request.data['branch_id']
         )
-        if not(telebot is None):
+        if not (telebot is None):
             serializer: Serializer[TelebotSerializer] = TelebotSerializer(telebot, many=False)
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
@@ -166,7 +166,7 @@ def read_telebot_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         telebot: QuerySet[Telebot] | None = get_telebot_by_id_service(user, pk)
-        if not(telebot is None):
+        if not (telebot is None):
             serializer: Serializer[TelebotSerializer] = TelebotSerializer(telebot, many=False)
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
@@ -253,7 +253,7 @@ def update_telebot_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         telebot: QuerySet[Telebot] | None = get_telebot_by_id_service(user, pk)
-        if not(telebot is None):
+        if not (telebot is None):
             serializer: Serializer[TelebotSerializer] = TelebotSerializer(telebot, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
@@ -338,7 +338,7 @@ def delete_telebot_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         telebot: QuerySet[Telebot] | None = get_telebot_by_id_service(user, pk)
-        if not(telebot is None):
+        if not (telebot is None):
             telebot.delete()
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
