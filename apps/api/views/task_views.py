@@ -3,8 +3,6 @@ import sys
 
 from logging import Logger
 
-from django.core.handlers.wsgi import WSGIRequest
-from django.http import QueryDict
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -13,8 +11,11 @@ from rest_framework import status
 
 from celery.result import AsyncResult
 
-from drf_yasg import openapi
+from django.core.handlers.wsgi import WSGIRequest
+from django.http import QueryDict
+
 from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 from ..serializers import TaskSerializer
 

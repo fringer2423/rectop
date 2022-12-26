@@ -6,7 +6,8 @@
 
 ### Добавлено
 
-- Typed all urls [@fringer2423](https://github.com/fringer2423)
+- Typed all urls [@fringer2423](https://github.com/fringer2423
+- Typed serializers
 
 ### Изменено
 

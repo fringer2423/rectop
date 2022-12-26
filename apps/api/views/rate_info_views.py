@@ -3,21 +3,21 @@ import sys
 
 from logging import Logger
 
-from django.core.handlers.wsgi import WSGIRequest
-from django.db.models import QuerySet
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.serializers import Serializer
 
-from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import QuerySet
 
 from ..serializers import RateInfoSerializer
 
-from ...core.models import User, RateInfo
+from ...core.models import RateInfo
 
 from ..services.rate_info_service import get_rate_info_service
 

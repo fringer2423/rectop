@@ -3,25 +3,26 @@ import sys
 
 from logging import Logger
 
-from django.core.handlers.wsgi import WSGIRequest
-from django.db.models import QuerySet
-from django.http import QueryDict
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.serializers import Serializer
 from rest_framework import status
 
-from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
+from django.core.handlers.wsgi import WSGIRequest
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import QuerySet
+from django.http import QueryDict
 
 from ..serializers import BranchSerializer
 
 from ..services.company_services import get_company_by_id_service
 from ..services.branch_service import get_branch_by_id_service, create_branch_by_company
+
 from ...core.models import Company, User, Branch
 
 logger: Logger = logging.getLogger('django')
@@ -70,7 +71,7 @@ def read_branch_list_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         company: QuerySet[Company] | None = get_company_by_id_service(user, pk)
-        if not(company is None):
+        if not (company is None):
             branch_list: QuerySet[Branch] = company.branchs.all()
             query: str = request.query_params.get('keyword')
             if query is None:
@@ -165,7 +166,7 @@ def read_branch_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         branch: QuerySet[Branch] | None = get_branch_by_id_service(user=user, branch_id=pk)
-        if not(branch is None):
+        if not (branch is None):
             serializer: Serializer[BranchSerializer] = BranchSerializer(branch, many=False)
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
@@ -296,7 +297,7 @@ def create_branch_view(request: WSGIRequest) -> Response:
         company_id: int = data['company_id']
         name: str = data['name']
         branch: QuerySet[Branch] | None = create_branch_by_company(user=user, name=name, company_id=company_id)
-        if not(branch is None):
+        if not (branch is None):
             serializer: Serializer[BranchSerializer] = BranchSerializer(branch, data=request.data, partial=True)
             serializer.is_valid()
             serializer.save()
@@ -430,7 +431,7 @@ def update_branch_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         branch: QuerySet[Branch] | None = get_branch_by_id_service(user, pk)
-        if not(branch is None):
+        if not (branch is None):
             serializer: Serializer[BranchSerializer] = BranchSerializer(branch, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()

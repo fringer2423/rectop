@@ -3,18 +3,18 @@ import sys
 
 from logging import Logger
 
-from django.core.handlers.wsgi import WSGIRequest
-from django.db.models import QuerySet
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.serializers import Serializer
 from rest_framework import status
 
-from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import QuerySet
 from django.db import IntegrityError
 
 from ..serializers import QRCodeSerializer, AllQRCodesSerializer
@@ -177,7 +177,7 @@ def read_qrcode_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         qr_code: QuerySet[QRCode] | None = get_qrcode_by_id_service(user=user, qrcode_id=pk)
-        if not(qr_code is None):
+        if not (qr_code is None):
             serializer: Serializer[QRCodeSerializer] = QRCodeSerializer(
                 qr_code,
                 many=False,

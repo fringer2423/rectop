@@ -3,23 +3,24 @@ import sys
 
 from logging import Logger
 
-from django.core.handlers.wsgi import WSGIRequest
-from django.db.models import QuerySet
-from django.http import QueryDict
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.serializers import Serializer
 from rest_framework import status
 
-from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import QuerySet
+from django.http import QueryDict
 
 from ..serializers import CompanySerializer
 
 from ..services.company_services import get_company_by_id_service, create_company_by_company_name_service
+
 from ...core.models import Company, User
 
 logger: Logger = logging.getLogger('django')
@@ -130,7 +131,7 @@ def read_company_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         company: QuerySet[Company] | None = get_company_by_id_service(user, pk)
-        if not(company is None):
+        if not (company is None):
             serializer: Serializer[CompanySerializer] = CompanySerializer(company, many=False)
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
@@ -217,7 +218,7 @@ def update_company_view(request: WSGIRequest, pk: int) -> Response:
 
     try:
         company: QuerySet[Company] | None = get_company_by_id_service(user, pk)
-        if not(company is None):
+        if not (company is None):
             serializer: Serializer[CompanySerializer] = CompanySerializer(company, many=False, partial=True, data=data)
             if serializer.is_valid():
                 serializer.save()
@@ -302,8 +303,8 @@ def delete_company_view(request: WSGIRequest, pk: int) -> Response:
     user: QuerySet[User] = request.user
 
     try:
-        company: QuerySet[Company] | None= get_company_by_id_service(user, pk)
-        if not(company is None):
+        company: QuerySet[Company] | None = get_company_by_id_service(user, pk)
+        if not (company is None):
             company.delete()
             message: str = 'Запрос выполнен успешно'
             logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
