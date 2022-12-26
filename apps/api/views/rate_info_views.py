@@ -53,13 +53,23 @@ def read_rate_info_view(request: WSGIRequest) -> Response:
 
     try:
         rate_info: QuerySet[RateInfo] = get_rate_info_service()
-        serializer: Serializer[RateInfoSerializer] = RateInfoSerializer(rate_info, many=False)
-        message: str = 'Запрос выполнен успешно'
-        logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
-        return Response(
-            data=serializer.data,
-            status=status.HTTP_200_OK
-        )
+        if rate_info is None:
+            message: str = f'Нет информации о тарифах'
+            logger.warning(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
+            return Response(
+                data={
+                    'detail': message
+                },
+                status=status.HTTP_404_NOT_FOUND
+            )
+        else:
+            serializer: Serializer[RateInfoSerializer] = RateInfoSerializer(rate_info, many=False)
+            message: str = 'Запрос выполнен успешно'
+            logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message}')
+            return Response(
+                data=serializer.data,
+                status=status.HTTP_200_OK
+            )
 
     except ObjectDoesNotExist as e:
         message: str = f'Нет информации о тарифах {e}'

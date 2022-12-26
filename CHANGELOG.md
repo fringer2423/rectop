@@ -14,6 +14,10 @@
 
 - Some fix [@fringer2423](https://github.com/fringer2423
 
+### Исправлено
+
+- Rate info endpoint fix (404 status code) [@fringer2423](https://github.com/fringer2423
+
 ## [0.0.44] - 2022-12-23
 
 ### Добавлено
