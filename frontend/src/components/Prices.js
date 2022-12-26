@@ -66,55 +66,55 @@ const Prices = ({rateInfo, weekRatio, yearRatio, first, second, third, loading, 
 
     const toSetThirdPrice = () => {
         if (activeIndex === 0) {
-            setPriceDurationThird(countPrices(numBranchsThird, priceWeek.third).resultPrice + ' РУБ./НЕД.');
-            setPriceOldThird(countPrices(numBranchsThird, priceWeek.third).oldPrice + ' РУБ./НЕД.');
-            setSaleThird('Скидка: ' + countPrices(numBranchsThird, priceWeek.third).sale + '%');
+            setPriceDurationThird(countPrices(numBranchsThird, priceWeek.third, sales).resultPrice + ' РУБ./НЕД.');
+            setPriceOldThird(countPrices(numBranchsThird, priceWeek.third, sales).oldPrice + ' РУБ./НЕД.');
+            setSaleThird('Скидка: ' + countPrices(numBranchsThird, priceWeek.third, sales).sale + '%');
         }
         if (activeIndex === 1) {
-            setPriceDurationThird(countPrices(numBranchsThird, third).resultPrice + ' РУБ./МЕС.');
-            setPriceOldThird(countPrices(numBranchsThird, third).oldPrice + ' РУБ./МЕС.');
-            setSaleThird('Скидка: ' + countPrices(numBranchsThird, third).sale + '%');
+            setPriceDurationThird(countPrices(numBranchsThird, third, sales).resultPrice + ' РУБ./МЕС.');
+            setPriceOldThird(countPrices(numBranchsThird, third, sales).oldPrice + ' РУБ./МЕС.');
+            setSaleThird('Скидка: ' + countPrices(numBranchsThird, third, sales).sale + '%');
         }
         if (activeIndex === 2) {
-            setPriceDurationThird(countPrices(numBranchsThird, priceYear.third).resultPrice + ' РУБ./ГОД.');
-            setPriceOldThird(countPrices(numBranchsThird, priceYear.third).oldPrice + ' РУБ./ГОД.');
-            setSaleThird('Скидка: ' + countPrices(numBranchsThird, priceYear.third).sale + '%');
+            setPriceDurationThird(countPrices(numBranchsThird, priceYear.third, sales).resultPrice + ' РУБ./ГОД.');
+            setPriceOldThird(countPrices(numBranchsThird, priceYear.third, sales).oldPrice + ' РУБ./ГОД.');
+            setSaleThird('Скидка: ' + countPrices(numBranchsThird, priceYear.third, sales).sale + '%');
         }
     }
 
     const toSetSecondPrice = () => {
         if (activeIndex === 0) {
-            setPriceDurationSecond(countPrices(numBranchsSecond, priceWeek.second).resultPrice + ' РУБ./НЕД.');
-            setPriceOldSecond(countPrices(numBranchsSecond, priceWeek.second).oldPrice + ' РУБ./НЕД.');
-            setSaleSecond('Скидка: ' + countPrices(numBranchsSecond, priceWeek.second).sale + '%');
+            setPriceDurationSecond(countPrices(numBranchsSecond, priceWeek.second, sales).resultPrice + ' РУБ./НЕД.');
+            setPriceOldSecond(countPrices(numBranchsSecond, priceWeek.second, sales).oldPrice + ' РУБ./НЕД.');
+            setSaleSecond('Скидка: ' + countPrices(numBranchsSecond, priceWeek.second, sales).sale + '%');
         }
         if (activeIndex === 1) {
-            setPriceDurationSecond(countPrices(numBranchsSecond, second).resultPrice + ' РУБ./МЕС.');
-            setPriceOldSecond(countPrices(numBranchsSecond, second).oldPrice + ' РУБ./МЕС.');
-            setSaleSecond('Скидка: ' + countPrices(numBranchsSecond, second).sale + '%');
+            setPriceDurationSecond(countPrices(numBranchsSecond, second, sales).resultPrice + ' РУБ./МЕС.');
+            setPriceOldSecond(countPrices(numBranchsSecond, second, sales).oldPrice + ' РУБ./МЕС.');
+            setSaleSecond('Скидка: ' + countPrices(numBranchsSecond, second, sales).sale + '%');
         }
         if (activeIndex === 2) {
-            setPriceDurationSecond(countPrices(numBranchsSecond, priceYear.second).resultPrice + ' РУБ./ГОД.');
-            setPriceOldSecond(countPrices(numBranchsSecond, priceYear.second).oldPrice + ' РУБ./ГОД.');
-            setSaleSecond('Скидка: ' + countPrices(numBranchsSecond, priceYear.second).sale + '%')
+            setPriceDurationSecond(countPrices(numBranchsSecond, priceYear.second, sales).resultPrice + ' РУБ./ГОД.');
+            setPriceOldSecond(countPrices(numBranchsSecond, priceYear.second, sales).oldPrice + ' РУБ./ГОД.');
+            setSaleSecond('Скидка: ' + countPrices(numBranchsSecond, priceYear.second, sales).sale + '%')
         }
     }
 
     const toSetFirstPrice = () => {
         if (activeIndex === 0) {
-            setPriceDurationFirst(countPrices(numBranchsFirst, priceWeek.first).resultPrice + ' РУБ./НЕД.');
-            setPriceOldFirst(countPrices(numBranchsFirst, priceWeek.first).oldPrice + ' РУБ./НЕД.');
-            setSaleFirst('Скидка: ' + countPrices(numBranchsFirst, priceWeek.first).sale + '%');
+            setPriceDurationFirst(countPrices(numBranchsFirst, priceWeek.first, sales).resultPrice + ' РУБ./НЕД.');
+            setPriceOldFirst(countPrices(numBranchsFirst, priceWeek.first, sales).oldPrice + ' РУБ./НЕД.');
+            setSaleFirst('Скидка: ' + countPrices(numBranchsFirst, priceWeek.first, sales).sale + '%');
         }
         if (activeIndex === 1) {
-            setPriceDurationFirst(countPrices(numBranchsFirst, first).resultPrice + ' РУБ./МЕС.');
-            setPriceOldFirst(countPrices(numBranchsFirst, first).oldPrice + ' РУБ./МЕС.');
-            setSaleFirst('Скидка: ' + countPrices(numBranchsFirst, first).sale + '%');
+            setPriceDurationFirst(countPrices(numBranchsFirst, first, sales).resultPrice + ' РУБ./МЕС.');
+            setPriceOldFirst(countPrices(numBranchsFirst, first, sales).oldPrice + ' РУБ./МЕС.');
+            setSaleFirst('Скидка: ' + countPrices(numBranchsFirst, first, sales).sale + '%');
         }
         if (activeIndex === 2) {
-            setPriceDurationFirst(countPrices(numBranchsFirst, priceYear.first).resultPrice + ' РУБ./ГОД.');
-            setPriceOldFirst(countPrices(numBranchsFirst, priceYear.first).oldPrice + ' РУБ./ГОД.');
-            setSaleFirst('Скидка: ' + countPrices(numBranchsFirst, priceYear.first).sale + '%');
+            setPriceDurationFirst(countPrices(numBranchsFirst, priceYear.first, sales).resultPrice + ' РУБ./ГОД.');
+            setPriceOldFirst(countPrices(numBranchsFirst, priceYear.first, sales).oldPrice + ' РУБ./ГОД.');
+            setSaleFirst('Скидка: ' + countPrices(numBranchsFirst, priceYear.first, sales).sale + '%');
         }
     }
 
@@ -162,33 +162,32 @@ const Prices = ({rateInfo, weekRatio, yearRatio, first, second, third, loading, 
 
     const handleClickFirstPrice = () => {
         setActiveIndex(0);
-        setPriceDurationFirst(countPrices(numBranchsFirst, priceWeek.first).resultPrice + ' РУБ./НЕД.');
-        setPriceDurationSecond(countPrices(numBranchsSecond, priceWeek.second).resultPrice + ' РУБ./НЕД.');
-        setPriceDurationThird(countPrices(numBranchsThird, priceWeek.third).resultPrice + ' РУБ./НЕД.');
-        setPriceOldFirst(countPrices(numBranchsFirst, priceWeek.first).oldPrice + ' РУБ./НЕД.');
-        setPriceOldSecond(countPrices(numBranchsSecond, priceWeek.second).oldPrice + ' РУБ./НЕД.');
-        setPriceOldThird(countPrices(numBranchsThird, priceWeek.third).oldPrice + ' РУБ./НЕД.');
-
+        setPriceDurationFirst(countPrices(numBranchsFirst, priceWeek.first, sales).resultPrice + ' РУБ./НЕД.');
+        setPriceDurationSecond(countPrices(numBranchsSecond, priceWeek.second, sales).resultPrice + ' РУБ./НЕД.');
+        setPriceDurationThird(countPrices(numBranchsThird, priceWeek.third, sales).resultPrice + ' РУБ./НЕД.');
+        setPriceOldFirst(countPrices(numBranchsFirst, priceWeek.first, sales).oldPrice + ' РУБ./НЕД.');
+        setPriceOldSecond(countPrices(numBranchsSecond, priceWeek.second, sales).oldPrice + ' РУБ./НЕД.');
+        setPriceOldThird(countPrices(numBranchsThird, priceWeek.third, sales).oldPrice + ' РУБ./НЕД.');
     }
 
     const handleClickSecondPrice = () => {
         setActiveIndex(1);
-        setPriceDurationFirst(countPrices(numBranchsFirst, first).resultPrice + ' РУБ./МЕС.');
-        setPriceDurationSecond(countPrices(numBranchsSecond, second).resultPrice + ' РУБ./МЕС.');
-        setPriceDurationThird(countPrices(numBranchsThird, third).resultPrice + ' РУБ./МЕС.');
-        setPriceOldFirst(countPrices(numBranchsFirst, first).oldPrice + ' РУБ./МЕС.');
-        setPriceOldSecond(countPrices(numBranchsSecond, second).oldPrice + ' РУБ./МЕС.');
-        setPriceOldThird(countPrices(numBranchsThird, third).oldPrice + ' РУБ./МЕС.');
+        setPriceDurationFirst(countPrices(numBranchsFirst, first, sales).resultPrice + ' РУБ./МЕС.');
+        setPriceDurationSecond(countPrices(numBranchsSecond, second, sales).resultPrice + ' РУБ./МЕС.');
+        setPriceDurationThird(countPrices(numBranchsThird, third, sales).resultPrice + ' РУБ./МЕС.');
+        setPriceOldFirst(countPrices(numBranchsFirst, first, sales).oldPrice + ' РУБ./МЕС.');
+        setPriceOldSecond(countPrices(numBranchsSecond, second, sales).oldPrice + ' РУБ./МЕС.');
+        setPriceOldThird(countPrices(numBranchsThird, third, sales).oldPrice + ' РУБ./МЕС.');
     }
 
     const handleClickThirdPrice = () => {
         setActiveIndex(2);
-        setPriceDurationFirst(countPrices(numBranchsFirst, priceYear.first).resultPrice + ' РУБ./ГОД.');
-        setPriceDurationSecond(countPrices(numBranchsSecond, priceYear.second).resultPrice + ' РУБ./ГОД.');
-        setPriceDurationThird(countPrices(numBranchsThird, priceYear.third).resultPrice + ' РУБ./ГОД.');
-        setPriceOldFirst(countPrices(numBranchsFirst, priceYear.first).oldPrice + ' РУБ./ГОД.');
-        setPriceOldSecond(countPrices(numBranchsSecond, priceYear.second).oldPrice + ' РУБ./ГОД.');
-        setPriceOldThird(countPrices(numBranchsThird, priceYear.third).oldPrice + ' РУБ./ГОД.');
+        setPriceDurationFirst(countPrices(numBranchsFirst, priceYear.first, sales).resultPrice + ' РУБ./ГОД.');
+        setPriceDurationSecond(countPrices(numBranchsSecond, priceYear.second, sales).resultPrice + ' РУБ./ГОД.');
+        setPriceDurationThird(countPrices(numBranchsThird, priceYear.third, sales).resultPrice + ' РУБ./ГОД.');
+        setPriceOldFirst(countPrices(numBranchsFirst, priceYear.first, sales).oldPrice + ' РУБ./ГОД.');
+        setPriceOldSecond(countPrices(numBranchsSecond, priceYear.second, sales).oldPrice + ' РУБ./ГОД.');
+        setPriceOldThird(countPrices(numBranchsThird, priceYear.third, sales).oldPrice + ' РУБ./ГОД.');
     }
 
     const setPriceRangeFirst = (e) => {
