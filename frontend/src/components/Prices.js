@@ -3,20 +3,13 @@ import React, {
     useRef,
     useEffect
 } from "react";
-import {
-    useDispatch,
-    useSelector
-} from "react-redux";
+
 import "../css/prices.css"
 import {
     countPrices,
     countWeekDefaultPrice,
     countYearDefaultPrice
 } from "../helpers/countPrices.js";
-
-import {
-    dataRate
-} from "../actions/rateInfoActions.js";
 
 import {
     Carousel,
@@ -36,33 +29,7 @@ import {
     faArrowLeftLong
 } from '@fortawesome/free-solid-svg-icons';
 
-const Prices = () => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(dataRate());
-    }, []);
-
-    const rateInfoData = useSelector(state => state.rateInfoData);
-
-    const {
-        rateInfo,
-        loading
-    } = rateInfoData;
-
-    useEffect(() => {
-        if(rateInfo.length !== 0){
-            console.log(rateInfo);
-        }
-    }, [rateInfo])
-
-    const {
-        coefficient_for_calculating_the_week: weekRatio,
-        coefficient_for_calculating_the_year: yearRatio,
-        first_rate: first,
-        second_rate: second,
-        third_rate: third
-            } = rateInfo;
+const Prices = ({rateInfo, weekRatio, yearRatio, first, second, third, loading, error, sales}) => {
 
     const priceWeek = {
         first: countWeekDefaultPrice(first, weekRatio),
@@ -75,7 +42,6 @@ const Prices = () => {
         second: countYearDefaultPrice(second, yearRatio),
         third: countYearDefaultPrice(third, yearRatio)
     }
-
 
     const [activeIndex, setActiveIndex] = useState(0);
     const [numBranchsFirst, setNumBranchsFirst] = useState(1);
@@ -271,10 +237,11 @@ const Prices = () => {
                                 onChange={setPriceRangeFirst}/>
                     <button className="control-button-spinner" onClick={handleFirstRightClick}>+</button>
                 </div>
-                {loading ? <Spinner></Spinner> :
-                <h4><b>{priceDurationFirst}</b></h4> }
-
-                <div className="block-ranges-prices">
+                {
+                    (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4> :
+                    <h4><b>{priceDurationFirst}</b></h4>
+                }
+                    <div className="block-ranges-prices">
                     {priceDurationFirst !== priceOldFirst &&
                         <span className="strike-text">{priceOldFirst}</span>}
                     {priceDurationFirst !== priceOldFirst &&
@@ -317,8 +284,10 @@ const Prices = () => {
                                 onChange={setPriceRangeSecond}/>
                     <button className="control-button-spinner" onClick={handleSecondRightClick}>+</button>
                 </div>
-                {loading ? <Spinner></Spinner> :
-                <h4><b>{priceDurationSecond}</b></h4>}
+                {
+                    (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4>:
+                    <h4><b>{priceDurationSecond}</b></h4>
+                }
                 <div className="block-ranges-prices">
                     {priceDurationSecond !== priceOldSecond &&
                         <span className="strike-text">{priceOldSecond}</span>
@@ -362,8 +331,10 @@ const Prices = () => {
                                 onChange={setPriceRangeThird}/>
                     <button className="control-button-spinner" onClick={handleThirdRightClick}>+</button>
                 </div>
-                {loading ? <Spinner></Spinner> :
-                <h4><b>{priceDurationThird}</b></h4>}
+                {
+                    (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4>:
+                    <h4><b>{priceDurationThird}</b></h4>
+                }
                 <div className="block-ranges-prices">
                     {priceDurationThird !== priceOldThird &&
                         <span className="strike-text">{priceOldThird}</span>}
@@ -406,8 +377,10 @@ const Prices = () => {
                                         onChange={setPriceRangeFirst}/>
                             <button className="control-button-spinner" onClick={handleFirstRightClick}>+</button>
                         </div>
-                        {loading ? <Spinner></Spinner> :
-                        <h4><b>{priceDurationFirst}</b></h4>}
+                        {
+                            (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4> :
+                            <h4><b>{priceDurationFirst}</b></h4>
+                        }
                         <div className="block-ranges-prices">
                             {priceDurationFirst !== priceOldFirst &&
                                 <span className="strike-text">{priceOldFirst}</span>}
@@ -455,8 +428,10 @@ const Prices = () => {
                                         onChange={setPriceRangeSecond}/>
                             <button className="control-button-spinner" onClick={handleSecondRightClick}>+</button>
                         </div>
-                        {loading ? <Spinner></Spinner> :
-                        <h4><b>{priceDurationSecond}</b></h4>}
+                        {
+                            (rateInfo.length === 0 || error)  ? <h4>Произошла ошибка</h4>:
+                            <h4><b>{priceDurationSecond}</b></h4>
+                        }
                         <div className="block-ranges-prices">
                             {priceDurationSecond !== priceOldSecond &&
                                 <span className="strike-text">{priceOldSecond}</span>}
@@ -503,8 +478,10 @@ const Prices = () => {
                                         onChange={setPriceRangeThird}/>
                             <button className="control-button-spinner" onClick={handleThirdRightClick}>+</button>
                         </div>
-                        {loading ? <Spinner></Spinner> :
-                        <h4><b>{priceDurationThird}</b></h4>}
+                        {
+                            (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4> :
+                            <h4><b>{priceDurationThird}</b></h4>
+                        }
                         <div className="block-ranges-prices">
                             {priceDurationThird !== priceOldThird &&
                                 <span className="strike-text">{priceOldThird}</span>}
