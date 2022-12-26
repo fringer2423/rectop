@@ -60,6 +60,7 @@ class UserSerializer(serializers.ModelSerializer):
         return obj.is_verified
 
     def get_rate(self, obj: QuerySet[User]) -> ReturnDict | None:
+        # noinspection PyBroadException
         try:
             return RateSerializer(obj.rate, many=False).data
         except Exception as e:
@@ -73,7 +74,6 @@ class UserSerializerWithToken(UserSerializer):
     class Meta:
         model: QuerySet[User] = User
         fields: list = ['id', 'username', 'email', 'is_admin', 'token', 'is_verified']
-
     def get_token(self, obj: QuerySet[User]) -> str:
         return str(RefreshToken.for_user(obj).access_token)
 
@@ -173,6 +173,7 @@ class ReviewSerializer(serializers.ModelSerializer):
         return format_data(obj.answered_at)
 
     def get_answer(self, obj: QuerySet[Review]) -> ReturnDict | None:
+        # noinspection PyBroadException
         try:
             return AnswerSerializer(obj.answer, many=False).data
         except Exception as e:

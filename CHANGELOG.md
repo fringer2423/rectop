@@ -8,10 +8,11 @@
 
 - Typed all urls [@fringer2423](https://github.com/fringer2423
 - Typed serializers
+- 
 
 ### Изменено
 
-- 
+- Some fix [@fringer2423](https://github.com/fringer2423
 
 ## [0.0.44] - 2022-12-23
 

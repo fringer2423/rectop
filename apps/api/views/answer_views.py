@@ -96,6 +96,7 @@ def create_answer_view(request: WSGIRequest) -> Response:
             body=data['body'],
             type_answer=data['type'],
         )
+
         if not (answer is None):
             serializer: Serializer[AnswerSerializer] = AnswerSerializer(answer, many=False)
             message: str = 'Запрос выполнен успешно'
