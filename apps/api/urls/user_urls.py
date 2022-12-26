@@ -2,8 +2,8 @@ from django.urls import path
 
 from ..views import user_views as views
 
-app_name = 'User endpoints'
-urlpatterns = [
+app_name: str = 'User endpoints'
+urlpatterns: list = [
     path('login/', views.MyTokenObtainPairView.as_view(), name='login'),
     path('create/', views.register_user_view, name='create'),
     path('read/', views.read_user_profile_view, name='read'),

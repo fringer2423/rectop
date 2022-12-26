@@ -6,7 +6,7 @@
 
 ### Добавлено
 
-- 
+- Typed all urls [@fringer2423](https://github.com/fringer2423)
 
 ### Изменено
 

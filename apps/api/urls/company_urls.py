@@ -2,8 +2,8 @@ from django.urls import path
 
 from ..views import company_views as views
 
-app_name = 'Company endpoints'
-urlpatterns = [
+app_name: str = 'Company endpoints'
+urlpatterns: list = [
     path('create/', views.create_company_view, name='create'),
     path('read/<int:pk>', views.read_company_view, name='read'),
     path('update/<int:pk>', views.update_company_view, name='update'),
