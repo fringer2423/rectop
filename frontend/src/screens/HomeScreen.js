@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-import {Container} from "react-bootstrap";
-import {useDispatch} from "react-redux";
+import {
+    Container,
+    Spinner
+} from "react-bootstrap";
+
+import {
+    useDispatch,
+    useSelector
+} from "react-redux";
 
 import {useHistory} from "react-router";
 
@@ -22,10 +29,34 @@ import PurpleCircle from "../components/PurpleCircle";
 import Brands from "../components/Brands";
 import ListOfRec from "../components/ListOfRec";
 
+import {dataRate} from "../actions/rateInfoActions.js";
 
 import dataForAccordion from "../helpers/dataForAccordion";
 
 const HomeScreen = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(dataRate());
+    }, []);
+
+    const rateInfoData = useSelector(state => state.rateInfoData);
+
+    const {
+        rateInfo,
+        loading,
+        error
+    } = rateInfoData;
+
+    const {
+        coefficient_for_calculating_the_week: weekRatio,
+        coefficient_for_calculating_the_year: yearRatio,
+        first_rate: first,
+        second_rate: second,
+        third_rate: third,
+        sale_info: sales
+            } = rateInfo;
 
     return (
         <div id="body">
@@ -228,7 +259,18 @@ const HomeScreen = () => {
                     <span className="header-tariffs">
                     <h1><b>Выбирайте то, что удобно Вам для управления репутацией</b></h1>
                 </span>
-                    <Prices/>
+                { loading ? <Spinner></Spinner> :
+                    <Prices rateInfo={rateInfo}
+                            yearRatio={yearRatio}
+                            weekRatio={weekRatio}
+                            first={first}
+                            second={second}
+                            third={third}
+                            loading={loading}
+                            error={error}
+                            sales={sales}
+                    />
+                }
                 </div>
 
                 <div id="contacts">

@@ -3,20 +3,13 @@ import React, {
     useRef,
     useEffect
 } from "react";
-import {
-    useDispatch,
-    useSelector
-} from "react-redux";
+
 import "../css/prices.css"
 import {
     countPrices,
     countWeekDefaultPrice,
     countYearDefaultPrice
 } from "../helpers/countPrices.js";
-
-import {
-    dataRate
-} from "../actions/rateInfoActions.js";
 
 import {
     Carousel,
@@ -36,33 +29,7 @@ import {
     faArrowLeftLong
 } from '@fortawesome/free-solid-svg-icons';
 
-const Prices = () => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(dataRate());
-    }, []);
-
-    const rateInfoData = useSelector(state => state.rateInfoData);
-
-    const {
-        rateInfo,
-        loading
-    } = rateInfoData;
-
-    useEffect(() => {
-        if(rateInfo.length !== 0){
-            console.log(rateInfo);
-        }
-    }, [rateInfo])
-
-    const {
-        coefficient_for_calculating_the_week: weekRatio,
-        coefficient_for_calculating_the_year: yearRatio,
-        first_rate: first,
-        second_rate: second,
-        third_rate: third
-            } = rateInfo;
+const Prices = ({rateInfo, weekRatio, yearRatio, first, second, third, loading, error, sales}) => {
 
     const priceWeek = {
         first: countWeekDefaultPrice(first, weekRatio),
@@ -75,7 +42,6 @@ const Prices = () => {
         second: countYearDefaultPrice(second, yearRatio),
         third: countYearDefaultPrice(third, yearRatio)
     }
-
 
     const [activeIndex, setActiveIndex] = useState(0);
     const [numBranchsFirst, setNumBranchsFirst] = useState(1);
@@ -100,55 +66,55 @@ const Prices = () => {
 
     const toSetThirdPrice = () => {
         if (activeIndex === 0) {
-            setPriceDurationThird(countPrices(numBranchsThird, priceWeek.third).resultPrice + ' РУБ./НЕД.');
-            setPriceOldThird(countPrices(numBranchsThird, priceWeek.third).oldPrice + ' РУБ./НЕД.');
-            setSaleThird('Скидка: ' + countPrices(numBranchsThird, priceWeek.third).sale + '%');
+            setPriceDurationThird(countPrices(numBranchsThird, priceWeek.third, sales).resultPrice + ' РУБ./НЕД.');
+            setPriceOldThird(countPrices(numBranchsThird, priceWeek.third, sales).oldPrice + ' РУБ./НЕД.');
+            setSaleThird('Скидка: ' + countPrices(numBranchsThird, priceWeek.third, sales).sale + '%');
         }
         if (activeIndex === 1) {
-            setPriceDurationThird(countPrices(numBranchsThird, third).resultPrice + ' РУБ./МЕС.');
-            setPriceOldThird(countPrices(numBranchsThird, third).oldPrice + ' РУБ./МЕС.');
-            setSaleThird('Скидка: ' + countPrices(numBranchsThird, third).sale + '%');
+            setPriceDurationThird(countPrices(numBranchsThird, third, sales).resultPrice + ' РУБ./МЕС.');
+            setPriceOldThird(countPrices(numBranchsThird, third, sales).oldPrice + ' РУБ./МЕС.');
+            setSaleThird('Скидка: ' + countPrices(numBranchsThird, third, sales).sale + '%');
         }
         if (activeIndex === 2) {
-            setPriceDurationThird(countPrices(numBranchsThird, priceYear.third).resultPrice + ' РУБ./ГОД.');
-            setPriceOldThird(countPrices(numBranchsThird, priceYear.third).oldPrice + ' РУБ./ГОД.');
-            setSaleThird('Скидка: ' + countPrices(numBranchsThird, priceYear.third).sale + '%');
+            setPriceDurationThird(countPrices(numBranchsThird, priceYear.third, sales).resultPrice + ' РУБ./ГОД.');
+            setPriceOldThird(countPrices(numBranchsThird, priceYear.third, sales).oldPrice + ' РУБ./ГОД.');
+            setSaleThird('Скидка: ' + countPrices(numBranchsThird, priceYear.third, sales).sale + '%');
         }
     }
 
     const toSetSecondPrice = () => {
         if (activeIndex === 0) {
-            setPriceDurationSecond(countPrices(numBranchsSecond, priceWeek.second).resultPrice + ' РУБ./НЕД.');
-            setPriceOldSecond(countPrices(numBranchsSecond, priceWeek.second).oldPrice + ' РУБ./НЕД.');
-            setSaleSecond('Скидка: ' + countPrices(numBranchsSecond, priceWeek.second).sale + '%');
+            setPriceDurationSecond(countPrices(numBranchsSecond, priceWeek.second, sales).resultPrice + ' РУБ./НЕД.');
+            setPriceOldSecond(countPrices(numBranchsSecond, priceWeek.second, sales).oldPrice + ' РУБ./НЕД.');
+            setSaleSecond('Скидка: ' + countPrices(numBranchsSecond, priceWeek.second, sales).sale + '%');
         }
         if (activeIndex === 1) {
-            setPriceDurationSecond(countPrices(numBranchsSecond, second).resultPrice + ' РУБ./МЕС.');
-            setPriceOldSecond(countPrices(numBranchsSecond, second).oldPrice + ' РУБ./МЕС.');
-            setSaleSecond('Скидка: ' + countPrices(numBranchsSecond, second).sale + '%');
+            setPriceDurationSecond(countPrices(numBranchsSecond, second, sales).resultPrice + ' РУБ./МЕС.');
+            setPriceOldSecond(countPrices(numBranchsSecond, second, sales).oldPrice + ' РУБ./МЕС.');
+            setSaleSecond('Скидка: ' + countPrices(numBranchsSecond, second, sales).sale + '%');
         }
         if (activeIndex === 2) {
-            setPriceDurationSecond(countPrices(numBranchsSecond, priceYear.second).resultPrice + ' РУБ./ГОД.');
-            setPriceOldSecond(countPrices(numBranchsSecond, priceYear.second).oldPrice + ' РУБ./ГОД.');
-            setSaleSecond('Скидка: ' + countPrices(numBranchsSecond, priceYear.second).sale + '%')
+            setPriceDurationSecond(countPrices(numBranchsSecond, priceYear.second, sales).resultPrice + ' РУБ./ГОД.');
+            setPriceOldSecond(countPrices(numBranchsSecond, priceYear.second, sales).oldPrice + ' РУБ./ГОД.');
+            setSaleSecond('Скидка: ' + countPrices(numBranchsSecond, priceYear.second, sales).sale + '%')
         }
     }
 
     const toSetFirstPrice = () => {
         if (activeIndex === 0) {
-            setPriceDurationFirst(countPrices(numBranchsFirst, priceWeek.first).resultPrice + ' РУБ./НЕД.');
-            setPriceOldFirst(countPrices(numBranchsFirst, priceWeek.first).oldPrice + ' РУБ./НЕД.');
-            setSaleFirst('Скидка: ' + countPrices(numBranchsFirst, priceWeek.first).sale + '%');
+            setPriceDurationFirst(countPrices(numBranchsFirst, priceWeek.first, sales).resultPrice + ' РУБ./НЕД.');
+            setPriceOldFirst(countPrices(numBranchsFirst, priceWeek.first, sales).oldPrice + ' РУБ./НЕД.');
+            setSaleFirst('Скидка: ' + countPrices(numBranchsFirst, priceWeek.first, sales).sale + '%');
         }
         if (activeIndex === 1) {
-            setPriceDurationFirst(countPrices(numBranchsFirst, first).resultPrice + ' РУБ./МЕС.');
-            setPriceOldFirst(countPrices(numBranchsFirst, first).oldPrice + ' РУБ./МЕС.');
-            setSaleFirst('Скидка: ' + countPrices(numBranchsFirst, first).sale + '%');
+            setPriceDurationFirst(countPrices(numBranchsFirst, first, sales).resultPrice + ' РУБ./МЕС.');
+            setPriceOldFirst(countPrices(numBranchsFirst, first, sales).oldPrice + ' РУБ./МЕС.');
+            setSaleFirst('Скидка: ' + countPrices(numBranchsFirst, first, sales).sale + '%');
         }
         if (activeIndex === 2) {
-            setPriceDurationFirst(countPrices(numBranchsFirst, priceYear.first).resultPrice + ' РУБ./ГОД.');
-            setPriceOldFirst(countPrices(numBranchsFirst, priceYear.first).oldPrice + ' РУБ./ГОД.');
-            setSaleFirst('Скидка: ' + countPrices(numBranchsFirst, priceYear.first).sale + '%');
+            setPriceDurationFirst(countPrices(numBranchsFirst, priceYear.first, sales).resultPrice + ' РУБ./ГОД.');
+            setPriceOldFirst(countPrices(numBranchsFirst, priceYear.first, sales).oldPrice + ' РУБ./ГОД.');
+            setSaleFirst('Скидка: ' + countPrices(numBranchsFirst, priceYear.first, sales).sale + '%');
         }
     }
 
@@ -196,33 +162,32 @@ const Prices = () => {
 
     const handleClickFirstPrice = () => {
         setActiveIndex(0);
-        setPriceDurationFirst(countPrices(numBranchsFirst, priceWeek.first).resultPrice + ' РУБ./НЕД.');
-        setPriceDurationSecond(countPrices(numBranchsSecond, priceWeek.second).resultPrice + ' РУБ./НЕД.');
-        setPriceDurationThird(countPrices(numBranchsThird, priceWeek.third).resultPrice + ' РУБ./НЕД.');
-        setPriceOldFirst(countPrices(numBranchsFirst, priceWeek.first).oldPrice + ' РУБ./НЕД.');
-        setPriceOldSecond(countPrices(numBranchsSecond, priceWeek.second).oldPrice + ' РУБ./НЕД.');
-        setPriceOldThird(countPrices(numBranchsThird, priceWeek.third).oldPrice + ' РУБ./НЕД.');
-
+        setPriceDurationFirst(countPrices(numBranchsFirst, priceWeek.first, sales).resultPrice + ' РУБ./НЕД.');
+        setPriceDurationSecond(countPrices(numBranchsSecond, priceWeek.second, sales).resultPrice + ' РУБ./НЕД.');
+        setPriceDurationThird(countPrices(numBranchsThird, priceWeek.third, sales).resultPrice + ' РУБ./НЕД.');
+        setPriceOldFirst(countPrices(numBranchsFirst, priceWeek.first, sales).oldPrice + ' РУБ./НЕД.');
+        setPriceOldSecond(countPrices(numBranchsSecond, priceWeek.second, sales).oldPrice + ' РУБ./НЕД.');
+        setPriceOldThird(countPrices(numBranchsThird, priceWeek.third, sales).oldPrice + ' РУБ./НЕД.');
     }
 
     const handleClickSecondPrice = () => {
         setActiveIndex(1);
-        setPriceDurationFirst(countPrices(numBranchsFirst, first).resultPrice + ' РУБ./МЕС.');
-        setPriceDurationSecond(countPrices(numBranchsSecond, second).resultPrice + ' РУБ./МЕС.');
-        setPriceDurationThird(countPrices(numBranchsThird, third).resultPrice + ' РУБ./МЕС.');
-        setPriceOldFirst(countPrices(numBranchsFirst, first).oldPrice + ' РУБ./МЕС.');
-        setPriceOldSecond(countPrices(numBranchsSecond, second).oldPrice + ' РУБ./МЕС.');
-        setPriceOldThird(countPrices(numBranchsThird, third).oldPrice + ' РУБ./МЕС.');
+        setPriceDurationFirst(countPrices(numBranchsFirst, first, sales).resultPrice + ' РУБ./МЕС.');
+        setPriceDurationSecond(countPrices(numBranchsSecond, second, sales).resultPrice + ' РУБ./МЕС.');
+        setPriceDurationThird(countPrices(numBranchsThird, third, sales).resultPrice + ' РУБ./МЕС.');
+        setPriceOldFirst(countPrices(numBranchsFirst, first, sales).oldPrice + ' РУБ./МЕС.');
+        setPriceOldSecond(countPrices(numBranchsSecond, second, sales).oldPrice + ' РУБ./МЕС.');
+        setPriceOldThird(countPrices(numBranchsThird, third, sales).oldPrice + ' РУБ./МЕС.');
     }
 
     const handleClickThirdPrice = () => {
         setActiveIndex(2);
-        setPriceDurationFirst(countPrices(numBranchsFirst, priceYear.first).resultPrice + ' РУБ./ГОД.');
-        setPriceDurationSecond(countPrices(numBranchsSecond, priceYear.second).resultPrice + ' РУБ./ГОД.');
-        setPriceDurationThird(countPrices(numBranchsThird, priceYear.third).resultPrice + ' РУБ./ГОД.');
-        setPriceOldFirst(countPrices(numBranchsFirst, priceYear.first).oldPrice + ' РУБ./ГОД.');
-        setPriceOldSecond(countPrices(numBranchsSecond, priceYear.second).oldPrice + ' РУБ./ГОД.');
-        setPriceOldThird(countPrices(numBranchsThird, priceYear.third).oldPrice + ' РУБ./ГОД.');
+        setPriceDurationFirst(countPrices(numBranchsFirst, priceYear.first, sales).resultPrice + ' РУБ./ГОД.');
+        setPriceDurationSecond(countPrices(numBranchsSecond, priceYear.second, sales).resultPrice + ' РУБ./ГОД.');
+        setPriceDurationThird(countPrices(numBranchsThird, priceYear.third, sales).resultPrice + ' РУБ./ГОД.');
+        setPriceOldFirst(countPrices(numBranchsFirst, priceYear.first, sales).oldPrice + ' РУБ./ГОД.');
+        setPriceOldSecond(countPrices(numBranchsSecond, priceYear.second, sales).oldPrice + ' РУБ./ГОД.');
+        setPriceOldThird(countPrices(numBranchsThird, priceYear.third, sales).oldPrice + ' РУБ./ГОД.');
     }
 
     const setPriceRangeFirst = (e) => {
@@ -271,10 +236,11 @@ const Prices = () => {
                                 onChange={setPriceRangeFirst}/>
                     <button className="control-button-spinner" onClick={handleFirstRightClick}>+</button>
                 </div>
-                {loading ? <Spinner></Spinner> :
-                <h4><b>{priceDurationFirst}</b></h4> }
-
-                <div className="block-ranges-prices">
+                {
+                    (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4> :
+                    <h4><b>{priceDurationFirst}</b></h4>
+                }
+                    <div className="block-ranges-prices">
                     {priceDurationFirst !== priceOldFirst &&
                         <span className="strike-text">{priceOldFirst}</span>}
                     {priceDurationFirst !== priceOldFirst &&
@@ -317,8 +283,10 @@ const Prices = () => {
                                 onChange={setPriceRangeSecond}/>
                     <button className="control-button-spinner" onClick={handleSecondRightClick}>+</button>
                 </div>
-                {loading ? <Spinner></Spinner> :
-                <h4><b>{priceDurationSecond}</b></h4>}
+                {
+                    (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4>:
+                    <h4><b>{priceDurationSecond}</b></h4>
+                }
                 <div className="block-ranges-prices">
                     {priceDurationSecond !== priceOldSecond &&
                         <span className="strike-text">{priceOldSecond}</span>
@@ -362,8 +330,10 @@ const Prices = () => {
                                 onChange={setPriceRangeThird}/>
                     <button className="control-button-spinner" onClick={handleThirdRightClick}>+</button>
                 </div>
-                {loading ? <Spinner></Spinner> :
-                <h4><b>{priceDurationThird}</b></h4>}
+                {
+                    (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4>:
+                    <h4><b>{priceDurationThird}</b></h4>
+                }
                 <div className="block-ranges-prices">
                     {priceDurationThird !== priceOldThird &&
                         <span className="strike-text">{priceOldThird}</span>}
@@ -406,8 +376,10 @@ const Prices = () => {
                                         onChange={setPriceRangeFirst}/>
                             <button className="control-button-spinner" onClick={handleFirstRightClick}>+</button>
                         </div>
-                        {loading ? <Spinner></Spinner> :
-                        <h4><b>{priceDurationFirst}</b></h4>}
+                        {
+                            (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4> :
+                            <h4><b>{priceDurationFirst}</b></h4>
+                        }
                         <div className="block-ranges-prices">
                             {priceDurationFirst !== priceOldFirst &&
                                 <span className="strike-text">{priceOldFirst}</span>}
@@ -455,8 +427,10 @@ const Prices = () => {
                                         onChange={setPriceRangeSecond}/>
                             <button className="control-button-spinner" onClick={handleSecondRightClick}>+</button>
                         </div>
-                        {loading ? <Spinner></Spinner> :
-                        <h4><b>{priceDurationSecond}</b></h4>}
+                        {
+                            (rateInfo.length === 0 || error)  ? <h4>Произошла ошибка</h4>:
+                            <h4><b>{priceDurationSecond}</b></h4>
+                        }
                         <div className="block-ranges-prices">
                             {priceDurationSecond !== priceOldSecond &&
                                 <span className="strike-text">{priceOldSecond}</span>}
@@ -503,8 +477,10 @@ const Prices = () => {
                                         onChange={setPriceRangeThird}/>
                             <button className="control-button-spinner" onClick={handleThirdRightClick}>+</button>
                         </div>
-                        {loading ? <Spinner></Spinner> :
-                        <h4><b>{priceDurationThird}</b></h4>}
+                        {
+                            (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4> :
+                            <h4><b>{priceDurationThird}</b></h4>
+                        }
                         <div className="block-ranges-prices">
                             {priceDurationThird !== priceOldThird &&
                                 <span className="strike-text">{priceOldThird}</span>}
