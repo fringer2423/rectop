@@ -29,7 +29,16 @@ import {
     faArrowLeftLong
 } from '@fortawesome/free-solid-svg-icons';
 
-const Prices = ({rateInfo, weekRatio, yearRatio, first, second, third, loading, error, sales}) => {
+const Prices = ({rateInfo}) => {
+
+    const {
+        coefficient_for_calculating_the_week: weekRatio,
+        coefficient_for_calculating_the_year: yearRatio,
+        first_rate: first,
+        second_rate: second,
+        third_rate: third,
+        sale_info: sales
+            } = rateInfo;
 
     const priceWeek = {
         first: countWeekDefaultPrice(first, weekRatio),
@@ -237,7 +246,7 @@ const Prices = ({rateInfo, weekRatio, yearRatio, first, second, third, loading, 
                     <button className="control-button-spinner" onClick={handleFirstRightClick}>+</button>
                 </div>
                 {
-                    (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4> :
+                    rateInfo.length === 0 ? <h4>Произошла ошибка</h4> :
                     <h4><b>{priceDurationFirst}</b></h4>
                 }
                     <div className="block-ranges-prices">
@@ -284,7 +293,7 @@ const Prices = ({rateInfo, weekRatio, yearRatio, first, second, third, loading, 
                     <button className="control-button-spinner" onClick={handleSecondRightClick}>+</button>
                 </div>
                 {
-                    (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4>:
+                    rateInfo.length === 0 ? <h4>Произошла ошибка</h4>:
                     <h4><b>{priceDurationSecond}</b></h4>
                 }
                 <div className="block-ranges-prices">
@@ -331,7 +340,7 @@ const Prices = ({rateInfo, weekRatio, yearRatio, first, second, third, loading, 
                     <button className="control-button-spinner" onClick={handleThirdRightClick}>+</button>
                 </div>
                 {
-                    (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4>:
+                    rateInfo.length === 0 ? <h4>Произошла ошибка</h4>:
                     <h4><b>{priceDurationThird}</b></h4>
                 }
                 <div className="block-ranges-prices">
@@ -377,7 +386,7 @@ const Prices = ({rateInfo, weekRatio, yearRatio, first, second, third, loading, 
                             <button className="control-button-spinner" onClick={handleFirstRightClick}>+</button>
                         </div>
                         {
-                            (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4> :
+                            rateInfo.length === 0 ? <h4>Произошла ошибка</h4> :
                             <h4><b>{priceDurationFirst}</b></h4>
                         }
                         <div className="block-ranges-prices">
@@ -428,7 +437,7 @@ const Prices = ({rateInfo, weekRatio, yearRatio, first, second, third, loading, 
                             <button className="control-button-spinner" onClick={handleSecondRightClick}>+</button>
                         </div>
                         {
-                            (rateInfo.length === 0 || error)  ? <h4>Произошла ошибка</h4>:
+                            rateInfo.length === 0 ? <h4>Произошла ошибка</h4>:
                             <h4><b>{priceDurationSecond}</b></h4>
                         }
                         <div className="block-ranges-prices">
@@ -478,7 +487,7 @@ const Prices = ({rateInfo, weekRatio, yearRatio, first, second, third, loading, 
                             <button className="control-button-spinner" onClick={handleThirdRightClick}>+</button>
                         </div>
                         {
-                            (rateInfo.length === 0 || error) ? <h4>Произошла ошибка</h4> :
+                            rateInfo.length === 0 ? <h4>Произошла ошибка</h4> :
                             <h4><b>{priceDurationThird}</b></h4>
                         }
                         <div className="block-ranges-prices">
