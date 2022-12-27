@@ -49,14 +49,7 @@ const HomeScreen = () => {
         error
     } = rateInfoData;
 
-    const {
-        coefficient_for_calculating_the_week: weekRatio,
-        coefficient_for_calculating_the_year: yearRatio,
-        first_rate: first,
-        second_rate: second,
-        third_rate: third,
-        sale_info: sales
-            } = rateInfo;
+
 
     return (
         <div id="body">
@@ -260,16 +253,8 @@ const HomeScreen = () => {
                     <h1><b>Выбирайте то, что удобно Вам для управления репутацией</b></h1>
                 </span>
                 { loading ? <Spinner></Spinner> :
-                    <Prices rateInfo={rateInfo}
-                            yearRatio={yearRatio}
-                            weekRatio={weekRatio}
-                            first={first}
-                            second={second}
-                            third={third}
-                            loading={loading}
-                            error={error}
-                            sales={sales}
-                    />
+                    error ? <h4 className="text-danger mt-3 text-center">Произошла ошибка. Попробуйте загрузить информацию о тарифах позже</h4> :
+                    <Prices rateInfo={rateInfo}/>
                 }
                 </div>
 
