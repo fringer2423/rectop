@@ -54,10 +54,10 @@ export default function Configurator(props) {
                     <DrawerHeader pt="24px" px="24px">
                         <DrawerCloseButton/>
                         <Text fontSize="xl" fontWeight="bold" mt="16px">
-                            Purity UI Configurator
+                            Настройки
                         </Text>
                         <Text fontSize="md" mb="16px">
-                            See your dashboard options.
+                            Настройте тему своего личного кабинета
                         </Text>
                         <Separator/>
                     </DrawerHeader>
@@ -65,10 +65,10 @@ export default function Configurator(props) {
                         <Flex flexDirection="column">
                             <Box>
                                 <Text fontSize="md" fontWeight="600">
-                                    Sidenav Type
+                                    Выберите тип навигационной панели
                                 </Text>
                                 <Text fontSize="sm" mb="16px">
-                                    Choose between 2 different sidenav types.
+                                    Выберите из двух вариантов
                                 </Text>
                                 <Flex>
                                     <Button
@@ -82,7 +82,7 @@ export default function Configurator(props) {
                                         fontSize="xs"
                                         onClick={props.onTransparent}
                                     >
-                                        Transparent
+                                        Прозрачная
                                     </Button>
                                     <Button
                                         type="submit"
@@ -95,7 +95,7 @@ export default function Configurator(props) {
                                         fontSize="xs"
                                         onClick={props.onOpaque}
                                     >
-                                        Opaque
+                                        Непрозрачная
                                     </Button>
                                 </Flex>
                             </Box>
@@ -127,23 +127,14 @@ export default function Configurator(props) {
                                 mb="24px"
                             >
                                 <Text fontSize="md" fontWeight="600" mb="4px">
-                                    Dark/Light
+                                    Тема: светлая/темная
                                 </Text>
                                 <Button onClick={toggleColorMode}>
-                                    Toggle {colorMode === "light" ? "Dark" : "Light"}
+                                    Тема {colorMode === "light" ? "Темная" : "Светлая"}
                                 </Button>
                             </Flex>
 
                             <Separator/>
-                            <Box mt="24px">
-                                <Text fontSize="md" fontWeight="600">
-                                    Sidenav Type
-                                </Text>
-                                <Text fontSize="sm" mb="16px">
-                                    Choose between 2 different sidenav types.
-                                </Text>
-
-                            </Box>
                         </Flex>
                     </DrawerBody>
                 </DrawerContent>

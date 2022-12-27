@@ -105,7 +105,7 @@ const LogIn = () => {
 
     function handleClickRepeatCode() {
         dispatch(checkLogin());
-        
+
     }
 
     return (
@@ -155,8 +155,10 @@ const LogIn = () => {
                         <Button onClick={handleClickRepeatCode}>Отправить код повторно</Button>
                     }
 
-                    {loadingVerify &&
-                        <Spinner animation="border" variant='primary'/>}
+                    {
+                        loadingVerify &&
+                        <Spinner animation="border" variant='primary'/>
+                    }
                 </Modal.Body>
                 <Modal.Footer>
                     <Button colorScheme="blue" variant="outline" onClick={handleCheckCode}>

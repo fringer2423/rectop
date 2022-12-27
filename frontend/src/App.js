@@ -16,6 +16,7 @@ import AdminLayout from "./layouts/Admin.js";
 import {Container} from 'react-bootstrap';
 import {useSelector} from 'react-redux';
 
+//<PrivateRoute path='/dashboard' component={() => (<AdminLayout/>)}/>
 
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
@@ -28,6 +29,7 @@ function App() {
             <Route exact path='/' component={HomeScreen}/>
             <Route path='/auth' component={AuthLayout}/>
             <PrivateRoute path='/dashboard' component={() => (<AdminLayout/>)}/>
+
         </Router>
     );
 }
