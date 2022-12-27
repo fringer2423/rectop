@@ -52,6 +52,7 @@ const LogIn = () => {
     const [code, setCode] = useState('');
     const [message, setMessage] = useState('');
     const [errorColor, setErrorColor] = useState('');
+    const [showButton, setShowButton] = useState(false);
     let [count, setCount] = useState(60);
 
     const user = localStorage.getItem('userInfo');
@@ -76,6 +77,7 @@ const LogIn = () => {
                     clearInterval(timer);
                 }
             }, 600)
+            setTimeout(() => setShowButton(true), 37000);
         }
     }, [errorCheck, errorVerify]);
 
@@ -101,6 +103,11 @@ const LogIn = () => {
         dispatch(verifyLogin(code));
     }
 
+    function handleClickRepeatCode() {
+        dispatch(checkLogin());
+        
+    }
+
     return (
         <>
             <Modal show={modal} animation={false}>
@@ -117,7 +124,8 @@ const LogIn = () => {
                             onChange={(e) => setCode(e.target.value)}
                         />
                     </InputGroup>
-                    {errorVerify &&
+                    {
+                        errorVerify &&
                         <FormControl display='flex' alignItems='center'>
                             <FormLabel
                                 htmlFor='remember-login'
@@ -129,7 +137,8 @@ const LogIn = () => {
                             </FormLabel>
                         </FormControl>
                     }
-                    {errorVerify &&
+                    {
+                        errorVerify &&
                         <FormControl display='flex' alignItems='center'>
                             <FormLabel
                                 htmlFor='remember-login'
@@ -140,6 +149,10 @@ const LogIn = () => {
                                 Вы сможете отправить код повторно через {count} сек.
                             </FormLabel>
                         </FormControl>
+                    }
+                    {
+                        showButton &&
+                        <Button onClick={handleClickRepeatCode}>Отправить код повторно</Button>
                     }
 
                     {loadingVerify &&
