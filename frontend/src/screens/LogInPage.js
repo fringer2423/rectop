@@ -82,7 +82,7 @@ const LogIn = () => {
     useEffect(() => {
         if (user) {
             history.push('/dashboard/');
-            window.location.reload();
+            // window.location.reload();
         }
     }, [user, history])
 
@@ -141,7 +141,7 @@ const LogIn = () => {
                             </FormLabel>
                         </FormControl>
                     }
-                    
+
                     {loadingVerify &&
                         <Spinner animation="border" variant='primary'/>}
                 </Modal.Body>

@@ -21,13 +21,13 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 function App() {
 
-    const user = localStorage.getItem('userInfo');
+    // const user = localStorage.getItem('userInfo');
 
     return (
         <Router>
             <Route exact path='/' component={HomeScreen}/>
             <Route path='/auth' component={AuthLayout}/>
-            <PrivateRoute path='/dashboard' user={user} component={() => (<AdminLayout/>)}/>
+            <PrivateRoute path='/dashboard' component={() => (<AdminLayout/>)}/>
         </Router>
     );
 }
