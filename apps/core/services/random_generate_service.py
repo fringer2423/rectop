@@ -13,8 +13,8 @@ def _generate_random(length: int, letters: str) -> str:
 
 
 def generate_random_string_service(length: int) -> str:
-    return _generate_random(length, Letters.ASCII)
+    return _generate_random(length, string.ascii_letters)
 
 
 def generate_random_number_service(length: int) -> str:
-    return _generate_random(length, Letters.DIGITS)
+    return _generate_random(length, string.digits)
