@@ -152,7 +152,8 @@ export const verifyLogin = (code) => async (dispatch, getState) => {
         })
 
 
-        localStorage.setItem('userInfo', JSON.stringify(userInfo))
+        localStorage.setItem('userInfo', JSON.stringify(userInfo));
+        localStorage.setItem('isLoggedIn', true);
 
     } catch (error) {
         dispatch({
@@ -167,6 +168,7 @@ export const verifyLogin = (code) => async (dispatch, getState) => {
 
 export const logout = () => (dispatch) => {
     localStorage.removeItem('userInfo');
+    localStorage.removeItem('isLoggedIn');
     dispatch({type: USER_LOGOUT});
     dispatch({type: USER_DETAILS_RESET});
 }
@@ -255,7 +257,8 @@ export const verify = (code) => async (dispatch) => {
             type: USER_VERIFY_LOGIN_SUCCESS
         })
 
-        localStorage.setItem('userInfo', JSON.stringify(data))
+        localStorage.setItem('userInfo', JSON.stringify(data));
+        localStorage.setItem('isLoggedIn', true);
 
     } catch (error) {
         switch (error.response.status) {

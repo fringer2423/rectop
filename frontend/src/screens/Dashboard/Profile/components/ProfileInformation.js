@@ -11,9 +11,7 @@ const ProfileInformation = ({
                                 title,
                                 description,
                                 name,
-                                mobile,
                                 email,
-                                location,
                             }) => {
     // Chakra color mode
     const textColor = useColorModeValue("gray.700", "white");
@@ -36,14 +34,6 @@ const ProfileInformation = ({
                         </Text>
                         <Text fontSize='md' color='gray.500' fontWeight='400'>
                             {name}
-                        </Text>
-                    </Flex>
-                    <Flex align='center' mb='18px'>
-                        <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
-                            Телефон:{" "}
-                        </Text>
-                        <Text fontSize='md' color='gray.500' fontWeight='400'>
-                            {mobile}
                         </Text>
                     </Flex>
                     <Flex align='center' mb='18px'>
