@@ -161,7 +161,7 @@ export const rtlTimelineData = [
         logo: FaBell,
         title: "$2400, تغييرات في التصميم",
         date: "22 DEC 7:20 PM",
-        color: "teal.300",
+        color: "maincolor",
     },
     {
         logo: FaHtml5,

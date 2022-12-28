@@ -135,7 +135,7 @@ export default function AdminNavbar(props) {
                         bg="inherit"
                         borderRadius="inherit"
                         fontWeight="bold"
-                        _hover={{color: {mainText}}}
+                        hover={{color: {mainText}}}
                         _active={{
                             bg: "inherit",
                             transform: "none",

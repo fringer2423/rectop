@@ -161,7 +161,7 @@ const LogIn = () => {
                     }
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button colorScheme="blue" variant="outline" onClick={handleCheckCode}>
+                    <Button colorscheme="blue" variant="outline" onClick={handleCheckCode}>
                         Войти в аккаунт
                     </Button>
                 </Modal.Footer>
@@ -265,7 +265,7 @@ const LogIn = () => {
                                     mb='20px'
                                     color='white'
                                     mt='20px'
-                                    _hover={{
+                                    hover={{
                                         bg: "secondary",
                                     }}
                                     _active={{

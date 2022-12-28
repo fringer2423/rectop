@@ -62,6 +62,7 @@ const Transactions = ({
                                 logo={row.logo}
                                 date={row.date}
                                 price={row.price}
+                                key={row.name}
                             />
                         );
                     })}
@@ -79,6 +80,7 @@ const Transactions = ({
                                 logo={row.logo}
                                 date={row.date}
                                 price={row.price}
+                                key={row.name}
                             />
                         );
                     })}

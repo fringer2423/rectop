@@ -26,6 +26,7 @@ const BillingInformation = ({title, data}) => {
                                     company={row.company}
                                     email={row.email}
                                     number={row.number}
+                                    key={row.email}
                                 />
                             );
                         })}

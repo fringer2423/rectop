@@ -59,6 +59,7 @@ function Profile() {
                     }
                     name={"Esthera Jackson"}
                     email={"esthera@simmmple.com"}
+
                 />
                 <Conversations title={"Conversations"}/>
             </Grid>

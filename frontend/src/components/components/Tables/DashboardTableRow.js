@@ -38,7 +38,7 @@ function DashboardTableRow(props) {
                                 name="Ryan Florence"
                                 key={member}
                                 src={member}
-                                _hover={{zIndex: "3", cursor: "pointer"}}
+                                hover={{zIndex: "3", cursor: "pointer"}}
                             />
                         );
                     })}
@@ -53,12 +53,12 @@ function DashboardTableRow(props) {
                 <Flex direction="column">
                     <Text
                         fontSize="md"
-                        color="teal.300"
+                        color="maincolor"
                         fontWeight="bold"
                         pb=".2rem"
                     >{`${progression}%`}</Text>
                     <Progress
-                        colorScheme={progression === 100 ? "teal" : "cyan"}
+                        colorscheme={progression === 100 ? "maincolor" : "cyan"}
                         size="xs"
                         value={progression}
                         borderRadius="15px"

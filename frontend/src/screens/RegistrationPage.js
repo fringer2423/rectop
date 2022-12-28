@@ -123,13 +123,13 @@ const RegistrationPage = () => {
                             border='1px solid lightgray'
                             cursor='pointer'
                             transition='all .25s ease'
-                            _hover={{filter: "brightness(120%)", bg: bgIcons}}>
+                            hover={{filter: "brightness(120%)", bg: bgIcons}}>
                             <Link href='#'>
                                 <Icon
                                     as={FaFacebook}
                                     w='30px'
                                     h='30px'
-                                    _hover={{filter: "brightness(120%)"}}
+                                    hover={{filter: "brightness(120%)"}}
                                 />
                             </Link>
                         </Flex>
@@ -142,13 +142,13 @@ const RegistrationPage = () => {
                             border='1px solid lightgray'
                             cursor='pointer'
                             transition='all .25s ease'
-                            _hover={{filter: "brightness(120%)", bg: bgIcons}}>
+                            hover={{filter: "brightness(120%)", bg: bgIcons}}>
                             <Link href='#'>
                                 <Icon
                                     as={FaApple}
                                     w='30px'
                                     h='30px'
-                                    _hover={{filter: "brightness(120%)"}}
+                                    hover={{filter: "brightness(120%)"}}
                                 />
                             </Link>
                         </Flex>
@@ -161,13 +161,13 @@ const RegistrationPage = () => {
                             border='1px solid lightgray'
                             cursor='pointer'
                             transition='all .25s ease'
-                            _hover={{filter: "brightness(120%)", bg: bgIcons}}>
+                            hover={{filter: "brightness(120%)", bg: bgIcons}}>
                             <Link href='#'>
                                 <Icon
                                     as={FaGoogle}
                                     w='30px'
                                     h='30px'
-                                    _hover={{filter: "brightness(120%)"}}
+                                    hover={{filter: "brightness(120%)"}}
                                 />
                             </Link>
                         </Flex>
@@ -276,7 +276,7 @@ const RegistrationPage = () => {
                             onChange={(e) => setPasswordRepeat(e.target.value)}
                         />
                         <FormControl display='flex' alignItems='center' mb='24px'>
-                            <Switch id='remember-login' colorScheme='teal' me='10px'/>
+                            <Switch id='remember-login' colorscheme='maincolor' me='10px'/>
                             <FormLabel htmlFor='remember-login' mb='0' fontWeight='normal'>
                                 Запомнить меня
                             </FormLabel>
@@ -291,7 +291,7 @@ const RegistrationPage = () => {
                             h='45'
                             mb='24px'
                             onClick={handleRegistration}
-                            _hover={{
+                            hover={{
                                 bg: "secondary",
                             }}
                             _active={{

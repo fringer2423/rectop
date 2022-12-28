@@ -12,7 +12,7 @@ export function SearchBar(props) {
     // Pass the computed styles into the `__css` prop
     const {variant, children, ...rest} = props;
     // Chakra Color Mode
-    const mainTeal = useColorModeValue("teal.300", "teal.300");
+    const mainmaincolor = useColorModeValue("maincolor", "maincolor");
     const searchIconColor = useColorModeValue("gray.700", "gray.200");
     const inputBg = useColorModeValue("white", "gray.800");
     return (
@@ -21,10 +21,10 @@ export function SearchBar(props) {
             borderRadius="15px"
             w="200px"
             _focus={{
-                borderColor: {mainTeal},
+                borderColor: {mainmaincolor},
             }}
             _active={{
-                borderColor: {mainTeal},
+                borderColor: {mainmaincolor},
             }}
         >
             <InputLeftElement
@@ -32,7 +32,7 @@ export function SearchBar(props) {
                     <IconButton
                         bg="inherit"
                         borderRadius="inherit"
-                        _hover="none"
+                        hover="none"
                         _active={{
                             bg: "inherit",
                             transform: "none",
