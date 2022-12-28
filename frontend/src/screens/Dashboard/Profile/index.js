@@ -2,15 +2,19 @@
 import {Flex, Grid, useColorModeValue} from "@chakra-ui/react";
 import avatar4 from "../../../assets/img/avatars/avatar4.png";
 import ProfileBgImage from "../../../assets/img/ProfileBackground.png";
-import React from "react";
+import React, {useEffect} from "react";
 import {FaCube, FaPenFancy} from "react-icons/fa";
-import {useSelector} from "react-redux";
+import {
+    useSelector,
+    useDispatch
+} from "react-redux";
 import {IoDocumentsSharp} from "react-icons/io5";
 import Conversations from "./components/Conversations";
 import Header from "./components/Header";
 import PlatformSettings from "./components/PlatformSettings";
 import ProfileInformation from "./components/ProfileInformation";
 import Projects from "./components/Projects";
+import {getUserDetails} from "../../../actions/userActions.js"
 
 function Profile() {
     // Chakra color mode
@@ -20,8 +24,17 @@ function Profile() {
         "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
     );
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getUserDetails());
+    }, [])
+
     const userLogin = useSelector(state => state.userLogin);
     const {userInfo} = userLogin;
+
+    const userDetails = useSelector(state => state.userDetails);
+    const {user} = userDetails;
 
     return (
         <Flex direction='column'>
@@ -29,7 +42,7 @@ function Profile() {
                 backgroundHeader={ProfileBgImage}
                 backgroundProfile={bgProfile}
                 avatarImage={avatar4}
-                name={"Esthera Jackson"}
+                name={user.first_name + " " + user.last_name}
                 email={userInfo.username}
                 tabs={[
                     {
@@ -57,8 +70,8 @@ function Profile() {
                     description={
                         "Hi, I’m Esthera Jackson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
                     }
-                    name={"Esthera Jackson"}
-                    email={"esthera@simmmple.com"}
+                    name={user.first_name + " " + user.last_name}
+                    email={userInfo.username}
 
                 />
                 <Conversations title={"Conversations"}/>
