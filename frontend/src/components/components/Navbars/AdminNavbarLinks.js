@@ -51,8 +51,8 @@ export default function HeaderLinks(props) {
     }
 
     if (secondary) {
-        navbarIcon = "white";
-        mainText = "white";
+        navbarIcon = "black";
+        mainText = "black";
     }
     const settingsRef = useRef();
     return (

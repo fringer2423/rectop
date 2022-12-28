@@ -42,135 +42,17 @@ const Conversations = ({title}) => {
                             />
                             <Flex direction='column'>
                                 <Text fontSize='sm' color={textColor} fontWeight='bold'>
-                                    Sophie B.{" "}
+                                    Компания
                                 </Text>
                                 <Text fontSize='xs' color='gray.500' fontWeight='400'>
-                                    Hi! I need more information...
+                                    Билайн
                                 </Text>
                             </Flex>
                         </Flex>
-                        <Button p='0px' bg='transparent' variant='no-hover'>
-                            <Text
-                                fontSize='sm'
-                                fontWeight='600'
-                                color='maincolor'
-                                alignSelf='center'>
-                                REPLY
-                            </Text>
-                        </Button>
                     </Flex>
-                    <Flex justifyContent='space-between' mb='21px'>
-                        <Flex align='center'>
-                            <Avatar
-                                src={avatar3}
-                                w='50px'
-                                h='50px'
-                                borderRadius='15px'
-                                me='10px'
-                            />
-                            <Flex direction='column'>
-                                <Text fontSize='sm' color={textColor} fontWeight='bold'>
-                                    Sophie B.{" "}
-                                </Text>
-                                <Text fontSize='xs' color='gray.500' fontWeight='400'>
-                                    Awesome work, can you change...
-                                </Text>
-                            </Flex>
-                        </Flex>
-                        <Button p='0px' bg='transparent' variant='no-hover'>
-                            <Text
-                                fontSize='sm'
-                                fontWeight='600'
-                                color='maincolor'
-                                alignSelf='center'>
-                                REPLY
-                            </Text>
-                        </Button>
-                    </Flex>
-                    <Flex justifyContent='space-between' mb='21px'>
-                        <Flex align='center'>
-                            <Avatar
-                                src={avatar4}
-                                w='50px'
-                                h='50px'
-                                borderRadius='15px'
-                                me='10px'
-                            />
-                            <Flex direction='column'>
-                                <Text fontSize='sm' color={textColor} fontWeight='bold'>
-                                    Sophie B.{" "}
-                                </Text>
-                                <Text fontSize='xs' color='gray.500' fontWeight='400'>
-                                    Have a great afternoon...
-                                </Text>
-                            </Flex>
-                        </Flex>
-                        <Button p='0px' bg='transparent' variant='no-hover'>
-                            <Text
-                                fontSize='sm'
-                                fontWeight='600'
-                                color='maincolor'
-                                alignSelf='center'>
-                                REPLY
-                            </Text>
-                        </Button>
-                    </Flex>
-                    <Flex justifyContent='space-between' mb='21px'>
-                        <Flex align='center'>
-                            <Avatar
-                                src={avatar5}
-                                w='50px'
-                                h='50px'
-                                borderRadius='15px'
-                                me='10px'
-                            />
-                            <Flex direction='column'>
-                                <Text fontSize='sm' color={textColor} fontWeight='bold'>
-                                    Sophie B.{" "}
-                                </Text>
-                                <Text fontSize='xs' color='gray.500' fontWeight='400'>
-                                    About files I can...
-                                </Text>
-                            </Flex>
-                        </Flex>
-                        <Button p='0px' bg='transparent' variant='no-hover'>
-                            <Text
-                                fontSize='sm'
-                                fontWeight='600'
-                                color='maincolor'
-                                alignSelf='center'>
-                                REPLY
-                            </Text>
-                        </Button>
-                    </Flex>
-                    <Flex justifyContent='space-between' mb='21px'>
-                        <Flex align='center'>
-                            <Avatar
-                                src={avatar6}
-                                w='50px'
-                                h='50px'
-                                borderRadius='15px'
-                                me='10px'
-                            />
-                            <Flex direction='column'>
-                                <Text fontSize='sm' color={textColor} fontWeight='bold'>
-                                    Sophie B.{" "}
-                                </Text>
-                                <Text fontSize='xs' color='gray.500' fontWeight='400'>
-                                    About files I can...
-                                </Text>
-                            </Flex>
-                        </Flex>
-                        <Button p='0px' bg='transparent' variant='no-hover'>
-                            <Text
-                                fontSize='sm'
-                                fontWeight='600'
-                                color='maincolor'
-                                alignSelf='center'>
-                                REPLY
-                            </Text>
-                        </Button>
-                    </Flex>
+                    <Button colorscheme="maincolor" variant="outline">
+                        Добвить компанию
+                    </Button>
                 </Flex>
             </CardBody>
         </Card>

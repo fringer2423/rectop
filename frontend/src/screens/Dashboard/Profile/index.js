@@ -61,24 +61,30 @@ function Profile() {
             />
             <Grid templateColumns={{sm: "1fr", xl: "repeat(3, 1fr)"}} gap='22px'>
                 <PlatformSettings
-                    title={"Platform Settings"}
-                    subtitle1={"ACCOUNT"}
-                    subtitle2={"APPLICATION"}
+                    title={"Настройки личного кабинета"}
+                    subtitle1={"Ваше имя"}
+                    subtitle2={"Вашa фамилия"}
+                    subtitle3={"Новый пароль"}
+                    subtitle4={"Новое описание"}
+                    subtitle5={"Ваш номер телефона"}
+                    subtitle6={"Ваша должность"}
+                    subtitle7={"Email"}
                 />
                 <ProfileInformation
                     title={"Информация о профиле"}
                     description={
-                        "Hi, I’m Esthera Jackson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
+                        "Придумайте себе описание"
                     }
                     name={user.first_name + " " + user.last_name}
                     email={userInfo.username}
 
                 />
-                <Conversations title={"Conversations"}/>
+                <Conversations title={"Компании"}/>
             </Grid>
-            <Projects title={"Projects"} description={"Architects design houses"}/>
+
         </Flex>
     );
 }
+// <Projects title={"Компании"} description={"Добавьте свою компанию"}/>
 
 export default Profile;
