@@ -1,35 +1,35 @@
 // Chakra imports
-import {ChakraProvider, Portal, useDisclosure} from '@chakra-ui/react';
-import Configurator from '../components/components/Configurator/Configurator';
-import Footer from '../components/components/Footer/Footer.js';
+import { ChakraProvider, Portal, useDisclosure } from "@chakra-ui/react";
+import Configurator from "../components/components/Configurator/Configurator";
+import Footer from "../components/components/Footer/Footer.js";
 // Layout components
-import AdminNavbar from '../components/components/Navbars/AdminNavbar.js';
-import Sidebar from '../components/components/Sidebar';
-import React, {useState} from 'react';
-import {Redirect, Route, Switch} from 'react-router-dom';
-import routes from '../routes.js';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import AdminNavbar from "../components/components/Navbars/AdminNavbar.js";
+import Sidebar from "../components/components/Sidebar";
+import React, { useState } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
+import routes from "../routes.js";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 // Custom Chakra theme
-import theme from '../theme/theme.js';
-import FixedPlugin from '../components/components/FixedPlugin/FixedPlugin';
+import theme from "../theme/theme.js";
+import FixedPlugin from "../components/components/FixedPlugin/FixedPlugin";
 // Custom components
-import MainPanel from '../components/components/Layout/MainPanel';
-import PanelContainer from '../components/components/Layout/PanelContainer';
-import PanelContent from '../components/components/Layout/PanelContent';
+import MainPanel from "../components/components/Layout/MainPanel";
+import PanelContainer from "../components/components/Layout/PanelContainer";
+import PanelContent from "../components/components/Layout/PanelContent";
 
 export default function Dashboard(props) {
-    const {...rest} = props;
+    const { ...rest } = props;
     // states and functions
-    const [sidebarVariant, setSidebarVariant] = useState('transparent');
+    const [sidebarVariant, setSidebarVariant] = useState("transparent");
     const [fixed, setFixed] = useState(false);
     // functions for changing the states from components
     const getRoute = () => {
-        return window.location.pathname !== '/dashboard/full-screen-maps';
+        return window.location.pathname !== "/dashboard/full-screen-maps";
     };
     const getActiveRoute = (routes) => {
-        let activeRoute = 'Dashboard';
+        let activeRoute = "Dashboard";
         for (let i = 1; i < routes.length; i++) {
             if (routes[i].collapse) {
                 let collapseActiveRoute = getActiveRoute(routes[i].views);
@@ -42,7 +42,11 @@ export default function Dashboard(props) {
                     return categoryActiveRoute;
                 }
             } else {
-                if (window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1) {
+                if (
+                    window.location.href.indexOf(
+                        routes[i].layout + routes[i].path
+                    ) !== -1
+                ) {
                     console.log(routes[i].name);
                     console.log(window.location.href);
                     console.log(routes[i]);
@@ -62,7 +66,11 @@ export default function Dashboard(props) {
                     return categoryActiveNavbar;
                 }
             } else {
-                if (window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1) {
+                if (
+                    window.location.href.indexOf(
+                        routes[i].layout + routes[i].path
+                    ) !== -1
+                ) {
                     if (routes[i].secondaryNavbar) {
                         return routes[i].secondaryNavbar;
                     }
@@ -76,41 +84,54 @@ export default function Dashboard(props) {
             if (prop.collapse) {
                 return getRoutes(prop.views);
             }
-            if (prop.category === 'account') {
+            if (prop.category === "account") {
                 return getRoutes(prop.views);
             }
-            if (prop.layout === '/dashboard' && prop.path != '/') {
-                return <Route path={prop.layout + prop.path} component={prop.component} key={key}/>;
+            if (prop.layout === "/dashboard" && prop.path != "/") {
+                return (
+                    <Route
+                        path={prop.layout + prop.path}
+                        component={prop.component}
+                        key={key}
+                    />
+                );
             }
-            if (prop.path === '/') {
-                return <Route exact path={prop.layout + prop.path} component={prop.component} key={key}/>;
-
+            if (prop.path === "/") {
+                return (
+                    <Route
+                        exact
+                        path={prop.layout + prop.path}
+                        component={prop.component}
+                        key={key}
+                    />
+                );
             } else {
                 return null;
             }
         });
     };
-    const {isOpen, onOpen, onClose} = useDisclosure();
-    document.documentElement.dir = 'ltr';
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    document.documentElement.dir = "ltr";
     // Chakra Color Mode
     return (
         <ChakraProvider theme={theme} resetCss={false}>
             <Sidebar
                 routes={routes}
-                logoText={'RecTop'}
-                display='none'
+                logoText={"RecTop"}
+                display="none"
                 sidebarVariant={sidebarVariant}
                 {...rest}
             />
             <MainPanel
                 w={{
-                    base: '100%',
-                    xl: 'calc(100% - 275px)'
-                }}>
+                    base: "100%",
+                    xl: "calc(100% - 275px)",
+                }}
+            >
                 <Portal>
                     <AdminNavbar
                         onOpen={onOpen}
-                        logoText={'RecTop'}
+                        logoText={"RecTop"}
                         brandText={getActiveRoute(routes)}
                         secondary={getActiveNavbar(routes)}
                         fixed={fixed}
@@ -122,14 +143,18 @@ export default function Dashboard(props) {
                         <PanelContainer>
                             <Switch>
                                 {getRoutes(routes)}
-                                <Redirect exact to="/dashboard/"/>
+                                <Redirect exact to="/dashboard/" />
                             </Switch>
                         </PanelContainer>
                     </PanelContent>
                 ) : null}
-                <Footer/>
+                <Footer />
                 <Portal>
-                    <FixedPlugin secondary={getActiveNavbar(routes)} fixed={fixed} onOpen={onOpen}/>
+                    <FixedPlugin
+                        secondary={getActiveNavbar(routes)}
+                        fixed={fixed}
+                        onOpen={onOpen}
+                    />
                 </Portal>
                 <Configurator
                     secondary={getActiveNavbar(routes)}
@@ -139,8 +164,8 @@ export default function Dashboard(props) {
                     onSwitch={(value) => {
                         setFixed(value);
                     }}
-                    onOpaque={() => setSidebarVariant('opaque')}
-                    onTransparent={() => setSidebarVariant('transparent')}
+                    onOpaque={() => setSidebarVariant("opaque")}
+                    onTransparent={() => setSidebarVariant("transparent")}
                 />
             </MainPanel>
         </ChakraProvider>

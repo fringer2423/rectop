@@ -1,29 +1,29 @@
 // chakra imports
-import {Box, ChakraProvider, Portal} from '@chakra-ui/react';
-import Footer from '../components/components/Footer/Footer.js';
+import { Box, ChakraProvider, Portal } from "@chakra-ui/react";
+import Footer from "../components/components/Footer/Footer.js";
 // core components
-import AuthNavbar from '../components/components/Navbars/AuthNavbar.js';
-import React, {useEffect} from 'react';
-import {Redirect, Route, Switch, useHistory} from 'react-router-dom';
-import {useSelector} from 'react-redux';
-import routes from '../routes.js';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-import theme from '../theme/theme.js';
+import AuthNavbar from "../components/components/Navbars/AuthNavbar.js";
+import React, { useEffect } from "react";
+import { Redirect, Route, Switch, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import routes from "../routes.js";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import theme from "../theme/theme.js";
 
 export default function Pages(props) {
-    const {...rest} = props;
+    const { ...rest } = props;
 
     // ref for the wrapper div
 
     const wrapper = React.createRef();
     useEffect(() => {
-        document.body.style.overflow = 'unset';
+        document.body.style.overflow = "unset";
         // Specify how to clean up after this effect:
     }, []);
     const getActiveRoute = (routes) => {
-        let activeRoute = 'Default Brand Text';
+        let activeRoute = "Default Brand Text";
         for (let i = 0; i < routes.length; i++) {
             if (routes[i].collapse) {
                 let collapseActiveRoute = getActiveRoute(routes[i].views);
@@ -36,7 +36,11 @@ export default function Pages(props) {
                     return categoryActiveRoute;
                 }
             } else {
-                if (window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1) {
+                if (
+                    window.location.href.indexOf(
+                        routes[i].layout + routes[i].path
+                    ) !== -1
+                ) {
                     return routes[i].name;
                 }
             }
@@ -52,7 +56,11 @@ export default function Pages(props) {
                     return categoryActiveNavbar;
                 }
             } else {
-                if (window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1) {
+                if (
+                    window.location.href.indexOf(
+                        routes[i].layout + routes[i].path
+                    ) !== -1
+                ) {
                     if (routes[i].secondaryNavbar) {
                         return routes[i].secondaryNavbar;
                     }
@@ -66,34 +74,43 @@ export default function Pages(props) {
             if (prop.collapse) {
                 return getRoutes(prop.views);
             }
-            if (prop.category === 'account') {
+            if (prop.category === "account") {
                 return getRoutes(prop.views);
             }
-            if (prop.layout === '/auth') {
-                return <Route path={prop.layout + prop.path} component={prop.component} key={key}/>;
+            if (prop.layout === "/auth") {
+                return (
+                    <Route
+                        path={prop.layout + prop.path}
+                        component={prop.component}
+                        key={key}
+                    />
+                );
             } else {
                 return null;
             }
         });
     };
     const navRef = React.useRef();
-    document.documentElement.dir = 'ltr';
+    document.documentElement.dir = "ltr";
     return (
-        <ChakraProvider theme={theme} resetCss={false} w='100%'>
-            <Box ref={navRef} w='100%'>
+        <ChakraProvider theme={theme} resetCss={false} w="100%">
+            <Box ref={navRef} w="100%">
                 <Portal containerRef={navRef}>
-                    <AuthNavbar secondary={getActiveNavbar(routes)} logoText='RecTop'/>
+                    <AuthNavbar
+                        secondary={getActiveNavbar(routes)}
+                        logoText="RecTop"
+                    />
                 </Portal>
-                <Box w='100%'>
-                    <Box ref={wrapper} w='100%'>
+                <Box w="100%">
+                    <Box ref={wrapper} w="100%">
                         <Switch>
                             {getRoutes(routes)}
-                            <Redirect to="/auth/signin"/>
+                            <Redirect to="/auth/signin" />
                         </Switch>
                     </Box>
                 </Box>
-                <Box px='24px' mx='auto' width='1044px' maxW='100%'>
-                    <Footer/>
+                <Box px="24px" mx="auto" width="1044px" maxW="100%">
+                    <Footer />
                 </Box>
             </Box>
         </ChakraProvider>

@@ -15,17 +15,18 @@
         margin-top: 30%;
     }
 
-    .rec h3, .rec-last h3 {
+    .rec h3,
+    .rec-last h3 {
         margin-bottom: 20%;
-        font-size: 40px
+        font-size: 40px;
     }
 
     .block-of-rec img {
-        margin-left: 25%
+        margin-left: 25%;
     }
 
     .rec-last {
-        margin-top: 100%
+        margin-top: 100%;
     }
 
     .arrow-for-mobile {
@@ -33,8 +34,9 @@
     }
 }
 
-.rec h3, .rec-last h3 {
-    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+.rec h3,
+.rec-last h3 {
+    background: linear-gradient(139.35deg, #4584ff -49.2%, #4333a6 268.32%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -62,18 +64,20 @@
     .rec-last {
         text-align: right;
         width: 188px;
-        margin-left: 30%
+        margin-left: 30%;
     }
 
-    .rec p, .rec-last p {
+    .rec p,
+    .rec-last p {
         font-size: 14px;
     }
 
-    .rec h3, .rec-last h3 {
+    .rec h3,
+    .rec-last h3 {
         font-size: 32px;
     }
 
     .arrow {
-        display: none
+        display: none;
     }
 }

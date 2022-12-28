@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../css/purpleCircle.css"
+import "../css/purpleCircle.css";
 
 const PurpleCircle = () => {
     return (
@@ -20,8 +20,10 @@ const PurpleCircle = () => {
                 alt="purple circle arrow"
             />
             <div className="purple-circle">
-                <h1><b>RecTop</b></h1>
-                <hr/>
+                <h1>
+                    <b>RecTop</b>
+                </h1>
+                <hr />
                 <p>Мы сводим клиентов и компании вместе!</p>
             </div>
             <img
@@ -39,8 +41,7 @@ const PurpleCircle = () => {
                 />
             </div>
         </div>
-    )
-
-}
+    );
+};
 
 export default PurpleCircle;

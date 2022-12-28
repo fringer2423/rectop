@@ -1,31 +1,31 @@
 .purple-block h2 {
-    margin-bottom: 10%
+    margin-bottom: 10%;
 }
 
 @media (min-width: 992px) {
     .img-in-purple-block-mobile {
-        display: none
+        display: none;
     }
 
     .purple-block {
-        background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+        background: linear-gradient(139.35deg, #4584ff -49.2%, #4333a6 268.32%);
         border-radius: 30px;
         color: white;
         padding: 5% 4% 3% 5%;
         margin-top: -38%;
-        margin-bottom: 15%
+        margin-bottom: 15%;
     }
 
     .white-ellipse {
         position: relative;
         right: 15%;
-        margin-bottom: -100%
+        margin-bottom: -100%;
     }
 }
 
 @media (max-width: 991px) {
     .purple-block {
-        background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+        background: linear-gradient(139.35deg, #4584ff -49.2%, #4333a6 268.32%);
         box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
         border-radius: 20px;
         color: white;
@@ -35,7 +35,7 @@
         margin-top: 5%;
         padding-top: 10%;
         padding-left: 5%;
-        padding-right: 5%
+        padding-right: 5%;
     }
 
     .purple-block b {
@@ -48,7 +48,7 @@
     }
 
     .img-in-purple-block {
-        display: none
+        display: none;
     }
 
     .wrapper-for-purple-block {
@@ -59,10 +59,7 @@
     .white-ellipse {
         display: none;
     }
-
-
 }
-
 
 @media (max-width: 1399px) {
     .white-ellipse {
@@ -70,7 +67,7 @@
     }
 
     .img-in-purple-block {
-        top: 40px
+        top: 40px;
     }
 }
 
@@ -81,7 +78,7 @@
     }
 
     .img-in-purple-block {
-        top: 130px
+        top: 130px;
     }
 }
 
@@ -89,7 +86,6 @@
     .white-ellipse {
         bottom: 620px;
     }
-
 }
 
 .img-in-purple-block {

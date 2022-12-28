@@ -27,7 +27,17 @@ export const barChartOptions = {
         theme: "dark",
     },
     xaxis: {
-        categories: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        categories: [
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+        ],
         show: false,
         labels: {
             show: false,

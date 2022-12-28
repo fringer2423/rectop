@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../css/refProg.css"
+import "../css/refProg.css";
 
 const Refprogram = () => {
     return (
@@ -11,8 +11,13 @@ const Refprogram = () => {
                 alt="bell ring"
             />
             <div className="ref-block">
-                <h1><b>Реферальная программа</b></h1>
-                <p>Каждый твой новый подключённый филиал/приведённый друг - это пожизненный кешбек</p>
+                <h1>
+                    <b>Реферальная программа</b>
+                </h1>
+                <p>
+                    Каждый твой новый подключённый филиал/приведённый друг - это
+                    пожизненный кешбек
+                </p>
             </div>
             <img
                 src="/images/main/megaphone.svg"
@@ -20,7 +25,7 @@ const Refprogram = () => {
                 alt="megaphone"
             />
         </>
-    )
-}
+    );
+};
 
 export default Refprogram;

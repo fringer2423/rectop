@@ -1,7 +1,6 @@
-import React, {useState, useRef} from "react";
+import React, { useState, useRef } from "react";
 
-import "../css/accordion.css"
-
+import "../css/accordion.css";
 
 const Accordion = (props) => {
     const [show, setShow] = useState(false);
@@ -11,15 +10,13 @@ const Accordion = (props) => {
     const openAccordion = () => {
         setHeight(show === true ? "0px" : `${content.current.scrollHeight}px`);
         setShow(!show);
-    }
+    };
 
     return (
         <div className="accordions">
             <div className="accordion-item">
                 <div className="title-of-accordion" onClick={openAccordion}>
-                    <span className="text-title-accordion">
-                        {props.title}
-                    </span>
+                    <span className="text-title-accordion">{props.title}</span>
                     <span className="symbol-for-accordion">
                         {show ? "-" : "+"}
                     </span>
@@ -28,15 +25,13 @@ const Accordion = (props) => {
                 <div
                     className="body-of-accordion"
                     ref={content}
-                    style={{maxHeight: `${height}`}}
+                    style={{ maxHeight: `${height}` }}
                 >
-                    <div>
-                        {props.text}
-                    </div>
+                    <div>{props.text}</div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Accordion;
