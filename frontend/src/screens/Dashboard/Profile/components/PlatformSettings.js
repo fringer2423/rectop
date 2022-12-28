@@ -5,7 +5,8 @@ import {
     Text,
     Input,
     InputGroup,
-    useColorModeValue
+    useColorModeValue,
+    Button
 } from "@chakra-ui/react";
 // Custom components
 import Card from "../../../../components/components/Card/Card";
@@ -35,7 +36,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                         <InputGroup
                             bg={inputBg}
                             borderRadius="15px"
-                            w="200px"
+                            w="300px"
                             _focus={{
                                 borderColor: {maincolor},
                             }}
@@ -61,7 +62,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                         <InputGroup
                             bg={inputBg}
                             borderRadius="15px"
-                            w="200px"
+                            w="300px"
                             _focus={{
                                 borderColor: {maincolor},
                             }}
@@ -87,7 +88,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                         <InputGroup
                             bg={inputBg}
                             borderRadius="15px"
-                            w="200px"
+                            w="300px"
                             _focus={{
                                 borderColor: {maincolor},
                             }}
@@ -113,7 +114,8 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                         <InputGroup
                             bg={inputBg}
                             borderRadius="15px"
-                            w="200px"
+                            w="300px"
+                            h="200px"
                             _focus={{
                                 borderColor: {maincolor},
                             }}
@@ -124,6 +126,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                             <Input
                                 fontSize="xs"
                                 py="11px"
+                                h="100%"
                                 borderRadius="inherit"
                             />
                         </InputGroup>
@@ -139,7 +142,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                         <InputGroup
                             bg={inputBg}
                             borderRadius="15px"
-                            w="200px"
+                            w="300px"
                             _focus={{
                                 borderColor: {maincolor},
                             }}
@@ -165,7 +168,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                         <InputGroup
                             bg={inputBg}
                             borderRadius="15px"
-                            w="200px"
+                            w="300px"
                             _focus={{
                                 borderColor: {maincolor},
                             }}
@@ -191,7 +194,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                         <InputGroup
                             bg={inputBg}
                             borderRadius="15px"
-                            w="200px"
+                            w="300px"
                             _focus={{
                                 borderColor: {maincolor},
                             }}
@@ -206,6 +209,9 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                             />
                         </InputGroup>
                     </Flex>
+                    <Button colorscheme="maincolor" variant="outline">
+                        Сохранить изменения
+                    </Button>
 
                 </Flex>
             </CardBody>

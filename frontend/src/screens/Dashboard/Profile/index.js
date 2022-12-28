@@ -59,7 +59,7 @@ function Profile() {
                     },
                 ]}
             />
-            <Grid templateColumns={{sm: "1fr", xl: "repeat(3, 1fr)"}} gap='22px'>
+            <Grid templateColumns={{sm: "1fr", md:"repeat(2, 1fr)", xl: "repeat(3, 1fr)"}} gap='22px'>
                 <PlatformSettings
                     title={"Настройки личного кабинета"}
                     subtitle1={"Ваше имя"}
