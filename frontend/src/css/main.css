@@ -185,7 +185,7 @@
         display: none;
     }
 
-    .block-with-pic-one. .block-with-pic-two {
+    .block-with-pic-one, .block-with-pic-two {
         text-align: center;
         margin-top: 5%;
         margin-bottom: 5%;
