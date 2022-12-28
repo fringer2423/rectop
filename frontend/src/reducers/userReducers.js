@@ -4,6 +4,7 @@ import {
     USER_LOGIN_FAIL,
 
     USER_LOGOUT,
+    USER_IS_LOGGED_IN,
 
     USER_REGISTER_REQUEST,
     USER_REGISTER_SUCCESS,
@@ -84,6 +85,7 @@ export const userVerifyReducer = (state = {}, action) => {
         case USER_VERIFY_FAIL:
             return {loading: false, error: action.payload}
 
+
         default:
             return state
     }
@@ -95,7 +97,7 @@ export const userVerifyLoginReducer = (state = {}, action) => {
             return {loading: true}
 
         case USER_VERIFY_LOGIN_SUCCESS:
-            return {loading: false, detail: action.payload}
+            return {loading: false, detail: action.payload, isLoggedIn: true}
 
         case USER_VERIFY_LOGIN_FAIL:
             return {loading: false, error: action.payload}

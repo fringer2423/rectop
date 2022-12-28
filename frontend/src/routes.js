@@ -46,7 +46,7 @@ export const dashRoutes = [
 
     {
         path: "/profile",
-        name: "Profile",
+        name: "Личный кабинет",
 
         icon: <PersonIcon color="inherit"/>,
         secondaryNavbar: true,

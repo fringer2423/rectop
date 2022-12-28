@@ -36,7 +36,6 @@ const VerificationScreen = (props) => {
                 setMessage('Ваша почта успешно подтверждена. Сейчас вы перейдете в личный кабинет');
                 await new Promise((resolve, reject) => setTimeout(resolve, 3000));
                 history.push('/dashboard/');
-                window.location.reload();
             } else {
                 setMessage(error);
             }

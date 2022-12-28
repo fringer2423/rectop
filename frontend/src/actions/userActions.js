@@ -251,6 +251,10 @@ export const verify = (code) => async (dispatch) => {
             payload: data
         });
 
+        dispatch({
+            type: USER_VERIFY_LOGIN_SUCCESS
+        })
+
         localStorage.setItem('userInfo', JSON.stringify(data))
 
     } catch (error) {
