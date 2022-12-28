@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+## [0.0.46] - 2022-12-27
+
+### Добавлено
+
+- company constants [@AlexTrubkina](https://github.com/AlexTrubkina)
+- company reducers
+
+### Изменено
+
+- fixed login after refreshing page [@AlexTrubkina](https://github.com/AlexTrubkina)
+- dashboard colors
+- fixed errors
+- fixed import
+
+### Удалено
+
 ## [0.0.45] - 2022-12-26
 
 ### Добавлено
