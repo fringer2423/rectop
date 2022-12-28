@@ -2,11 +2,11 @@ import {
     createStore,
     combineReducers,
     applyMiddleware
-} from 'redux'
-import thunk from 'redux-thunk'
+} from 'redux';
+import thunk from 'redux-thunk';
 import {
     composeWithDevTools
-} from 'redux-devtools-extension'
+} from 'redux-devtools-extension';
 
 
 import {
@@ -17,9 +17,16 @@ import {
     userVerifyReducer,
     userLoginCheckReducer,
     userVerifyLoginReducer
-} from './reducers/userReducers'
+} from './reducers/userReducers';
 
-import {rateInfoDataReducer} from './reducers/rateInfoReducers'
+import {rateInfoDataReducer} from './reducers/rateInfoReducers';
+
+import {
+    companyCreateReducer,
+    companyDeleteReducer,
+    companyDetailsReducer,
+    companyUpdateReducer
+} from './reducers/companyReducers';
 
 
 const reducer = combineReducers({
@@ -32,7 +39,12 @@ const reducer = combineReducers({
     userVerifyLogin: userVerifyLoginReducer,
 
     rateInfoData: rateInfoDataReducer,
-})
+
+    companyCreate: companyCreateReducer,
+    companyDelete: companyDeleteReducer,
+    companyDetails: companyDetailsReducer,
+    companyUpdate: companyUpdateReducer
+});
 
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ?
