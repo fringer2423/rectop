@@ -12,7 +12,7 @@ export function SearchBar(props) {
     // Pass the computed styles into the `__css` prop
     const {variant, children, ...rest} = props;
     // Chakra Color Mode
-    const mainmaincolor = useColorModeValue("maincolor", "maincolor");
+    const maincolor = useColorModeValue("maincolor", "maincolor");
     const searchIconColor = useColorModeValue("gray.700", "gray.200");
     const inputBg = useColorModeValue("white", "gray.800");
     return (
@@ -21,10 +21,10 @@ export function SearchBar(props) {
             borderRadius="15px"
             w="200px"
             _focus={{
-                borderColor: {mainmaincolor},
+                borderColor: {maincolor},
             }}
             _active={{
-                borderColor: {mainmaincolor},
+                borderColor: {maincolor},
             }}
         >
             <InputLeftElement

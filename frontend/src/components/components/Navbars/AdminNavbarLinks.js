@@ -38,7 +38,7 @@ export default function HeaderLinks(props) {
     let history = useHistory();
 
     // Chakra Color Mode
-    let mainmaincolor = useColorModeValue("maincolor.300", "maincolor.300");
+    let maincolor = useColorModeValue("maincolor", "maincolor");
     let inputBg = useColorModeValue("white", "gray.800");
     let mainText = useColorModeValue("gray.700", "gray.200");
     let navbarIcon = useColorModeValue("gray.500", "gray.200");
@@ -72,10 +72,10 @@ export default function HeaderLinks(props) {
                 }}
                 me={{sm: "auto", md: "20px"}}
                 _focus={{
-                    borderColor: {mainmaincolor},
+                    borderColor: {maincolor},
                 }}
                 _active={{
-                    borderColor: {mainmaincolor},
+                    borderColor: {maincolor},
                 }}
             >
                 <InputLeftElement
