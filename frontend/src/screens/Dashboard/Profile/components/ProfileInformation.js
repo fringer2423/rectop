@@ -11,9 +11,7 @@ const ProfileInformation = ({
                                 title,
                                 description,
                                 name,
-                                mobile,
                                 email,
-                                location,
                             }) => {
     // Chakra color mode
     const textColor = useColorModeValue("gray.700", "white");
@@ -40,14 +38,6 @@ const ProfileInformation = ({
                     </Flex>
                     <Flex align='center' mb='18px'>
                         <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
-                            Телефон:{" "}
-                        </Text>
-                        <Text fontSize='md' color='gray.500' fontWeight='400'>
-                            {mobile}
-                        </Text>
-                    </Flex>
-                    <Flex align='center' mb='18px'>
-                        <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
                             Email:{" "}
                         </Text>
                         <Text fontSize='md' color='gray.500' fontWeight='400'>
@@ -61,26 +51,26 @@ const ProfileInformation = ({
                         <Flex>
                             <Link
                                 href='#'
-                                color='teal.300'
+                                color='maincolor'
                                 fontSize='lg'
                                 me='10px'
-                                _hover={{color: "teal.300"}}>
+                                _hover={{color: "maincolor"}}>
                                 <Icon as={FaFacebook}/>
                             </Link>
                             <Link
                                 href='#'
-                                color='teal.300'
+                                color='maincolor'
                                 fontSize='lg'
                                 me='10px'
-                                _hover={{color: "teal.300"}}>
+                                _hover={{color: "maincolor"}}>
                                 <Icon as={FaInstagram}/>
                             </Link>
                             <Link
                                 href='#'
-                                color='teal.300'
+                                color='maincolor'
                                 fontSize='lg'
                                 me='10px'
-                                _hover={{color: "teal.300"}}>
+                                _hover={{color: "maincolor"}}>
                                 <Icon as={FaTwitter}/>
                             </Link>
                         </Flex>

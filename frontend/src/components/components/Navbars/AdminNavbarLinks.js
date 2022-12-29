@@ -38,7 +38,7 @@ export default function HeaderLinks(props) {
     let history = useHistory();
 
     // Chakra Color Mode
-    let mainTeal = useColorModeValue("teal.300", "teal.300");
+    let maincolor = useColorModeValue("maincolor", "maincolor");
     let inputBg = useColorModeValue("white", "gray.800");
     let mainText = useColorModeValue("gray.700", "gray.200");
     let navbarIcon = useColorModeValue("gray.500", "gray.200");
@@ -51,8 +51,8 @@ export default function HeaderLinks(props) {
     }
 
     if (secondary) {
-        navbarIcon = "white";
-        mainText = "white";
+        navbarIcon = "black";
+        mainText = "black";
     }
     const settingsRef = useRef();
     return (
@@ -72,10 +72,10 @@ export default function HeaderLinks(props) {
                 }}
                 me={{sm: "auto", md: "20px"}}
                 _focus={{
-                    borderColor: {mainTeal},
+                    borderColor: {maincolor},
                 }}
                 _active={{
-                    borderColor: {mainTeal},
+                    borderColor: {maincolor},
                 }}
             >
                 <InputLeftElement
@@ -83,7 +83,7 @@ export default function HeaderLinks(props) {
                         <IconButton
                             bg="inherit"
                             borderRadius="inherit"
-                            _hover="none"
+                            hover="none"
                             _active={{
                                 bg: "inherit",
                                 transform: "none",

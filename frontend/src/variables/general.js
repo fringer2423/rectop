@@ -17,7 +17,7 @@ import {
     SlackLogo,
     SpotifyLogo,
 } from "../components/components/Icons/Icons.js";
-import {AiOutlineExclamation} from "react-icons/ai";
+import { AiOutlineExclamation } from "react-icons/ai";
 import {
     FaArrowDown,
     FaArrowUp,
@@ -27,7 +27,7 @@ import {
     FaHtml5,
     FaShoppingCart,
 } from "react-icons/fa";
-import {SiDropbox} from "react-icons/si";
+import { SiDropbox } from "react-icons/si";
 
 export const dashboardTableData = [
     {
@@ -161,7 +161,7 @@ export const rtlTimelineData = [
         logo: FaBell,
         title: "$2400, تغييرات في التصميم",
         date: "22 DEC 7:20 PM",
-        color: "teal.300",
+        color: "maincolor",
     },
     {
         logo: FaHtml5,

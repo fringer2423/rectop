@@ -5,12 +5,13 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 10%;
-    gap: 9%
+    gap: 9%;
 }
 
 .icon-in-circle {
     background: white;
-    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%) border-box;
+    background: linear-gradient(139.35deg, #4584ff -49.2%, #4333a6 268.32%)
+        border-box;
     border-radius: 50em;
     border: 20px solid transparent;
 }
@@ -35,23 +36,22 @@
 @media (max-width: 1200px) {
     .icon-in-circle img {
         width: 100%;
-        height: 100px
+        height: 100px;
     }
 }
 
 @media (max-width: 1000px) {
     #tab-for-icons {
-        gap: 7%
+        gap: 7%;
     }
 }
-
 
 .slide {
     display: flex;
     flex-direction: row;
     gap: 10%;
     justify-content: center;
-    margin-bottom: 10%
+    margin-bottom: 10%;
 }
 
 #slider-for-icons {
@@ -63,27 +63,22 @@
 @media (max-width: 480px) {
     .carousel-for-brands .carousel-control-prev-icon {
         left: 87%;
-
     }
 
     .carousel-for-brands .carousel-control-next-icon {
         right: 87%;
-
     }
 }
 
 @media (min-width: 481px) {
     .carousel-for-brands .carousel-control-prev-icon {
         left: 150%;
-
     }
 
     .carousel-for-brands .carousel-control-next-icon {
         right: 150%;
-
     }
 }
-
 
 .carousel-for-brands .carousel-control-prev-icon {
     position: relative;
@@ -100,7 +95,7 @@
 }
 
 .carousel-for-brands .carousel-indicators {
-    gap: 20px
+    gap: 20px;
 }
 
 .carousel-for-brands .carousel-indicators [data-bs-target] {
@@ -108,13 +103,13 @@
     height: 13px !important;
     border: 1px solid transparent !important;
     border-radius: 50%;
-    background-color: #EEEEEE !important;
+    background-color: #eeeeee !important;
 }
 
 .carousel-for-brands .carousel-indicators .active {
-    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    background: linear-gradient(139.35deg, #4584ff -49.2%, #4333a6 268.32%);
 }
 
 .slide {
-    width: 100%
+    width: 100%;
 }

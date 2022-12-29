@@ -21,9 +21,9 @@ const Invoices = ({title, data}) => {
                         {title}
                     </Text>
                     <Button
-                        colorScheme='teal'
-                        borderColor='teal.300'
-                        color='teal.300'
+                        colorscheme='maincolor'
+                        borderColor='maincolor'
+                        color='maincolor'
                         variant='outline'
                         fontSize='xs'
                         p='8px 32px'>
@@ -41,6 +41,7 @@ const Invoices = ({title, data}) => {
                                 price={row.price}
                                 logo={row.logo}
                                 format={row.format}
+                                key={row.code}
                             />
                         );
                     })}

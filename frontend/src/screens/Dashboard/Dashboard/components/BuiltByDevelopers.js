@@ -49,7 +49,7 @@ const BuiltByDevelopers = ({title, name, description, image}) => {
                                     cursor='pointer'
                                     transition='all .5s ease'
                                     my={{sm: "1.5rem", lg: "0px"}}
-                                    _hover={{me: "4px"}}>
+                                    hover={{me: "4px"}}>
                                     Read more
                                 </Text>
                                 <Icon
@@ -61,14 +61,14 @@ const BuiltByDevelopers = ({title, name, description, image}) => {
                                     mx='.3rem'
                                     cursor='pointer'
                                     pt='4px'
-                                    _hover={{transform: "translateX(20%)"}}
+                                    hover={{transform: "translateX(20%)"}}
                                 />
                             </Button>
                         </Flex>
                     </Flex>
                     <Spacer/>
                     <Flex
-                        bg='teal.300'
+                        bg='maincolor'
                         align='center'
                         justify='center'
                         borderRadius='15px'

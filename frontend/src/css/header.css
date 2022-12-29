@@ -12,7 +12,7 @@
 .dot {
     width: 5px;
     height: 5px;
-    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    background: linear-gradient(139.35deg, #4584ff -49.2%, #4333a6 268.32%);
     position: relative;
     border-radius: 50%;
     transform: translateX(-50%);
@@ -28,31 +28,30 @@
     color: #232323;
 }
 
-.link-for-nav:hover .dot, .active-link .dot {
+.link-for-nav:hover .dot,
+.active-link .dot {
     opacity: 1;
     left: 50%;
 }
 
 .bars {
     font-size: 25px;
-    color: #4584FF;
+    color: #4584ff;
 }
 
 @media (min-width: 992px) {
     .logo-mobile {
-        display: none
+        display: none;
     }
 
     .container-for-navbar {
-        border-bottom: 1px solid #D6D6D6CC;
+        border-bottom: 1px solid #d6d6d6cc;
     }
-
 }
-
 
 @media (max-width: 991px) {
     .dot {
-        display: none
+        display: none;
     }
 
     .link-block {
@@ -65,15 +64,15 @@
 
     .brand-in-nav {
         position: relative;
-        left: 50%
+        left: 50%;
     }
 
     .collapsed {
         position: relative;
-        right: 90%
+        right: 90%;
     }
 
     .logo-computer {
-        display: none
+        display: none;
     }
 }

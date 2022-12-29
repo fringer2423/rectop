@@ -57,8 +57,8 @@ export default function AdminNavbar(props) {
     if (props.secondary) {
         navbarBackdrop = "none";
         navbarPosition = "absolute";
-        mainText = "white";
-        secondaryText = "white";
+        mainText = "black";
+        secondaryText = "black";
         secondaryMargin = "22px";
         paddingX = "30px";
     }
@@ -135,7 +135,7 @@ export default function AdminNavbar(props) {
                         bg="inherit"
                         borderRadius="inherit"
                         fontWeight="bold"
-                        _hover={{color: {mainText}}}
+                        hover={{color: {mainText}}}
                         _active={{
                             bg: "inherit",
                             transform: "none",

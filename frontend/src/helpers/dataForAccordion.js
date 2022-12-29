@@ -21,4 +21,4 @@ const dataForAccordion = [
     },
 ];
 
-export default dataForAccordion
+export default dataForAccordion;

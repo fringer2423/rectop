@@ -3,7 +3,7 @@ export const buttonStyles = {
         Button: {
             variants: {
                 "no-hover": {
-                    _hover: {
+                    hover: {
                         boxShadow: "none",
                     },
                 },
@@ -12,7 +12,7 @@ export const buttonStyles = {
                     fontWeight: "bold",
                     borderRadius: "inherit",
                     cursor: "pointer",
-                    _hover: "none",
+                    hover: "none",
                     _active: {
                         bg: "transparent",
                         transform: "none",
@@ -21,7 +21,7 @@ export const buttonStyles = {
                     _focus: {
                         boxShadow: "none",
                     },
-                    _hover: {
+                    hover: {
                         boxShadow: "none",
                     },
                 },

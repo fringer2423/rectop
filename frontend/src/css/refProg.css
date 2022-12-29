@@ -1,22 +1,22 @@
 .ref-block {
     border-radius: 30px;
-    border: 2px solid #4584FF;
+    border: 2px solid #4584ff;
     text-align: center;
     padding: 5% 4% 3% 3%;
 }
 
 .ref-block h1 {
     margin-bottom: 4%;
-    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    background: linear-gradient(139.35deg, #4584ff -49.2%, #4333a6 268.32%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .ref-block:hover {
-    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    background: linear-gradient(139.35deg, #4584ff -49.2%, #4333a6 268.32%);
     color: white;
-    transition: 0.3s
+    transition: 0.3s;
 }
 
 .ref-block:hover > h1 {
@@ -27,33 +27,31 @@
 }
 
 .ref-block p {
-    font-size: 24px
+    font-size: 24px;
 }
 
 .bell-ring {
     position: relative;
     right: 7%;
-    bottom: -100px
+    bottom: -100px;
 }
 
 .megaphone {
     position: relative;
     left: 90%;
-    bottom: 100px
-
+    bottom: 100px;
 }
 
 @media (max-width: 1499px) and (min-width: 992px) {
     .megaphone {
         left: 83%;
-        bottom: 90px
+        bottom: 90px;
     }
 }
 
-
 @media (max-width: 1100px) {
     .ref-block p {
-        font-size: 16px
+        font-size: 16px;
     }
 
     .megaphone {
@@ -67,28 +65,28 @@
 
 @media (max-width: 799px) {
     .bell-ring {
-        top: 220px
+        top: 220px;
     }
 
     .megaphone {
-        bottom: 220px
+        bottom: 220px;
     }
 }
 
 @media (max-width: 610px) {
     .megaphone {
-        left: 80%
+        left: 80%;
     }
 }
 
 @media (width: 768px) {
     .megaphone {
         bottom: 270px;
-        left: 83%
+        left: 83%;
     }
 
     .bell-ring {
-        top: 270px
+        top: 270px;
     }
 }
 
@@ -98,6 +96,6 @@
     }
 
     .bell-ring {
-        top: 190px
+        top: 190px;
     }
 }

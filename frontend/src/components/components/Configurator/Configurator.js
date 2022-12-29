@@ -75,7 +75,7 @@ export default function Configurator(props) {
                                         w="50%"
                                         p="8px 32px"
                                         me="8px"
-                                        colorScheme="maincolor"
+                                        colorscheme="maincolor"
                                         borderColor="maincolor"
                                         color="maincolor"
                                         variant="outline"
@@ -90,7 +90,6 @@ export default function Configurator(props) {
                                         w="50%"
                                         p="8px 32px"
                                         mb={5}
-                                        _hover="maincolor"
                                         color="white"
                                         fontSize="xs"
                                         onClick={props.onOpaque}
@@ -108,7 +107,7 @@ export default function Configurator(props) {
                                     Navbar Fixed
                                 </Text>
                                 <Switch
-                                    colorScheme="maincolor"
+                                    colorscheme="maincolor"
                                     isChecked={switched}
                                     onChange={(event) => {
                                         if (switched === true) {

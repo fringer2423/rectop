@@ -1,16 +1,15 @@
 @font-face {
     font-family: Gilroy-Medium;
-    src: url(../../public/font/Gilroy-Medium.woff)
+    src: url(../../public/font/Gilroy-Medium.woff);
 }
 
 * {
-    font-family: Gilroy-Medium
+    font-family: Gilroy-Medium;
 }
 
 .first-image {
     width: 40%;
 }
-
 
 .header-tariffs {
     display: flex;
@@ -18,25 +17,22 @@
 }
 
 @media (max-width: 1199px) {
-
     #first-block {
-        gap: 5%
+        gap: 5%;
     }
 
     .first-block-text h1 {
-        font-size: 30px
+        font-size: 30px;
     }
 }
 
-
 @media (min-width: 992px) {
-
     .header-tariffs h1 {
-        width: 50%
+        width: 50%;
     }
 
     .right-text-buttons-first-block {
-        margin-left: 10%
+        margin-left: 10%;
     }
 
     .text-contacts-mobile {
@@ -55,7 +51,7 @@
 
     .cursive-text {
         font-style: italic;
-        color: #0F0F0F
+        color: #0f0f0f;
     }
 
     #body {
@@ -84,7 +80,7 @@
     }
 
     .text-in-pb {
-        padding-right: 40%
+        padding-right: 40%;
     }
 
     .block-with-pic-one {
@@ -110,16 +106,17 @@
     }
 
     .block-with-pic-two-text li::marker {
-        content: url(../../public/images/line.svg) "   "
+        content: url(../../public/images/line.svg) "   ";
     }
 
-    .block-with-pic-one img, .block-with-pic-two img {
+    .block-with-pic-one img,
+    .block-with-pic-two img {
         width: 50%;
         height: 50%;
     }
 
     .first-img-for-mobile {
-        display: none
+        display: none;
     }
 
     .small-text {
@@ -128,18 +125,21 @@
 
     .small-text-first-block {
         font-size: 16px;
-        width: 350px
+        width: 350px;
     }
 
     .special {
-        margin-left: 10%
+        margin-left: 10%;
     }
 
-    #work h3, .block-with-pic-one h3, .block-with-pic-two h3 {
+    #work h3,
+    .block-with-pic-one h3,
+    .block-with-pic-two h3 {
         font-size: 24px;
     }
 
-    .block-with-pic-one-text b, .block-with-pic-two-text b {
+    .block-with-pic-one-text b,
+    .block-with-pic-two-text b {
         font-size: 40px;
     }
 
@@ -152,27 +152,24 @@
         text-align: center;
         padding-left: 25%;
         padding-right: 25%;
-        margin-bottom: 3%
+        margin-bottom: 3%;
     }
-
 }
 
 @media (max-width: 991px) {
-
     #work {
         text-align: center;
-        margin-top: 96px
+        margin-top: 96px;
     }
 
     #about {
-        margin-top: 10%
+        margin-top: 10%;
     }
 
     #first-block {
         margin-top: 200px;
         text-align: center;
         box-shadow: 0 15px 10px -15px rgba(0, 0, 0, 0.08);
-
     }
 
     .first-image {
@@ -180,7 +177,7 @@
     }
 
     .cursive-text {
-        color: #0F0F0F;
+        color: #0f0f0f;
         font-weight: bold;
     }
 
@@ -188,14 +185,14 @@
         display: none;
     }
 
-    .block-with-pic-one. .block-with-pic-two {
+    .block-with-pic-one, .block-with-pic-two {
         text-align: center;
         margin-top: 5%;
         margin-bottom: 5%;
     }
 
-
-    .block-with-pic-one-text, .block-with-pic-two-text {
+    .block-with-pic-one-text,
+    .block-with-pic-two-text {
         margin-top: 5%;
     }
 
@@ -212,7 +209,8 @@
         display: none;
     }
 
-    .block-with-pic-one img, .block-with-pic-two img {
+    .block-with-pic-one img,
+    .block-with-pic-two img {
         width: 90%;
         margin-top: 10%;
         margin-bottom: 10%;
@@ -226,7 +224,9 @@
         font-size: 14px;
     }
 
-    #work h3, .block-with-pic-one h3, .block-with-pic-two h3 {
+    #work h3,
+    .block-with-pic-one h3,
+    .block-with-pic-two h3 {
         font-size: 18px;
     }
 
@@ -245,46 +245,41 @@
     }
 }
 
-
 .first-img-for-mobile {
     width: 90%;
-    margin-top: 10%
+    margin-top: 10%;
 }
-
 
 .about-comp-text h2 {
     margin-bottom: 5%;
     font-size: 24px;
 }
 
-
 .gradient-text {
-    background: linear-gradient(139.35deg, #4584FF -49.2%, #4333A6 268.32%);
+    background: linear-gradient(139.35deg, #4584ff -49.2%, #4333a6 268.32%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .small-text li::marker {
-    content: url(../../public/images/line.svg) "   "
+    content: url(../../public/images/line.svg) "   ";
 }
 
 .small-text ul {
-    margin-left: 4%
+    margin-left: 4%;
 }
-
 
 .block-with-pic-two-text ul {
-    margin-left: 5%
+    margin-left: 5%;
 }
 
-
 .first-block-text h2 {
-    font-size: 24px
+    font-size: 24px;
 }
 
 .first-block-text {
-    margin-top: 10%
+    margin-top: 10%;
 }
 
 #why-rectop h1 {
@@ -292,12 +287,10 @@
     margin-top: 5%;
 }
 
-
 .get-reports h1 {
     text-align: center;
     margin-bottom: 2%;
 }
-
 
 #work h2 {
     font-size: 24px;
@@ -307,11 +300,11 @@
 
 .recommendations {
     text-align: center;
-    margin-top: 20%
+    margin-top: 20%;
 }
 
 .for-buttons {
-    background: #F9F9F9;
+    background: #f9f9f9;
     border-radius: 50px;
     display: flex;
     flex-direction: row;
@@ -319,7 +312,7 @@
     margin-top: 5%;
     margin-bottom: 10%;
     width: 80%;
-    padding: 1%
+    padding: 1%;
 }
 
 .wrapper-for-buttons {
@@ -337,7 +330,6 @@
     text-align: center;
 }
 
-
 .recommendations h2 {
     font-size: 24px;
 }
@@ -352,16 +344,15 @@
 
 .text-contacts li span {
     position: relative;
-    left: 20px
+    left: 20px;
 }
 
-
 #questions h1 {
-    margin-bottom: 5%
+    margin-bottom: 5%;
 }
 
 .block-with-accordion {
-    margin-bottom: 7%
+    margin-bottom: 7%;
 }
 
 .text-contacts-mobile {

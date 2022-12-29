@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Carousel} from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 
 import "../css/brands.css";
 
@@ -8,62 +8,59 @@ const brands = [
     {
         src: "/images/main/yandex.svg",
         title: "Яндекс.Карты",
-        text: "55 млн чел./месяц"
+        text: "55 млн чел./месяц",
     },
     {
         src: "/images/main/google.svg",
         title: "Google карты",
-        text: "30 млн чел./месяц"
+        text: "30 млн чел./месяц",
     },
     {
         src: "/images/main/2GIS.svg",
         title: "2ГИС",
-        text: "30 млн чел./месяц"
+        text: "30 млн чел./месяц",
     },
     {
         src: "/images/main/wildberries.svg",
         title: "Wildberries",
-        text: "92 млн чел./месяц"
+        text: "92 млн чел./месяц",
     },
     {
         src: "/images/main/zoon.svg",
         title: "Zoon",
-        text: "25 млн чел./месяц"
+        text: "25 млн чел./месяц",
     },
     {
         src: "/images/main/ozon.svg",
         title: "OZON",
-        text: "80 млн чел./месяц"
+        text: "80 млн чел./месяц",
     },
     {
         src: "/images/main/yell.svg",
         title: "Yell",
-        text: "3 млн чел./месяц"
+        text: "3 млн чел./месяц",
     },
     {
         src: "/images/main/flamp.svg",
         title: "Flamp",
-        text: "50 млн чел./месяц"
-    }
-]
+        text: "50 млн чел./месяц",
+    },
+];
 
 const Brands = () => {
     return (
         <>
             <div id="tab-for-icons">
-                {brands.map(brand => {
+                {brands.map((brand) => {
                     return (
                         <div className="brand-icon" key={brand.title}>
                             <div className="icon-in-circle">
-                                <img
-                                    src={brand.src}
-                                    alt={brand.title}
-                                />
+                                <img src={brand.src} alt={brand.title} />
                             </div>
                             <h5>{brand.title}</h5>
                             <p>{brand.text}</p>
                         </div>
-                    )
+                    );
                 })}
             </div>
             <div id="slider-for-icons">
@@ -154,8 +151,9 @@ const Brands = () => {
                             </div>
                             <div className="brand-icon">
                                 <div className="icon-in-circle">
-                                    <img src="/images/main/flamp.svg"
-                                         alt="Flamp"
+                                    <img
+                                        src="/images/main/flamp.svg"
+                                        alt="Flamp"
                                     />
                                 </div>
                                 <h5>Flamp</h5>
@@ -166,7 +164,7 @@ const Brands = () => {
                 </Carousel>
             </div>
         </>
-    )
-}
+    );
+};
 
 export default Brands;
