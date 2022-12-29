@@ -33,6 +33,9 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
     const [job, setJob] = useState('');
     const [email, setEmail] = useState('');
 
+    const userUpdate = useSelector(state => state.userUpdate);
+    const {error} = userUpdate
+
     let userUpdateInfo = {
         "first_name": name,
         "last_name": surname,
@@ -53,6 +56,9 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                 <Text fontSize="lg" color={textColor} fontWeight="bold">
                     {title}
                 </Text>
+                {error &&
+                    <h5 className="text-danger">Произошла ошибка обновления данных</h5>
+                }
             </CardHeader>
             <CardBody px="5px">
                 <Flex direction="column">
@@ -68,7 +74,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                         <InputGroup
                             bg={inputBg}
                             borderRadius="15px"
-                            w="300px"
+                            w="250px"
                             _focus={{
                                 borderColor: {maincolor},
                             }}
@@ -97,7 +103,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                         <InputGroup
                             bg={inputBg}
                             borderRadius="15px"
-                            w="300px"
+                            w="250px"
                             _focus={{
                                 borderColor: {maincolor},
                             }}
@@ -126,7 +132,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                         <InputGroup
                             bg={inputBg}
                             borderRadius="15px"
-                            w="300px"
+                            w="250px"
                             _focus={{
                                 borderColor: {maincolor},
                             }}
@@ -155,7 +161,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                         <InputGroup
                             bg={inputBg}
                             borderRadius="15px"
-                            w="300px"
+                            w="250px"
                             h="200px"
                             _focus={{
                                 borderColor: {maincolor},
@@ -183,7 +189,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                         <InputGroup
                             bg={inputBg}
                             borderRadius="15px"
-                            w="300px"
+                            w="250px"
                             _focus={{
                                 borderColor: {maincolor},
                             }}
@@ -212,7 +218,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                         <InputGroup
                             bg={inputBg}
                             borderRadius="15px"
-                            w="300px"
+                            w="250px"
                             _focus={{
                                 borderColor: {maincolor},
                             }}
@@ -241,7 +247,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                         <InputGroup
                             bg={inputBg}
                             borderRadius="15px"
-                            w="300px"
+                            w="250px"
                             _focus={{
                                 borderColor: {maincolor},
                             }}

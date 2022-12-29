@@ -6,6 +6,7 @@ import CardBody from "../../../../components/components/Card/CardBody";
 import CardHeader from "../../../../components/components/Card/CardHeader";
 import React from "react";
 import {FaFacebook, FaInstagram, FaTwitter} from "react-icons/fa";
+import { faHourglass3 } from "@fortawesome/free-solid-svg-icons";
 
 const ProfileInformation = ({
                                 title,
@@ -15,6 +16,7 @@ const ProfileInformation = ({
                                 job,
                                 name,
                                 email,
+                                error
                             }) => {
     // Chakra color mode
     const textColor = useColorModeValue("gray.700", "white");
@@ -25,6 +27,9 @@ const ProfileInformation = ({
                 <Text fontSize='lg' color={textColor} fontWeight='bold'>
                     {title}
                 </Text>
+                {error &&
+                    <h3 className="text-danger">Произошла ошибка. Не удалось загрузить данные</h3>
+                }
             </CardHeader>
             <CardBody px='5px'>
                 <Flex direction='column'>
@@ -70,7 +75,7 @@ const ProfileInformation = ({
                     { job !== "" &&
                         <Flex align='center' mb='18px'>
                             <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
-                                Информация о тарифе:{" "}
+                                Должность:{" "}
                             </Text>
                             <Text fontSize='md' color='gray.500' fontWeight='400'>
                                 {job}
