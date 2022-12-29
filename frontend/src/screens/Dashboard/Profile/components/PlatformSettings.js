@@ -32,6 +32,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
     const [mobile, setMobile] = useState('');
     const [job, setJob] = useState('');
     const [email, setEmail] = useState('');
+    const [necessaryText, setNecessaryText] = useState('');
 
     const userUpdate = useSelector(state => state.userUpdate);
     const {error} = userUpdate
@@ -47,21 +48,31 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
     }
 
     const handleUpdateProfileInfo = () => {
-        dispatch(updateUser(userUpdateInfo));
+        if (name !== '' && surname !== ''){
+            dispatch(updateUser(userUpdateInfo));
+            setNecessaryText('');
+        }
+        else {
+            setNecessaryText('Заполните обязательые поля');
+        }
     }
 
     return (
         <Card p="16px">
             <CardHeader p="12px 5px" mb="12px">
+                <Flex direction="column">
                 <Text fontSize="lg" color={textColor} fontWeight="bold">
                     {title}
                 </Text>
+                <p className="text-secondary">Обязательные поля помечены *</p>
                 {error &&
                     <h5 className="text-danger">Произошла ошибка обновления данных</h5>
                 }
+                </Flex>                
             </CardHeader>
             <CardBody px="5px">
                 <Flex direction="column">
+                    
                     <Text
                         fontSize="sm"
                         color="gray.500"
@@ -264,6 +275,9 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                             />
                         </InputGroup>
                     </Flex>
+                    {necessaryText !== '' &&
+                        <p className="text-secondary">{necessaryText}</p>
+                    }
                     <Button
                         colorscheme="maincolor"
                         variant="outline"

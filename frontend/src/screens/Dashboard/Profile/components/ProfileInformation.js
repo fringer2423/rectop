@@ -6,7 +6,7 @@ import CardBody from "../../../../components/components/Card/CardBody";
 import CardHeader from "../../../../components/components/Card/CardHeader";
 import React from "react";
 import {FaFacebook, FaInstagram, FaTwitter} from "react-icons/fa";
-import { faHourglass3 } from "@fortawesome/free-solid-svg-icons";
+
 
 const ProfileInformation = ({
                                 title,

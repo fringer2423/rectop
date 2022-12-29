@@ -75,8 +75,8 @@ function Profile() {
                 />
                 <PlatformSettings
                     title={"Настройки личного кабинета"}
-                    subtitle1={"Ваше имя"}
-                    subtitle2={"Ваша фамилия"}
+                    subtitle1={"Ваше имя*"}
+                    subtitle2={"Ваша фамилия*"}
                     subtitle3={"Новый пароль"}
                     subtitle4={"Новое описание"}
                     subtitle5={"Ваш номер телефона"}
