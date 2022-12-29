@@ -10,8 +10,7 @@
 
 .icon-in-circle {
     background: white;
-    background: linear-gradient(139.35deg, #4584ff -49.2%, #4333a6 268.32%)
-        border-box;
+    background: linear-gradient(139.35deg, #4584ff -49.2%, #4333a6 268.32%) border-box;
     border-radius: 50em;
     border: 20px solid transparent;
 }

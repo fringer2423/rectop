@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 
-import { Container, Spinner } from "react-bootstrap";
+import {Container, Spinner} from "react-bootstrap";
 
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
-import { useHistory } from "react-router";
+import {useHistory} from "react-router";
 
 import "../css/main.css";
 import "../css/buttons.css";
@@ -23,7 +23,7 @@ import PurpleCircle from "../components/PurpleCircle";
 import Brands from "../components/Brands";
 import ListOfRec from "../components/ListOfRec";
 
-import { dataRate } from "../actions/rateInfoActions.js";
+import {dataRate} from "../actions/rateInfoActions.js";
 
 import dataForAccordion from "../helpers/dataForAccordion";
 
@@ -36,11 +36,11 @@ const HomeScreen = () => {
 
     const rateInfoData = useSelector((state) => state.rateInfoData);
 
-    const { rateInfo, loading, error } = rateInfoData;
+    const {rateInfo, loading, error} = rateInfoData;
 
     return (
         <div id="body">
-            <Header />
+            <Header/>
             <Container>
                 <div id="first-block">
                     <div className="first-block-text">
@@ -55,8 +55,8 @@ const HomeScreen = () => {
                                 взаимодействия с клиентами.
                             </span>
                         </h1>
-                        <br />
-                        <br />
+                        <br/>
+                        <br/>
                         <div className="right-text-buttons-first-block">
                             <div className="small-text-first-block">
                                 Отзывы собираются по QR-коду, когда клиент
@@ -99,8 +99,8 @@ const HomeScreen = () => {
                             <b>RecTop</b> - это бизнес- решение для тех, кто
                             хочет получать дополнительный трафик за счёт сбора и
                             мониторинга отзывов.
-                            <br />
-                            <br />
+                            <br/>
+                            <br/>
                             <ul>
                                 <li>
                                     Обратная связь с недовольными клиентами
@@ -113,7 +113,7 @@ const HomeScreen = () => {
                         </div>
                     </div>
                     <div>
-                        <PurpleCircle />
+                        <PurpleCircle/>
                     </div>
                 </div>
                 <div id="why-rectop">
@@ -122,42 +122,42 @@ const HomeScreen = () => {
                     </h1>
                     <div className="why-blocks">
                         <div className="why-block">
-                            <img src="/images/pic1.svg" alt="mobile" />
+                            <img src="/images/pic1.svg" alt="mobile"/>
                             <h2>
                                 <b>Увеличим</b>
                             </h2>
                             <p>
-                                <br /> положительные отзывы реальных клиентов на
+                                <br/> положительные отзывы реальных клиентов на
                                 50%
                             </p>
                         </div>
                         <div className="why-block">
-                            <img src="/images/pic2.svg" alt="mobile" />
+                            <img src="/images/pic2.svg" alt="mobile"/>
                             <h2>
                                 <b>Освободим</b>
                             </h2>
                             <p>
-                                <br /> 90% вашего времени на сбор клиентских
+                                <br/> 90% вашего времени на сбор клиентских
                                 отзывов
                             </p>
                         </div>
                         <div className="why-block">
-                            <img src="/images/pic3.svg" alt="mobile" />
+                            <img src="/images/pic3.svg" alt="mobile"/>
                             <h2>
                                 <b>Мотивируем</b>
                             </h2>
                             <p>
-                                <br /> клиентов на повторные продажи: кэшбэк за
+                                <br/> клиентов на повторные продажи: кэшбэк за
                                 отзывы
                             </p>
                         </div>
                         <div className="why-block">
-                            <img src="/images/pic4.svg" alt="mobile" />
+                            <img src="/images/pic4.svg" alt="mobile"/>
                             <h2>
                                 <b>Регулируем</b>
                             </h2>
                             <p>
-                                <br /> конфликт вовремя, негативные отзывы
+                                <br/> конфликт вовремя, негативные отзывы
                                 получаете только Вы
                             </p>
                         </div>
@@ -180,7 +180,7 @@ const HomeScreen = () => {
                         продаж
                     </div>
 
-                    <Brands />
+                    <Brands/>
 
                     <img
                         src="/images/mobileforpurpleblock.png"
@@ -246,7 +246,7 @@ const HomeScreen = () => {
                             </h2>
                             <h3>Клиенту все понравилось?</h3>
                             <div className="small-text">
-                                <br />
+                                <br/>
                                 Довольные клиенты смогут оставлять отзывы в
                                 личной карточке компании – их увидят тысячи
                                 людей!
@@ -309,7 +309,7 @@ const HomeScreen = () => {
                         хотите его убрать, то лучше ответить на него в момент
                         возникновения
                     </h2>
-                    <ListOfRec />
+                    <ListOfRec/>
                 </div>
                 <div id="tariffs">
                     <img
@@ -333,7 +333,7 @@ const HomeScreen = () => {
                             тарифах позже
                         </h4>
                     ) : (
-                        <Prices rateInfo={rateInfo} />
+                        <Prices rateInfo={rateInfo}/>
                     )}
                 </div>
 
@@ -389,21 +389,21 @@ const HomeScreen = () => {
                             и предложений” навсегда!
                         </b>
                     </div>
-                    <FormUser />
+                    <FormUser/>
                 </div>
-                <Refprogram />
+                <Refprogram/>
                 <div id="questions">
                     <h1>
                         <b>Часто задаваемые вопросы</b>
                     </h1>
                     <div className="block-with-accordion">
-                        {dataForAccordion.map(({ title, text }) => (
-                            <Accordion title={title} text={text} key={title} />
+                        {dataForAccordion.map(({title, text}) => (
+                            <Accordion title={title} text={text} key={title}/>
                         ))}
                     </div>
                 </div>
             </Container>
-            <Footer />
+            <Footer/>
         </div>
     );
 };

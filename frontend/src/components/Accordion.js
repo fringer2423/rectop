@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, {useState, useRef} from "react";
 
 import "../css/accordion.css";
 
@@ -25,7 +25,7 @@ const Accordion = (props) => {
                 <div
                     className="body-of-accordion"
                     ref={content}
-                    style={{ maxHeight: `${height}` }}
+                    style={{maxHeight: `${height}`}}
                 >
                     <div>{props.text}</div>
                 </div>

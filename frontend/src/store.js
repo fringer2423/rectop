@@ -1,6 +1,6 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
+import {createStore, combineReducers, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
+import {composeWithDevTools} from "redux-devtools-extension";
 
 import {
     userLoginReducer,
@@ -12,7 +12,7 @@ import {
     userVerifyLoginReducer,
 } from "./reducers/userReducers";
 
-import { rateInfoDataReducer } from "./reducers/rateInfoReducers";
+import {rateInfoDataReducer} from "./reducers/rateInfoReducers";
 
 import {
     companyCreateReducer,

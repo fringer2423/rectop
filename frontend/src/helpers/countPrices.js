@@ -11,7 +11,7 @@ const countPrice = (numOfBranchs, duration, sale) => {
 
 export const countPrices = (numOfBranchs, duration, sales) => {
     const saleBranchs = Object.keys(sales); // массив с ключами объекта
-    const percentSales = Object.values(sales); // массив с значениями объекта
+    const percentSales = Object.values(sales); // массив со значениями объекта
     if (numOfBranchs < Number(saleBranchs[0])) {
         // если количество филиалов меньше первой скидки
         return {

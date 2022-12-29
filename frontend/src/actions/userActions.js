@@ -37,9 +37,9 @@ export const login = (email, password) => async (dispatch) => {
             },
         };
 
-        const { data } = await axios.post(
+        const {data} = await axios.post(
             "/api/user/login/",
-            { username: email, password: password },
+            {username: email, password: password},
             config
         );
 
@@ -70,7 +70,7 @@ export const login = (email, password) => async (dispatch) => {
                 dispatch({
                     type: USER_LOGIN_FAIL,
                     payload:
-                        "Ошибка авторизации. ПоCommit a588cd00пробуйте еще раз",
+                        "Ошибка авторизации. Попробуйте еще раз",
                 });
         }
     }
@@ -83,7 +83,7 @@ export const checkLogin = () => async (dispatch, getState) => {
         });
 
         const {
-            userLogin: { userInfo },
+            userLogin: {userInfo},
         } = getState();
 
         const config = {
@@ -93,7 +93,7 @@ export const checkLogin = () => async (dispatch, getState) => {
             },
         };
 
-        const { data } = await axios.get(`/api/user/send_code/`, config);
+        const {data} = await axios.get(`/api/user/send_code/`, config);
 
         dispatch({
             type: USER_LOGIN_CHECK_SUCCESS,
@@ -117,7 +117,7 @@ export const verifyLogin = (code) => async (dispatch, getState) => {
         });
 
         const {
-            userLogin: { userInfo },
+            userLogin: {userInfo},
         } = getState();
 
         const config = {
@@ -127,9 +127,9 @@ export const verifyLogin = (code) => async (dispatch, getState) => {
             },
         };
 
-        const { data } = await axios.post(
+        const {data} = await axios.post(
             `/api/user/verify_code/`,
-            { verify_code: code },
+            {verify_code: code},
             config
         );
 
@@ -154,8 +154,8 @@ export const verifyLogin = (code) => async (dispatch, getState) => {
 export const logout = () => (dispatch) => {
     localStorage.removeItem("userInfo");
     localStorage.removeItem("isLoggedIn");
-    dispatch({ type: USER_LOGOUT });
-    dispatch({ type: USER_DETAILS_RESET });
+    dispatch({type: USER_LOGOUT});
+    dispatch({type: USER_DETAILS_RESET});
 };
 
 export const register =
@@ -171,7 +171,7 @@ export const register =
                 },
             };
 
-            const { data } = await axios.post(
+            const {data} = await axios.post(
                 "/api/user/create/",
                 {
                     first_name: first_name,
@@ -226,7 +226,7 @@ export const verify = (code) => async (dispatch) => {
             },
         };
 
-        const { data } = await axios.get(`/api/user/verify/${code}`, config);
+        const {data} = await axios.get(`/api/user/verify/${code}`, config);
 
         dispatch({
             type: USER_VERIFY_SUCCESS,
@@ -290,7 +290,7 @@ export const getUserDetails = () => async (dispatch, getState) => {
         });
 
         const {
-            userLogin: { userInfo },
+            userLogin: {userInfo},
         } = getState();
 
         const config = {
@@ -300,7 +300,7 @@ export const getUserDetails = () => async (dispatch, getState) => {
             },
         };
 
-        const { data } = await axios.get(`/api/user/read/`, config);
+        const {data} = await axios.get(`/api/user/read/`, config);
 
         dispatch({
             type: USER_DETAILS_SUCCESS,
@@ -324,7 +324,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
         });
 
         const {
-            userLogin: { userInfo },
+            userLogin: {userInfo},
         } = getState();
 
         const config = {
@@ -334,7 +334,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
             },
         };
 
-        const { data } = await axios.put(`/api/user/update/`, user, config);
+        const {data} = await axios.put(`/api/user/update/`, user, config);
 
         dispatch({
             type: USER_UPDATE_SUCCESS,

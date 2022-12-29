@@ -1,12 +1,12 @@
 // Chakra imports
-import { ChakraProvider, Portal, useDisclosure } from "@chakra-ui/react";
+import {ChakraProvider, Portal, useDisclosure} from "@chakra-ui/react";
 import Configurator from "../components/components/Configurator/Configurator";
 import Footer from "../components/components/Footer/Footer.js";
 // Layout components
 import AdminNavbar from "../components/components/Navbars/AdminNavbar.js";
 import Sidebar from "../components/components/Sidebar";
-import React, { useState } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import React, {useState} from "react";
+import {Redirect, Route, Switch} from "react-router-dom";
 import routes from "../routes.js";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -20,7 +20,7 @@ import PanelContainer from "../components/components/Layout/PanelContainer";
 import PanelContent from "../components/components/Layout/PanelContent";
 
 export default function Dashboard(props) {
-    const { ...rest } = props;
+    const {...rest} = props;
     // states and functions
     const [sidebarVariant, setSidebarVariant] = useState("transparent");
     const [fixed, setFixed] = useState(false);
@@ -110,7 +110,7 @@ export default function Dashboard(props) {
             }
         });
     };
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    const {isOpen, onOpen, onClose} = useDisclosure();
     document.documentElement.dir = "ltr";
     // Chakra Color Mode
     return (
@@ -143,12 +143,12 @@ export default function Dashboard(props) {
                         <PanelContainer>
                             <Switch>
                                 {getRoutes(routes)}
-                                <Redirect exact to="/dashboard/" />
+                                <Redirect exact to="/dashboard/"/>
                             </Switch>
                         </PanelContainer>
                     </PanelContent>
                 ) : null}
-                <Footer />
+                <Footer/>
                 <Portal>
                     <FixedPlugin
                         secondary={getActiveNavbar(routes)}

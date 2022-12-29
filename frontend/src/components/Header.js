@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-import { Navbar, Nav, Container } from "react-bootstrap";
+import {Navbar, Nav, Container} from "react-bootstrap";
 
-import { LinkContainer } from "react-router-bootstrap";
+import {LinkContainer} from "react-router-bootstrap";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NavHashLink } from "react-router-hash-link";
-import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {NavHashLink} from "react-router-hash-link";
+import {faCircleArrowRight} from "@fortawesome/free-solid-svg-icons";
+import {faBars} from "@fortawesome/free-solid-svg-icons";
 
 import "../css/header.css";
 
@@ -36,7 +36,7 @@ function Header() {
                         aria-controls="basic-navbar-nav"
                         className="border border-0"
                     >
-                        <FontAwesomeIcon icon={faBars} className="bars" />
+                        <FontAwesomeIcon icon={faBars} className="bars"/>
                     </Navbar.Toggle>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto w-100 justify-content-between mx-4">

@@ -1,11 +1,11 @@
 import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import {Navbar, Nav, Container} from "react-bootstrap";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-import { NavHashLink } from "react-router-hash-link";
+import {NavHashLink} from "react-router-hash-link";
 
-import { faTelegram, faVk } from "@fortawesome/free-brands-svg-icons";
+import {faTelegram, faVk} from "@fortawesome/free-brands-svg-icons";
 
 import "../css/footer.css";
 
@@ -88,8 +88,8 @@ function Footer() {
                             <Nav.Item>Политика конфиденциальности</Nav.Item>
                             <Nav.Item>Лицензионный договор</Nav.Item>
                             <div className="icons-footer">
-                                <FontAwesomeIcon icon={faTelegram} />
-                                <FontAwesomeIcon icon={faVk} />
+                                <FontAwesomeIcon icon={faTelegram}/>
+                                <FontAwesomeIcon icon={faVk}/>
                             </div>
                         </div>
                     </div>
@@ -147,8 +147,8 @@ function Footer() {
                         <u>Лицензионный договор</u>
                     </Nav.Item>
                     <div className="icons-footer">
-                        <FontAwesomeIcon icon={faTelegram} />
-                        <FontAwesomeIcon icon={faVk} />
+                        <FontAwesomeIcon icon={faTelegram}/>
+                        <FontAwesomeIcon icon={faVk}/>
                     </div>
                 </div>
             </Container>

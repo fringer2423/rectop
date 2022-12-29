@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
-import { Alert } from "react-bootstrap";
+import {Alert} from "react-bootstrap";
 
-import { register } from "../actions/userActions.js";
+import {register} from "../actions/userActions.js";
 
 import {
     Box,
@@ -22,7 +22,7 @@ import {
 } from "@chakra-ui/react";
 
 import bgSignUp from "../assets/img/bgSignUp.png";
-import { FaApple, FaFacebook, FaGoogle } from "react-icons/fa";
+import {FaApple, FaFacebook, FaGoogle} from "react-icons/fa";
 
 import {
     validateEmail,
@@ -42,7 +42,7 @@ const RegistrationPage = () => {
     const bgColor = useColorModeValue("white", "gray.700");
     const bgIcons = useColorModeValue("maincolor", "rgba(255, 255, 255, 0.5)");
     const userRegister = useSelector((state) => state.userRegister);
-    const { error, userInfo } = userRegister;
+    const {error, userInfo} = userRegister;
     const [errorColor, setErrorColor] = useState("");
 
     const handleRegistration = () => {
@@ -67,9 +67,9 @@ const RegistrationPage = () => {
         >
             <Box
                 position="absolute"
-                minH={{ base: "70vh", md: "50vh" }}
-                w={{ md: "calc(100vw - 50px)" }}
-                borderRadius={{ md: "15px" }}
+                minH={{base: "70vh", md: "50vh"}}
+                w={{md: "calc(100vw - 50px)"}}
+                borderRadius={{md: "15px"}}
                 left="0"
                 right="0"
                 bgRepeat="no-repeat"
@@ -78,8 +78,8 @@ const RegistrationPage = () => {
                 top="0"
                 bgImage={bgSignUp}
                 bgSize="cover"
-                mx={{ md: "auto" }}
-                mt={{ md: "14px" }}
+                mx={{md: "auto"}}
+                mt={{md: "14px"}}
             ></Box>
             <Flex
                 direction="column"
@@ -98,7 +98,7 @@ const RegistrationPage = () => {
                     fontWeight="normal"
                     mt="10px"
                     mb="26px"
-                    w={{ base: "90%", sm: "60%", lg: "40%", xl: "30%" }}
+                    w={{base: "90%", sm: "60%", lg: "40%", xl: "30%"}}
                 >
                     Если у Вас еще нет аккаунта, пожалуйста, заполните форму
                 </Text>
@@ -115,7 +115,7 @@ const RegistrationPage = () => {
                     background="transparent"
                     borderRadius="15px"
                     p="40px"
-                    mx={{ base: "100px" }}
+                    mx={{base: "100px"}}
                     bg={bgColor}
                     boxShadow="0 20px 27px 0 rgb(0 0 0 / 5%)"
                 >
@@ -138,14 +138,14 @@ const RegistrationPage = () => {
                             border="1px solid lightgray"
                             cursor="pointer"
                             transition="all .25s ease"
-                            hover={{ filter: "brightness(120%)", bg: bgIcons }}
+                            hover={{filter: "brightness(120%)", bg: bgIcons}}
                         >
                             <Link href="#">
                                 <Icon
                                     as={FaFacebook}
                                     w="30px"
                                     h="30px"
-                                    hover={{ filter: "brightness(120%)" }}
+                                    hover={{filter: "brightness(120%)"}}
                                 />
                             </Link>
                         </Flex>
@@ -158,14 +158,14 @@ const RegistrationPage = () => {
                             border="1px solid lightgray"
                             cursor="pointer"
                             transition="all .25s ease"
-                            hover={{ filter: "brightness(120%)", bg: bgIcons }}
+                            hover={{filter: "brightness(120%)", bg: bgIcons}}
                         >
                             <Link href="#">
                                 <Icon
                                     as={FaApple}
                                     w="30px"
                                     h="30px"
-                                    hover={{ filter: "brightness(120%)" }}
+                                    hover={{filter: "brightness(120%)"}}
                                 />
                             </Link>
                         </Flex>
@@ -178,14 +178,14 @@ const RegistrationPage = () => {
                             border="1px solid lightgray"
                             cursor="pointer"
                             transition="all .25s ease"
-                            hover={{ filter: "brightness(120%)", bg: bgIcons }}
+                            hover={{filter: "brightness(120%)", bg: bgIcons}}
                         >
                             <Link href="#">
                                 <Icon
                                     as={FaGoogle}
                                     w="30px"
                                     h="30px"
-                                    hover={{ filter: "brightness(120%)" }}
+                                    hover={{filter: "brightness(120%)"}}
                                 />
                             </Link>
                         </Flex>

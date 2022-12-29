@@ -9,7 +9,7 @@ const FormUser = () => {
                     <b>Заполните форму заявки</b>
                 </h3>
                 <p>
-                    <br />
+                    <br/>
                     Мы перезвоним в течение 10 минут
                 </p>
                 <div className="inputs-in-form">

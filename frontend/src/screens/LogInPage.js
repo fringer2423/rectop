@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { validateEmail } from "../helpers/registerValidator.js";
+import React, {useState, useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {validateEmail} from "../helpers/registerValidator.js";
 import {
     login,
     verify,
     checkLogin,
     verifyLogin,
 } from "../actions/userActions.js";
-import { useHistory, Route, Redirect } from "react-router";
+import {useHistory, Route, Redirect} from "react-router";
 
-import { Spinner, Modal, InputGroup, Form, Alert } from "react-bootstrap";
+import {Spinner, Modal, InputGroup, Form, Alert} from "react-bootstrap";
 
 import store from "../store";
 
@@ -29,7 +29,7 @@ import {
 
 import signInImage from "../assets/img/signInImage.png";
 
-import { LinkContainer } from "react-router-bootstrap";
+import {LinkContainer} from "react-router-bootstrap";
 
 const LogIn = () => {
     const titleColor = useColorModeValue("maincolor");
@@ -41,13 +41,13 @@ const LogIn = () => {
     const userLogin = useSelector((state) => state.userLogin);
     const userVerifyLogin = useSelector((state) => state.userVerifyLogin);
     const userLoginCheck = useSelector((state) => state.userLoginCheck);
-    const { error, loading, userInfo } = userLogin;
+    const {error, loading, userInfo} = userLogin;
     const {
         error: errorVerify,
         loading: loadingVerify,
         detail: detailVerify,
     } = userVerifyLogin;
-    const { error: errorCheck, detail: detailCheck } = userLoginCheck;
+    const {error: errorCheck, detail: detailCheck} = userLoginCheck;
 
     const [mail, setMail] = useState("");
     const [password, setPassword] = useState("");
@@ -163,7 +163,7 @@ const LogIn = () => {
                     )}
 
                     {loadingVerify && (
-                        <Spinner animation="border" variant="primary" />
+                        <Spinner animation="border" variant="primary"/>
                     )}
                 </Modal.Body>
                 <Modal.Footer>
@@ -178,26 +178,26 @@ const LogIn = () => {
             </Modal>
             <Flex position="relative" mb="40px">
                 <Flex
-                    h={{ sm: "initial", md: "75vh", lg: "85vh" }}
+                    h={{sm: "initial", md: "75vh", lg: "85vh"}}
                     w="100%"
                     maxW="1044px"
                     mx="auto"
                     justifyContent="space-between"
                     mb="30px"
-                    pt={{ sm: "100px", md: "0px" }}
+                    pt={{sm: "100px", md: "0px"}}
                 >
                     <Flex
                         alignItems="center"
                         justifyContent="start"
-                        style={{ userSelect: "none" }}
-                        w={{ base: "100%", md: "50%", lg: "42%" }}
+                        style={{userSelect: "none"}}
+                        w={{base: "100%", md: "50%", lg: "42%"}}
                     >
                         <Flex
                             direction="column"
                             w="100%"
                             background="transparent"
                             p="48px"
-                            mt={{ md: "150px", lg: "80px" }}
+                            mt={{md: "150px", lg: "80px"}}
                         >
                             <Heading
                                 color={titleColor}
@@ -256,7 +256,7 @@ const LogIn = () => {
                                     }
                                 />
                                 <FormControl display="flex" alignItems="center">
-                                    <Switch id="remember-login" me="10px" />
+                                    <Switch id="remember-login" me="10px"/>
                                     <FormLabel
                                         htmlFor="remember-login"
                                         mb="0"
@@ -338,7 +338,7 @@ const LogIn = () => {
                         </Flex>
                     </Flex>
                     <Box
-                        display={{ base: "none", md: "block" }}
+                        display={{base: "none", md: "block"}}
                         overflowX="hidden"
                         h="100%"
                         w="40vw"

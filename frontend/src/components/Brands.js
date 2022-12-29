@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Carousel } from "react-bootstrap";
+import {Carousel} from "react-bootstrap";
 
 import "../css/brands.css";
 
@@ -55,7 +55,7 @@ const Brands = () => {
                     return (
                         <div className="brand-icon" key={brand.title}>
                             <div className="icon-in-circle">
-                                <img src={brand.src} alt={brand.title} />
+                                <img src={brand.src} alt={brand.title}/>
                             </div>
                             <h5>{brand.title}</h5>
                             <p>{brand.text}</p>

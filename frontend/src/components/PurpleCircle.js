@@ -23,7 +23,7 @@ const PurpleCircle = () => {
                 <h1>
                     <b>RecTop</b>
                 </h1>
-                <hr />
+                <hr/>
                 <p>Мы сводим клиентов и компании вместе!</p>
             </div>
             <img

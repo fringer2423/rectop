@@ -1,4 +1,4 @@
-import { checkMail } from "../validators/validation.js";
+import {checkMail} from "../validators/validation.js";
 
 export const validateEmail = (email) => {
     return checkMail.test(email);

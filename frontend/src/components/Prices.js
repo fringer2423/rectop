@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, {useState, useRef, useEffect} from "react";
 
 import "../css/prices.css";
 import {
@@ -7,14 +7,14 @@ import {
     countYearDefaultPrice,
 } from "../helpers/countPrices.js";
 
-import { Carousel, Form, Button, Spinner } from "react-bootstrap";
+import {Carousel, Form, Button, Spinner} from "react-bootstrap";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
-import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
+import {faArrowRightLong} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeftLong} from "@fortawesome/free-solid-svg-icons";
 
-const Prices = ({ rateInfo }) => {
+const Prices = ({rateInfo}) => {
     const {
         coefficient_for_calculating_the_week: weekRatio,
         coefficient_for_calculating_the_year: yearRatio,
@@ -71,27 +71,27 @@ const Prices = ({ rateInfo }) => {
             );
             setPriceOldThird(
                 countPrices(numBranchsThird, priceWeek.third, sales).oldPrice +
-                    " РУБ./НЕД."
+                " РУБ./НЕД."
             );
             setSaleThird(
                 "Скидка: " +
-                    countPrices(numBranchsThird, priceWeek.third, sales).sale +
-                    "%"
+                countPrices(numBranchsThird, priceWeek.third, sales).sale +
+                "%"
             );
         }
         if (activeIndex === 1) {
             setPriceDurationThird(
                 countPrices(numBranchsThird, third, sales).resultPrice +
-                    " РУБ./МЕС."
+                " РУБ./МЕС."
             );
             setPriceOldThird(
                 countPrices(numBranchsThird, third, sales).oldPrice +
-                    " РУБ./МЕС."
+                " РУБ./МЕС."
             );
             setSaleThird(
                 "Скидка: " +
-                    countPrices(numBranchsThird, third, sales).sale +
-                    "%"
+                countPrices(numBranchsThird, third, sales).sale +
+                "%"
             );
         }
         if (activeIndex === 2) {
@@ -101,12 +101,12 @@ const Prices = ({ rateInfo }) => {
             );
             setPriceOldThird(
                 countPrices(numBranchsThird, priceYear.third, sales).oldPrice +
-                    " РУБ./ГОД."
+                " РУБ./ГОД."
             );
             setSaleThird(
                 "Скидка: " +
-                    countPrices(numBranchsThird, priceYear.third, sales).sale +
-                    "%"
+                countPrices(numBranchsThird, priceYear.third, sales).sale +
+                "%"
             );
         }
     };
@@ -123,24 +123,24 @@ const Prices = ({ rateInfo }) => {
             );
             setSaleSecond(
                 "Скидка: " +
-                    countPrices(numBranchsSecond, priceWeek.second, sales)
-                        .sale +
-                    "%"
+                countPrices(numBranchsSecond, priceWeek.second, sales)
+                    .sale +
+                "%"
             );
         }
         if (activeIndex === 1) {
             setPriceDurationSecond(
                 countPrices(numBranchsSecond, second, sales).resultPrice +
-                    " РУБ./МЕС."
+                " РУБ./МЕС."
             );
             setPriceOldSecond(
                 countPrices(numBranchsSecond, second, sales).oldPrice +
-                    " РУБ./МЕС."
+                " РУБ./МЕС."
             );
             setSaleSecond(
                 "Скидка: " +
-                    countPrices(numBranchsSecond, second, sales).sale +
-                    "%"
+                countPrices(numBranchsSecond, second, sales).sale +
+                "%"
             );
         }
         if (activeIndex === 2) {
@@ -154,9 +154,9 @@ const Prices = ({ rateInfo }) => {
             );
             setSaleSecond(
                 "Скидка: " +
-                    countPrices(numBranchsSecond, priceYear.second, sales)
-                        .sale +
-                    "%"
+                countPrices(numBranchsSecond, priceYear.second, sales)
+                    .sale +
+                "%"
             );
         }
     };
@@ -169,27 +169,27 @@ const Prices = ({ rateInfo }) => {
             );
             setPriceOldFirst(
                 countPrices(numBranchsFirst, priceWeek.first, sales).oldPrice +
-                    " РУБ./НЕД."
+                " РУБ./НЕД."
             );
             setSaleFirst(
                 "Скидка: " +
-                    countPrices(numBranchsFirst, priceWeek.first, sales).sale +
-                    "%"
+                countPrices(numBranchsFirst, priceWeek.first, sales).sale +
+                "%"
             );
         }
         if (activeIndex === 1) {
             setPriceDurationFirst(
                 countPrices(numBranchsFirst, first, sales).resultPrice +
-                    " РУБ./МЕС."
+                " РУБ./МЕС."
             );
             setPriceOldFirst(
                 countPrices(numBranchsFirst, first, sales).oldPrice +
-                    " РУБ./МЕС."
+                " РУБ./МЕС."
             );
             setSaleFirst(
                 "Скидка: " +
-                    countPrices(numBranchsFirst, first, sales).sale +
-                    "%"
+                countPrices(numBranchsFirst, first, sales).sale +
+                "%"
             );
         }
         if (activeIndex === 2) {
@@ -199,12 +199,12 @@ const Prices = ({ rateInfo }) => {
             );
             setPriceOldFirst(
                 countPrices(numBranchsFirst, priceYear.first, sales).oldPrice +
-                    " РУБ./ГОД."
+                " РУБ./ГОД."
             );
             setSaleFirst(
                 "Скидка: " +
-                    countPrices(numBranchsFirst, priceYear.first, sales).sale +
-                    "%"
+                countPrices(numBranchsFirst, priceYear.first, sales).sale +
+                "%"
             );
         }
     };
@@ -255,27 +255,27 @@ const Prices = ({ rateInfo }) => {
         setActiveIndex(0);
         setPriceDurationFirst(
             countPrices(numBranchsFirst, priceWeek.first, sales).resultPrice +
-                " РУБ./НЕД."
+            " РУБ./НЕД."
         );
         setPriceDurationSecond(
             countPrices(numBranchsSecond, priceWeek.second, sales).resultPrice +
-                " РУБ./НЕД."
+            " РУБ./НЕД."
         );
         setPriceDurationThird(
             countPrices(numBranchsThird, priceWeek.third, sales).resultPrice +
-                " РУБ./НЕД."
+            " РУБ./НЕД."
         );
         setPriceOldFirst(
             countPrices(numBranchsFirst, priceWeek.first, sales).oldPrice +
-                " РУБ./НЕД."
+            " РУБ./НЕД."
         );
         setPriceOldSecond(
             countPrices(numBranchsSecond, priceWeek.second, sales).oldPrice +
-                " РУБ./НЕД."
+            " РУБ./НЕД."
         );
         setPriceOldThird(
             countPrices(numBranchsThird, priceWeek.third, sales).oldPrice +
-                " РУБ./НЕД."
+            " РУБ./НЕД."
         );
     };
 
@@ -283,15 +283,15 @@ const Prices = ({ rateInfo }) => {
         setActiveIndex(1);
         setPriceDurationFirst(
             countPrices(numBranchsFirst, first, sales).resultPrice +
-                " РУБ./МЕС."
+            " РУБ./МЕС."
         );
         setPriceDurationSecond(
             countPrices(numBranchsSecond, second, sales).resultPrice +
-                " РУБ./МЕС."
+            " РУБ./МЕС."
         );
         setPriceDurationThird(
             countPrices(numBranchsThird, third, sales).resultPrice +
-                " РУБ./МЕС."
+            " РУБ./МЕС."
         );
         setPriceOldFirst(
             countPrices(numBranchsFirst, first, sales).oldPrice + " РУБ./МЕС."
@@ -308,27 +308,27 @@ const Prices = ({ rateInfo }) => {
         setActiveIndex(2);
         setPriceDurationFirst(
             countPrices(numBranchsFirst, priceYear.first, sales).resultPrice +
-                " РУБ./ГОД."
+            " РУБ./ГОД."
         );
         setPriceDurationSecond(
             countPrices(numBranchsSecond, priceYear.second, sales).resultPrice +
-                " РУБ./ГОД."
+            " РУБ./ГОД."
         );
         setPriceDurationThird(
             countPrices(numBranchsThird, priceYear.third, sales).resultPrice +
-                " РУБ./ГОД."
+            " РУБ./ГОД."
         );
         setPriceOldFirst(
             countPrices(numBranchsFirst, priceYear.first, sales).oldPrice +
-                " РУБ./ГОД."
+            " РУБ./ГОД."
         );
         setPriceOldSecond(
             countPrices(numBranchsSecond, priceYear.second, sales).oldPrice +
-                " РУБ./ГОД."
+            " РУБ./ГОД."
         );
         setPriceOldThird(
             countPrices(numBranchsThird, priceYear.third, sales).oldPrice +
-                " РУБ./ГОД."
+            " РУБ./ГОД."
         );
     };
 
@@ -433,21 +433,21 @@ const Prices = ({ rateInfo }) => {
                     </div>
                     <div className="text-in-price">
                         Сбор отзывов
-                        <hr />
+                        <hr/>
                         Оповещения в Телеграме
-                        <hr />
+                        <hr/>
                         Отчетность в Телеграме
-                        <hr />
+                        <hr/>
                         Система кэшбека
-                        <hr />
+                        <hr/>
                         Статистика
-                        <hr />
+                        <hr/>
                         Обратная связь
-                        <hr />
+                        <hr/>
                         Поддержка 24/7
-                        <hr />
+                        <hr/>
                         Формирование qr-кода
-                        <hr />
+                        <hr/>
                     </div>
                     <button className="black-button">
                         <b>Приобрести тариф</b>
@@ -503,21 +503,21 @@ const Prices = ({ rateInfo }) => {
                     </div>
                     <div className="text-in-price">
                         Аналитика по филиалу
-                        <hr />
+                        <hr/>
                         Постоянная актуализация
-                        <hr />
+                        <hr/>
                         Система кэшбека
-                        <hr />
+                        <hr/>
                         Скидки от партнеров
-                        <hr />
+                        <hr/>
                         Поддержка 24/7
-                        <hr />
+                        <hr/>
                         Ответы на отзывы в одном месте
-                        <hr />
+                        <hr/>
                         Обратная связь
-                        <hr />
+                        <hr/>
                         Подробная статистика
-                        <hr />
+                        <hr/>
                     </div>
                     <button className="black-button">
                         <b>Приобрести тариф</b>
@@ -571,17 +571,17 @@ const Prices = ({ rateInfo }) => {
                     </div>
                     <div className="text-in-price">
                         Генератор и агрегатор отзывов
-                        <hr />
+                        <hr/>
                         Ответы на отзывы нашими специалистами
-                        <hr />
+                        <hr/>
                         Проверка выставленных отзывов
-                        <hr />
+                        <hr/>
                         “Спровоцируем” выставление отзывов
-                        <hr />
+                        <hr/>
                         Подробная отчетность
-                        <hr />
+                        <hr/>
                         Аналитика в реальном времени
-                        <hr />
+                        <hr/>
                     </div>
                     <button className="black-button">
                         <b>Приобрести тариф</b>
@@ -643,21 +643,21 @@ const Prices = ({ rateInfo }) => {
                             </div>
                             <div className="text-in-price">
                                 Сбор отзывов
-                                <hr />
+                                <hr/>
                                 Оповещения в Телеграме
-                                <hr />
+                                <hr/>
                                 Отчетность в Телеграме
-                                <hr />
+                                <hr/>
                                 Система кэшбека
-                                <hr />
+                                <hr/>
                                 Статистика
-                                <hr />
+                                <hr/>
                                 Обратная связь
-                                <hr />
+                                <hr/>
                                 Поддержка 24/7
-                                <hr />
+                                <hr/>
                                 Формирование qr-кода
-                                <hr />
+                                <hr/>
                             </div>
                             <button className="black-button">
                                 <b>Приобрести тариф</b>
@@ -717,21 +717,21 @@ const Prices = ({ rateInfo }) => {
                             </div>
                             <div className="text-in-price">
                                 Аналитика по филиалу
-                                <hr />
+                                <hr/>
                                 Постоянная актуализация
-                                <hr />
+                                <hr/>
                                 Система кэшбека
-                                <hr />
+                                <hr/>
                                 Скидки от партнеров
-                                <hr />
+                                <hr/>
                                 Поддержка 24/7
-                                <hr />
+                                <hr/>
                                 Ответы на отзывы в одном месте
-                                <hr />
+                                <hr/>
                                 Обратная связь
-                                <hr />
+                                <hr/>
                                 Подробная статистика
-                                <hr />
+                                <hr/>
                             </div>
                             <button className="black-button">
                                 <b>Приобрести тариф</b>
@@ -791,15 +791,15 @@ const Prices = ({ rateInfo }) => {
                             </div>
                             <div className="text-in-price">
                                 Генератор и агрегатор отзывов
-                                <hr />
+                                <hr/>
                                 Ответы на отзывы нашими специалистами
-                                <hr />
+                                <hr/>
                                 Проверка выставленных отзывов
-                                <hr />
+                                <hr/>
                                 “Спровоцируем” выставление отзывов
-                                <hr />
+                                <hr/>
                                 Подробная отчетность
-                                <hr />
+                                <hr/>
                                 Аналитика в реальном времени
                             </div>
                             <button className="black-button">

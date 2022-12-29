@@ -38,7 +38,7 @@ export const dataRate = () => async (dispatch) => {
                 dispatch({
                     type: RATE_INFO_DATA_FAIL,
                     payload:
-                        "Прооизошла ошибка при запросе цены о тарифах " + e,
+                        "Произошла ошибка при запросе цены о тарифах " + e,
                 });
         }
     }

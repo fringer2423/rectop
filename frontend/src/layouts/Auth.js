@@ -1,11 +1,11 @@
 // chakra imports
-import { Box, ChakraProvider, Portal } from "@chakra-ui/react";
+import {Box, ChakraProvider, Portal} from "@chakra-ui/react";
 import Footer from "../components/components/Footer/Footer.js";
 // core components
 import AuthNavbar from "../components/components/Navbars/AuthNavbar.js";
-import React, { useEffect } from "react";
-import { Redirect, Route, Switch, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React, {useEffect} from "react";
+import {Redirect, Route, Switch, useHistory} from "react-router-dom";
+import {useSelector} from "react-redux";
 import routes from "../routes.js";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -13,7 +13,7 @@ import "@fontsource/roboto/700.css";
 import theme from "../theme/theme.js";
 
 export default function Pages(props) {
-    const { ...rest } = props;
+    const {...rest} = props;
 
     // ref for the wrapper div
 
@@ -105,12 +105,12 @@ export default function Pages(props) {
                     <Box ref={wrapper} w="100%">
                         <Switch>
                             {getRoutes(routes)}
-                            <Redirect to="/auth/signin" />
+                            <Redirect to="/auth/signin"/>
                         </Switch>
                     </Box>
                 </Box>
                 <Box px="24px" mx="auto" width="1044px" maxW="100%">
-                    <Footer />
+                    <Footer/>
                 </Box>
             </Box>
         </ChakraProvider>
