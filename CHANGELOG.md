@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+## [0.0.47] - 2022-12-29
+
+### Изменено
+
+- textarea in personal settings [@AlexTrubkina](https://github.com/AlexTrubkina)
+- update info of account
+- error messages of updating account
+- svg pictures
+
 ## [0.0.46] - 2022-12-27
 
 ### Добавлено
@@ -15,8 +24,6 @@
 - dashboard colors
 - fixed errors
 - fixed import
-
-### Удалено
 
 ## [0.0.45] - 2022-12-26
 
