@@ -73,8 +73,11 @@ function Profile() {
                 <ProfileInformation
                     title={"Информация о профиле"}
                     description={
-                        "Придумайте себе описание"
+                        user.description
                     }
+                    mobile={user.phone_number}
+                    rate={user.rate}
+                    job={user.job_title}
                     name={user.first_name + " " + user.last_name}
                     email={userInfo.username}
 
