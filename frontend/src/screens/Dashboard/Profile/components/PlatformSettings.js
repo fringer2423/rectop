@@ -123,12 +123,7 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                                 borderColor: {maincolor},
                             }}
                         >
-                            <Input
-                                fontSize="xs"
-                                py="11px"
-                                h="100%"
-                                borderRadius="inherit"
-                            />
+                            <textarea className="w-100 h-100 fs-6 p-1 border rounded"></textarea>
                         </InputGroup>
                     </Flex>
                     <Text
