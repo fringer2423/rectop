@@ -34,7 +34,7 @@ function Profile() {
     const {userInfo} = userLogin;
 
     const userDetails = useSelector(state => state.userDetails);
-    const {user} = userDetails;
+    const {user, error} = userDetails;
 
     return (
         <Flex direction='column'>
@@ -60,24 +60,28 @@ function Profile() {
                 ]}
             />
             <Grid templateColumns={{sm: "1fr", md: "repeat(2, 1fr)", xl: "repeat(3, 1fr)"}} gap='22px'>
+                <ProfileInformation
+                    title={"Информация о профиле"}
+                    description={
+                        user.description
+                    }
+                    mobile={user.phone_number}
+                    rate={user.rate}
+                    job={user.job_title}
+                    name={user.first_name + " " + user.last_name}
+                    email={userInfo.username}
+                    error={error}
+
+                />
                 <PlatformSettings
                     title={"Настройки личного кабинета"}
-                    subtitle1={"Ваше имя"}
-                    subtitle2={"Ваша фамилия"}
+                    subtitle1={"Ваше имя*"}
+                    subtitle2={"Ваша фамилия*"}
                     subtitle3={"Новый пароль"}
                     subtitle4={"Новое описание"}
                     subtitle5={"Ваш номер телефона"}
                     subtitle6={"Ваша должность"}
                     subtitle7={"Email"}
-                />
-                <ProfileInformation
-                    title={"Информация о профиле"}
-                    description={
-                        "Придумайте себе описание"
-                    }
-                    name={user.first_name + " " + user.last_name}
-                    email={userInfo.username}
-
                 />
                 <Conversations title={"Компании"}/>
             </Grid>

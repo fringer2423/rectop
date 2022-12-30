@@ -1,23 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Creator: CorelDRAW 2017 -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="210mm" height="297mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-viewBox="0 0 21000 29700"
- xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <style type="text/css">
-   <![CDATA[
-    .fil0 {fill:#4584FF}
-   ]]>
-  </style>
- </defs>
- <g id="Слой_x0020_1">
-  <metadata id="CorelCorpID_0Corel-Layer"/>
-  <g id="_888599640">
-   <rect class="fil0" x="9772.17" y="15023.09" width="273.19" height="669.58" rx="69.64" ry="64.18"/>
-   <rect class="fil0" x="10155.16" y="14006.67" width="273.19" height="1685.99" rx="69.64" ry="161.6"/>
-   <rect class="fil0" x="10566.29" y="14685.28" width="273.19" height="1008.05" rx="69.64" ry="96.62"/>
-   <rect class="fil0" x="10954.64" y="14282.54" width="273.19" height="1410.12" rx="69.64" ry="135.16"/>
-  </g>
- </g>
+<svg width="56" height="65" viewBox="0 0 56 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.03508 38.8018H2.97391C1.52026 38.8018 0.341858 39.8878 0.341858 41.2275V61.6831C0.341858 63.0228 1.52026 64.1088 2.97391 64.1088H8.03508C9.48873 64.1088 10.6672 63.0228 10.6672 61.6831V41.2275C10.6672 39.8878 9.48873 38.8018 8.03508 38.8018Z" fill="#4584FF"/>
+<path d="M22.5103 0.385925H17.4491C15.9955 0.385925 14.8171 3.12043 14.8171 6.49363V58.0007C14.8171 61.3739 15.9955 64.1084 17.4491 64.1084H22.5103C23.9639 64.1084 25.1423 61.3739 25.1423 58.0007V6.49363C25.1423 3.12043 23.9639 0.385925 22.5103 0.385925Z" fill="#4584FF"/>
+<path d="M38.0491 26.0342H32.9879C31.5342 26.0342 30.3558 27.6692 30.3558 29.686V60.482C30.3558 62.4988 31.5342 64.1338 32.9879 64.1338H38.0491C39.5027 64.1338 40.6811 62.4988 40.6811 60.482V29.686C40.6811 27.6692 39.5027 26.0342 38.0491 26.0342Z" fill="#4584FF"/>
+<path d="M52.7269 10.8126H47.6657C46.2121 10.8126 45.0336 13.0997 45.0336 15.921V59C45.0336 61.8213 46.2121 64.1084 47.6657 64.1084H52.7269C54.1805 64.1084 55.3589 61.8213 55.3589 59V15.921C55.3589 13.0997 54.1805 10.8126 52.7269 10.8126Z" fill="#4584FF"/>
 </svg>

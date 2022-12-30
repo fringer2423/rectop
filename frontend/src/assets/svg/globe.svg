@@ -1,27 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Creator: CorelDRAW 2017 -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="210mm" height="297mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-viewBox="0 0 21000 29700"
- xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <style type="text/css">
-   <![CDATA[
-    .str0 {stroke:#4584FF;stroke-width:19.8;stroke-miterlimit:22.9256}
-    .str2 {stroke:#4584FF;stroke-width:20;stroke-miterlimit:22.9256}
-    .str1 {stroke:#4584FF;stroke-width:19.8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:22.9256}
-    .fil1 {fill:none}
-    .fil0 {fill:white}
-   ]]>
-  </style>
- </defs>
- <g id="Слой_x0020_1">
-  <metadata id="CorelCorpID_0Corel-Layer"/>
-  <g id="_965019304">
-   <path class="fil0 str0" d="M10500.86 14608.51c-67.53,0 -130.97,108.24 -130.97,241.83 0,133.56 63.5,241.83 131,241.83 67.52,0 131,-108.27 131,-241.83 0,-133.56 -63.47,-241.83 -130.97,-241.83l-0.06 0z"/>
-   <path class="fil1 str1" d="M10335.63 14690.47c44.45,31.56 100.43,50.37 161.24,50.37 60.8,0 116.79,-18.81 161.24,-50.38m-0.01 322.48c-44.45,-31.56 -100.44,-50.38 -161.24,-50.38 -60.8,0 -116.76,18.81 -161.24,50.38"/>
-   <path class="fil1 str0" d="M10503.5 14611.16l0 483.66m241.82 -241.83l-483.65 0"/>
-   <ellipse class="fil1 str2" cx="10496.48" cy="14849.36" rx="241.8" ry="244.18"/>
-  </g>
- </g>
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10.3045 1.12585C7.75216 1.12585 5.3544 5.21682 5.3544 10.2659C5.3544 15.3138 7.7544 19.4059 10.3056 19.4059C12.8575 19.4059 15.2568 15.3138 15.2568 10.2659C15.2568 5.21795 12.8579 1.12585 10.3067 1.12585H10.3045V1.12585Z" fill="white" stroke="#4584FF" stroke-width="0.748346" stroke-miterlimit="22.9256"/>
+<path d="M4.05954 4.22357C5.73954 5.41639 7.85533 6.12733 10.1537 6.12733C12.4516 6.12733 14.5678 5.4164 16.2478 4.22321M16.2474 16.4114C14.5674 15.2186 12.4512 14.5073 10.1533 14.5073C7.85534 14.5073 5.74031 15.2182 4.05917 16.4114" stroke="#4584FF" stroke-width="0.748346" stroke-miterlimit="22.9256" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.4043 1.22607V19.5061M19.5439 10.3661H1.26422" stroke="#4584FF" stroke-width="0.748346" stroke-miterlimit="22.9256"/>
+<path d="M10.1389 19.4577C15.1862 19.4577 19.2778 15.3258 19.2778 10.2289C19.2778 5.13192 15.1862 1 10.1389 1C5.09165 1 1 5.13192 1 10.2289C1 15.3258 5.09165 19.4577 10.1389 19.4577Z" stroke="#4584FF" stroke-width="0.755906" stroke-miterlimit="22.9256"/>
 </svg>

@@ -7,11 +7,16 @@ import CardHeader from "../../../../components/components/Card/CardHeader";
 import React from "react";
 import {FaFacebook, FaInstagram, FaTwitter} from "react-icons/fa";
 
+
 const ProfileInformation = ({
                                 title,
                                 description,
+                                mobile,
+                                rate,
+                                job,
                                 name,
                                 email,
+                                error
                             }) => {
     // Chakra color mode
     const textColor = useColorModeValue("gray.700", "white");
@@ -22,11 +27,14 @@ const ProfileInformation = ({
                 <Text fontSize='lg' color={textColor} fontWeight='bold'>
                     {title}
                 </Text>
+                {error &&
+                    <h3 className="text-danger">Произошла ошибка. Не удалось загрузить данные</h3>
+                }
             </CardHeader>
             <CardBody px='5px'>
                 <Flex direction='column'>
                     <Text fontSize='md' color='gray.500' fontWeight='400' mb='30px'>
-                        {description}
+                        {description === "" ? "Придумайте себе описание профиля" : description}
                     </Text>
                     <Flex align='center' mb='18px'>
                         <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
@@ -44,6 +52,36 @@ const ProfileInformation = ({
                             {email}
                         </Text>
                     </Flex>
+                    { mobile !== "" &&
+                        <Flex align='center' mb='18px'>
+                            <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
+                                Мобильный телефон:{" "}
+                            </Text>
+                            <Text fontSize='md' color='gray.500' fontWeight='400'>
+                                {mobile}
+                            </Text>
+                        </Flex>
+                    }
+                    { rate &&
+                        <Flex align='center' mb='18px'>
+                            <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
+                                Информация о тарифе:{" "}
+                            </Text>
+                            <Text fontSize='md' color='gray.500' fontWeight='400'>
+                                {email}
+                            </Text>
+                        </Flex>
+                    }
+                    { job !== "" &&
+                        <Flex align='center' mb='18px'>
+                            <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
+                                Должность:{" "}
+                            </Text>
+                            <Text fontSize='md' color='gray.500' fontWeight='400'>
+                                {job}
+                            </Text>
+                        </Flex>
+                    }
                     <Flex align='center' mb='18px'>
                         <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
                             Социальные сети:{" "}
