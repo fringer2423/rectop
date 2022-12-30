@@ -35,7 +35,9 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
     const [necessaryText, setNecessaryText] = useState('');
 
     const userUpdate = useSelector(state => state.userUpdate);
-    const {error} = userUpdate
+    const userDetails = useSelector(state => state.userDetails);
+    const {user} = userDetails;
+    const {error} = userUpdate;
 
     let userUpdateInfo = {
         "first_name": name,
@@ -45,15 +47,21 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
         "phone_number": mobile,
         "job_title": job,
         "email": email
-    }
+    };
 
-    const handleUpdateProfileInfo = () => {
-        if (name !== '' && surname !== ''){
+    const handleUpdateProfileInfo = () => async() => {
+        if (description === '') setDescription(user.description);
+        if (mobile === '') setMobile(user.phone_number);
+        if (job === '') setJob(user.job_title); console.log(job);
+        if (email === '') setEmail(user.email);  
+        // console.log(userUpdateInfo);
+        // console.log(user);
+        if (name !== '' && surname !== '') {
             dispatch(updateUser(userUpdateInfo));
             setNecessaryText('');
-        }
+        }    
         else {
-            setNecessaryText('Заполните обязательые поля');
+            setNecessaryText('Заполните обязательные поля');
         }
     }
 
@@ -182,8 +190,9 @@ const PlatformSettings = ({title, subtitle1, subtitle2, subtitle3, subtitle4, su
                             }}
                         >
                         <textarea
-                            className="w-100 h-100 fs-6 p-1 border rounded"
+                            className="form-control w-100 h-100 p-1 border rounded"
                             value={description}
+                            style={{fontSize: '0.7rem'}}
                             onChange={(e) => setDescription(e.target.value)}
                         ></textarea>
                         </InputGroup>
