@@ -23,6 +23,12 @@ import {
 } from "./reducers/rateReducers";
 
 import {
+    QRAllReducer,
+    QRCreateReducer,
+    QRGetOneReducer,
+} from "./reducers/QRCodeRedusers";
+
+import {
     companyCreateReducer,
     companyDeleteReducer,
     companyDetailsReducer,
@@ -43,6 +49,10 @@ const reducer = combineReducers({
     rateAdd: rateAddReducer,
     rateChange: rateChangeReducer,
     rateRead: rateReadReducer,
+
+    QRCreate: QRCreateReducer,
+    QRAll: QRAllReducer,
+    QRGetOne: QRGetOneReducer,
 
     taskRead: taskReadReducer,
 
