@@ -59,7 +59,7 @@ const PlatformSettings = ({
     };
 
     const handleUpdateProfileInfo = () => {
-        if (name !== "" && surname !== "") {
+        if (name !== "" && surname !== "" && password !== "") {
             dispatch(updateUser(userUpdateInfo));
             setNecessaryText("");
         } else {
@@ -172,6 +172,7 @@ const PlatformSettings = ({
                                 }}
                             >
                                 <Input
+                                    type='password'
                                     value={password}
                                     onChange={(e) =>
                                         setPassword(e.target.value)

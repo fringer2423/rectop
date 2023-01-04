@@ -43,7 +43,7 @@ function Profile() {
                 backgroundProfile={bgProfile}
                 avatarImage={avatar4}
                 name={user.first_name + " " + user.last_name}
-                email={userInfo.username}
+                email={user.email}
                 tabs={[
                     {
                         name: "OVERVIEW",
@@ -69,7 +69,7 @@ function Profile() {
                     rate={user.rate}
                     job={user.job_title}
                     name={user.first_name + " " + user.last_name}
-                    email={userInfo.username}
+                    email={user.email}
                     error={error}
 
                 />
@@ -77,7 +77,7 @@ function Profile() {
                     title={"Настройки личного кабинета"}
                     subtitle1={"Ваше имя*"}
                     subtitle2={"Ваша фамилия*"}
-                    subtitle3={"Новый пароль"}
+                    subtitle3={"Новый пароль или повторите старый*"}
                     subtitle4={"Новое описание"}
                     subtitle5={"Ваш номер телефона"}
                     subtitle6={"Ваша должность"}
