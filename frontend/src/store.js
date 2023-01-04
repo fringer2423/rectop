@@ -64,6 +64,13 @@ import {
     telebotUpdateReducer,
 } from "./reducers/telebotReducers";
 
+import {
+    reviewSettingsCreateReducer,
+    reviewSettingsDeleteReducer,
+    reviewSettingsDetailsReducer,
+    reviewSettingsUpdateReducer,
+} from "./reducers/reviewSettingsReducers";
+
 const reducer = combineReducers({
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
@@ -110,6 +117,11 @@ const reducer = combineReducers({
     telebotDetails: telebotDetailsReducer,
     telebotDelete: telebotDeleteReducer,
     telebotUpdate: telebotUpdateReducer,
+
+    reviewSettingsCreate: reviewSettingsCreateReducer,
+    reviewSettingsDelete: reviewSettingsDeleteReducer,
+    reviewSettingsDetails: reviewSettingsDetailsReducer,
+    reviewSettingsUpdate: reviewSettingsUpdateReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
