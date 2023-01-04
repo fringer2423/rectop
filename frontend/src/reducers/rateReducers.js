@@ -8,6 +8,7 @@ import {
     RATE_CHANGE_REQUEST,
     RATE_CHANGE_SUCCESS,
     RATE_CHANGE_FAIL,
+    RATE_CHANGE_RESET,
 } from "../constants/rateConstants";
 
 
@@ -53,6 +54,9 @@ export const rateChangeReducer = (state = {}, action) => {
 
         case RATE_CHANGE_FAIL:
             return {loading: false, error: action.payload};
+        
+        case RATE_CHANGE_RESET:
+            return {rate: {}};
 
         default:
             return state;

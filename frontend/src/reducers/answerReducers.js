@@ -36,7 +36,7 @@ export const answerDeleteReducer = (state = {}, action) => {
             return {loading: true};
 
         case ANSWER_DELETE_SUCCESS:
-            return {loading: false};
+            return {loading: false, success: true};
 
         case ANSWER_DELETE_FAIL:
             return {loading: false, error: action.payload};
@@ -72,6 +72,9 @@ export const answerUpdateReducer = (state = {}, action) => {
 
         case ANSWER_UPDATE_FAIL:
             return {loading: false, error: action.payload};
+
+        case ANSWER_UPDATE_RESET:
+            return {answer: {}};
 
         default:
             return state;

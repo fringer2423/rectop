@@ -11,6 +11,7 @@ import {
     BRANCH_UPDATE_REQUEST,
     BRANCH_UPDATE_SUCCESS,
     BRANCH_UPDATE_FAIL,
+    BRANCH_UPDATE_RESET
 } from "../constants/branchConstants";
 
 export const branchCreateReducer = (state = {}, action) => {
@@ -71,6 +72,9 @@ export const branchUpdateReducer = (state = {}, action) => {
 
         case BRANCH_UPDATE_FAIL:
             return {loading: false, error: action.payload};
+
+        case BRANCH_UPDATE_RESET:
+            return {branch: {}};
 
         default:
             return state;

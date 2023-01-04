@@ -36,7 +36,7 @@ export const companyDeleteReducer = (state = {}, action) => {
             return {loading: true};
 
         case COMPANY_DELETE_SUCCESS:
-            return {loading: false};
+            return {loading: false, success: true};
 
         case COMPANY_DELETE_FAIL:
             return {loading: false, error: action.payload};
@@ -72,6 +72,9 @@ export const companyUpdateReducer = (state = {}, action) => {
 
         case COMPANY_UPDATE_FAIL:
             return {loading: false, error: action.payload};
+        
+        case COMPANY_UPDATE_RESET:
+            return {company: {}};
 
         default:
             return state;
