@@ -65,6 +65,15 @@ import {
 } from "./reducers/telebotReducers";
 
 import {
+    reviewCreateReducer,
+    reviewDeleteReducer,
+    reviewAllReducer,
+    reviewGetOneReducer,
+    reviewListReducer,
+    reviewUpdateReducer,
+} from "./reducers/reviewReducers";
+
+import {
     reviewSettingsCreateReducer,
     reviewSettingsDeleteReducer,
     reviewSettingsDetailsReducer,
@@ -117,6 +126,13 @@ const reducer = combineReducers({
     telebotDetails: telebotDetailsReducer,
     telebotDelete: telebotDeleteReducer,
     telebotUpdate: telebotUpdateReducer,
+
+    reviewCreate: reviewCreateReducer,
+    reviewAll: reviewAllReducer,
+    reviewDelete: reviewDeleteReducer,
+    reviewGetOne: reviewGetOneReducer,
+    reviewList: reviewListReducer,
+    reviewUpdate: reviewUpdateReducer,
 
     reviewSettingsCreate: reviewSettingsCreateReducer,
     reviewSettingsDelete: reviewSettingsDeleteReducer,
