@@ -58,14 +58,7 @@ const PlatformSettings = ({
         email: email,
     };
 
-    const handleUpdateProfileInfo = () => async () => {
-        if (description === "") setDescription(user.description);
-        if (mobile === "") setMobile(user.phone_number);
-        if (job === "") setJob(user.job_title);
-        console.log(job);
-        if (email === "") setEmail(user.email);
-        // console.log(userUpdateInfo);
-        // console.log(user);
+    const handleUpdateProfileInfo = () => {
         if (name !== "" && surname !== "") {
             dispatch(updateUser(userUpdateInfo));
             setNecessaryText("");
