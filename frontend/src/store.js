@@ -57,6 +57,13 @@ import {
     connectUpdateReducer,
 } from "./reducers/connectReducers";
 
+import {
+    telebotCreateReducer,
+    telebotDeleteReducer,
+    telebotDetailsReducer,
+    telebotUpdateReducer,
+} from "./reducers/telebotReducers";
+
 const reducer = combineReducers({
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
@@ -98,6 +105,11 @@ const reducer = combineReducers({
     connectDelete: connectDeleteReducer,
     connectGetOne: connectGetOneReducer,
     connectUpdate: connectUpdateReducer,
+
+    telebotCreate: telebotCreateReducer,
+    telebotDetails: telebotDetailsReducer,
+    telebotDelete: telebotDeleteReducer,
+    telebotUpdate: telebotUpdateReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
