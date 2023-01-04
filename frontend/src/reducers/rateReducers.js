@@ -49,7 +49,7 @@ export const rateChangeReducer = (state = {}, action) => {
             return {loading: true};
 
         case RATE_CHANGE_SUCCESS:
-            return {loading: false, rate: action.payload};
+            return {loading: false, success: true};
 
         case RATE_CHANGE_FAIL:
             return {loading: false, error: action.payload};
