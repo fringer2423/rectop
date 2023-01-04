@@ -6,13 +6,13 @@ import {
 
 export const taskReadReducer = (state = {}, action) => {
     switch (action.type) {
-        case RATE_INFO_DATA_REQUEST:
+        case TASK_READ_REQUEST:
             return {loading: true};
 
-        case RATE_INFO_DATA_SUCCESS:
+        case TASK_READ_SUCCESS:
             return {loading: false, taskInfo: action.payload};
 
-        case RATE_INFO_DATA_FAIL:
+        case TASK_READ_FAIL:
             return {loading: false, error: action.payload};
 
         default:

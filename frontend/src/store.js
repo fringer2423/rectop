@@ -14,6 +14,14 @@ import {
 
 import {rateInfoDataReducer} from "./reducers/rateInfoReducers";
 
+import {taskReadReducer} from "./reducers/taskReducers";
+
+import {
+    rateAddReducer,
+    rateChangeReducer,
+    rateReadReducer,
+} from "./reducers/rateReducers";
+
 import {
     companyCreateReducer,
     companyDeleteReducer,
@@ -31,6 +39,12 @@ const reducer = combineReducers({
     userVerifyLogin: userVerifyLoginReducer,
 
     rateInfoData: rateInfoDataReducer,
+
+    rateAdd: rateAddReducer,
+    rateChange: rateChangeReducer,
+    rateRead: rateReadReducer,
+
+    taskRead: taskReadReducer,
 
     companyCreate: companyCreateReducer,
     companyDelete: companyDeleteReducer,
