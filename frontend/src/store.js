@@ -35,6 +35,13 @@ import {
     companyUpdateReducer,
 } from "./reducers/companyReducers";
 
+import {
+    answerCreateReducer,
+    answerDeleteReducer,
+    answerDetailsReducer,
+    answerUpdateReducer,
+} from "./reducers/answerReducers";
+
 const reducer = combineReducers({
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
@@ -60,6 +67,11 @@ const reducer = combineReducers({
     companyDelete: companyDeleteReducer,
     companyDetails: companyDetailsReducer,
     companyUpdate: companyUpdateReducer,
+
+    answerCreate: answerCreateReducer,
+    answerDelete: answerDeleteReducer,
+    answerDetails: answerDetailsReducer,
+    answerUpdate: answerUpdateReducer
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
