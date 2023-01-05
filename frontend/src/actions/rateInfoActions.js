@@ -18,7 +18,7 @@ export const dataRate = () => async (dispatch) => {
             },
         };
 
-        await axios.get("/api/rate_info/read/", config).then((response) => {
+        await axios.get(`/api/rate_info/read/`, config).then((response) => {
             dispatch({
                 type: RATE_INFO_DATA_SUCCESS,
                 payload: response.data,

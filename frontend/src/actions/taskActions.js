@@ -6,20 +6,25 @@ import {
     TASK_READ_FAIL,
 } from "../constants/taskConstants";
 
-export const taskData = (taskId) => async (dispatch) => {
+export const taskData = (taskId) => async (dispatch, getState) => {
     try {
         dispatch({
             type: TASK_READ_REQUEST,
         });
 
+        const {
+            userLogin: {userInfo},
+        } = getState();
+
         const config = {
             headers: {
                 "Content-type": "application/json",
+                Authorization: `Bearer ${userInfo.token}`,
             },
         };
 
         await axios
-            .get("/api/task/read/", {task_id: taskId}, config)
+            .get(`/api/task/read/`, {task_id: taskId}, config)
             .then((res) => {
                 dispatch({
                     type: TASK_READ_SUCCESS,
