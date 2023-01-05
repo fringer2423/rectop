@@ -20,7 +20,7 @@ export const answerCreateReducer = (state = {}, action) => {
             return {loading: true};
 
         case ANSWER_CREATE_SUCCESS:
-            return {loading: false, answerInfo: action.payload};
+            return {loading: false, answer: action.payload};
 
         case ANSWER_CREATE_FAIL:
             return {loading: false, error: action.payload};
