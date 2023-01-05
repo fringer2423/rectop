@@ -44,7 +44,7 @@ export const qrCodeCreate = (branchID) => async(dispatch, getState) => {
 
     } catch (error) {
 
-        switch (error) {
+        switch (error.response.status) {
             case 400:
                 dispatch({
                     type: QR_CREATE_FAIL,
@@ -111,7 +111,7 @@ export const getAllCodes = () => async (dispatch) => {
         });
 
     } catch (error) {
-        switch (error) {
+        switch (error.response.status) {
             case 400:
                 dispatch({
                     type: QR_ALL_FAIL,
@@ -160,7 +160,7 @@ export const getOneCode = (codeID) => async (dispatch) => {
 
 
     } catch (error) {
-        switch (error) {
+        switch (error.response.status) {
             case 400:
                 dispatch({
                     type: QR_GET_ONE_FAIL,

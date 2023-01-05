@@ -32,7 +32,7 @@ export const taskData = (taskId) => async (dispatch, getState) => {
                 });
             });
     } catch (e) {
-        switch (e) {
+        switch (e.response.status) {
             case 400:
                 dispatch({
                     type: TASK_READ_FAIL,

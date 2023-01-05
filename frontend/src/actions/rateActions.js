@@ -41,7 +41,7 @@ export const rateAdd = (rateType) => async (dispatch, getState) => {
         });
 
     } catch (error) {
-        switch (error) {
+        switch (error.response.status) {
             case 400:
                 dispatch({
                     type: RATE_ADD_FAIL,
@@ -104,7 +104,7 @@ export const rateRead = () => async (dispatch, getState) => {
         })
 
     } catch (error) {
-        switch (error) {
+        switch (error.response.status) {
             case 400:
                 dispatch({
                     type: RATE_READ_FAIL,
@@ -169,7 +169,7 @@ export const rateUpdate = (rateType) =>  async (dispatch, getState) => {
         });
 
     } catch (error) {
-        switch (error) {
+        switch (error.response.status) {
             case 400:
                 dispatch({
                     type: RATE_CHANGE_FAIL,

@@ -27,7 +27,7 @@ export const dataRate = () => async (dispatch) => {
             localStorage.setItem("rateInfo ", JSON.stringify(response.data));
         });
     } catch (e) {
-        switch (e) {
+        switch (e.response.status) {
             case 404:
                 dispatch({
                     type: RATE_INFO_DATA_FAIL,

@@ -45,7 +45,7 @@ export const createBranch = (branchInfo) => async (dispatch, getState) => {
         });
 
     } catch (error) {
-        switch (error) {
+        switch (error.response.status) {
             case 400:
                 dispatch({
                     type: BRANCH_CREATE_FAIL,
@@ -113,7 +113,7 @@ export const getListBranches = (info, listID) => async (dispatch, getState) => {
         });
 
     } catch (error) {
-        switch (error) {
+        switch (error.response.status) {
             case 400:
                 dispatch({
                     type: BRANCH_ALL_FAIL,
@@ -180,7 +180,7 @@ export const getOneBranch = (branchID) => async (dispatch, getState) => {
             });
 
     } catch (error) {
-        switch (error) {
+        switch (error.response.status) {
             case 400:
                 dispatch({
                     type: BRANCH_GET_ONE_FAIL,
@@ -247,7 +247,7 @@ export const updateBranch = (branchID, info) => async (dispatch, getState) => {
             payload: data,
         });
     } catch (error) {
-        switch (error) {
+        switch (error.response.status) {
             case 400:
                 dispatch({
                     type: BRANCH_UPDATE_FAIL,
