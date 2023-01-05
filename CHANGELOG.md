@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+## [0.0.49] - 2023-01-05
+
+### Изменено
+
+- fixed reducers [@AlexTrubkina](https://github.com/AlexTrubkina)
+- fixed constants
+
+### Добавлено
+
+- actions (task, rate, qr code, branch, answer) [@AlexTrubkina](https://github.com/AlexTrubkina)
+
 ## [0.0.48] - 2023-01-04
 
 ### Изменено
