@@ -23,7 +23,7 @@ export const dataRate = () => async (dispatch) => {
                 type: RATE_INFO_DATA_SUCCESS,
                 payload: response.data,
             });
-            console.log(response.data, " response.data");
+            // console.log(response.data, " response.data");
             localStorage.setItem("rateInfo ", JSON.stringify(response.data));
         });
     } catch (e) {
@@ -37,8 +37,7 @@ export const dataRate = () => async (dispatch) => {
             default:
                 dispatch({
                     type: RATE_INFO_DATA_FAIL,
-                    payload:
-                        "Произошла ошибка при запросе цены о тарифах " + e,
+                    payload: "Произошла ошибка при запросе цены о тарифах " + e,
                 });
         }
     }
