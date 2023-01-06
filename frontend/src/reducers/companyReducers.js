@@ -8,6 +8,7 @@ import {
     COMPANY_READ_REQUEST,
     COMPANY_READ_SUCCESS,
     COMPANY_READ_FAIL,
+    COMPANY_READ_RESET,
     COMPANY_UPDATE_REQUEST,
     COMPANY_UPDATE_SUCCESS,
     COMPANY_UPDATE_FAIL,
@@ -46,7 +47,7 @@ export const companyDeleteReducer = (state = {}, action) => {
     }
 };
 
-export const companyDetailsReducer = (state = {}, action) => {
+export const companyDetailsReducer = (state = {company: {}}, action) => {
     switch (action.type) {
         case COMPANY_READ_REQUEST:
             return {loading: true};
@@ -56,13 +57,16 @@ export const companyDetailsReducer = (state = {}, action) => {
 
         case COMPANY_READ_FAIL:
             return {loading: false, error: action.payload};
+        
+        case COMPANY_READ_RESET: 
+            return {company: {}};
 
         default:
             return state;
     }
 };
 
-export const companyUpdateReducer = (state = {}, action) => {
+export const companyUpdateReducer = (state = {company: {}}, action) => {
     switch (action.type) {
         case COMPANY_UPDATE_REQUEST:
             return {loading: true};
