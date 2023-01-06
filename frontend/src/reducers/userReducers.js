@@ -90,9 +90,6 @@ export const userVerifyLoginReducer = (state = {}, action) => {
         case USER_VERIFY_LOGIN_FAIL:
             return {loading: false, error: action.payload};
 
-        case USER_DETAILS_RESET:
-            return {};
-
         default:
             return state;
     }
@@ -108,9 +105,6 @@ export const userLoginCheckReducer = (state = {}, action) => {
 
         case USER_LOGIN_CHECK_FAIL:
             return {loading: false, error: action.payload};
-
-        case USER_DETAILS_RESET:
-            return {};
 
         default:
             return state;

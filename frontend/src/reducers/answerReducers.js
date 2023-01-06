@@ -8,6 +8,7 @@ import {
     ANSWER_READ_REQUEST,
     ANSWER_READ_SUCCESS,
     ANSWER_READ_FAIL,
+    ANSWER_READ_RESET,
     ANSWER_UPDATE_REQUEST,
     ANSWER_UPDATE_SUCCESS,
     ANSWER_UPDATE_FAIL,
@@ -46,7 +47,7 @@ export const answerDeleteReducer = (state = {}, action) => {
     }
 };
 
-export const answerDetailsReducer = (state = {}, action) => {
+export const answerDetailsReducer = (state = {answer: {}}, action) => {
     switch (action.type) {
         case ANSWER_READ_REQUEST:
             return {loading: true};
@@ -57,12 +58,15 @@ export const answerDetailsReducer = (state = {}, action) => {
         case ANSWER_READ_FAIL:
             return {loading: false, error: action.payload};
 
+        case ANSWER_READ_RESET:
+            return {answer: {}};
+
         default:
             return state;
     }
 };
 
-export const answerUpdateReducer = (state = {}, action) => {
+export const answerUpdateReducer = (state = {answer: {}}, action) => {
     switch (action.type) {
         case ANSWER_UPDATE_REQUEST:
             return {loading: true};
