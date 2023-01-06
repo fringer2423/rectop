@@ -8,6 +8,7 @@ import {
     TELEBOT_READ_REQUEST,
     TELEBOT_READ_SUCCESS,
     TELEBOT_READ_FAIL,
+    TELEBOT_READ_RESET,
     TELEBOT_UPDATE_REQUEST,
     TELEBOT_UPDATE_SUCCESS,
     TELEBOT_UPDATE_FAIL,
@@ -46,7 +47,7 @@ export const telebotDeleteReducer = (state = {}, action) => {
     }
 };
 
-export const telebotDetailsReducer = (state = {}, action) => {
+export const telebotDetailsReducer = (state = {telebot:{}}, action) => {
     switch (action.type) {
         case TELEBOT_READ_REQUEST:
             return {loading: true};
@@ -56,13 +57,16 @@ export const telebotDetailsReducer = (state = {}, action) => {
 
         case TELEBOT_READ_FAIL:
             return {loading: false, error: action.payload};
+        
+        case TELEBOT_READ_RESET:
+            return {telebot: {}};
 
         default:
             return state;
     }
 };
 
-export const telebotUpdateReducer = (state = {}, action) => {
+export const telebotUpdateReducer = (state = {telebot:{}}, action) => {
     switch (action.type) {
         case TELEBOT_UPDATE_REQUEST:
             return {loading: true};

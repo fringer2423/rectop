@@ -1,27 +1,27 @@
 import axios from "axios";
 
 import {
-    ANSWER_CREATE_FAIL,
-    ANSWER_CREATE_REQUEST,
-    ANSWER_CREATE_SUCCESS,
-    ANSWER_DELETE_FAIL,
-    ANSWER_DELETE_REQUEST,
-    ANSWER_DELETE_SUCCESS,
-    ANSWER_READ_FAIL,
-    ANSWER_READ_REQUEST,
-    ANSWER_READ_SUCCESS,
-    ANSWER_READ_RESET,
-    ANSWER_UPDATE_FAIL,
-    ANSWER_UPDATE_REQUEST,
-    ANSWER_UPDATE_RESET,
-    ANSWER_UPDATE_SUCCESS,
-} from "../constants/answerConstants";
+    TELEBOT_CREATE_FAIL,
+    TELEBOT_CREATE_REQUEST,
+    TELEBOT_CREATE_SUCCESS,
+    TELEBOT_DELETE_FAIL,
+    TELEBOT_DELETE_REQUEST,
+    TELEBOT_DELETE_SUCCESS,
+    TELEBOT_READ_FAIL,
+    TELEBOT_READ_REQUEST,
+    TELEBOT_READ_RESET,
+    TELEBOT_READ_SUCCESS,
+    TELEBOT_UPDATE_FAIL,
+    TELEBOT_UPDATE_REQUEST,
+    TELEBOT_UPDATE_RESET,
+    TELEBOT_UPDATE_SUCCESS,
+} from "../constants/telebotConstants";
 
 
-export const createAnswer = (answerInfo) => async (dispatch, getState) => {
+export const createTelebot = (telebotID, branchID) => async (dispatch, getState) => {
     try {
         dispatch({
-            type: ANSWER_CREATE_REQUEST,
+            type: TELEBOT_CREATE_REQUEST,
         });
 
         const {
@@ -36,13 +36,13 @@ export const createAnswer = (answerInfo) => async (dispatch, getState) => {
         };
 
         const {data} = await axios.post(
-            `/api/answer/create/`, 
-            answerInfo, 
+            `/api/telebot/create/`, 
+            {tg_id: telebotID, branch_id: branchID},
             config
         );
 
         dispatch({
-            type: ANSWER_CREATE_SUCCESS,
+            type: TELEBOT_CREATE_SUCCESS,
             payload: data,
         });
 
@@ -50,47 +50,40 @@ export const createAnswer = (answerInfo) => async (dispatch, getState) => {
         switch (error.response.status) {
             case 400:
                 dispatch({
-                    type: ANSWER_CREATE_FAIL,
+                    type: TELEBOT_CREATE_FAIL,
                     payload: 'Ошибка при создании'
                 });
                 break;
             
             case 403:
                 dispatch({
-                    type: ANSWER_CREATE_FAIL,
+                    type: TELEBOT_CREATE_FAIL,
                     payload: 'Ошибка доступа'
                 });
                 break;
 
             case 404:
                 dispatch({
-                    type: ANSWER_CREATE_FAIL,
-                    payload: 'Отзыв не найден'
-                });
-                break;
-
-            case 406:
-                dispatch({
-                    type: ANSWER_CREATE_FAIL,
-                    payload: 'Такой ответ уже создан'
+                    type: TELEBOT_CREATE_FAIL,
+                    payload: 'Филиал не найден'
                 });
                 break;
         
             default:
                 dispatch({
-                    type: ANSWER_CREATE_FAIL,
+                    type: TELEBOT_CREATE_FAIL,
                     payload: 'Произошла ошибка: ' + error,
                 });
                 break;
         }
         
     }
-} 
+}
 
-export const getAnswer = (answerID) => async (dispatch, getState) => {
+export const getTelebot = (telebotID) => async (dispatch, getState) => {
     try {
         dispatch({
-            type: ANSWER_READ_REQUEST,
+            type: TELEBOT_READ_REQUEST,
         });
 
         const {
@@ -105,12 +98,12 @@ export const getAnswer = (answerID) => async (dispatch, getState) => {
         };
 
         const {data} = await axios.get(
-            `/api/answer/read/${answerID}`, 
+            `/api/telebot/read/${telebotID}`, 
             config
         );
 
         dispatch({
-            type: ANSWER_READ_SUCCESS,
+            type: TELEBOT_READ_SUCCESS,
             payload: data,
         });
 
@@ -118,28 +111,28 @@ export const getAnswer = (answerID) => async (dispatch, getState) => {
         switch (error.response.status) {
             case 400:
                 dispatch({
-                    type: ANSWER_READ_FAIL,
+                    type: TELEBOT_READ_FAIL,
                     payload: 'Ошибка при запросе'
                 });
                 break;
             
             case 403:
                 dispatch({
-                    type: ANSWER_READ_FAIL,
+                    type: TELEBOT_READ_FAIL,
                     payload: 'Ошибка доступа'
                 });
                 break;
 
             case 404:
                 dispatch({
-                    type: ANSWER_READ_FAIL,
-                    payload: 'Ответ не найден'
+                    type: TELEBOT_READ_FAIL,
+                    payload: 'Бот не найден'
                 });
                 break;
         
             default:
                 dispatch({
-                    type: ANSWER_READ_FAIL,
+                    type: TELEBOT_READ_FAIL,
                     payload: 'Произошла ошибка: ' + error,
                 });
                 break;
@@ -148,10 +141,10 @@ export const getAnswer = (answerID) => async (dispatch, getState) => {
     }
 }
 
-export const updateAnswer = (answerInfo) => async (dispatch, getState) => {
+export const updateTelebot = (telebotID, id) => async (dispatch, getState) => {
     try {
         dispatch({
-            type: ANSWER_UPDATE_REQUEST,
+            type: TELEBOT_UPDATE_REQUEST,
         });
 
         const {
@@ -166,12 +159,13 @@ export const updateAnswer = (answerInfo) => async (dispatch, getState) => {
         };
 
         const {data} = await axios.put(
-            `/api/answer/update/${answerInfo.id}`, 
+            `/api/telebot/update/${id}`, 
+            {tg_id: telebotID},
             config
         );
 
         dispatch({
-            type: ANSWER_UPDATE_SUCCESS,
+            type: TELEBOT_UPDATE_SUCCESS,
             payload: data,
         });
 
@@ -179,28 +173,28 @@ export const updateAnswer = (answerInfo) => async (dispatch, getState) => {
         switch (error.response.status) {
             case 400:
                 dispatch({
-                    type: ANSWER_UPDATE_FAIL,
+                    type: TELEBOT_UPDATE_FAIL,
                     payload: 'Ошибка при запросе'
                 });
                 break;
             
             case 403:
                 dispatch({
-                    type: ANSWER_UPDATE_FAIL,
+                    type: TELEBOT_UPDATE_FAIL,
                     payload: 'Ошибка доступа'
                 });
                 break;
 
             case 404:
                 dispatch({
-                    type: ANSWER_UPDATE_FAIL,
-                    payload: 'Ответ не найден'
+                    type: TELEBOT_UPDATE_FAIL,
+                    payload: 'Компания не найдена'
                 });
                 break;
         
             default:
                 dispatch({
-                    type: ANSWER_UPDATE_FAIL,
+                    type: TELEBOT_UPDATE_FAIL,
                     payload: 'Произошла ошибка: ' + error,
                 });
                 break;
@@ -209,10 +203,10 @@ export const updateAnswer = (answerInfo) => async (dispatch, getState) => {
     }
 }
 
-export const deleteAnswer = (answerID) => async (dispatch, getState) => {
+export const deleteTelebot = (telebotID) => async (dispatch, getState) => {
     try {
         dispatch({
-            type: ANSWER_DELETE_REQUEST,
+            type: TELEBOT_DELETE_REQUEST,
         });
 
         const {
@@ -227,48 +221,48 @@ export const deleteAnswer = (answerID) => async (dispatch, getState) => {
         };
 
         const {data} = await axios.delete(
-            `/api/answer/delete/${answerID}`, 
+            `/api/telebot/delete/${telebotID}`, 
             config
         );
 
         dispatch({
-            type: ANSWER_DELETE_SUCCESS,
+            type: TELEBOT_DELETE_SUCCESS,
         });
 
         dispatch({
-            type: ANSWER_READ_RESET,
+            type: TELEBOT_READ_RESET,
         });
 
         dispatch({
-            type: ANSWER_UPDATE_RESET,
+            type: TELEBOT_UPDATE_RESET,
         });
 
     } catch (error) {
         switch (error.response.status) {
             case 400:
                 dispatch({
-                    type: ANSWER_DELETE_FAIL,
+                    type: TELEBOT_DELETE_FAIL,
                     payload: 'Ошибка при запросе'
                 });
                 break;
             
             case 403:
                 dispatch({
-                    type: ANSWER_DELETE_FAIL,
+                    type: TELEBOT_DELETE_FAIL,
                     payload: 'Ошибка доступа'
                 });
                 break;
 
             case 404:
                 dispatch({
-                    type: ANSWER_DELETE_FAIL,
-                    payload: 'Ответ не найден'
+                    type: TELEBOT_DELETE_FAIL,
+                    payload: 'Бот не найден'
                 });
                 break;
         
             default:
                 dispatch({
-                    type: ANSWER_DELETE_FAIL,
+                    type: TELEBOT_DELETE_FAIL,
                     payload: 'Произошла ошибка: ' + error,
                 });
                 break;
