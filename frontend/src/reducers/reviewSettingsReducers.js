@@ -8,6 +8,7 @@ import {
     REVIEW_SETTINGS_READ_REQUEST,
     REVIEW_SETTINGS_READ_SUCCESS,
     REVIEW_SETTINGS_READ_FAIL,
+    REVIEW_SETTINGS_READ_RESET,
     REVIEW_SETTINGS_UPDATE_REQUEST,
     REVIEW_SETTINGS_UPDATE_SUCCESS,
     REVIEW_SETTINGS_UPDATE_FAIL,
@@ -46,7 +47,7 @@ export const reviewSettingsDeleteReducer = (state = {}, action) => {
     }
 };
 
-export const reviewSettingsDetailsReducer = (state = {}, action) => {
+export const reviewSettingsDetailsReducer = (state = {reviewSettings: {}}, action) => {
     switch (action.type) {
         case REVIEW_SETTINGS_READ_REQUEST:
             return {loading: true};
@@ -57,12 +58,15 @@ export const reviewSettingsDetailsReducer = (state = {}, action) => {
         case REVIEW_SETTINGS_READ_FAIL:
             return {loading: false, error: action.payload};
 
+        case REVIEW_SETTINGS_READ_RESET:
+            return {reviewSettings: {}};
+
         default:
             return state;
     }
 };
 
-export const reviewSettingsUpdateReducer = (state = {}, action) => {
+export const reviewSettingsUpdateReducer = (state = {reviewSettings: {}}, action) => {
     switch (action.type) {
         case REVIEW_SETTINGS_UPDATE_REQUEST:
             return {loading: true};

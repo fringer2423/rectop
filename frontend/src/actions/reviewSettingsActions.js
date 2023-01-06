@@ -1,27 +1,26 @@
 import axios from "axios";
 
 import {
-    ANSWER_CREATE_FAIL,
-    ANSWER_CREATE_REQUEST,
-    ANSWER_CREATE_SUCCESS,
-    ANSWER_DELETE_FAIL,
-    ANSWER_DELETE_REQUEST,
-    ANSWER_DELETE_SUCCESS,
-    ANSWER_READ_FAIL,
-    ANSWER_READ_REQUEST,
-    ANSWER_READ_SUCCESS,
-    ANSWER_READ_RESET,
-    ANSWER_UPDATE_FAIL,
-    ANSWER_UPDATE_REQUEST,
-    ANSWER_UPDATE_RESET,
-    ANSWER_UPDATE_SUCCESS,
-} from "../constants/answerConstants";
+    REVIEW_SETTINGS_CREATE_FAIL,
+    REVIEW_SETTINGS_CREATE_REQUEST,
+    REVIEW_SETTINGS_CREATE_SUCCESS,
+    REVIEW_SETTINGS_DELETE_FAIL,
+    REVIEW_SETTINGS_DELETE_REQUEST,
+    REVIEW_SETTINGS_DELETE_SUCCESS,
+    REVIEW_SETTINGS_READ_FAIL,
+    REVIEW_SETTINGS_READ_REQUEST,
+    REVIEW_SETTINGS_READ_SUCCESS,
+    REVIEW_SETTINGS_READ_RESET,
+    REVIEW_SETTINGS_UPDATE_FAIL,
+    REVIEW_SETTINGS_UPDATE_REQUEST,
+    REVIEW_SETTINGS_UPDATE_RESET,
+    REVIEW_SETTINGS_UPDATE_SUCCESS,
+} from "../constants/reviewSettingsConstants";
 
-
-export const createAnswer = (answerInfo) => async (dispatch, getState) => {
+export const createReviewSettings = (reviewSettingsInfo) => async (dispatch, getState) => {
     try {
         dispatch({
-            type: ANSWER_CREATE_REQUEST,
+            type: REVIEW_SETTINGS_CREATE_REQUEST,
         });
 
         const {
@@ -36,13 +35,13 @@ export const createAnswer = (answerInfo) => async (dispatch, getState) => {
         };
 
         const {data} = await axios.post(
-            `/api/answer/create/`, 
-            answerInfo, 
+            `/api/review_settings/create/`, 
+            reviewSettingsInfo, 
             config
         );
 
         dispatch({
-            type: ANSWER_CREATE_SUCCESS,
+            type: REVIEW_SETTINGS_CREATE_SUCCESS,
             payload: data,
         });
 
@@ -50,35 +49,28 @@ export const createAnswer = (answerInfo) => async (dispatch, getState) => {
         switch (error.response.status) {
             case 400:
                 dispatch({
-                    type: ANSWER_CREATE_FAIL,
+                    type: REVIEW_SETTINGS_CREATE_FAIL,
                     payload: 'Ошибка при создании'
                 });
                 break;
             
             case 403:
                 dispatch({
-                    type: ANSWER_CREATE_FAIL,
+                    type: REVIEW_SETTINGS_CREATE_FAIL,
                     payload: 'Ошибка доступа'
                 });
                 break;
 
             case 404:
                 dispatch({
-                    type: ANSWER_CREATE_FAIL,
-                    payload: 'Отзыв не найден'
-                });
-                break;
-
-            case 406:
-                dispatch({
-                    type: ANSWER_CREATE_FAIL,
-                    payload: 'Такой ответ уже создан'
+                    type: REVIEW_SETTINGS_CREATE_FAIL,
+                    payload: 'Компания не найдена'
                 });
                 break;
         
             default:
                 dispatch({
-                    type: ANSWER_CREATE_FAIL,
+                    type: REVIEW_SETTINGS_CREATE_FAIL,
                     payload: 'Произошла ошибка: ' + error,
                 });
                 break;
@@ -87,10 +79,10 @@ export const createAnswer = (answerInfo) => async (dispatch, getState) => {
     }
 } 
 
-export const getAnswer = (answerID) => async (dispatch, getState) => {
+export const getReviewSettings = (reviewSettingsID) => async (dispatch, getState) => {
     try {
         dispatch({
-            type: ANSWER_READ_REQUEST,
+            type: REVIEW_SETTINGS_READ_REQUEST,
         });
 
         const {
@@ -105,12 +97,12 @@ export const getAnswer = (answerID) => async (dispatch, getState) => {
         };
 
         const {data} = await axios.get(
-            `/api/answer/read/${answerID}`, 
+            `/api/review_settings/read/${reviewSettingsID}`, 
             config
         );
 
         dispatch({
-            type: ANSWER_READ_SUCCESS,
+            type: REVIEW_SETTINGS_READ_SUCCESS,
             payload: data,
         });
 
@@ -118,28 +110,28 @@ export const getAnswer = (answerID) => async (dispatch, getState) => {
         switch (error.response.status) {
             case 400:
                 dispatch({
-                    type: ANSWER_READ_FAIL,
+                    type: REVIEW_SETTINGS_READ_FAIL,
                     payload: 'Ошибка при запросе'
                 });
                 break;
             
             case 403:
                 dispatch({
-                    type: ANSWER_READ_FAIL,
+                    type: REVIEW_SETTINGS_READ_FAIL,
                     payload: 'Ошибка доступа'
                 });
                 break;
 
             case 404:
                 dispatch({
-                    type: ANSWER_READ_FAIL,
-                    payload: 'Ответ не найден'
+                    type: REVIEW_SETTINGS_READ_FAIL,
+                    payload: 'Компания не найдена'
                 });
                 break;
         
             default:
                 dispatch({
-                    type: ANSWER_READ_FAIL,
+                    type: REVIEW_SETTINGS_READ_FAIL,
                     payload: 'Произошла ошибка: ' + error,
                 });
                 break;
@@ -148,10 +140,10 @@ export const getAnswer = (answerID) => async (dispatch, getState) => {
     }
 }
 
-export const updateAnswer = (answerInfo) => async (dispatch, getState) => {
+export const updateReviewSettings = (reviewSettingsInfo) => async (dispatch, getState) => {
     try {
         dispatch({
-            type: ANSWER_UPDATE_REQUEST,
+            type: REVIEW_SETTINGS_UPDATE_REQUEST,
         });
 
         const {
@@ -166,13 +158,13 @@ export const updateAnswer = (answerInfo) => async (dispatch, getState) => {
         };
 
         const {data} = await axios.put(
-            `/api/answer/update/${answerInfo.id}`, 
-            answerInfo,
+            `/api/review_settings/update/${reviewSettingsInfo.id}`, 
+            reviewSettingsInfo,
             config
         );
 
         dispatch({
-            type: ANSWER_UPDATE_SUCCESS,
+            type: REVIEW_SETTINGS_UPDATE_SUCCESS,
             payload: data,
         });
 
@@ -180,28 +172,28 @@ export const updateAnswer = (answerInfo) => async (dispatch, getState) => {
         switch (error.response.status) {
             case 400:
                 dispatch({
-                    type: ANSWER_UPDATE_FAIL,
+                    type: REVIEW_SETTINGS_UPDATE_FAIL,
                     payload: 'Ошибка при запросе'
                 });
                 break;
             
             case 403:
                 dispatch({
-                    type: ANSWER_UPDATE_FAIL,
+                    type: REVIEW_SETTINGS_UPDATE_FAIL,
                     payload: 'Ошибка доступа'
                 });
                 break;
 
             case 404:
                 dispatch({
-                    type: ANSWER_UPDATE_FAIL,
-                    payload: 'Ответ не найден'
+                    type: REVIEW_SETTINGS_UPDATE_FAIL,
+                    payload: 'Компания не найдена'
                 });
                 break;
         
             default:
                 dispatch({
-                    type: ANSWER_UPDATE_FAIL,
+                    type: REVIEW_SETTINGS_UPDATE_FAIL,
                     payload: 'Произошла ошибка: ' + error,
                 });
                 break;
@@ -210,10 +202,10 @@ export const updateAnswer = (answerInfo) => async (dispatch, getState) => {
     }
 }
 
-export const deleteAnswer = (answerID) => async (dispatch, getState) => {
+export const deleteReviewSettings = (reviewSettingsID) => async (dispatch, getState) => {
     try {
         dispatch({
-            type: ANSWER_DELETE_REQUEST,
+            type: REVIEW_SETTINGS_DELETE_REQUEST,
         });
 
         const {
@@ -228,48 +220,48 @@ export const deleteAnswer = (answerID) => async (dispatch, getState) => {
         };
 
         const {data} = await axios.delete(
-            `/api/answer/delete/${answerID}`, 
+            `/api/reviewSettings/delete/${reviewSettingsID}`, 
             config
         );
 
         dispatch({
-            type: ANSWER_DELETE_SUCCESS,
+            type: REVIEW_SETTINGS_DELETE_SUCCESS,
         });
 
         dispatch({
-            type: ANSWER_READ_RESET,
+            type: REVIEW_SETTINGS_READ_RESET,
         });
 
         dispatch({
-            type: ANSWER_UPDATE_RESET,
+            type: REVIEW_SETTINGS_UPDATE_RESET,
         });
 
     } catch (error) {
         switch (error.response.status) {
             case 400:
                 dispatch({
-                    type: ANSWER_DELETE_FAIL,
+                    type: REVIEW_SETTINGS_DELETE_FAIL,
                     payload: 'Ошибка при запросе'
                 });
                 break;
             
             case 403:
                 dispatch({
-                    type: ANSWER_DELETE_FAIL,
+                    type: REVIEW_SETTINGS_DELETE_FAIL,
                     payload: 'Ошибка доступа'
                 });
                 break;
 
             case 404:
                 dispatch({
-                    type: ANSWER_DELETE_FAIL,
-                    payload: 'Ответ не найден'
+                    type: REVIEW_SETTINGS_DELETE_FAIL,
+                    payload: 'Компания не найдена'
                 });
                 break;
         
             default:
                 dispatch({
-                    type: ANSWER_DELETE_FAIL,
+                    type: REVIEW_SETTINGS_DELETE_FAIL,
                     payload: 'Произошла ошибка: ' + error,
                 });
                 break;
