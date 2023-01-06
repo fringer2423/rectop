@@ -9,12 +9,12 @@ import {
     useDispatch
 } from "react-redux";
 import {IoDocumentsSharp} from "react-icons/io5";
-import Conversations from "./components/Conversations";
+import Conversations from "./components/Companies";
 import Header from "./components/Header";
 import PlatformSettings from "./components/PlatformSettings";
 import ProfileInformation from "./components/ProfileInformation";
 import Projects from "./components/Projects";
-import {getUserDetails} from "../../../actions/userActions.js"
+import {getUserDetails} from "../../../actions/userActions.js";
 
 function Profile() {
     // Chakra color mode
@@ -32,6 +32,10 @@ function Profile() {
 
     const userLogin = useSelector(state => state.userLogin);
     const {userInfo} = userLogin;
+
+    const companyDetails = useSelector(state => state.companyDetails);
+    const {company} = companyDetails;
+    
 
     const userDetails = useSelector(state => state.userDetails);
     const {user, error} = userDetails;
@@ -73,6 +77,7 @@ function Profile() {
                     error={error}
 
                 />
+                <Conversations title={"Компании"} companyInfo={company}/>
                 <PlatformSettings
                     title={"Настройки личного кабинета"}
                     subtitle1={"Ваше имя*"}
@@ -83,7 +88,6 @@ function Profile() {
                     subtitle6={"Ваша должность"}
                     subtitle7={"Email"}
                 />
-                <Conversations title={"Компании"}/>
             </Grid>
 
         </Flex>

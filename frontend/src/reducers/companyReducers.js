@@ -21,7 +21,7 @@ export const companyCreateReducer = (state = {}, action) => {
             return {loading: true};
 
         case COMPANY_CREATE_SUCCESS:
-            return {loading: false, company: action.payload};
+            return {loading: false, success: true};
 
         case COMPANY_CREATE_FAIL:
             return {loading: false, error: action.payload};

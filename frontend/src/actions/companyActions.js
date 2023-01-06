@@ -44,6 +44,14 @@ export const createCompany = (companyName) => async (dispatch, getState) => {
             type: COMPANY_CREATE_SUCCESS,
             payload: data,
         });
+
+        dispatch({
+            type: COMPANY_READ_SUCCESS,
+            payload: data,
+        });
+
+        localStorage.setItem('company', JSON.stringify(data));
+
     } catch (error) {
         switch (error.response.status) {
             case 400:
@@ -86,6 +94,7 @@ export const readCompany = (companyID) => async (dispatch, getState) => {
             type: COMPANY_READ_SUCCESS,
             payload: data,
         });
+
     } catch (error) {
         switch (error.response.status) {
             case 400:
@@ -145,8 +154,14 @@ export const updateCompany =
 
             dispatch({
                 type: COMPANY_UPDATE_SUCCESS,
+            });
+
+            dispatch({
+                type: COMPANY_READ_SUCCESS,
                 payload: data,
             });
+
+            localStorage.setItem('company', JSON.stringify(data));
         } catch (error) {
             switch (error.response.status) {
                 case 400:
@@ -213,6 +228,9 @@ export const deleteCompany = (companyID) => async (dispatch, getState) => {
         dispatch({
             type: COMPANY_UPDATE_RESET,
         });
+
+        localStorage.removeItem('company');
+        
     } catch (error) {
         switch (error.response.status) {
             case 400:

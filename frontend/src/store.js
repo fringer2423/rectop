@@ -148,12 +148,20 @@ const isLoggedInFromStorage = localStorage.getItem("isLoggedIn")
     ? localStorage.getItem("isLoggedIn")
     : undefined;
 
+const companyFromStorage = localStorage.getItem("isLoggedIn")
+    ? JSON.parse(localStorage.getItem("company"))
+    : null;
+
 const initialState = {
     userLogin: {
         userInfo: userInfoFromStorage,
     },
     userVerifyLogin: {
         isLoggedIn: isLoggedInFromStorage,
+    },
+
+    companyDetails: {
+        company: companyFromStorage,
     },
 };
 
