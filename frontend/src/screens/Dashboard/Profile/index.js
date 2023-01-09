@@ -29,9 +29,6 @@ function Profile() {
         dispatch(getUserDetails());
     }, [])
 
-    const userLogin = useSelector(state => state.userLogin);
-    const {userInfo} = userLogin;
-
     const companyDetails = useSelector(state => state.companyDetails);
     const {company} = companyDetails;
     
