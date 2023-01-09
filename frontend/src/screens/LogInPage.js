@@ -58,7 +58,7 @@ const LogIn = () => {
     const [message, setMessage] = useState("");
     const [errorColor, setErrorColor] = useState("");
     const [showButton, setShowButton] = useState(false);
-    let [count, setCount] = useState(60);
+    const [count, setCount] = useState(60);
 
     const user = localStorage.getItem("userInfo");
 
@@ -79,7 +79,7 @@ const LogIn = () => {
         if ((errorCheck || errorVerify) && !user) {
             setModal(true);
             let timer = setInterval(() => {
-                setCount(count--);
+                setCount(state => (state - 1));
                 if (count === 0) {
                     clearInterval(timer);
                 }

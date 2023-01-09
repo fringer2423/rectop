@@ -69,8 +69,7 @@ export const login = (email, password) => async (dispatch) => {
                 );
                 dispatch({
                     type: USER_LOGIN_FAIL,
-                    payload:
-                        "Ошибка авторизации. Попробуйте еще раз",
+                    payload: "Ошибка авторизации. Попробуйте еще раз",
                 });
         }
     }
@@ -317,7 +316,7 @@ export const getUserDetails = () => async (dispatch, getState) => {
     }
 };
 
-export const updateUser = (user) => async (dispatch, getState) => {
+export const updateUser = (userData) => async (dispatch, getState) => {
     try {
         dispatch({
             type: USER_UPDATE_REQUEST,
@@ -327,6 +326,16 @@ export const updateUser = (user) => async (dispatch, getState) => {
             userLogin: {userInfo},
         } = getState();
 
+        const {
+            userDetails: {user},
+        } = getState();
+
+        if (userData.description === "")
+            userData.description = user.description;
+        if (userData.mobile === "") userData.mobile = user.phone_number;
+        if (userData.job === "") userData.job = user.job_title;
+        if (userData.email === "") userData.email = user.email;
+
         const config = {
             headers: {
                 "Content-type": "application/json",
@@ -334,7 +343,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
             },
         };
 
-        const {data} = await axios.put(`/api/user/update/`, user, config);
+        const {data} = await axios.put(`/api/user/update/`, userData, config);
 
         dispatch({
             type: USER_UPDATE_SUCCESS,

@@ -2,6 +2,27 @@
 
 ## [Unreleased]
 
+## [0.0.49] - 2023-01-05
+
+### Изменено
+
+- fixed reducers [@AlexTrubkina](https://github.com/AlexTrubkina)
+- fixed constants
+
+### Добавлено
+
+- actions (task, rate, qr code, branch, answer) [@AlexTrubkina](https://github.com/AlexTrubkina)
+
+## [0.0.48] - 2023-01-04
+
+### Изменено
+
+- update user with saving previous data [@AlexTrubkina](https://github.com/AlexTrubkina)
+
+### Добавлено
+
+- reducers and constants for all endpoints [@AlexTrubkina](https://github.com/AlexTrubkina)
+
 ## [0.0.47] - 2022-12-29
 
 ### Изменено

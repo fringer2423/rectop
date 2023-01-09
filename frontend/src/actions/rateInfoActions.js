@@ -18,16 +18,16 @@ export const dataRate = () => async (dispatch) => {
             },
         };
 
-        await axios.get("/api/rate_info/read/", config).then((response) => {
+        await axios.get(`/api/rate_info/read/`, config).then((response) => {
             dispatch({
                 type: RATE_INFO_DATA_SUCCESS,
                 payload: response.data,
             });
-            console.log(response.data, " response.data");
+            // console.log(response.data, " response.data");
             localStorage.setItem("rateInfo ", JSON.stringify(response.data));
         });
     } catch (e) {
-        switch (e) {
+        switch (e.response.status) {
             case 404:
                 dispatch({
                     type: RATE_INFO_DATA_FAIL,
@@ -37,8 +37,7 @@ export const dataRate = () => async (dispatch) => {
             default:
                 dispatch({
                     type: RATE_INFO_DATA_FAIL,
-                    payload:
-                        "Произошла ошибка при запросе цены о тарифах " + e,
+                    payload: "Произошла ошибка при запросе цены о тарифах " + e,
                 });
         }
     }
