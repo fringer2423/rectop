@@ -201,6 +201,8 @@ export const deleteCompany = (companyID) => async (dispatch, getState) => {
             type: COMPANY_DELETE_REQUEST,
         });
 
+        localStorage.removeItem('company');
+
         const {
             userLogin: {userInfo},
         } = getState();
@@ -218,10 +220,6 @@ export const deleteCompany = (companyID) => async (dispatch, getState) => {
         );
 
         dispatch({
-            type: COMPANY_DELETE_SUCCESS,
-        });
-
-        dispatch({
             type: COMPANY_READ_RESET,
         });
 
@@ -229,7 +227,11 @@ export const deleteCompany = (companyID) => async (dispatch, getState) => {
             type: COMPANY_UPDATE_RESET,
         });
 
-        localStorage.removeItem('company');
+        dispatch({
+            type: COMPANY_DELETE_SUCCESS,
+        });
+
+        
         
     } catch (error) {
         switch (error.response.status) {

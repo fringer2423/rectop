@@ -144,7 +144,7 @@ const Conversations = ({title, companyInfo}) => {
                 </CardHeader>
                 <CardBody px="5px">
                     <Flex direction="column" w="100%">
-                        {(companyInfo || companyInfo === {})  && (
+                        {(companyInfo)  && (
                             <Flex justifyContent="space-between" mb="21px">
                                 <Flex align="center">
                                     <Avatar
