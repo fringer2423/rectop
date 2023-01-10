@@ -47,7 +47,7 @@ export const companyDeleteReducer = (state = {}, action) => {
     }
 };
 
-export const companyDetailsReducer = (state = {company: {}}, action) => {
+export const companyDetailsReducer = (state = {}, action) => {
     switch (action.type) {
         case COMPANY_READ_REQUEST:
             return {loading: true};
@@ -59,14 +59,14 @@ export const companyDetailsReducer = (state = {company: {}}, action) => {
             return {loading: false, error: action.payload};
         
         case COMPANY_READ_RESET: 
-            return {company: {}};
+            return {company: null};
 
         default:
             return state;
     }
 };
 
-export const companyUpdateReducer = (state = {company: {}}, action) => {
+export const companyUpdateReducer = (state = {}, action) => {
     switch (action.type) {
         case COMPANY_UPDATE_REQUEST:
             return {loading: true};
@@ -78,7 +78,7 @@ export const companyUpdateReducer = (state = {company: {}}, action) => {
             return {loading: false, error: action.payload};
         
         case COMPANY_UPDATE_RESET:
-            return {company: {}};
+            return {company: null};
 
         default:
             return state;
