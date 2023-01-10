@@ -90,7 +90,7 @@ function SidebarResponsive(props) {
                             }}
                             py="12px"
                             borderRadius="15px"
-                            hover="none"
+                           _hover="none"
                             w="100%"
                             _active={{
                                 bg: "inherit",
@@ -140,7 +140,7 @@ function SidebarResponsive(props) {
                                 xl: "16px",
                             }}
                             borderRadius="15px"
-                            hover="none"
+                           _hover="none"
                             w="100%"
                             _active={{
                                 bg: "inherit",
@@ -244,7 +244,7 @@ function SidebarResponsive(props) {
                 >
                     <DrawerCloseButton
                         _focus={{boxShadow: "none"}}
-                        hover={{boxShadow: "none"}}
+                       _hover={{boxShadow: "none"}}
                     />
                     <DrawerBody maxW="250px" px="1rem">
                         <Box maxW="100%" h="100vh">

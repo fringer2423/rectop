@@ -55,7 +55,7 @@ export const dashRoutes = [
     },
     {
         path: "/signin",
-        name: "Sign In",
+        name: "Вход",
 
         icon: <DocumentIcon color="inherit"/>,
         component: LogInPage,
@@ -63,7 +63,7 @@ export const dashRoutes = [
     },
     {
         path: "/signup",
-        name: "Sign Up",
+        name: "Регистрация",
 
         icon: <RocketIcon color="inherit"/>,
         secondaryNavbar: true,

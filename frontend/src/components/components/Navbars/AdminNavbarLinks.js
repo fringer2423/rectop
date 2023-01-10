@@ -83,7 +83,7 @@ export default function HeaderLinks(props) {
                         <IconButton
                             bg="inherit"
                             borderRadius="inherit"
-                            hover="none"
+                            _hover="none"
                             _active={{
                                 bg: "inherit",
                                 transform: "none",
