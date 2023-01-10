@@ -348,7 +348,7 @@ def verify_user_view(request: WSGIRequest, slug: str) -> Response:
         user: QuerySet[User] = get_user_by_slug_service(slug)
         logger.error(f'!!!!!!!!!!!! {user}')
         user: QuerySet[User] = verify_user_service(user)
-        serializer: Serializer[UserSerializer] = UserSerializer(user, many=False)
+        serializer: Serializer[UserSerializerWithToken] = UserSerializerWithToken(user, many=False)
         message: str = 'Запрос выполнен успешно'
         logger.info(f'{__name__}.{sys._getframe().f_code.co_name} - {message} / user id:{user.id}')
         return Response(

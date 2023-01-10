@@ -74,6 +74,7 @@ class UserSerializerWithToken(UserSerializer):
     class Meta:
         model: QuerySet[User] = User
         fields: list = ['id', 'username', 'email', 'is_admin', 'token', 'is_verified']
+
     def get_token(self, obj: QuerySet[User]) -> str:
         return str(RefreshToken.for_user(obj).access_token)
 
