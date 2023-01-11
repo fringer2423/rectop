@@ -2,15 +2,26 @@
 
 ## [Unreleased]
 
-## [0.0.50] - 2023-01-09
+## [0.0.52] - 2023-01-10
 
 ### Изменено
 
-- 
+- fix hover of buttons dashboard [@AlexTrubkina](https://github.com/AlexTrubkina)
+- изменены цвета кнопок и навигации в dashboard
+
+## [0.0.51] - 2023-01-09
+
+### Изменено
+
+- fix delete company logic [@AlexTrubkina](https://github.com/AlexTrubkina)
+- все данные теперь получаются из user в личном кабинете, а не userInfo
+
+## [0.0.50] - 2023-01-06
 
 ### Добавлено
 
-- 
+- реализована логика добавления компании в личном кабинете [@AlexTrubkina](https://github.com/AlexTrubkina)
+- добавлены actions (review, connect, review settings, telebot, company, answer)
 
 ## [0.0.49] - 2023-01-05
 
@@ -21,13 +32,13 @@
 
 ### Добавлено
 
-- actions (task, rate, qr code, branch, answer) [@AlexTrubkina](https://github.com/AlexTrubkina)
+- добавлены actions (task, rate, qr code, branch, answer) [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ## [0.0.48] - 2023-01-04
 
 ### Изменено
 
-- update user with saving previous data [@AlexTrubkina](https://github.com/AlexTrubkina)
+- обновлении информации о пользователе в личном кабинете с сохранением предыдущей информации, которую пользователь не обновляет [@AlexTrubkina](https://github.com/AlexTrubkina)
 
 ### Добавлено
 
