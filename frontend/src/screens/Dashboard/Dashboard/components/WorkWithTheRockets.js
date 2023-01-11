@@ -54,7 +54,7 @@ const WorkWithTheRockets = ({title, description, backgroundImage}) => {
                                 <Text
                                     fontSize='sm'
                                     fontWeight='bold'
-                                    hover={{me: "4px"}}
+                                   _hover={{me: "4px"}}
                                     transition='all .5s ease'>
                                     Read more
                                 </Text>
@@ -66,7 +66,7 @@ const WorkWithTheRockets = ({title, description, backgroundImage}) => {
                                     transition='all .5s ease'
                                     mx='.3rem'
                                     cursor='pointer'
-                                    hover={{transform: "translateX(20%)"}}
+                                   _hover={{transform: "translateX(20%)"}}
                                     pt='4px'
                                 />
                             </Button>

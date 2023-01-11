@@ -84,7 +84,7 @@ const SidebarContent = ({logoText, routes}) => {
                             }}
                             py="12px"
                             borderRadius="15px"
-                            hover="none"
+                           _hover="none"
                             w="100%"
                             _active={{
                                 bg: "inherit",
@@ -132,7 +132,7 @@ const SidebarContent = ({logoText, routes}) => {
                                 xl: "16px",
                             }}
                             borderRadius="15px"
-                            hover="none"
+                           _hover="none"
                             w="100%"
                             _active={{
                                 bg: "inherit",
@@ -187,7 +187,7 @@ const SidebarContent = ({logoText, routes}) => {
                             }}
                             py="12px"
                             borderRadius="15px"
-                            hover="none"
+                           _hover="none"
                             w="100%"
                             _active={{
                                 bg: "inherit",
@@ -235,7 +235,7 @@ const SidebarContent = ({logoText, routes}) => {
                                 xl: "16px",
                             }}
                             borderRadius="15px"
-                            hover="none"
+                           _hover="none"
                             w="100%"
                             _active={{
                                 bg: "inherit",

@@ -138,14 +138,14 @@ const RegistrationPage = () => {
                             border="1px solid lightgray"
                             cursor="pointer"
                             transition="all .25s ease"
-                            hover={{filter: "brightness(120%)", bg: bgIcons}}
+                           _hover={{filter: "brightness(120%)", bg: bgIcons}}
                         >
                             <Link href="#">
                                 <Icon
                                     as={FaFacebook}
                                     w="30px"
                                     h="30px"
-                                    hover={{filter: "brightness(120%)"}}
+                                   _hover={{filter: "brightness(120%)"}}
                                 />
                             </Link>
                         </Flex>
@@ -158,14 +158,14 @@ const RegistrationPage = () => {
                             border="1px solid lightgray"
                             cursor="pointer"
                             transition="all .25s ease"
-                            hover={{filter: "brightness(120%)", bg: bgIcons}}
+                           _hover={{filter: "brightness(120%)", bg: bgIcons}}
                         >
                             <Link href="#">
                                 <Icon
                                     as={FaApple}
                                     w="30px"
                                     h="30px"
-                                    hover={{filter: "brightness(120%)"}}
+                                   _hover={{filter: "brightness(120%)"}}
                                 />
                             </Link>
                         </Flex>
@@ -178,14 +178,14 @@ const RegistrationPage = () => {
                             border="1px solid lightgray"
                             cursor="pointer"
                             transition="all .25s ease"
-                            hover={{filter: "brightness(120%)", bg: bgIcons}}
+                           _hover={{filter: "brightness(120%)", bg: bgIcons}}
                         >
                             <Link href="#">
                                 <Icon
                                     as={FaGoogle}
                                     w="30px"
                                     h="30px"
-                                    hover={{filter: "brightness(120%)"}}
+                                   _hover={{filter: "brightness(120%)"}}
                                 />
                             </Link>
                         </Flex>
@@ -327,7 +327,7 @@ const RegistrationPage = () => {
                             h="45"
                             mb="24px"
                             onClick={handleRegistration}
-                            hover={{
+                           _hover={{
                                 bg: "secondary",
                             }}
                             _active={{

@@ -38,7 +38,7 @@ function DashboardTableRow(props) {
                                 name="Ryan Florence"
                                 key={member}
                                 src={member}
-                                hover={{zIndex: "3", cursor: "pointer"}}
+                               _hover={{zIndex: "3", cursor: "pointer"}}
                             />
                         );
                     })}

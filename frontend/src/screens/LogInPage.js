@@ -29,7 +29,7 @@ import {
 
 import signInImage from "../assets/img/signInImage.png";
 
-import {LinkContainer} from "react-router-bootstrap";
+// import {LinkContainer} from "react-router-bootstrap";
 
 const LogIn = () => {
     const titleColor = useColorModeValue("maincolor");
@@ -168,7 +168,7 @@ const LogIn = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button
-                        colorscheme="blue"
+                        colorScheme="#4584FF"
                         variant="outline"
                         onClick={handleCheckCode}
                     >
@@ -306,7 +306,7 @@ const LogIn = () => {
                                     mb="20px"
                                     color="white"
                                     mt="20px"
-                                    hover={{
+                                    _hover={{
                                         bg: "secondary",
                                     }}
                                     _active={{
