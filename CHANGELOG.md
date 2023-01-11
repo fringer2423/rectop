@@ -2,12 +2,12 @@
 
 ## [Unreleased]
 
-## [0.0.50] - 2023-01-10
+## [0.0.51] - 2023-01-10
 
 ### Изменено
 
-- fix _hover [@AlexTrubkina](https://github.com/AlexTrubkina)
-- fix colors 
+- fix hover of buttons dashboard [@AlexTrubkina](https://github.com/AlexTrubkina)
+- изменены цвета кнопок и навигации в dashboard
 
 ## [0.0.50] - 2023-01-09
 
