@@ -2,15 +2,19 @@
 
 ## [Unreleased]
 
+## [0.0.50] - 2023-01-10
+
+### Изменено
+
+- fix _hover [@AlexTrubkina](https://github.com/AlexTrubkina)
+- fix colors 
+
 ## [0.0.50] - 2023-01-09
 
 ### Изменено
 
-- 
-
-### Добавлено
-
-- 
+- fix delete company logic [@AlexTrubkina](https://github.com/AlexTrubkina)
+- remove userInfo from profile 
 
 ## [0.0.49] - 2023-01-05
 
